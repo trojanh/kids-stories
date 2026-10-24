@@ -43,10 +43,8 @@ except ImportError:
 ROOT_DIR = Path(__file__).resolve().parent.parent
 STORIES_FILE = ROOT_DIR / "src" / "data" / "stories.json"
 SRC_AUDIO_DIR = ROOT_DIR / "src" / "ui" / "audio"
-DOCS_AUDIO_DIR = ROOT_DIR / "docs" / "audio"
 SRC_UI_MANIFEST_FILE = ROOT_DIR / "src" / "ui" / "data" / "audio_manifest.json"
 SRC_DATA_MANIFEST_FILE = ROOT_DIR / "src" / "data" / "audio_manifest.json"
-DOCS_MANIFEST_FILE = ROOT_DIR / "docs" / "data" / "audio_manifest.json"
 
 DEFAULT_VOICE = "en-US-AnaNeural" # Warm, engaging children's narrator voice
 DEFAULT_RATE = "-4%" # Gentle cadence for young readers
@@ -58,7 +56,7 @@ def normalize_word(w: str) -> str:
 
 
 def load_manifest(default_voice: str) -> dict:
-    for m_path in [SRC_UI_MANIFEST_FILE, SRC_DATA_MANIFEST_FILE, DOCS_MANIFEST_FILE]:
+    for m_path in [SRC_UI_MANIFEST_FILE, SRC_DATA_MANIFEST_FILE]:
         if m_path.exists():
             try:
                 with open(m_path, "r", encoding="utf-8") as f:
@@ -74,12 +72,10 @@ def save_manifest_to_disk(manifest: dict):
     manifest["version"] = "2.0"
     SRC_UI_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
     SRC_DATA_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
-    DOCS_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     manifest_json = json.dumps(manifest, indent=2, ensure_ascii=False)
     SRC_UI_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
     SRC_DATA_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
-    DOCS_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
 
 
 def is_story_complete(story: dict, manifest: dict) -> bool:
@@ -167,12 +163,9 @@ async def generate_single_story_audio(story: dict, voice: str, rate: str, pitch:
     moral = story.get("moral", "")
 
     story_src_dir = SRC_AUDIO_DIR / story_id
-    story_docs_dir = DOCS_AUDIO_DIR / story_id
     story_src_dir.mkdir(parents=True, exist_ok=True)
-    story_docs_dir.mkdir(parents=True, exist_ok=True)
 
     dest_file = story_src_dir / "story.mp3"
-    dest_docs_file = story_docs_dir / "story.mp3"
     temp_file = story_src_dir / "story.tmp.mp3"
 
     print(f"\n🎙️  Processing Story: '{title}' ({story_id}) — {len(sentences)} sentences")
@@ -196,7 +189,6 @@ async def generate_single_story_audio(story: dict, voice: str, rate: str, pitch:
     temp_file.write_bytes(audio_bytes)
     if temp_file.exists() and temp_file.stat().st_size > 0:
         temp_file.replace(dest_file)
-        shutil.copy2(dest_file, dest_docs_file)
 
     sentence_entries, moral_entry = segment_story_words(sentences, moral, captured_words)
     total_duration = round(captured_words[-1]["e"], 3) if captured_words else 0.0
@@ -208,7 +200,6 @@ async def generate_single_story_audio(story: dict, voice: str, rate: str, pitch:
     }
     words_json_str = json.dumps(story_words, separators=(",", ":"))
     (story_src_dir / "words.json").write_text(words_json_str, encoding="utf-8")
-    (story_docs_dir / "words.json").write_text(words_json_str, encoding="utf-8")
 
     # Lightweight manifest entry (without heavy word arrays)
     light_sentences = [{"index": s["index"], "start": s["start"], "end": s["end"]} for s in sentence_entries]
@@ -229,13 +220,6 @@ async def generate_single_story_audio(story: dict, voice: str, rate: str, pitch:
         try:
             if old_file.exists():
                 old_file.unlink()
-        except Exception:
-            pass
-
-    for old_docs_file in list(story_docs_dir.glob("sentence_*.mp3")) + [story_docs_dir / "moral.mp3", story_docs_dir / "full_story.mp3"]:
-        try:
-            if old_docs_file.exists():
-                old_docs_file.unlink()
         except Exception:
             pass
 
@@ -353,7 +337,7 @@ async def main():
     print(f"✨ Single continuous audio pipeline run complete!{batch_info}")
     print(f"• Stories generated this run: {total_generated}")
     print(f"• Total narrated stories in manifest: {len(manifest.get('stories', {}))}")
-    print(f"• Manifest synced to: {SRC_UI_MANIFEST_FILE}, {SRC_DATA_MANIFEST_FILE}, {DOCS_MANIFEST_FILE}")
+    print(f"• Manifest synced to: {SRC_UI_MANIFEST_FILE}, {SRC_DATA_MANIFEST_FILE}")
     print("=" * 60)
 
 

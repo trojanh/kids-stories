@@ -2,7 +2,7 @@
 
 **Project:** Magic Kids Storybook (Aesop's Fables for Children)  
 **Location:** `plans/implementation_plan.md`  
-**Hosting:** GitHub Pages Static Distribution (`docs/`) & Local Development Server (`scripts/serveUi.js`)  
+**Hosting:** GitHub Pages Static Distribution (`src/ui/`) & Local Development Server (`scripts/serveUi.js`)  
 **Status:** In Production / Feature Complete (152 Stories, Approach 2 Continuous Audio, Clean Path Routing, Sub-second Core Web Vitals)
 
 ---
@@ -29,7 +29,7 @@ The **Magic Kids Storybook** is a rich, high-performance static web application 
 | **Audio Format** | Continuous MP3 (128 kbps, 24 kHz) | Single continuous `story.mp3` per story with millisecond start/end sentence & moral cues |
 | **Word Alignment** | Edge-TTS WordBoundary Timestamps | Extracted into lightweight per-story `words.json` (~3.7 KB) loaded lazily on demand |
 | **State & Persistence**| LocalStorage & HTML5 History API | Persists playback rate, selected voice, favorites, and clean URL paths |
-| **Distribution** | Static export to `docs/` | Automated build pipeline (`scripts/build_docs.py`) generating `sitemap.xml`, `robots.txt`, `.nojekyll`, and `404.html` |
+| **Distribution** | Static export from `src/ui/` | Automated build pipeline (`scripts/build_docs.py`) generating `sitemap.xml`, `robots.txt`, and `.nojekyll` |
 | **Development Server** | Node.js Zero-Dependency Server | `scripts/serveUi.js` supporting HTTP 206 Range seeking and SPA rewrite rules |
 
 ---
@@ -101,7 +101,7 @@ A critical performance objective was resolving mobile throttling bottlenecks whe
 ### 5.2 Dynamic Base & GitHub Pages Support
 - **Dynamic `<base>` Tag:**
   When accessing deep paths like `/story/crow_and_water_pot` on localhost or `/kids-stories/story/crow_and_water_pot` on GitHub Pages, an inline `<script>` in `<head>` calculates the repository base path and injects `<base href="...">`. This guarantees all relative asset URLs (`style.css`, `main.js`, `tts.js`, `data/stories.json`, `audio/...`) resolve accurately.
-- **GitHub Pages SPA Fallback (`docs/404.html`):**
+- **GitHub Pages SPA Fallback (`src/ui/404.html`):**
   Direct visits or page reloads on static hosts are intercepted by `404.html`, which encodes the requested pathname into a query redirect string (`/?/story/crow_and_water_pot`) and loads `index.html`. `index.html` restores the clean path with `history.replaceState` with 0ms visual flash.
 - **Local Dev Server Rewrite:**
   `scripts/serveUi.js` transparently rewrites `/story/*` requests without extensions to `index.html`, matching production server behavior.
@@ -112,34 +112,41 @@ A critical performance objective was resolving mobile throttling bottlenecks whe
 
 ```
 kids_storybook_plan/
-├── docs/                         # Production GitHub Pages distribution
-│   ├── .nojekyll                 # Bypasses Jekyll processing
-│   ├── 404.html                  # SPA redirect for direct URLs
-│   ├── index.html                # Application shell with dynamic base script
-│   ├── main.js                   # Application controller & history router
-│   ├── tts.js                    # Dual-mode speech & timestamp cue player
-│   ├── svg-art.js                # Hand-drawn Rough.js comic art generator
-│   ├── rough.js                  # Rough.js vector graphics library
-│   ├── style.css                 # Responsive kid-friendly styles
-│   ├── sitemap.xml               # SEO sitemap with /story/:id clean URLs
-│   ├── robots.txt                # Search engine crawler permissions
-│   ├── data/
-│   │   ├── stories.json          # 152 curated fables with metadata
-│   │   └── audio_manifest.json   # 87 KB lightweight cue manifest
-│   └── audio/
-│       └── [story_id]/
-│           ├── story.mp3         # Continuous story narration audio
-│           └── words.json        # Millisecond-exact word boundary timestamps
 ├── plans/                        # Project architectural & enhancement plans
 │   ├── implementation_plan.md    # Master system architecture & roadmap (this document)
-│   └── svg_enhancement_plan.md   # Scene layout & multi-character illustration plan
+│   ├── svg_enhancement_plan.md   # Scene layout & multi-character illustration plan
+│   └── audio_streaming_optimization_plan.md # Continuous audio & karaoke seeking plan
 ├── scripts/
-│   ├── build_docs.py             # Distribution builder for GitHub Pages
+│   ├── build.py                  # Static build & SEO generator
+│   ├── build_docs.py             # Compatibility build script
 │   ├── generate_audio.py         # Multi-worker Edge-TTS generator (Approach 2)
 │   └── serveUi.js                # Zero-dependency local dev server with Range & SPA support
-└── src/
-    ├── data/                     # Source datasets & test suites
-    └── ui/                       # Source UI assets mirrored to docs/
+├── src/
+│   ├── data/                     # Source datasets & test suites
+│   │   ├── stories.json          # Master 152 curated fables with metadata
+│   │   ├── audio_manifest.json   # Master lightweight cue manifest
+│   │   └── test_stories.py       # Pytest schema and story validation suite
+│   └── ui/                       # Single canonical Web Application & GitHub Pages deploy directory
+│       ├── .nojekyll             # Bypasses Jekyll processing
+│       ├── 404.html              # SPA redirect for direct URLs
+│       ├── index.html            # Application shell with dynamic base script
+│       ├── main.js               # Application controller & history router
+│       ├── tts.js                # Dual-mode speech & timestamp cue player
+│       ├── svg-art.js            # Hand-drawn Rough.js comic art generator
+│       ├── rough.js              # Rough.js vector graphics library
+│       ├── style.css             # Responsive kid-friendly styles
+│       ├── sitemap.xml           # SEO sitemap with /story/:id clean URLs
+│       ├── robots.txt            # Search engine crawler permissions
+│       ├── data/
+│       │   ├── stories.json      # 152 curated fables with metadata
+│       │   └── audio_manifest.json # 87 KB lightweight cue manifest
+│       └── audio/
+│           └── [story_id]/
+│               ├── story.mp3     # Continuous story narration audio
+│               └── words.json    # Millisecond-exact word boundary timestamps
+└── .github/
+    └── workflows/
+        └── deploy.yml            # Automated GitHub Pages CI/CD workflow (deploys src/ui/)
 ```
 
 ---
@@ -158,7 +165,7 @@ To ensure system integrity, execute the following verification steps:
 3. **Build & Distribution Verification:**
    ```bash
    python3 scripts/build_docs.py
-   node -c docs/main.js && node -c docs/tts.js
+   node -c src/ui/main.js && node -c src/ui/tts.js
    ```
 4. **Local Server Route Verification:**
    ```bash
