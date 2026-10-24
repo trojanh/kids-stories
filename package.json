@@ -1,0 +1,23 @@
+{
+  "name": "kids-storybook",
+  "version": "1.0.0",
+  "description": "Interactive illustrated kids storybook with voice narration and speed control",
+  "main": "src/ui/main.js",
+  "scripts": {
+    "start": "node scripts/serveUi.js 8080",
+    "dev": "node scripts/serveUi.js 8080",
+    "build": "python3 scripts/build_docs.py",
+    "test": "python3 -m pytest src/data/test_stories.py -v"
+  },
+  "keywords": [
+    "storybook",
+    "children-stories",
+    "fables",
+    "text-to-speech",
+    "tts",
+    "svg-animation",
+    "github-pages"
+  ],
+  "author": "",
+  "license": "MIT"
+}
