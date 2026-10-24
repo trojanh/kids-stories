@@ -11,17 +11,20 @@ Outputs:
   - src/ui/data/audio_manifest.json (and copies to docs/)
 
 Usage:
-  # Generate audio for default 5 popular fables:
+  # Download remaining incomplete stories backwards from the end (default):
   python3 scripts/generate_audio.py
 
-  # Generate for a specific fable:
-  python3 scripts/generate_audio.py --stories tiger_and_mice
+  # Download remaining stories forward from the beginning:
+  python3 scripts/generate_audio.py --forward
 
-  # Generate for first 10 fables:
-  python3 scripts/generate_audio.py --limit 10
+  # Process only the next 5 remaining stories backwards:
+  python3 scripts/generate_audio.py --limit 5
 
-  # Generate for all 150+ fables:
-  python3 scripts/generate_audio.py --stories all
+  # Download for a specific fable:
+  python3 scripts/generate_audio.py --story tiger_and_mice
+
+  # Re-scan and update manifests without generating new audio:
+  python3 scripts/generate_audio.py --reindex-only
 """
 
 import argparse
@@ -57,6 +60,51 @@ DEFAULT_STORIES = [
     "tortoise_and_hare",
     "the_lion_and_the_mouse",
 ]
+
+
+def is_story_complete(story: dict) -> bool:
+    story_id = story.get("id")
+    if not story_id:
+        return False
+    story_src_dir = SRC_AUDIO_DIR / story_id
+    if not story_src_dir.exists():
+        return False
+    moral_file = story_src_dir / "moral.mp3"
+    full_file = story_src_dir / "full_story.mp3"
+    if not moral_file.exists() or moral_file.stat().st_size == 0:
+        return False
+    if not full_file.exists() or full_file.stat().st_size == 0:
+        return False
+    sentences = story.get("text", [])
+    for idx in range(len(sentences)):
+        sent_file = story_src_dir / f"sentence_{idx}.mp3"
+        if not sent_file.exists() or sent_file.stat().st_size == 0:
+            return False
+    return True
+
+
+def load_manifest(default_voice: str) -> dict:
+    for m_path in [SRC_UI_MANIFEST_FILE, SRC_DATA_MANIFEST_FILE, DOCS_MANIFEST_FILE]:
+        if m_path.exists():
+            try:
+                with open(m_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if "stories" in data:
+                        return data
+            except Exception:
+                pass
+    return {"version": "1.0", "default_voice": default_voice, "stories": {}}
+
+
+def save_manifest_to_disk(manifest: dict):
+    SRC_UI_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
+    SRC_DATA_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
+    DOCS_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+    manifest_json = json.dumps(manifest, indent=2, ensure_ascii=False)
+    SRC_UI_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
+    SRC_DATA_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
+    DOCS_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
 
 
 async def generate_file(text: str, output_path: Path, voice: str, rate: str, pitch: str, overwrite: bool = False, capture_words: bool = False):
@@ -107,6 +155,14 @@ async def process_story(story: dict, voice: str, rate: str, pitch: str, overwrit
     title = story.get("title", story_id)
     sentences = story.get("text", [])
     moral = story.get("moral", "")
+
+    # Fast skip check if already fully generated and in manifest with words
+    if not overwrite and is_story_complete(story):
+        manifest_on_disk = load_manifest(voice)
+        entry = manifest_on_disk.get("stories", {}).get(story_id)
+        if entry and entry.get("sentences") and isinstance(entry["sentences"][0], dict) and entry["sentences"][0].get("words"):
+            print(f"⚡ Skipping '{title}' ({story_id}) — already completed.")
+            return entry, 0
 
     story_src_dir = SRC_AUDIO_DIR / story_id
     story_docs_dir = DOCS_AUDIO_DIR / story_id
@@ -190,8 +246,11 @@ async def main():
     pitch_help = DEFAULT_PITCH.replace("%", "%%")
 
     parser = argparse.ArgumentParser(description="Batch generate neural audio files for kids storybooks.")
-    parser.add_argument("--stories", default="default", help="Comma-separated story IDs, 'all', or 'default'.")
+    parser.add_argument("--stories", default="remaining", help="Comma-separated story IDs, 'remaining', 'all', or 'default' (default: remaining).")
     parser.add_argument("--story", default=None, help="Alias for --stories <single_story_id>.")
+    parser.add_argument("--backward", "--reverse", dest="reverse", action="store_true", default=True, help="Download remaining stories backwards from the end (default: True).")
+    parser.add_argument("--forward", dest="reverse", action="store_false", help="Download stories forwards from beginning to end.")
+    parser.add_argument("--all-stories", action="store_true", help="Process all stories, even those already completed.")
     parser.add_argument("--limit", type=int, default=None, help="Limit number of stories to process.")
     parser.add_argument("--voice", default=DEFAULT_VOICE, help=f"Edge-TTS voice (default: {DEFAULT_VOICE}).")
     parser.add_argument("--rate", default=DEFAULT_RATE, help=f"Speech rate (default: {rate_help}).")
@@ -215,42 +274,53 @@ async def main():
 
     target_stories = args.story if args.story else args.stories
 
-    # Filter stories to process
+    # Select stories to process
     if args.reindex_only:
         selected_stories = []
-    elif target_stories == "all":
-        selected_stories = all_stories
+    elif target_stories in ["remaining", "all"]:
+        if args.all_stories or args.overwrite:
+            selected_stories = all_stories
+        else:
+            selected_stories = [s for s in all_stories if not is_story_complete(s)]
     elif target_stories == "default":
-        selected_stories = [s for s in all_stories if s.get("id") in DEFAULT_STORIES]
+        candidates = [s for s in all_stories if s.get("id") in DEFAULT_STORIES]
+        if args.all_stories or args.overwrite:
+            selected_stories = candidates
+        else:
+            selected_stories = [s for s in candidates if not is_story_complete(s)]
     else:
         story_ids = [x.strip() for x in target_stories.split(",") if x.strip()]
-        selected_stories = [s for s in all_stories if s.get("id") in story_ids]
+        candidates = [s for s in all_stories if s.get("id") in story_ids]
+        if args.all_stories or args.overwrite:
+            selected_stories = candidates
+        else:
+            selected_stories = [s for s in candidates if not is_story_complete(s)]
+
+    # Reverse order if requested (default: True, downloads backwards from end to start)
+    if args.reverse:
+        selected_stories = list(reversed(selected_stories))
 
     if args.limit:
         selected_stories = selected_stories[:args.limit]
 
+    direction_label = "Backwards (end -> start)" if args.reverse else "Forwards (start -> end)"
     print(f"Starting Neural Audio Batch Generator...")
     print(f"• Voice: {args.voice} (Rate: {args.rate}, Pitch: {args.pitch})")
-    print(f"• Stories to process: {len(selected_stories)}")
+    print(f"• Direction: {direction_label}")
+    print(f"• Stories to process: {len(selected_stories)} (out of {len(all_stories)} total in library)")
 
-    # Load existing manifest if any
-    manifest = {"version": "1.0", "default_voice": args.voice, "stories": {}}
-    for m_path in [SRC_UI_MANIFEST_FILE, SRC_DATA_MANIFEST_FILE]:
-        if m_path.exists():
-            try:
-                with open(m_path, "r", encoding="utf-8") as f:
-                    manifest = json.load(f)
-                    break
-            except Exception:
-                pass
-
+    manifest = load_manifest(args.voice)
     total_files_generated = 0
+
     for s in selected_stories:
         entry, count = await process_story(s, args.voice, args.rate, args.pitch, args.overwrite)
+        manifest = load_manifest(args.voice)
         manifest["stories"][s["id"]] = entry
+        save_manifest_to_disk(manifest)
         total_files_generated += count
 
-    # Auto-index all existing audio directories in src/ui/audio
+    # Final auto-index of all existing audio directories in src/ui/audio
+    manifest = load_manifest(args.voice)
     stories_by_id = {s["id"]: s for s in all_stories}
     if SRC_AUDIO_DIR.exists():
         for story_dir in SRC_AUDIO_DIR.iterdir():
@@ -268,15 +338,7 @@ async def main():
                             "full_story": f"audio/{sid}/full_story.mp3",
                         }
 
-    # Save manifest across src/ui/data, src/data, and docs/data
-    SRC_UI_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
-    SRC_DATA_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
-    DOCS_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
-
-    manifest_json = json.dumps(manifest, indent=2, ensure_ascii=False)
-    SRC_UI_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
-    SRC_DATA_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
-    DOCS_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
+    save_manifest_to_disk(manifest)
 
     print("\n" + "=" * 60)
     print(f"✨ Batch generation complete!")

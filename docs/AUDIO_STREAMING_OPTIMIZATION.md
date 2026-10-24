@@ -217,19 +217,25 @@ pip install edge-tts
 ### 6.2 Common Commands
 
 ```bash
-# 1. Generate neural audio for a single story (e.g. tiger_and_mice)
+# 1. Download remaining incomplete stories backwards from the end (default):
+python3 scripts/generate_audio.py
+
+# 2. Download remaining stories forward from the beginning:
+python3 scripts/generate_audio.py --forward
+
+# 3. Process only the next N remaining stories backwards:
+python3 scripts/generate_audio.py --limit 10
+
+# 4. Generate neural audio for a single story (e.g. tiger_and_mice):
 python3 scripts/generate_audio.py --story tiger_and_mice
 
-# 2. Re-index existing audio files into audio_manifest.json without re-generating
+# 5. Re-index existing audio files into audio_manifest.json without re-generating:
 python3 scripts/generate_audio.py --reindex-only
 
-# 3. Generate neural audio for all stories in src/data/stories.json
-python3 scripts/generate_audio.py --all
-
-# 4. Use an alternative neural voice
+# 6. Use an alternative neural voice:
 python3 scripts/generate_audio.py --story the_lion_and_the_mouse --voice en-US-ChristopherNeural
 
-# 5. List all available Microsoft neural voices
+# 7. List all available Microsoft neural voices:
 python3 scripts/generate_audio.py --list-voices
 ```
 
