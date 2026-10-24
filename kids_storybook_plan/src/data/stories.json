@@ -1,0 +1,1381 @@
+[
+  {
+    "id": "tiger_and_mice",
+    "title": "The Tiger and the Mice",
+    "theme": "Animals",
+    "animal": "tiger",
+    "tags": [
+      "tiger",
+      "mouse",
+      "friendship"
+    ],
+    "length": "short",
+    "text": [
+      "In a mango grove, a tiger was dozing under a tree.",
+      "A tiny mouse whispered, \"Please let me pass, I need to gather mango seeds.\"",
+      "The tiger opened his eyes and let the mouse go.",
+      "Later, the tiger got its paw caught in a hunter's net.",
+      "The mouse chewed the ropes, freeing the tiger, and they became friends."
+    ],
+    "panels": [
+      "tiger_1.svg",
+      "tiger_2.svg",
+      "tiger_3.svg",
+      "tiger_4.svg",
+      "tiger_5.svg"
+    ]
+  },
+  {
+    "id": "crow_and_water_pot",
+    "title": "The Crow and the Water Pot",
+    "theme": "Animals",
+    "animal": "crow",
+    "tags": [
+      "crow",
+      "water",
+      "resourcefulness"
+    ],
+    "length": "short",
+    "text": [
+      "A thirsty crow found a half‑filled earthen pot in a village courtyard.",
+      "He tried to drink but the water was too low.",
+      "Thinking quickly, the crow dropped small pebbles into the pot.",
+      "Each pebble raised the water level.",
+      "Soon the water rose high enough, and the crow quenched his thirst."
+    ],
+    "panels": [
+      "crow_1.svg",
+      "crow_2.svg",
+      "crow_3.svg",
+      "crow_4.svg",
+      "crow_5.svg"
+    ]
+  },
+  {
+    "id": "monkey_and_coconut",
+    "title": "The Monkey and the Coconut",
+    "theme": "Animals",
+    "animal": "monkey",
+    "tags": [
+      "monkey",
+      "generosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a coconut grove, a playful monkey saw a ripe coconut on the ground.",
+      "He tried to open it with his hands but could not crack the husk.",
+      "A nearby elephant offered to smash it with his trunk.",
+      "The monkey thanked the elephant and shared the sweet coconut meat.",
+      "They ate together, enjoying the jungle feast."
+    ],
+    "panels": [
+      "monkey_1.svg",
+      "monkey_2.svg",
+      "monkey_3.svg",
+      "monkey_4.svg",
+      "monkey_5.svg"
+    ]
+  },
+  {
+    "id": "tortoise_and_hare",
+    "title": "The Tortoise and the Hare",
+    "theme": "Animals",
+    "animal": "tortoise",
+    "tags": [
+      "tortoise",
+      "hare",
+      "perseverance"
+    ],
+    "length": "short",
+    "text": [
+      "In a sunny field of wheat, a swift hare bragged about his speed.",
+      "A slow tortoise challenged him to a race across the paddy.",
+      "The hare sprinted ahead and took a nap under a banana leaf.",
+      "The tortoise kept moving, step by step.",
+      "When the hare woke, the tortoise had already reached the finish line."
+    ],
+    "panels": [
+      "tortoise_1.svg",
+      "tortoise_2.svg",
+      "tortoise_3.svg",
+      "tortoise_4.svg",
+      "tortoise_5.svg"
+    ]
+  },
+  {
+    "id": "fox_and_grapes",
+    "title": "The Fox and the Grapes",
+    "theme": "Animals",
+    "animal": "fox",
+    "tags": [
+      "fox",
+      "grapes",
+      "contentment"
+    ],
+    "length": "short",
+    "text": [
+      "A clever fox prowled a vineyard, eyeing ripe grapes.",
+      "He jumped high but the grapes hung too far on a vine.",
+      "After many tries, he gave up and walked away.",
+      "He muttered, \"Those grapes were probably sour anyway.\"",
+      "He laughed and went to hunt for a juicy mango instead."
+    ],
+    "panels": [
+      "fox_1.svg",
+      "fox_2.svg",
+      "fox_3.svg",
+      "fox_4.svg",
+      "fox_5.svg"
+    ]
+  },
+  {
+    "id": "hippo_0",
+    "title": "The Hippo and the Lesson",
+    "theme": "Animals",
+    "animal": "hippo",
+    "tags": [
+      "hippo",
+      "curiosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a hippo was playing near a mango tree.",
+      "A little bird sang, \"Beware of curiosity.\"",
+      "The hippo laughed and continued its fun.",
+      "Soon, a problem appeared that required curiosity.",
+      "With curiosity, the hippo solved it and felt happy."
+    ],
+    "panels": [
+      "hippo_1.svg",
+      "hippo_2.svg",
+      "hippo_3.svg",
+      "hippo_4.svg",
+      "hippo_5.svg"
+    ]
+  },
+  {
+    "id": "parrot_1",
+    "title": "The Parrot and the Lesson",
+    "theme": "Animals",
+    "animal": "parrot",
+    "tags": [
+      "parrot",
+      "generosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a parrot was playing near a mango tree.",
+      "A little bird sang, \"Beware of generosity.\"",
+      "The parrot laughed and continued its fun.",
+      "Soon, a problem appeared that required generosity.",
+      "With generosity, the parrot solved it and felt happy."
+    ],
+    "panels": [
+      "parrot_1.svg",
+      "parrot_2.svg",
+      "parrot_3.svg",
+      "parrot_4.svg",
+      "parrot_5.svg"
+    ]
+  },
+  {
+    "id": "rabbit_2",
+    "title": "The Rabbit and the Lesson",
+    "theme": "Animals",
+    "animal": "rabbit",
+    "tags": [
+      "rabbit",
+      "humility"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a rabbit was playing near a mango tree.",
+      "A little bird sang, \"Beware of humility.\"",
+      "The rabbit laughed and continued its fun.",
+      "Soon, a problem appeared that required humility.",
+      "With humility, the rabbit solved it and felt happy."
+    ],
+    "panels": [
+      "rabbit_1.svg",
+      "rabbit_2.svg",
+      "rabbit_3.svg",
+      "rabbit_4.svg",
+      "rabbit_5.svg"
+    ]
+  },
+  {
+    "id": "parrot_3",
+    "title": "The Parrot and the Lesson",
+    "theme": "Animals",
+    "animal": "parrot",
+    "tags": [
+      "parrot",
+      "perseverance"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a parrot was playing near a mango tree.",
+      "A little bird sang, \"Beware of perseverance.\"",
+      "The parrot laughed and continued its fun.",
+      "Soon, a problem appeared that required perseverance.",
+      "With perseverance, the parrot solved it and felt happy."
+    ],
+    "panels": [
+      "parrot_1.svg",
+      "parrot_2.svg",
+      "parrot_3.svg",
+      "parrot_4.svg",
+      "parrot_5.svg"
+    ]
+  },
+  {
+    "id": "peacock_4",
+    "title": "The Peacock and the Lesson",
+    "theme": "Animals",
+    "animal": "peacock",
+    "tags": [
+      "peacock",
+      "curiosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a peacock was playing near a mango tree.",
+      "A little bird sang, \"Beware of curiosity.\"",
+      "The peacock laughed and continued its fun.",
+      "Soon, a problem appeared that required curiosity.",
+      "With curiosity, the peacock solved it and felt happy."
+    ],
+    "panels": [
+      "peacock_1.svg",
+      "peacock_2.svg",
+      "peacock_3.svg",
+      "peacock_4.svg",
+      "peacock_5.svg"
+    ]
+  },
+  {
+    "id": "koala_5",
+    "title": "The Koala and the Lesson",
+    "theme": "Animals",
+    "animal": "koala",
+    "tags": [
+      "koala",
+      "wisdom"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a koala was playing near a mango tree.",
+      "A little bird sang, \"Beware of wisdom.\"",
+      "The koala laughed and continued its fun.",
+      "Soon, a problem appeared that required wisdom.",
+      "With wisdom, the koala solved it and felt happy."
+    ],
+    "panels": [
+      "koala_1.svg",
+      "koala_2.svg",
+      "koala_3.svg",
+      "koala_4.svg",
+      "koala_5.svg"
+    ]
+  },
+  {
+    "id": "squirrel_6",
+    "title": "The Squirrel and the Lesson",
+    "theme": "Animals",
+    "animal": "squirrel",
+    "tags": [
+      "squirrel",
+      "bravery"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a squirrel was playing near a mango tree.",
+      "A little bird sang, \"Beware of bravery.\"",
+      "The squirrel laughed and continued its fun.",
+      "Soon, a problem appeared that required bravery.",
+      "With bravery, the squirrel solved it and felt happy."
+    ],
+    "panels": [
+      "squirrel_1.svg",
+      "squirrel_2.svg",
+      "squirrel_3.svg",
+      "squirrel_4.svg",
+      "squirrel_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_7",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "bravery"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of bravery.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required bravery.",
+      "With bravery, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "koala_8",
+    "title": "The Koala and the Lesson",
+    "theme": "Animals",
+    "animal": "koala",
+    "tags": [
+      "koala",
+      "courage"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a koala was playing near a mango tree.",
+      "A little bird sang, \"Beware of courage.\"",
+      "The koala laughed and continued its fun.",
+      "Soon, a problem appeared that required courage.",
+      "With courage, the koala solved it and felt happy."
+    ],
+    "panels": [
+      "koala_1.svg",
+      "koala_2.svg",
+      "koala_3.svg",
+      "koala_4.svg",
+      "koala_5.svg"
+    ]
+  },
+  {
+    "id": "deer_9",
+    "title": "The Deer and the Lesson",
+    "theme": "Animals",
+    "animal": "deer",
+    "tags": [
+      "deer",
+      "perseverance"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a deer was playing near a mango tree.",
+      "A little bird sang, \"Beware of perseverance.\"",
+      "The deer laughed and continued its fun.",
+      "Soon, a problem appeared that required perseverance.",
+      "With perseverance, the deer solved it and felt happy."
+    ],
+    "panels": [
+      "deer_1.svg",
+      "deer_2.svg",
+      "deer_3.svg",
+      "deer_4.svg",
+      "deer_5.svg"
+    ]
+  },
+  {
+    "id": "parrot_10",
+    "title": "The Parrot and the Lesson",
+    "theme": "Animals",
+    "animal": "parrot",
+    "tags": [
+      "parrot",
+      "resourcefulness"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a parrot was playing near a mango tree.",
+      "A little bird sang, \"Beware of resourcefulness.\"",
+      "The parrot laughed and continued its fun.",
+      "Soon, a problem appeared that required resourcefulness.",
+      "With resourcefulness, the parrot solved it and felt happy."
+    ],
+    "panels": [
+      "parrot_1.svg",
+      "parrot_2.svg",
+      "parrot_3.svg",
+      "parrot_4.svg",
+      "parrot_5.svg"
+    ]
+  },
+  {
+    "id": "parrot_11",
+    "title": "The Parrot and the Lesson",
+    "theme": "Animals",
+    "animal": "parrot",
+    "tags": [
+      "parrot",
+      "generosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a parrot was playing near a mango tree.",
+      "A little bird sang, \"Beware of generosity.\"",
+      "The parrot laughed and continued its fun.",
+      "Soon, a problem appeared that required generosity.",
+      "With generosity, the parrot solved it and felt happy."
+    ],
+    "panels": [
+      "parrot_1.svg",
+      "parrot_2.svg",
+      "parrot_3.svg",
+      "parrot_4.svg",
+      "parrot_5.svg"
+    ]
+  },
+  {
+    "id": "panther_12",
+    "title": "The Panther and the Lesson",
+    "theme": "Animals",
+    "animal": "panther",
+    "tags": [
+      "panther",
+      "honesty"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a panther was playing near a mango tree.",
+      "A little bird sang, \"Beware of honesty.\"",
+      "The panther laughed and continued its fun.",
+      "Soon, a problem appeared that required honesty.",
+      "With honesty, the panther solved it and felt happy."
+    ],
+    "panels": [
+      "panther_1.svg",
+      "panther_2.svg",
+      "panther_3.svg",
+      "panther_4.svg",
+      "panther_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_13",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "humility"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of humility.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required humility.",
+      "With humility, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "bear_14",
+    "title": "The Bear and the Lesson",
+    "theme": "Animals",
+    "animal": "bear",
+    "tags": [
+      "bear",
+      "gratitude"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a bear was playing near a mango tree.",
+      "A little bird sang, \"Beware of gratitude.\"",
+      "The bear laughed and continued its fun.",
+      "Soon, a problem appeared that required gratitude.",
+      "With gratitude, the bear solved it and felt happy."
+    ],
+    "panels": [
+      "bear_1.svg",
+      "bear_2.svg",
+      "bear_3.svg",
+      "bear_4.svg",
+      "bear_5.svg"
+    ]
+  },
+  {
+    "id": "panda_15",
+    "title": "The Panda and the Lesson",
+    "theme": "Animals",
+    "animal": "panda",
+    "tags": [
+      "panda",
+      "honesty"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a panda was playing near a mango tree.",
+      "A little bird sang, \"Beware of honesty.\"",
+      "The panda laughed and continued its fun.",
+      "Soon, a problem appeared that required honesty.",
+      "With honesty, the panda solved it and felt happy."
+    ],
+    "panels": [
+      "panda_1.svg",
+      "panda_2.svg",
+      "panda_3.svg",
+      "panda_4.svg",
+      "panda_5.svg"
+    ]
+  },
+  {
+    "id": "koala_16",
+    "title": "The Koala and the Lesson",
+    "theme": "Animals",
+    "animal": "koala",
+    "tags": [
+      "koala",
+      "resourcefulness"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a koala was playing near a mango tree.",
+      "A little bird sang, \"Beware of resourcefulness.\"",
+      "The koala laughed and continued its fun.",
+      "Soon, a problem appeared that required resourcefulness.",
+      "With resourcefulness, the koala solved it and felt happy."
+    ],
+    "panels": [
+      "koala_1.svg",
+      "koala_2.svg",
+      "koala_3.svg",
+      "koala_4.svg",
+      "koala_5.svg"
+    ]
+  },
+  {
+    "id": "peacock_17",
+    "title": "The Peacock and the Lesson",
+    "theme": "Animals",
+    "animal": "peacock",
+    "tags": [
+      "peacock",
+      "gratitude"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a peacock was playing near a mango tree.",
+      "A little bird sang, \"Beware of gratitude.\"",
+      "The peacock laughed and continued its fun.",
+      "Soon, a problem appeared that required gratitude.",
+      "With gratitude, the peacock solved it and felt happy."
+    ],
+    "panels": [
+      "peacock_1.svg",
+      "peacock_2.svg",
+      "peacock_3.svg",
+      "peacock_4.svg",
+      "peacock_5.svg"
+    ]
+  },
+  {
+    "id": "tiger_18",
+    "title": "The Tiger and the Lesson",
+    "theme": "Animals",
+    "animal": "tiger",
+    "tags": [
+      "tiger",
+      "respect"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a tiger was playing near a mango tree.",
+      "A little bird sang, \"Beware of respect.\"",
+      "The tiger laughed and continued its fun.",
+      "Soon, a problem appeared that required respect.",
+      "With respect, the tiger solved it and felt happy."
+    ],
+    "panels": [
+      "tiger_1.svg",
+      "tiger_2.svg",
+      "tiger_3.svg",
+      "tiger_4.svg",
+      "tiger_5.svg"
+    ]
+  },
+  {
+    "id": "panther_19",
+    "title": "The Panther and the Lesson",
+    "theme": "Animals",
+    "animal": "panther",
+    "tags": [
+      "panther",
+      "wisdom"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a panther was playing near a mango tree.",
+      "A little bird sang, \"Beware of wisdom.\"",
+      "The panther laughed and continued its fun.",
+      "Soon, a problem appeared that required wisdom.",
+      "With wisdom, the panther solved it and felt happy."
+    ],
+    "panels": [
+      "panther_1.svg",
+      "panther_2.svg",
+      "panther_3.svg",
+      "panther_4.svg",
+      "panther_5.svg"
+    ]
+  },
+  {
+    "id": "hippo_20",
+    "title": "The Hippo and the Lesson",
+    "theme": "Animals",
+    "animal": "hippo",
+    "tags": [
+      "hippo",
+      "respect"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a hippo was playing near a mango tree.",
+      "A little bird sang, \"Beware of respect.\"",
+      "The hippo laughed and continued its fun.",
+      "Soon, a problem appeared that required respect.",
+      "With respect, the hippo solved it and felt happy."
+    ],
+    "panels": [
+      "hippo_1.svg",
+      "hippo_2.svg",
+      "hippo_3.svg",
+      "hippo_4.svg",
+      "hippo_5.svg"
+    ]
+  },
+  {
+    "id": "squirrel_21",
+    "title": "The Squirrel and the Lesson",
+    "theme": "Animals",
+    "animal": "squirrel",
+    "tags": [
+      "squirrel",
+      "honesty"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a squirrel was playing near a mango tree.",
+      "A little bird sang, \"Beware of honesty.\"",
+      "The squirrel laughed and continued its fun.",
+      "Soon, a problem appeared that required honesty.",
+      "With honesty, the squirrel solved it and felt happy."
+    ],
+    "panels": [
+      "squirrel_1.svg",
+      "squirrel_2.svg",
+      "squirrel_3.svg",
+      "squirrel_4.svg",
+      "squirrel_5.svg"
+    ]
+  },
+  {
+    "id": "crocodile_22",
+    "title": "The Crocodile and the Lesson",
+    "theme": "Animals",
+    "animal": "crocodile",
+    "tags": [
+      "crocodile",
+      "humility"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a crocodile was playing near a mango tree.",
+      "A little bird sang, \"Beware of humility.\"",
+      "The crocodile laughed and continued its fun.",
+      "Soon, a problem appeared that required humility.",
+      "With humility, the crocodile solved it and felt happy."
+    ],
+    "panels": [
+      "crocodile_1.svg",
+      "crocodile_2.svg",
+      "crocodile_3.svg",
+      "crocodile_4.svg",
+      "crocodile_5.svg"
+    ]
+  },
+  {
+    "id": "zebra_23",
+    "title": "The Zebra and the Lesson",
+    "theme": "Animals",
+    "animal": "zebra",
+    "tags": [
+      "zebra",
+      "respect"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a zebra was playing near a mango tree.",
+      "A little bird sang, \"Beware of respect.\"",
+      "The zebra laughed and continued its fun.",
+      "Soon, a problem appeared that required respect.",
+      "With respect, the zebra solved it and felt happy."
+    ],
+    "panels": [
+      "zebra_1.svg",
+      "zebra_2.svg",
+      "zebra_3.svg",
+      "zebra_4.svg",
+      "zebra_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_24",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "courage"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of courage.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required courage.",
+      "With courage, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "elephant_25",
+    "title": "The Elephant and the Lesson",
+    "theme": "Animals",
+    "animal": "elephant",
+    "tags": [
+      "elephant",
+      "humility"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a elephant was playing near a mango tree.",
+      "A little bird sang, \"Beware of humility.\"",
+      "The elephant laughed and continued its fun.",
+      "Soon, a problem appeared that required humility.",
+      "With humility, the elephant solved it and felt happy."
+    ],
+    "panels": [
+      "elephant_1.svg",
+      "elephant_2.svg",
+      "elephant_3.svg",
+      "elephant_4.svg",
+      "elephant_5.svg"
+    ]
+  },
+  {
+    "id": "kangaroo_26",
+    "title": "The Kangaroo and the Lesson",
+    "theme": "Animals",
+    "animal": "kangaroo",
+    "tags": [
+      "kangaroo",
+      "teamwork"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a kangaroo was playing near a mango tree.",
+      "A little bird sang, \"Beware of teamwork.\"",
+      "The kangaroo laughed and continued its fun.",
+      "Soon, a problem appeared that required teamwork.",
+      "With teamwork, the kangaroo solved it and felt happy."
+    ],
+    "panels": [
+      "kangaroo_1.svg",
+      "kangaroo_2.svg",
+      "kangaroo_3.svg",
+      "kangaroo_4.svg",
+      "kangaroo_5.svg"
+    ]
+  },
+  {
+    "id": "monkey_27",
+    "title": "The Monkey and the Lesson",
+    "theme": "Animals",
+    "animal": "monkey",
+    "tags": [
+      "monkey",
+      "teamwork"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a monkey was playing near a mango tree.",
+      "A little bird sang, \"Beware of teamwork.\"",
+      "The monkey laughed and continued its fun.",
+      "Soon, a problem appeared that required teamwork.",
+      "With teamwork, the monkey solved it and felt happy."
+    ],
+    "panels": [
+      "monkey_1.svg",
+      "monkey_2.svg",
+      "monkey_3.svg",
+      "monkey_4.svg",
+      "monkey_5.svg"
+    ]
+  },
+  {
+    "id": "tiger_28",
+    "title": "The Tiger and the Lesson",
+    "theme": "Animals",
+    "animal": "tiger",
+    "tags": [
+      "tiger",
+      "generosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a tiger was playing near a mango tree.",
+      "A little bird sang, \"Beware of generosity.\"",
+      "The tiger laughed and continued its fun.",
+      "Soon, a problem appeared that required generosity.",
+      "With generosity, the tiger solved it and felt happy."
+    ],
+    "panels": [
+      "tiger_1.svg",
+      "tiger_2.svg",
+      "tiger_3.svg",
+      "tiger_4.svg",
+      "tiger_5.svg"
+    ]
+  },
+  {
+    "id": "bear_29",
+    "title": "The Bear and the Lesson",
+    "theme": "Animals",
+    "animal": "bear",
+    "tags": [
+      "bear",
+      "respect"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a bear was playing near a mango tree.",
+      "A little bird sang, \"Beware of respect.\"",
+      "The bear laughed and continued its fun.",
+      "Soon, a problem appeared that required respect.",
+      "With respect, the bear solved it and felt happy."
+    ],
+    "panels": [
+      "bear_1.svg",
+      "bear_2.svg",
+      "bear_3.svg",
+      "bear_4.svg",
+      "bear_5.svg"
+    ]
+  },
+  {
+    "id": "panda_30",
+    "title": "The Panda and the Lesson",
+    "theme": "Animals",
+    "animal": "panda",
+    "tags": [
+      "panda",
+      "curiosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a panda was playing near a mango tree.",
+      "A little bird sang, \"Beware of curiosity.\"",
+      "The panda laughed and continued its fun.",
+      "Soon, a problem appeared that required curiosity.",
+      "With curiosity, the panda solved it and felt happy."
+    ],
+    "panels": [
+      "panda_1.svg",
+      "panda_2.svg",
+      "panda_3.svg",
+      "panda_4.svg",
+      "panda_5.svg"
+    ]
+  },
+  {
+    "id": "deer_31",
+    "title": "The Deer and the Lesson",
+    "theme": "Animals",
+    "animal": "deer",
+    "tags": [
+      "deer",
+      "perseverance"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a deer was playing near a mango tree.",
+      "A little bird sang, \"Beware of perseverance.\"",
+      "The deer laughed and continued its fun.",
+      "Soon, a problem appeared that required perseverance.",
+      "With perseverance, the deer solved it and felt happy."
+    ],
+    "panels": [
+      "deer_1.svg",
+      "deer_2.svg",
+      "deer_3.svg",
+      "deer_4.svg",
+      "deer_5.svg"
+    ]
+  },
+  {
+    "id": "elephant_32",
+    "title": "The Elephant and the Lesson",
+    "theme": "Animals",
+    "animal": "elephant",
+    "tags": [
+      "elephant",
+      "gratitude"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a elephant was playing near a mango tree.",
+      "A little bird sang, \"Beware of gratitude.\"",
+      "The elephant laughed and continued its fun.",
+      "Soon, a problem appeared that required gratitude.",
+      "With gratitude, the elephant solved it and felt happy."
+    ],
+    "panels": [
+      "elephant_1.svg",
+      "elephant_2.svg",
+      "elephant_3.svg",
+      "elephant_4.svg",
+      "elephant_5.svg"
+    ]
+  },
+  {
+    "id": "elephant_33",
+    "title": "The Elephant and the Lesson",
+    "theme": "Animals",
+    "animal": "elephant",
+    "tags": [
+      "elephant",
+      "resourcefulness"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a elephant was playing near a mango tree.",
+      "A little bird sang, \"Beware of resourcefulness.\"",
+      "The elephant laughed and continued its fun.",
+      "Soon, a problem appeared that required resourcefulness.",
+      "With resourcefulness, the elephant solved it and felt happy."
+    ],
+    "panels": [
+      "elephant_1.svg",
+      "elephant_2.svg",
+      "elephant_3.svg",
+      "elephant_4.svg",
+      "elephant_5.svg"
+    ]
+  },
+  {
+    "id": "panther_34",
+    "title": "The Panther and the Lesson",
+    "theme": "Animals",
+    "animal": "panther",
+    "tags": [
+      "panther",
+      "kindness"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a panther was playing near a mango tree.",
+      "A little bird sang, \"Beware of kindness.\"",
+      "The panther laughed and continued its fun.",
+      "Soon, a problem appeared that required kindness.",
+      "With kindness, the panther solved it and felt happy."
+    ],
+    "panels": [
+      "panther_1.svg",
+      "panther_2.svg",
+      "panther_3.svg",
+      "panther_4.svg",
+      "panther_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_35",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "bravery"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of bravery.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required bravery.",
+      "With bravery, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "peacock_36",
+    "title": "The Peacock and the Lesson",
+    "theme": "Animals",
+    "animal": "peacock",
+    "tags": [
+      "peacock",
+      "courage"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a peacock was playing near a mango tree.",
+      "A little bird sang, \"Beware of courage.\"",
+      "The peacock laughed and continued its fun.",
+      "Soon, a problem appeared that required courage.",
+      "With courage, the peacock solved it and felt happy."
+    ],
+    "panels": [
+      "peacock_1.svg",
+      "peacock_2.svg",
+      "peacock_3.svg",
+      "peacock_4.svg",
+      "peacock_5.svg"
+    ]
+  },
+  {
+    "id": "tiger_37",
+    "title": "The Tiger and the Lesson",
+    "theme": "Animals",
+    "animal": "tiger",
+    "tags": [
+      "tiger",
+      "bravery"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a tiger was playing near a mango tree.",
+      "A little bird sang, \"Beware of bravery.\"",
+      "The tiger laughed and continued its fun.",
+      "Soon, a problem appeared that required bravery.",
+      "With bravery, the tiger solved it and felt happy."
+    ],
+    "panels": [
+      "tiger_1.svg",
+      "tiger_2.svg",
+      "tiger_3.svg",
+      "tiger_4.svg",
+      "tiger_5.svg"
+    ]
+  },
+  {
+    "id": "koala_38",
+    "title": "The Koala and the Lesson",
+    "theme": "Animals",
+    "animal": "koala",
+    "tags": [
+      "koala",
+      "resourcefulness"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a koala was playing near a mango tree.",
+      "A little bird sang, \"Beware of resourcefulness.\"",
+      "The koala laughed and continued its fun.",
+      "Soon, a problem appeared that required resourcefulness.",
+      "With resourcefulness, the koala solved it and felt happy."
+    ],
+    "panels": [
+      "koala_1.svg",
+      "koala_2.svg",
+      "koala_3.svg",
+      "koala_4.svg",
+      "koala_5.svg"
+    ]
+  },
+  {
+    "id": "koala_39",
+    "title": "The Koala and the Lesson",
+    "theme": "Animals",
+    "animal": "koala",
+    "tags": [
+      "koala",
+      "wisdom"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a koala was playing near a mango tree.",
+      "A little bird sang, \"Beware of wisdom.\"",
+      "The koala laughed and continued its fun.",
+      "Soon, a problem appeared that required wisdom.",
+      "With wisdom, the koala solved it and felt happy."
+    ],
+    "panels": [
+      "koala_1.svg",
+      "koala_2.svg",
+      "koala_3.svg",
+      "koala_4.svg",
+      "koala_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_40",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "perseverance"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of perseverance.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required perseverance.",
+      "With perseverance, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "tiger_41",
+    "title": "The Tiger and the Lesson",
+    "theme": "Animals",
+    "animal": "tiger",
+    "tags": [
+      "tiger",
+      "perseverance"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a tiger was playing near a mango tree.",
+      "A little bird sang, \"Beware of perseverance.\"",
+      "The tiger laughed and continued its fun.",
+      "Soon, a problem appeared that required perseverance.",
+      "With perseverance, the tiger solved it and felt happy."
+    ],
+    "panels": [
+      "tiger_1.svg",
+      "tiger_2.svg",
+      "tiger_3.svg",
+      "tiger_4.svg",
+      "tiger_5.svg"
+    ]
+  },
+  {
+    "id": "panda_42",
+    "title": "The Panda and the Lesson",
+    "theme": "Animals",
+    "animal": "panda",
+    "tags": [
+      "panda",
+      "courage"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a panda was playing near a mango tree.",
+      "A little bird sang, \"Beware of courage.\"",
+      "The panda laughed and continued its fun.",
+      "Soon, a problem appeared that required courage.",
+      "With courage, the panda solved it and felt happy."
+    ],
+    "panels": [
+      "panda_1.svg",
+      "panda_2.svg",
+      "panda_3.svg",
+      "panda_4.svg",
+      "panda_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_43",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "generosity"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of generosity.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required generosity.",
+      "With generosity, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "peacock_44",
+    "title": "The Peacock and the Lesson",
+    "theme": "Animals",
+    "animal": "peacock",
+    "tags": [
+      "peacock",
+      "friendship"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a peacock was playing near a mango tree.",
+      "A little bird sang, \"Beware of friendship.\"",
+      "The peacock laughed and continued its fun.",
+      "Soon, a problem appeared that required friendship.",
+      "With friendship, the peacock solved it and felt happy."
+    ],
+    "panels": [
+      "peacock_1.svg",
+      "peacock_2.svg",
+      "peacock_3.svg",
+      "peacock_4.svg",
+      "peacock_5.svg"
+    ]
+  },
+  {
+    "id": "hippo_45",
+    "title": "The Hippo and the Lesson",
+    "theme": "Animals",
+    "animal": "hippo",
+    "tags": [
+      "hippo",
+      "wisdom"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a hippo was playing near a mango tree.",
+      "A little bird sang, \"Beware of wisdom.\"",
+      "The hippo laughed and continued its fun.",
+      "Soon, a problem appeared that required wisdom.",
+      "With wisdom, the hippo solved it and felt happy."
+    ],
+    "panels": [
+      "hippo_1.svg",
+      "hippo_2.svg",
+      "hippo_3.svg",
+      "hippo_4.svg",
+      "hippo_5.svg"
+    ]
+  },
+  {
+    "id": "parrot_46",
+    "title": "The Parrot and the Lesson",
+    "theme": "Animals",
+    "animal": "parrot",
+    "tags": [
+      "parrot",
+      "humility"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a parrot was playing near a mango tree.",
+      "A little bird sang, \"Beware of humility.\"",
+      "The parrot laughed and continued its fun.",
+      "Soon, a problem appeared that required humility.",
+      "With humility, the parrot solved it and felt happy."
+    ],
+    "panels": [
+      "parrot_1.svg",
+      "parrot_2.svg",
+      "parrot_3.svg",
+      "parrot_4.svg",
+      "parrot_5.svg"
+    ]
+  },
+  {
+    "id": "giraffe_47",
+    "title": "The Giraffe and the Lesson",
+    "theme": "Animals",
+    "animal": "giraffe",
+    "tags": [
+      "giraffe",
+      "wisdom"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a giraffe was playing near a mango tree.",
+      "A little bird sang, \"Beware of wisdom.\"",
+      "The giraffe laughed and continued its fun.",
+      "Soon, a problem appeared that required wisdom.",
+      "With wisdom, the giraffe solved it and felt happy."
+    ],
+    "panels": [
+      "giraffe_1.svg",
+      "giraffe_2.svg",
+      "giraffe_3.svg",
+      "giraffe_4.svg",
+      "giraffe_5.svg"
+    ]
+  },
+  {
+    "id": "koala_48",
+    "title": "The Koala and the Lesson",
+    "theme": "Animals",
+    "animal": "koala",
+    "tags": [
+      "koala",
+      "kindness"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a koala was playing near a mango tree.",
+      "A little bird sang, \"Beware of kindness.\"",
+      "The koala laughed and continued its fun.",
+      "Soon, a problem appeared that required kindness.",
+      "With kindness, the koala solved it and felt happy."
+    ],
+    "panels": [
+      "koala_1.svg",
+      "koala_2.svg",
+      "koala_3.svg",
+      "koala_4.svg",
+      "koala_5.svg"
+    ]
+  },
+  {
+    "id": "hippo_49",
+    "title": "The Hippo and the Lesson",
+    "theme": "Animals",
+    "animal": "hippo",
+    "tags": [
+      "hippo",
+      "respect"
+    ],
+    "length": "short",
+    "text": [
+      "In a bright Indian forest, a hippo was playing near a mango tree.",
+      "A little bird sang, \"Beware of respect.\"",
+      "The hippo laughed and continued its fun.",
+      "Soon, a problem appeared that required respect.",
+      "With respect, the hippo solved it and felt happy."
+    ],
+    "panels": [
+      "hippo_1.svg",
+      "hippo_2.svg",
+      "hippo_3.svg",
+      "hippo_4.svg",
+      "hippo_5.svg"
+    ]
+  }
+]
