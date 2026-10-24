@@ -5,8 +5,15 @@
  */
 
 (function () {
-  // Relative URL that works on both localhost and GitHub Pages (e.g. /kids-stories/)
-  const POSSIBLE_PATHS = ['./data/stories.json', '../data/stories.json', 'data/stories.json'];
+  function getPossibleStoryPaths() {
+    const base = getAppBasePath();
+    return [
+      `${base}data/stories.json`,
+      './data/stories.json',
+      '../data/stories.json',
+      'data/stories.json',
+    ];
+  }
 
   const STORAGE_KEY_FAVS = 'kids_storybook_favorites';
 
@@ -215,7 +222,8 @@
 
   // Load dataset
   async function fetchStories() {
-    for (const p of POSSIBLE_PATHS) {
+    const paths = getPossibleStoryPaths();
+    for (const p of paths) {
       try {
         const res = await fetch(p);
         if (res.ok) {
@@ -328,10 +336,10 @@
 
     appContainer.innerHTML = `
       <div class="site-header">
-        <a class="logo-group" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">
-          <span class="logo-icon">📚</span>
+        <a class="logo-group" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()" title="TalePickle - Home">
+          <span class="logo-icon">🥒📚</span>
           <div class="logo-text">
-            <h1>Magic Kids Storybook</h1>
+            <h1>TalePickle</h1>
             <p>150+ Illustrated Tales with Voice Narration</p>
           </div>
         </a>
@@ -468,7 +476,7 @@
       </div>
 
       <footer class="site-footer">
-        <p>✨ Magic Kids Storybook • Crafted with ❤️ for Curious Young Readers</p>
+        <p>✨ TalePickle • Crafted with ❤️ for Curious Young Readers</p>
         <p style="margin-top: 0.25rem; font-size: 0.8rem; opacity: 0.8;">Speech powered by Web Speech API • Works offline</p>
       </footer>
     `;
@@ -575,7 +583,7 @@
 
   function updateStorySEO(story) {
     if (!story) return;
-    document.title = `${story.title} — Aesop's Fables for Kids | Magic Storybook`;
+    document.title = `${story.title} — Aesop's Fables for Kids | TalePickle`;
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
@@ -616,7 +624,7 @@
   }
 
   function resetCatalogSEO() {
-    document.title = "Aesop's Fables for Kids — 150+ Illustrated Stories with Audio Narration | Magic Storybook";
+    document.title = "Aesop's Fables for Kids — 150+ Illustrated Stories with Audio Narration | TalePickle";
 
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
@@ -636,6 +644,28 @@
     if (storyScript) {
       storyScript.remove();
     }
+  }
+
+  // Cache of disk-loaded SVGs to prevent duplicate network fetches
+  const diskSvgCache = new Map();
+
+  async function loadDiskSvgIfAvailable(storyId, panelIndex) {
+    const key = `${storyId}_${panelIndex}`;
+    if (diskSvgCache.has(key)) return diskSvgCache.get(key);
+
+    const url = `data/svgs/${storyId}/panel_${panelIndex + 1}.svg`;
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const svgText = await res.text();
+        if (svgText.includes('<svg')) {
+          diskSvgCache.set(key, svgText);
+          return svgText;
+        }
+      }
+    } catch {}
+    diskSvgCache.set(key, null);
+    return null;
   }
 
   function renderReader(storyId) {
@@ -1316,6 +1346,7 @@
     toggleArtStyle: toggleArtStyle,
     goToStory: navigateToStory,
     goToLibrary: navigateToLibrary,
+    getBasePath: getAppBasePath,
   };
 
   window.addEventListener('popstate', router);

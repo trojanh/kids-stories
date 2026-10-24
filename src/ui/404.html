@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Redirecting to Story... | Magic Storybook</title>
+  <title>Redirecting to Story... | TalePickle</title>
   <script>
     // GitHub Pages Single Page App Redirect
     // Handles direct hits & reloads for /story/:id on GitHub Pages
     (function () {
-      var pathSegmentsToKeep = 1; // for https://<username>.github.io/<repo-name>/
+      // If hosted on custom domain (e.g. talepickle.com) or localhost, keep 0 path segments.
+      // If hosted on https://<username>.github.io/<repo>/, keep 1 path segment.
+      var isGitHubSubdomain = window.location.hostname.endsWith('github.io');
+      var pathSegmentsToKeep = isGitHubSubdomain ? 1 : 0;
       var l = window.location;
       var repoSegment = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
       var route = l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~');
@@ -21,6 +24,6 @@
   </script>
 </head>
 <body>
-  <p style="font-family: sans-serif; text-align: center; margin-top: 3rem;">Opening the fable...</p>
+  <p style="font-family: sans-serif; text-align: center; margin-top: 3rem;">Opening the fable on TalePickle...</p>
 </body>
 </html>

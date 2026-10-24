@@ -1,8 +1,8 @@
-# 📚 Magic Kids Storybook
+# 🥒 TalePickle — Kids Storybook
 
-An interactive, illustrated children's storybook app featuring **150+ classic fables** rewritten in simple, engaging English for young children (ages 5–10). Built for zero-cost, high-performance static hosting on **GitHub Pages** (`github.io`).
+An interactive, illustrated children's storybook app featuring **150+ classic fables** rewritten in simple, engaging English for young children (ages 5–10). Built for zero-cost, high-performance static hosting on **GitHub Pages** with custom domain support.
 
-🌐 **Live GitHub Pages URL**: [https://trojanh.github.io/kids-stories/](https://trojanh.github.io/kids-stories/)
+🌐 **Live Website**: [https://talepickle.com/](https://talepickle.com/)
 
 ---
 
