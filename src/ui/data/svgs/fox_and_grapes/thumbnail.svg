@@ -1,0 +1,61 @@
+
+      <svg viewBox="0 0 280 140" xmlns="http://www.w3.org/2000/svg" class="card-thumbnail-svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="thumbSky_fox_and_grapes" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#87CEEB" />
+            <stop offset="100%" stop-color="#E0F6FF" />
+          </linearGradient>
+        </defs>
+
+        <rect width="280" height="140" fill="url(#thumbSky_fox_and_grapes)" />
+        <circle cx="240" cy="26" r="16" fill="#FFD700" opacity="0.9" />
+        <path d="M 0 95 Q 80 65 160 90 T 280 85 L 280 140 L 0 140 Z" fill="#5EAA59" opacity="0.75" />
+        <path d="M 0 105 Q 90 90 190 100 T 280 95 L 280 140 L 0 140 Z" fill="#7BC676" />
+
+        
+        <g transform="translate(160, 10) scale(0.735)">
+          <rect x="-10" y="0" width="8" height="150" fill="#78350F" rx="2" />
+          <path d="M-15 15 Q40 5 100 12" stroke="#78350F" stroke-width="5" stroke-linecap="round" fill="none" />
+          <path d="M15 15 Q25 0 35 15 Q30 25 15 15 Z" fill="#22C55E" />
+          <path d="M60 12 Q72 0 85 14 Q78 24 60 12 Z" fill="#16A34A" />
+          <g transform="translate(25, 20)">
+            <circle cx="0" cy="0" r="5" fill="#7E22CE" /><circle cx="8" cy="0" r="5" fill="#9333EA" />
+            <circle cx="16" cy="0" r="5" fill="#7E22CE" /><circle cx="4" cy="7" r="5" fill="#A855F7" />
+            <circle cx="12" cy="7" r="5" fill="#7E22CE" /><circle cx="8" cy="14" r="5" fill="#9333EA" />
+            <circle cx="8" cy="20" r="4" fill="#6B21A8" />
+          </g>
+          <g transform="translate(65, 18) scale(0.85)">
+            <circle cx="0" cy="0" r="5" fill="#9333EA" /><circle cx="8" cy="0" r="5" fill="#7E22CE" />
+            <circle cx="4" cy="7" r="5" fill="#7E22CE" /><circle cx="12" cy="7" r="5" fill="#A855F7" />
+            <circle cx="8" cy="14" r="4" fill="#6B21A8" />
+          </g>
+        </g>
+      
+
+        <g transform="translate(60, 65)">
+          
+      <g transform="translate(0, 0) scale(0.81, 0.81) translate(-50, -50)">
+        
+        <!-- Bushy Tail extending Left with white tip -->
+        <path d="M32 50 Q0 40 10 20 Q22 30 38 42 Z" fill="#E65100" />
+        <circle cx="8" cy="22" r="7" fill="#FFFFFF" />
+        <!-- Body -->
+        <ellipse cx="50" cy="50" rx="26" ry="18" fill="#F57C00" />
+        <ellipse cx="56" cy="52" rx="16" ry="12" fill="#FFF3E0" />
+        <!-- Head -->
+        <polygon points="86,42 62,25 62,55" fill="#F57C00" />
+        <polygon points="82,42 64,33 64,50" fill="#FFF3E0" />
+        <!-- Ears -->
+        <polygon points="66,26 60,8 54,26" fill="#F57C00" /><polygon points="64,24 60,14 56,24" fill="#3E2723" />
+        <polygon points="74,27 72,10 66,26" fill="#F57C00" />
+        <!-- Eye & Nose pointing Right -->
+        <ellipse cx="72" cy="37" rx="3.5" ry="2" fill="#3E2723" transform="rotate(15 72 37)" />
+        <circle cx="86" cy="42" r="2.5" fill="#212121" />
+        <!-- Paws -->
+        <circle cx="42" cy="67" r="5" fill="#3E2723" /><circle cx="64" cy="67" r="5" fill="#3E2723" />
+      
+      </g>
+    
+        </g>
+      </svg>
+    

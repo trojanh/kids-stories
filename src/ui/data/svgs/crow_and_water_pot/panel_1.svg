@@ -1,0 +1,87 @@
+
+      <svg viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" class="story-svg-canvas">
+        <defs>
+          <linearGradient id="skyGrad_0" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#bae6fd" />
+            <stop offset="100%" stop-color="#f0f9ff" />
+          </linearGradient>
+        </defs>
+
+        <!-- Sky Backdrop -->
+        <rect width="400" height="240" fill="url(#skyGrad_0)" />
+
+        <!-- Celestial Body with Soft Glow -->
+        <circle cx="340" cy="45" r="24" fill="#f59e0b" opacity="0.9" />
+
+        <!-- Distant Hills -->
+        <path d="M 0 160 Q 110 110 220 155 T 400 150 L 400 240 L 0 240 Z" fill="#b45309" opacity="0.75" />
+
+        <!-- Foreground Ground -->
+        <path d="M 0 175 Q 100 160 200 170 T 400 165 L 400 240 L 0 240 Z" fill="#d97706" />
+
+        <!-- Story Narrative Props (shady mango tree, pitcher, grapes, net, finish banner) -->
+        
+        <g transform="translate(275, 135) scale(1)">
+          <!-- Cobblestone Terrace Stones -->
+          <ellipse cx="25" cy="58" rx="35" ry="8" fill="#CBD5E1" opacity="0.6" />
+          <!-- Earthen Clay Amphora / Pitcher Body -->
+          <path d="M10 50 Q10 28 20 22 L20 12 Q20 8 28 8 L32 8 Q40 8 40 12 L40 22 Q50 28 50 50 Q50 58 30 58 Q10 58 10 50 Z" fill="#C2410C" stroke="#9A3412" stroke-width="1.5" />
+          <path d="M14 48 Q14 30 22 24 L22 14 L38 14 L38 24 Q46 30 46 48 Z" fill="#EA580C" />
+          <!-- Pitcher Rim Opening -->
+          <ellipse cx="30" cy="10" rx="10" ry="3.5" fill="#7C2D12" />
+          
+          <!-- Curved Clay Handle -->
+          <path d="M40 16 Q52 25 44 38" stroke="#9A3412" stroke-width="3.5" fill="none" stroke-linecap="round" />
+          <!-- Pebbles on ground -->
+          <ellipse cx="-15" cy="56" rx="5" ry="3" fill="#475569" stroke="#334155" stroke-width="1" />
+          <ellipse cx="-5" cy="58" rx="4" ry="2.5" fill="#64748B" stroke="#475569" stroke-width="1" />
+          <ellipse cx="65" cy="56" rx="5" ry="3" fill="#64748B" stroke="#475569" stroke-width="1" />
+          
+        </g>
+      
+
+        <!-- Character 1 (Protagonist) -->
+        <g class="anim-character">
+          
+      <g transform="translate(140, 145) scale(0.85, 0.85) translate(-50, -50)">
+        
+        <!-- Tail feathers extending left -->
+        <polygon points="15,48 2,40 4,55" fill="#1E293B" />
+        <polygon points="18,52 6,56 12,62" fill="#0F172A" />
+        <!-- Sleek Body -->
+        <ellipse cx="46" cy="50" rx="22" ry="17" fill="#1E293B" />
+        <!-- Wing Feathers -->
+        <path d="M35 42 Q52 38 62 52 Q46 58 35 42 Z" fill="#0F172A" />
+        <!-- Head -->
+        <circle cx="68" cy="38" r="14" fill="#1E293B" />
+        <!-- Glossy Eye -->
+        
+          <circle cx="72" cy="35" r="3.5" fill="#FFFFFF" />
+          <circle cx="73" cy="35" r="2" fill="#000000" />
+          <circle cx="74" cy="34" r="0.8" fill="#FFFFFF" />
+        
+        <!-- Sharp Golden Beak pointing Right -->
+        <polygon points="78,35 95,40 78,44" fill="#F59E0B" />
+        <!-- Claws / Feet -->
+        <line x1="42" y1="67" x2="40" y2="78" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" />
+        <line x1="54" y1="67" x2="54" y2="78" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" />
+      
+      </g>
+    
+        </g>
+
+        <!-- Character 2 (Companion/Antagonist) -->
+        
+
+        <!-- Sleeping zZz Animation (Targeting the EXACT character who is sleeping!) -->
+        
+
+        <!-- Panel Badge -->
+        <g transform="translate(10, 15)">
+          <rect width="70" height="24" rx="12" fill="rgba(0,0,0,0.4)" />
+          <text x="35" y="16" fill="#FFFFFF" font-family="'Nunito', sans-serif" font-size="11" font-weight="700" text-anchor="middle">
+            Panel 1/7
+          </text>
+        </g>
+      </svg>
+    
