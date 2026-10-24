@@ -70,13 +70,38 @@
     }
 
     /**
+     * Helper to resolve the correct root application base path across custom domains,
+     * subpaths (/kids-stories/), and clean SPA routes (/story/:id).
+     */
+    getBasePath() {
+      if (typeof window.StoryApp !== 'undefined' && typeof window.StoryApp.getBasePath === 'function') {
+        return window.StoryApp.getBasePath();
+      }
+      const baseEl = document.querySelector('base');
+      if (baseEl && baseEl.getAttribute('href')) {
+        return baseEl.getAttribute('href');
+      }
+      const pathname = window.location.pathname;
+      const storyIdx = pathname.indexOf('/story/');
+      if (storyIdx !== -1) {
+        return pathname.substring(0, storyIdx + 1);
+      }
+      if (pathname.endsWith('/index.html')) {
+        return pathname.substring(0, pathname.length - 10);
+      }
+      return pathname.endsWith('/') ? pathname : pathname + '/';
+    }
+
+    /**
      * Loads the studio audio manifest describing pre-generated story audio files.
      */
     async loadManifest() {
       if (this.manifestPromise) return this.manifestPromise;
 
       this.manifestPromise = (async () => {
+        const base = this.getBasePath();
         const candidates = [
+          `${base}data/audio_manifest.json`,
           'data/audio_manifest.json',
           './data/audio_manifest.json',
           '../data/audio_manifest.json',
@@ -128,7 +153,9 @@
       if (cdnBase) {
         return `${cdnBase}/${relPath.replace(/^\/+/, '')}`;
       }
-      return relPath.startsWith('/') ? relPath : `./${relPath}`;
+      const base = this.getBasePath();
+      const cleanRel = relPath.replace(/^\/+/, '');
+      return `${base}${cleanRel}`;
     }
 
     /**

@@ -14,7 +14,8 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 SRC_UI = ROOT_DIR / "src" / "ui"
 SRC_DATA = ROOT_DIR / "src" / "data"
 
-BASE_URL = "https://trojanh.github.io/kids-stories"
+BASE_URL = "https://talepickle.com"
+CUSTOM_DOMAIN = "talepickle.com"
 
 
 def generate_seo_files(stories):
@@ -84,7 +85,12 @@ def build():
     nojekyll.write_text("", encoding="utf-8")
     print("Ensured src/ui/.nojekyll exists for GitHub Pages")
 
-    # 4. Generate SEO sitemap.xml and robots.txt
+    # 4. Create CNAME in src/ui/ and root for custom domain talepickle.com
+    (SRC_UI / "CNAME").write_text(f"{CUSTOM_DOMAIN}\n", encoding="utf-8")
+    (ROOT_DIR / "CNAME").write_text(f"{CUSTOM_DOMAIN}\n", encoding="utf-8")
+    print(f"Created CNAME ({CUSTOM_DOMAIN}) in src/ui/ and root")
+
+    # 5. Generate SEO sitemap.xml and robots.txt
     with stories_src.open("r", encoding="utf-8") as f:
         stories = json.load(f)
     generate_seo_files(stories)
