@@ -48,10 +48,50 @@ const server = http.createServer((req, res) => {
       return;
     }
     const ext = path.extname(filePath);
-    res.setHeader('Content-Type', getMime(ext));
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-    const stream = fs.createReadStream(filePath);
-    stream.pipe(res);
+    const mime = getMime(ext);
+    const isAudio = ext === '.mp3' || ext === '.wav' || ext === '.ogg';
+    const totalSize = stats.size;
+
+    res.setHeader('Accept-Ranges', 'bytes');
+
+    if (isAudio) {
+      // High-performance long-term caching for static audio assets
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (ext === '.json' || ext === '.svg') {
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+    } else {
+      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
+    }
+
+    // Support HTTP 206 Range requests for seamless audio seeking & streaming on iOS/Chrome
+    const rangeHeader = req.headers.range;
+    if (rangeHeader && isAudio) {
+      const parts = rangeHeader.replace(/bytes=/, '').split('-');
+      const start = parseInt(parts[0], 10);
+      const end = parts[1] ? parseInt(parts[1], 10) : totalSize - 1;
+
+      if (isNaN(start) || start >= totalSize || (end && end >= totalSize)) {
+        res.statusCode = 416;
+        res.setHeader('Content-Range', `bytes */${totalSize}`);
+        res.end();
+        return;
+      }
+
+      const chunkSize = end - start + 1;
+      res.statusCode = 206;
+      res.setHeader('Content-Range', `bytes ${start}-${end}/${totalSize}`);
+      res.setHeader('Content-Length', chunkSize);
+      res.setHeader('Content-Type', mime);
+
+      const stream = fs.createReadStream(filePath, { start, end });
+      stream.pipe(res);
+    } else {
+      res.statusCode = 200;
+      res.setHeader('Content-Length', totalSize);
+      res.setHeader('Content-Type', mime);
+      const stream = fs.createReadStream(filePath);
+      stream.pipe(res);
+    }
   });
 });
 

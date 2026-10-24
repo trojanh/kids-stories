@@ -602,6 +602,10 @@
     TTS.stop();
     updateStorySEO(story);
 
+    if (window.TTS && window.TTS.prefetchStory) {
+      window.TTS.prefetchStory(story.id);
+    }
+
     renderReaderUI();
   }
 
@@ -1239,6 +1243,9 @@
   window.addEventListener('hashchange', router);
 
   document.addEventListener('DOMContentLoaded', () => {
-    fetchStories().then(router);
+    Promise.all([
+      fetchStories(),
+      window.TTS && window.TTS.ensureManifest ? window.TTS.ensureManifest() : Promise.resolve(),
+    ]).then(router);
   });
 })();

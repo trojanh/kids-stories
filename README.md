@@ -17,10 +17,13 @@ An interactive, illustrated children's storybook app featuring **150+ classic fa
 - **Dynamic Animated SVG Comic Panels**:
   - Procedural vector scenes with animated sun, drifting clouds, rolling hills, and cute bouncy animal avatars.
   - Vector-sharp on all screen sizes, instant load times, zero external image CDNs required.
-- **Web Speech API Narration & Speed Control**:
-  - Browser-native speech synthesis with natural voice selection (prefers Indian English `en-IN` or friendly children's voices).
+- **Studio Neural Audio & Web Speech Narration**:
+  - High-fidelity pre-generated Microsoft Neural TTS (`en-US-AnaNeural`) with millisecond-exact word karaoke synchronization.
+  - High-performance streaming: HTTP 206 byte-ranges, whole-story background prefetching, in-memory audio pooling, and gapless next-sentence pre-warming.
+  - Seamless fallback to browser Web Speech API when offline or for unindexed tales.
   - Fine-grained speed slider ($0.5\times$ to $2.0\times$) persisted in `localStorage`.
   - Sentence-by-sentence reading with glowing visual highlight and auto-advance.
+  - Comprehensive guide: [Audio Streaming Optimization Reference](docs/AUDIO_STREAMING_OPTIMIZATION.md).
 - **Child-Friendly UI/UX**:
   - Touch-first design with large hit targets ($\ge 44\text{px}$).
   - Live search by story title, animal, characters, or moral keywords.
