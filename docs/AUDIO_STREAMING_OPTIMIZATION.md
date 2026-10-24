@@ -165,21 +165,25 @@ async for chunk in communicate.stream():
         })
 ```
 
-### 5.2 Manifest Schema (`audio_manifest.json`)
+### 5.2 Manifest Schema (`audio_manifest.json` — Version 2.0)
 
-The generated manifest provides exact start (`s`) and end (`e`) seconds for each spoken word:
+Under Approach 2, each fable is stored as a single continuous `story.mp3` with millisecond cue points for every panel and the concluding moral:
 
 ```json
 {
-  "version": "1.0",
+  "version": "2.0",
   "default_voice": "en-US-AnaNeural",
   "stories": {
     "tiger_and_mice": {
       "title": "The Tiger and the Mice",
       "voice": "en-US-AnaNeural",
+      "audio": "audio/tiger_and_mice/story.mp3",
+      "duration": 47.669,
       "sentences": [
         {
-          "audio": "audio/tiger_and_mice/sentence_0.mp3",
+          "index": 0,
+          "start": 0.102,
+          "end": 4.751,
           "words": [
             { "w": "In", "s": 0.102, "e": 0.271 },
             { "w": "a", "s": 0.284, "e": 0.349 },
@@ -187,21 +191,32 @@ The generated manifest provides exact start (`s`) and end (`e`) seconds for each
             { "w": "mango", "s": 0.818, "e": 1.339 },
             { "w": "grove,", "s": 1.348, "e": 1.762 }
           ]
+        },
+        {
+          "index": 1,
+          "start": 5.651,
+          "end": 10.990,
+          "words": [ ... ]
         }
       ],
-      "moral": "audio/tiger_and_mice/moral.mp3",
-      "full_story": "audio/tiger_and_mice/full_story.mp3"
+      "moral": {
+        "start": 42.266,
+        "end": 47.669,
+        "words": [ ... ]
+      }
     }
   }
 }
 ```
 
-### 5.3 Highlighting Synchronization in Player
+### 5.3 Instant Cue-Point Seeking & Synchronization in Player (`playAudioRange`)
 
-During playback, an `ontimeupdate` listener monitors `audio.currentTime`:
-1. If exact word boundaries exist in the manifest, the player finds the matching word index and computes the corresponding character offset in the rendered text DOM.
-2. If exact timestamps are unavailable (e.g. legacy files), it falls back to smooth proportional estimation (`currentTime / duration`).
-3. If an audio error or restrictive autoplay policy is encountered, the player automatically halts the audio and falls back to native Web Speech API (`speakNative`).
+Rather than juggling multiple audio elements, `tts.js` manages a single `HTMLAudioElement` for the entire story:
+1. When navigating to Panel $N$, the player performs an instant 0ms seek: `audio.currentTime = sent.start; audio.play()`.
+2. A high-frequency `requestAnimationFrame` loop monitors `audio.currentTime`.
+3. When `audio.currentTime >= sent.end`, playback automatically pauses and triggers the UI auto-advance callback.
+4. Spoken words are highlighted in real time by checking `w.s <= audio.currentTime <= w.e`.
+5. If the user listens in continuous full-story mode, the track plays through seamlessly without pausing, automatically turning pages at the exact sentence boundary timestamps!
 
 ---
 
@@ -217,25 +232,22 @@ pip install edge-tts
 ### 6.2 Common Commands
 
 ```bash
-# 1. Download remaining incomplete stories backwards from the end (default):
-python3 scripts/generate_audio.py
+# 1. Generate continuous neural audio for all incomplete stories:
+python3 scripts/generate_audio.py --stories all
 
-# 2. Download remaining stories forward from the beginning:
-python3 scripts/generate_audio.py --forward
-
-# 3. Process only the next N remaining stories backwards:
+# 2. Process only the next N stories:
 python3 scripts/generate_audio.py --limit 10
 
-# 4. Generate neural audio for a single story (e.g. tiger_and_mice):
-python3 scripts/generate_audio.py --story tiger_and_mice
+# 3. Generate neural audio for a single story (e.g. tiger_and_mice):
+python3 scripts/generate_audio.py --story tiger_and_mice --overwrite
 
-# 5. Re-index existing audio files into audio_manifest.json without re-generating:
+# 4. Re-index existing audio files into audio_manifest.json without re-generating:
 python3 scripts/generate_audio.py --reindex-only
 
-# 6. Use an alternative neural voice:
+# 5. Use an alternative neural voice:
 python3 scripts/generate_audio.py --story the_lion_and_the_mouse --voice en-US-ChristopherNeural
 
-# 7. List all available Microsoft neural voices:
+# 6. List all available Microsoft neural voices:
 python3 scripts/generate_audio.py --list-voices
 ```
 

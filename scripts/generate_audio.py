@@ -2,28 +2,26 @@
 """
 generate_audio.py
 -----------------
-Batch generates high-fidelity neural audio files for kids storybooks using open-source Edge-TTS.
+Batch generates single continuous neural audio files for kids storybooks using open-source Edge-TTS.
+Extracts millisecond-exact sentence start/end timestamps and word-level karaoke boundaries.
 
-Outputs:
-  - src/ui/audio/<story_id>/sentence_<idx>.mp3
-  - src/ui/audio/<story_id>/moral.mp3
-  - src/ui/audio/<story_id>/full_story.mp3
-  - src/ui/data/audio_manifest.json (and copies to docs/)
+Architecture (Approach 2):
+  - Each fable is synthesized as a single continuous narrative: src/ui/audio/<story_id>/story.mp3
+  - Natural storytelling flow and voice inflection across panel boundaries
+  - Exact sentence cue points: [start, end] and word boundaries [{w, s, e}] in audio_manifest.json
+  - 152 total audio files instead of 1,500+ micro-files
 
 Usage:
-  # Download remaining incomplete stories backwards from the end (default):
-  python3 scripts/generate_audio.py
+  # Generate continuous neural audio for all remaining incomplete stories:
+  python3 scripts/generate_audio.py --stories all
 
-  # Download remaining stories forward from the beginning:
-  python3 scripts/generate_audio.py --forward
-
-  # Process only the next 5 remaining stories backwards:
-  python3 scripts/generate_audio.py --limit 5
-
-  # Download for a specific fable:
+  # Generate for a specific fable:
   python3 scripts/generate_audio.py --story tiger_and_mice
 
-  # Re-scan and update manifests without generating new audio:
+  # Process next 5 stories:
+  python3 scripts/generate_audio.py --limit 5
+
+  # Re-index existing audio files into audio_manifest.json:
   python3 scripts/generate_audio.py --reindex-only
 """
 
@@ -31,6 +29,7 @@ import argparse
 import asyncio
 import json
 import os
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -49,38 +48,13 @@ SRC_UI_MANIFEST_FILE = ROOT_DIR / "src" / "ui" / "data" / "audio_manifest.json"
 SRC_DATA_MANIFEST_FILE = ROOT_DIR / "src" / "data" / "audio_manifest.json"
 DOCS_MANIFEST_FILE = ROOT_DIR / "docs" / "data" / "audio_manifest.json"
 
-DEFAULT_VOICE = "en-US-AnaNeural" # Friendly, warm children's narrator voice
+DEFAULT_VOICE = "en-US-AnaNeural" # Warm, engaging children's narrator voice
 DEFAULT_RATE = "-4%" # Gentle cadence for young readers
-DEFAULT_PITCH = "+2Hz" # Warm, cheerful inflection
-
-DEFAULT_STORIES = [
-    "tiger_and_mice",
-    "crow_and_water_pot",
-    "fox_and_grapes",
-    "tortoise_and_hare",
-    "the_lion_and_the_mouse",
-]
+DEFAULT_PITCH = "+2Hz" # Cheerful, friendly inflection
 
 
-def is_story_complete(story: dict) -> bool:
-    story_id = story.get("id")
-    if not story_id:
-        return False
-    story_src_dir = SRC_AUDIO_DIR / story_id
-    if not story_src_dir.exists():
-        return False
-    moral_file = story_src_dir / "moral.mp3"
-    full_file = story_src_dir / "full_story.mp3"
-    if not moral_file.exists() or moral_file.stat().st_size == 0:
-        return False
-    if not full_file.exists() or full_file.stat().st_size == 0:
-        return False
-    sentences = story.get("text", [])
-    for idx in range(len(sentences)):
-        sent_file = story_src_dir / f"sentence_{idx}.mp3"
-        if not sent_file.exists() or sent_file.stat().st_size == 0:
-            return False
-    return True
+def normalize_word(w: str) -> str:
+    return re.sub(r"[^\w]", "", w).lower()
 
 
 def load_manifest(default_voice: str) -> dict:
@@ -93,10 +67,11 @@ def load_manifest(default_voice: str) -> dict:
                         return data
             except Exception:
                 pass
-    return {"version": "1.0", "default_voice": default_voice, "stories": {}}
+    return {"version": "2.0", "default_voice": default_voice, "stories": {}}
 
 
 def save_manifest_to_disk(manifest: dict):
+    manifest["version"] = "2.0"
     SRC_UI_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
     SRC_DATA_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
     DOCS_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -107,128 +82,155 @@ def save_manifest_to_disk(manifest: dict):
     DOCS_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
 
 
-async def generate_file(text: str, output_path: Path, voice: str, rate: str, pitch: str, overwrite: bool = False, capture_words: bool = False):
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    temp_path = output_path.with_suffix(".tmp.mp3")
+def is_story_complete(story: dict, manifest: dict) -> bool:
+    story_id = story.get("id")
+    if not story_id:
+        return False
+    story_file = SRC_AUDIO_DIR / story_id / "story.mp3"
+    if not story_file.exists() or story_file.stat().st_size == 0:
+        return False
+    # Verify manifest entry has timestamp cues
+    entry = manifest.get("stories", {}).get(story_id)
+    if not entry or not entry.get("sentences") or not isinstance(entry["sentences"], list):
+        return False
+    first_sent = entry["sentences"][0]
+    return isinstance(first_sent, dict) and "start" in first_sent and "end" in first_sent
 
-    words = []
-    need_audio_gen = not output_path.exists() or overwrite or output_path.stat().st_size == 0
 
-    communicate = edge_tts.Communicate(
-        text.strip(),
-        voice,
-        rate=rate,
-        pitch=pitch,
-        boundary="WordBoundary" if capture_words else "SentenceBoundary"
-    )
+def segment_story_words(sentences: list, moral: str, captured_words: list):
+    """
+    Partitions the continuous stream of WordBoundary events from Edge-TTS
+    into individual panel sentences and the concluding moral.
+    """
+    total_words = len(captured_words)
+    word_idx = 0
+    sentence_entries = []
 
-    if need_audio_gen:
-        with open(temp_path, "wb") as f:
-            async for chunk in communicate.stream():
-                if chunk["type"] == "audio":
-                    f.write(chunk["data"])
-                elif chunk["type"] == "WordBoundary" and capture_words:
-                    words.append({
-                        "w": chunk["text"],
-                        "s": round(chunk["offset"] / 10_000_000, 3),
-                        "e": round((chunk["offset"] + chunk["duration"]) / 10_000_000, 3)
-                    })
-        if temp_path.exists() and temp_path.stat().st_size > 0:
-            temp_path.replace(output_path)
-            return True, words
-        return False, []
+    for idx, sentence in enumerate(sentences):
+        sent_words = [w for w in sentence.split() if normalize_word(w)]
+        matched = []
+        for _ in sent_words:
+            if word_idx < total_words:
+                matched.append(captured_words[word_idx])
+                word_idx += 1
+
+        if matched:
+            start_sec = matched[0]["s"]
+            end_sec = matched[-1]["e"]
+        else:
+            start_sec = 0.0
+            end_sec = 0.0
+
+        sentence_entries.append({
+            "index": idx,
+            "start": round(start_sec, 3),
+            "end": round(end_sec, 3),
+            "words": matched
+        })
+
+    # Segment the concluding moral
+    moral_prefix_words = [w for w in "In the end, the story reminds us:".split() if normalize_word(w)]
+    prefix_matched = []
+    for _ in moral_prefix_words:
+        if word_idx < total_words:
+            prefix_matched.append(captured_words[word_idx])
+            word_idx += 1
+
+    moral_words = [w for w in moral.split() if normalize_word(w)]
+    moral_matched = []
+    for _ in moral_words:
+        if word_idx < total_words:
+            moral_matched.append(captured_words[word_idx])
+            word_idx += 1
+
+    all_moral_words = prefix_matched + moral_matched
+    if all_moral_words:
+        moral_start = all_moral_words[0]["s"]
+        moral_end = all_moral_words[-1]["e"]
     else:
-        # File exists; if words are requested, stream boundary metadata quickly
-        if capture_words:
-            async for chunk in communicate.stream():
-                if chunk["type"] == "WordBoundary":
-                    words.append({
-                        "w": chunk["text"],
-                        "s": round(chunk["offset"] / 10_000_000, 3),
-                        "e": round((chunk["offset"] + chunk["duration"]) / 10_000_000, 3)
-                    })
-        return False, words
+        moral_start = sentence_entries[-1]["end"] if sentence_entries else 0.0
+        moral_end = moral_start
+
+    moral_entry = {
+        "start": round(moral_start, 3),
+        "end": round(moral_end, 3),
+        "words": all_moral_words
+    }
+
+    return sentence_entries, moral_entry
 
 
-async def process_story(story: dict, voice: str, rate: str, pitch: str, overwrite: bool = False):
+async def generate_single_story_audio(story: dict, voice: str, rate: str, pitch: str, overwrite: bool = False):
     story_id = story.get("id")
     title = story.get("title", story_id)
     sentences = story.get("text", [])
     moral = story.get("moral", "")
-
-    # Fast skip check if already fully generated and in manifest with words
-    if not overwrite and is_story_complete(story):
-        manifest_on_disk = load_manifest(voice)
-        entry = manifest_on_disk.get("stories", {}).get(story_id)
-        if entry and entry.get("sentences") and isinstance(entry["sentences"][0], dict) and entry["sentences"][0].get("words"):
-            print(f"⚡ Skipping '{title}' ({story_id}) — already completed.")
-            return entry, 0
 
     story_src_dir = SRC_AUDIO_DIR / story_id
     story_docs_dir = DOCS_AUDIO_DIR / story_id
     story_src_dir.mkdir(parents=True, exist_ok=True)
     story_docs_dir.mkdir(parents=True, exist_ok=True)
 
+    dest_file = story_src_dir / "story.mp3"
+    dest_docs_file = story_docs_dir / "story.mp3"
+    temp_file = story_src_dir / "story.tmp.mp3"
+
     print(f"\n🎙️  Processing Story: '{title}' ({story_id}) — {len(sentences)} sentences")
+
+    full_text = " ".join(sentences) + " In the end, the story reminds us: " + moral
+    communicate = edge_tts.Communicate(full_text.strip(), voice, rate=rate, pitch=pitch, boundary="WordBoundary")
+
+    audio_bytes = bytearray()
+    captured_words = []
+
+    async for chunk in communicate.stream():
+        if chunk["type"] == "audio":
+            audio_bytes.extend(chunk["data"])
+        elif chunk["type"] == "WordBoundary":
+            captured_words.append({
+                "w": chunk["text"],
+                "s": round(chunk["offset"] / 10_000_000, 3),
+                "e": round((chunk["offset"] + chunk["duration"]) / 10_000_000, 3)
+            })
+
+    temp_file.write_bytes(audio_bytes)
+    if temp_file.exists() and temp_file.stat().st_size > 0:
+        temp_file.replace(dest_file)
+        shutil.copy2(dest_file, dest_docs_file)
+
+    sentence_entries, moral_entry = segment_story_words(sentences, moral, captured_words)
+    total_duration = round(captured_words[-1]["e"], 3) if captured_words else 0.0
 
     manifest_entry = {
         "title": title,
         "voice": voice,
-        "sentences": [],
-        "moral": f"audio/{story_id}/moral.mp3",
-        "full_story": f"audio/{story_id}/full_story.mp3",
+        "audio": f"audio/{story_id}/story.mp3",
+        "duration": total_duration,
+        "sentences": sentence_entries,
+        "moral": moral_entry
     }
 
-    generated_count = 0
+    # Clean up legacy micro sentence files if present to save disk space
+    for old_file in list(story_src_dir.glob("sentence_*.mp3")) + [story_src_dir / "moral.mp3", story_src_dir / "full_story.mp3"]:
+        try:
+            if old_file.exists():
+                old_file.unlink()
+        except Exception:
+            pass
 
-    # 1. Generate sentence audio files with millisecond word timestamps
-    for idx, sentence in enumerate(sentences):
-        filename = f"sentence_{idx}.mp3"
-        dest_src = story_src_dir / filename
-        dest_docs = story_docs_dir / filename
+    for old_docs_file in list(story_docs_dir.glob("sentence_*.mp3")) + [story_docs_dir / "moral.mp3", story_docs_dir / "full_story.mp3"]:
+        try:
+            if old_docs_file.exists():
+                old_docs_file.unlink()
+        except Exception:
+            pass
 
-        was_generated, words = await generate_file(sentence, dest_src, voice, rate, pitch, overwrite, capture_words=True)
-        if was_generated:
-            generated_count += 1
-            shutil.copy2(dest_src, dest_docs)
-            print(f"   ✓ Generated sentence {idx + 1}/{len(sentences)} ({dest_src.stat().st_size // 1024} KB, {len(words)} words)")
-        else:
-            if not dest_docs.exists() and dest_src.exists():
-                shutil.copy2(dest_src, dest_docs)
-            print(f"   • Existing sentence {idx + 1}/{len(sentences)} (cached, {len(words)} words)")
+    print(f"   ✓ Generated continuous story audio ({dest_file.stat().st_size // 1024} KB, {total_duration}s, {len(captured_words)} words)")
+    for sent in sentence_entries:
+        print(f"     Panel {sent['index'] + 1}/{len(sentences)}: [{sent['start']}s -> {sent['end']}s] ({len(sent['words'])} words)")
+    print(f"     Moral: [{moral_entry['start']}s -> {moral_entry['end']}s]")
 
-        manifest_entry["sentences"].append({
-            "audio": f"audio/{story_id}/{filename}",
-            "words": words
-        })
-
-    # 2. Generate moral audio file
-    moral_text = f"In the end, the story reminds us: {moral}"
-    moral_src = story_src_dir / "moral.mp3"
-    moral_docs = story_docs_dir / "moral.mp3"
-    was_moral_gen, _ = await generate_file(moral_text, moral_src, voice, rate, pitch, overwrite)
-    if was_moral_gen:
-        generated_count += 1
-        shutil.copy2(moral_src, moral_docs)
-        print(f"   ✓ Generated moral audio ({moral_src.stat().st_size // 1024} KB)")
-    else:
-        if not moral_docs.exists() and moral_src.exists():
-            shutil.copy2(moral_src, moral_docs)
-
-    # 3. Generate full story audio file
-    full_text = " ".join(sentences) + " " + moral_text
-    full_src = story_src_dir / "full_story.mp3"
-    full_docs = story_docs_dir / "full_story.mp3"
-    was_full_gen, _ = await generate_file(full_text, full_src, voice, rate, pitch, overwrite)
-    if was_full_gen:
-        generated_count += 1
-        shutil.copy2(full_src, full_docs)
-        print(f"   ✓ Generated full story audio ({full_src.stat().st_size // 1024} KB)")
-    else:
-        if not full_docs.exists() and full_src.exists():
-            shutil.copy2(full_src, full_docs)
-
-    return manifest_entry, generated_count
+    return manifest_entry
 
 
 async def list_voices():
@@ -245,18 +247,15 @@ async def main():
     rate_help = DEFAULT_RATE.replace("%", "%%")
     pitch_help = DEFAULT_PITCH.replace("%", "%%")
 
-    parser = argparse.ArgumentParser(description="Batch generate neural audio files for kids storybooks.")
-    parser.add_argument("--stories", default="remaining", help="Comma-separated story IDs, 'remaining', 'all', or 'default' (default: remaining).")
+    parser = argparse.ArgumentParser(description="Batch generate continuous single-audio files with timestamp cue points for kids storybooks.")
+    parser.add_argument("--stories", default="all", help="Comma-separated story IDs or 'all' (default: all).")
     parser.add_argument("--story", default=None, help="Alias for --stories <single_story_id>.")
-    parser.add_argument("--backward", "--reverse", dest="reverse", action="store_true", default=True, help="Download remaining stories backwards from the end (default: True).")
-    parser.add_argument("--forward", dest="reverse", action="store_false", help="Download stories forwards from beginning to end.")
-    parser.add_argument("--all-stories", action="store_true", help="Process all stories, even those already completed.")
     parser.add_argument("--limit", type=int, default=None, help="Limit number of stories to process.")
     parser.add_argument("--voice", default=DEFAULT_VOICE, help=f"Edge-TTS voice (default: {DEFAULT_VOICE}).")
     parser.add_argument("--rate", default=DEFAULT_RATE, help=f"Speech rate (default: {rate_help}).")
     parser.add_argument("--pitch", default=DEFAULT_PITCH, help=f"Speech pitch (default: {pitch_help}).")
-    parser.add_argument("--overwrite", action="store_true", help="Force re-generation of existing audio files.")
-    parser.add_argument("--reindex-only", action="store_true", help="Skip generation; scan and rebuild audio_manifest.json.")
+    parser.add_argument("--overwrite", action="store_true", help="Force re-generation of existing story.mp3 files.")
+    parser.add_argument("--reindex-only", action="store_true", help="Re-scan and rebuild audio_manifest.json.")
     parser.add_argument("--list-voices", action="store_true", help="List available Edge-TTS English voices.")
 
     args = parser.parse_args()
@@ -272,79 +271,50 @@ async def main():
     with open(STORIES_FILE, "r", encoding="utf-8") as f:
         all_stories = json.load(f)
 
+    manifest = load_manifest(args.voice)
+
     target_stories = args.story if args.story else args.stories
 
-    # Select stories to process
     if args.reindex_only:
         selected_stories = []
-    elif target_stories in ["remaining", "all"]:
-        if args.all_stories or args.overwrite:
+    elif target_stories == "all":
+        if args.overwrite:
             selected_stories = all_stories
         else:
-            selected_stories = [s for s in all_stories if not is_story_complete(s)]
-    elif target_stories == "default":
-        candidates = [s for s in all_stories if s.get("id") in DEFAULT_STORIES]
-        if args.all_stories or args.overwrite:
-            selected_stories = candidates
-        else:
-            selected_stories = [s for s in candidates if not is_story_complete(s)]
+            selected_stories = [s for s in all_stories if not is_story_complete(s, manifest)]
     else:
         story_ids = [x.strip() for x in target_stories.split(",") if x.strip()]
         candidates = [s for s in all_stories if s.get("id") in story_ids]
-        if args.all_stories or args.overwrite:
+        if args.overwrite:
             selected_stories = candidates
         else:
-            selected_stories = [s for s in candidates if not is_story_complete(s)]
-
-    # Reverse order if requested (default: True, downloads backwards from end to start)
-    if args.reverse:
-        selected_stories = list(reversed(selected_stories))
+            selected_stories = [s for s in candidates if not is_story_complete(s, manifest)]
 
     if args.limit:
         selected_stories = selected_stories[:args.limit]
 
-    direction_label = "Backwards (end -> start)" if args.reverse else "Forwards (start -> end)"
-    print(f"Starting Neural Audio Batch Generator...")
+    print(f"Starting Single Continuous Audio Pipeline (Approach 2)...")
     print(f"• Voice: {args.voice} (Rate: {args.rate}, Pitch: {args.pitch})")
-    print(f"• Direction: {direction_label}")
-    print(f"• Stories to process: {len(selected_stories)} (out of {len(all_stories)} total in library)")
+    print(f"• Stories to process: {len(selected_stories)} (out of {len(all_stories)} total)")
 
-    manifest = load_manifest(args.voice)
-    total_files_generated = 0
-
+    total_generated = 0
     for s in selected_stories:
-        entry, count = await process_story(s, args.voice, args.rate, args.pitch, args.overwrite)
-        manifest = load_manifest(args.voice)
-        manifest["stories"][s["id"]] = entry
-        save_manifest_to_disk(manifest)
-        total_files_generated += count
-
-    # Final auto-index of all existing audio directories in src/ui/audio
-    manifest = load_manifest(args.voice)
-    stories_by_id = {s["id"]: s for s in all_stories}
-    if SRC_AUDIO_DIR.exists():
-        for story_dir in SRC_AUDIO_DIR.iterdir():
-            if story_dir.is_dir() and story_dir.name in stories_by_id:
-                sid = story_dir.name
-                if sid not in manifest["stories"]:
-                    s_obj = stories_by_id[sid]
-                    s_text = s_obj.get("text", [])
-                    if (story_dir / "sentence_0.mp3").exists():
-                        manifest["stories"][sid] = {
-                            "title": s_obj.get("title", sid),
-                            "voice": args.voice,
-                            "sentences": [f"audio/{sid}/sentence_{i}.mp3" for i in range(len(s_text))],
-                            "moral": f"audio/{sid}/moral.mp3",
-                            "full_story": f"audio/{sid}/full_story.mp3",
-                        }
+        try:
+            entry = await generate_single_story_audio(s, args.voice, args.rate, args.pitch, args.overwrite)
+            manifest = load_manifest(args.voice)
+            manifest["stories"][s["id"]] = entry
+            save_manifest_to_disk(manifest)
+            total_generated += 1
+        except Exception as e:
+            print(f"   ⚠️ Error processing '{s.get('id')}': {e}", file=sys.stderr)
 
     save_manifest_to_disk(manifest)
 
     print("\n" + "=" * 60)
-    print(f"✨ Batch generation complete!")
-    print(f"• Total new files generated: {total_files_generated}")
-    print(f"• Total narrated stories in manifest: {len(manifest['stories'])}")
-    print(f"• Manifest written to: {SRC_UI_MANIFEST_FILE}, {SRC_DATA_MANIFEST_FILE}, {DOCS_MANIFEST_FILE}")
+    print(f"✨ Single continuous audio pipeline run complete!")
+    print(f"• Stories generated this run: {total_generated}")
+    print(f"• Total narrated stories in manifest: {len(manifest.get('stories', {}))}")
+    print(f"• Manifest synced to: {SRC_UI_MANIFEST_FILE}, {SRC_DATA_MANIFEST_FILE}, {DOCS_MANIFEST_FILE}")
     print("=" * 60)
 
 

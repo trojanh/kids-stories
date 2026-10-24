@@ -108,9 +108,26 @@
       return !!(this.manifest && this.manifest.stories && this.manifest.stories[storyId]);
     }
 
+    isTimestampMode(storyId) {
+      if (!this.hasStudioAudio(storyId)) return false;
+      const s = this.manifest.stories[storyId];
+      return !!(s && s.audio && Array.isArray(s.sentences) && s.sentences[0] && typeof s.sentences[0].start === 'number');
+    }
+
+    getStoryAudioUrl(storyId) {
+      if (!this.hasStudioAudio(storyId)) return null;
+      const s = this.manifest.stories[storyId];
+      return s && s.audio ? this.resolveAudioUrl(s.audio) : null;
+    }
+
     resolveAudioUrl(relPath) {
       if (!relPath) return null;
       if (relPath.startsWith('http://') || relPath.startsWith('https://')) return relPath;
+
+      const cdnBase = this.manifest && this.manifest.cdn_base_url ? this.manifest.cdn_base_url.replace(/\/+$/, '') : '';
+      if (cdnBase) {
+        return `${cdnBase}/${relPath.replace(/^\/+/, '')}`;
+      }
       return relPath.startsWith('/') ? relPath : `./${relPath}`;
     }
 
@@ -177,28 +194,43 @@
 
     /**
      * Whole-Story Background Audio Prefetcher.
-     * Buffers all sentences of the active fable in memory in parallel.
+     * In Approach 2 (Single Audio), pre-buffers the single story.mp3 file into browser memory.
+     * In legacy mode, buffers all sentences in parallel.
      */
     prefetchStory(storyId) {
       if (!this.hasStudioAudio(storyId) || this.prefetchedStories.has(storyId)) return;
       this.prefetchedStories.add(storyId);
 
       const s = this.manifest.stories[storyId];
-      if (!s || !s.sentences) return;
+      if (!s) return;
 
-      // Asynchronously pre-warm each sentence audio in memory
-      s.sentences.forEach((item) => {
-        const rawPath = typeof item === 'object' ? item.audio : item;
-        const url = this.resolveAudioUrl(rawPath);
+      // Mode 1: Single Continuous Audio (Approach 2)
+      if (s.audio) {
+        const url = this.resolveAudioUrl(s.audio);
         if (url && !this.audioPool.has(url)) {
           const a = new Audio(url);
           a.preload = 'auto';
           this.audioPool.set(url, a);
         }
-      });
+        return;
+      }
+
+      // Mode 2: Legacy individual audio files
+      if (s.sentences) {
+        s.sentences.forEach((item) => {
+          const rawPath = typeof item === 'object' ? item.audio : item;
+          const url = this.resolveAudioUrl(rawPath);
+          if (url && !this.audioPool.has(url)) {
+            const a = new Audio(url);
+            a.preload = 'auto';
+            this.audioPool.set(url, a);
+          }
+        });
+      }
 
       if (s.moral) {
-        const mUrl = this.resolveAudioUrl(s.moral);
+        const mRaw = typeof s.moral === 'object' ? s.moral.audio : s.moral;
+        const mUrl = this.resolveAudioUrl(mRaw);
         if (mUrl && !this.audioPool.has(mUrl)) {
           const ma = new Audio(mUrl);
           ma.preload = 'auto';
@@ -508,48 +540,195 @@
     }
 
     /**
-     * Speaks a story sentence with instant pre-buffering of the next panel.
+     * Plays a specific timestamp cue range [startSec, endSec] of a single continuous story audio file.
+     * Provides 0ms instant seeking, millisecond-exact word karaoke, and auto-pauses at segment completion.
+     */
+    playAudioRange(url, startSec, endSec, text, onFinishedCallback, exactWords = null) {
+      this.stop();
+
+      const audio = this.getOrCreateAudio(url);
+      audio.playbackRate = this.rate;
+      this.currentAudio = audio;
+      this.speaking = true;
+      this.paused = false;
+
+      // Extract DOM word offsets from the sentence text
+      const domWordSpans = this.getWordOffsets(text);
+
+      let segmentFinished = false;
+
+      const finishSegment = () => {
+        if (segmentFinished) return;
+        segmentFinished = true;
+        try { audio.pause(); } catch (e) {}
+        this.stop();
+        if (this.onEnd) this.onEnd();
+        if (onFinishedCallback) onFinishedCallback();
+      };
+
+      // Seek to segment start
+      try {
+        if (Math.abs(audio.currentTime - startSec) > 0.15) {
+          audio.currentTime = Math.max(0, startSec);
+        }
+      } catch (e) {}
+
+      const updateTracking = () => {
+        if (!this.speaking || !this.currentAudio || this.currentAudio.paused || segmentFinished) return;
+
+        const current = audio.currentTime;
+
+        // Check if segment reached completion
+        if (current >= endSec - 0.04) {
+          finishSegment();
+          return;
+        }
+
+        // Millisecond word karaoke tracking
+        if (this.onBoundary && exactWords && exactWords.length > 0) {
+          let activeWordIdx = -1;
+          for (let i = 0; i < exactWords.length; i++) {
+            if (current >= exactWords[i].s && current <= exactWords[i].e + 0.05) {
+              activeWordIdx = i;
+              break;
+            }
+          }
+
+          if (activeWordIdx >= 0) {
+            const matchedSpan = domWordSpans[activeWordIdx] || domWordSpans[0];
+            if (matchedSpan) {
+              this.onBoundary({
+                charIndex: matchedSpan.start,
+                charLength: matchedSpan.end - matchedSpan.start,
+                name: 'word',
+              });
+            }
+          }
+        }
+
+        if (this.speaking && !segmentFinished) {
+          this.audioAnimFrame = requestAnimationFrame(updateTracking);
+        }
+      };
+
+      audio.onplay = () => {
+        this.speaking = true;
+        this.paused = false;
+        if (this.onStart) this.onStart();
+        if (domWordSpans.length > 0 && this.onBoundary) {
+          this.onBoundary({ charIndex: domWordSpans[0].start, charLength: domWordSpans[0].end - domWordSpans[0].start, name: 'word' });
+        }
+        this.audioAnimFrame = requestAnimationFrame(updateTracking);
+      };
+
+      audio.onended = () => {
+        finishSegment();
+      };
+
+      audio.onerror = (e) => {
+        console.warn('[TTS] Audio cue range error, falling back to Web Speech:', e);
+        this.stop();
+        this.speakNative(text, onFinishedCallback);
+      };
+
+      audio.play().catch((err) => {
+        console.warn('[TTS] Audio playback restricted, falling back to Web Speech:', err);
+        this.speakNative(text, onFinishedCallback);
+      });
+    }
+
+    /**
+     * Speaks a story sentence.
+     * Uses Approach 2 (Single Audio Cue Range) when available, falling back to legacy audio files or Web Speech.
      */
     async speakStorySentence(storyId, sentenceIndex, text, onFinishedCallback) {
       if (!this.manifest) {
         await this.ensureManifest();
       }
 
+      const s = this.manifest && this.manifest.stories ? this.manifest.stories[storyId] : null;
+
+      // Mode 1: Approach 2 Single Audio Timestamp Seeking
+      if (s && s.audio && Array.isArray(s.sentences) && s.sentences[sentenceIndex] && typeof s.sentences[sentenceIndex].start === 'number') {
+        const sent = s.sentences[sentenceIndex];
+        const url = this.resolveAudioUrl(s.audio);
+        const exactWords = sent.words || null;
+        this.playAudioRange(url, sent.start, sent.end, text, onFinishedCallback, exactWords);
+        return;
+      }
+
+      // Mode 2: Legacy individual audio files
       const entry = this.getSentenceEntry(storyId, sentenceIndex);
       if (entry && entry.audio) {
         const url = this.resolveAudioUrl(entry.audio);
         const exactWords = entry.words || null;
         this.playAudioUrl(url, text, onFinishedCallback, exactWords);
-
-        // Pre-warm the next sentence audio in memory for gapless auto-advance!
         this.prepareNextSentence(storyId, sentenceIndex + 1);
-      } else {
-        this.speakNative(text, onFinishedCallback);
+        return;
       }
+
+      // Mode 3: Native Web Speech fallback
+      this.speakNative(text, onFinishedCallback);
     }
 
     async speakMoral(storyId, moralText, onFinishedCallback) {
       if (!this.manifest) {
         await this.ensureManifest();
       }
+
+      const s = this.manifest && this.manifest.stories ? this.manifest.stories[storyId] : null;
+
+      // Mode 1: Approach 2 Timestamp Cue in Single Audio
+      if (s && s.audio && s.moral && typeof s.moral.start === 'number') {
+        const url = this.resolveAudioUrl(s.audio);
+        const exactWords = s.moral.words || null;
+        this.playAudioRange(url, s.moral.start, s.moral.end, moralText, onFinishedCallback, exactWords);
+        return;
+      }
+
+      // Mode 2: Legacy individual moral audio
       const audioUrl = this.getMoralAudioUrl(storyId);
       if (audioUrl) {
         this.playAudioUrl(audioUrl, moralText, onFinishedCallback);
-      } else {
-        this.speakNative(moralText, onFinishedCallback);
+        return;
       }
+
+      // Mode 3: Native Web Speech
+      this.speakNative(moralText, onFinishedCallback);
     }
 
     async speakFullStory(storyId, fullText, onFinishedCallback) {
       if (!this.manifest) {
         await this.ensureManifest();
       }
+
+      const s = this.manifest && this.manifest.stories ? this.manifest.stories[storyId] : null;
+
+      // Mode 1: Approach 2 Single Story Audio (0 to duration)
+      if (s && s.audio) {
+        const url = this.resolveAudioUrl(s.audio);
+        let allWords = [];
+        if (s.sentences) {
+          s.sentences.forEach((sent) => {
+            if (sent.words) allWords = allWords.concat(sent.words);
+          });
+        }
+        if (s.moral && s.moral.words) {
+          allWords = allWords.concat(s.moral.words);
+        }
+        this.playAudioUrl(url, fullText, onFinishedCallback, allWords);
+        return;
+      }
+
+      // Mode 2: Legacy full story audio
       const audioUrl = this.getFullStoryAudioUrl(storyId);
       if (audioUrl) {
         this.playAudioUrl(audioUrl, fullText, onFinishedCallback);
-      } else {
-        this.speakNative(fullText, onFinishedCallback);
+        return;
       }
+
+      // Mode 3: Native Web Speech
+      this.speakNative(fullText, onFinishedCallback);
     }
 
     speak(text, onFinishedCallback) {
@@ -726,7 +905,6 @@
       if (this.currentAudio) {
         try {
           this.currentAudio.pause();
-          this.currentAudio.currentTime = 0;
         } catch (e) {}
         this.currentAudio = null;
       }
