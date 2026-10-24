@@ -201,13 +201,27 @@ async def generate_single_story_audio(story: dict, voice: str, rate: str, pitch:
     sentence_entries, moral_entry = segment_story_words(sentences, moral, captured_words)
     total_duration = round(captured_words[-1]["e"], 3) if captured_words else 0.0
 
+    # Save per-story detailed word boundaries to words.json (loaded asynchronously on-demand)
+    story_words = {
+        "sentences": {str(sent["index"]): sent.get("words", []) for sent in sentence_entries},
+        "moral": moral_entry.get("words", [])
+    }
+    words_json_str = json.dumps(story_words, separators=(",", ":"))
+    (story_src_dir / "words.json").write_text(words_json_str, encoding="utf-8")
+    (story_docs_dir / "words.json").write_text(words_json_str, encoding="utf-8")
+
+    # Lightweight manifest entry (without heavy word arrays)
+    light_sentences = [{"index": s["index"], "start": s["start"], "end": s["end"]} for s in sentence_entries]
     manifest_entry = {
         "title": title,
         "voice": voice,
         "audio": f"audio/{story_id}/story.mp3",
         "duration": total_duration,
-        "sentences": sentence_entries,
-        "moral": moral_entry
+        "sentences": light_sentences,
+        "moral": {
+            "start": moral_entry["start"],
+            "end": moral_entry["end"]
+        }
     }
 
     # Clean up legacy micro sentence files if present to save disk space

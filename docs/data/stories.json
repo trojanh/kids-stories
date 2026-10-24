@@ -513,7 +513,7 @@
     "id": "the_boy_and_the_filberts",
     "title": "The Boy And The Filberts",
     "theme": "Life Lessons",
-    "animal": "boy",
+    "animal": "None",
     "character": [
       "boy",
       "mother"
@@ -703,7 +703,7 @@
     "id": "the_bundle_of_sticks",
     "title": "The Bundle Of Sticks",
     "theme": "Family",
-    "animal": "father",
+    "animal": "None",
     "character": [
       "father",
       "sons"
@@ -990,7 +990,7 @@
     "id": "the_plane_tree",
     "title": "The Plane Tree",
     "theme": "Nature",
-    "animal": "traveller",
+    "animal": "None",
     "character": [
       "traveller",
       "plane tree"
@@ -1102,7 +1102,7 @@
     "id": "the_travelers_and_the_purse",
     "title": "The Travelers And The Purse",
     "theme": "Life Lessons",
-    "animal": "traveller",
+    "animal": "None",
     "character": [
       "traveller",
       "companion"
@@ -1310,7 +1310,7 @@
     "id": "the_oak_and_the_reeds",
     "title": "The Oak And The Reeds",
     "theme": "Nature",
-    "animal": "oak",
+    "animal": "None",
     "character": [
       "oak",
       "reed"
@@ -1675,7 +1675,7 @@
     "id": "the_leap_at_rhodes",
     "title": "The Leap At Rhodes",
     "theme": "Life Lessons",
-    "animal": "boaster",
+    "animal": "None",
     "character": [
       "boaster",
       "listener"
@@ -3211,7 +3211,7 @@
     "id": "the_farmer_and_his_sons",
     "title": "The Farmer And His Sons",
     "theme": "Family",
-    "animal": "farmer",
+    "animal": "None",
     "character": [
       "farmer",
       "sons"
@@ -3248,7 +3248,7 @@
     "id": "the_two_pots",
     "title": "The Two Pots",
     "theme": "Life Lessons",
-    "animal": "pots",
+    "animal": "None",
     "character": [
       "brass pot",
       "earthen pot"
@@ -3589,7 +3589,7 @@
     "id": "the_astrologer",
     "title": "The Astrologer",
     "theme": "Life Lessons",
-    "animal": "astrologer",
+    "animal": "None",
     "character": [
       "astrologer",
       "villager"
@@ -3660,7 +3660,7 @@
     "id": "mercury_and_the_woodman",
     "title": "Mercury And The Woodman",
     "theme": "Mythology",
-    "animal": "woodman",
+    "animal": "None",
     "character": [
       "woodman",
       "mercury"
@@ -4188,7 +4188,7 @@
     "id": "the_miser",
     "title": "The Miser",
     "theme": "Life Lessons",
-    "animal": "miser",
+    "animal": "None",
     "character": [
       "miser",
       "thief",
@@ -4582,7 +4582,7 @@
     "id": "the_boy_and_the_nettles",
     "title": "The Boy And The Nettles",
     "theme": "Life Lessons",
-    "animal": "boy",
+    "animal": "None",
     "character": [
       "boy",
       "mother"
@@ -5503,7 +5503,7 @@
     "id": "the_man_and_the_satyr",
     "title": "The Man And The Satyr",
     "theme": "Mythology",
-    "animal": "man",
+    "animal": "None",
     "character": [
       "man",
       "satyr"
@@ -5777,7 +5777,7 @@
     "id": "the_north_wind_and_the_sun",
     "title": "The North Wind And The Sun",
     "theme": "Nature",
-    "animal": "sun",
+    "animal": "None",
     "character": [
       "north wind",
       "sun",

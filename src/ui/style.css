@@ -583,51 +583,47 @@ body {
 
 .story-read-sentence {
   display: inline;
-  padding: 0.25rem 0.5rem;
-  margin: 0 0.15rem;
-  border-radius: 8px;
+  padding: 0.1rem 0.2rem;
+  margin: 0;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  font-weight: 600;
 }
 
 .story-read-sentence:hover {
   background: #f1f5f9;
-  border-color: #cbd5e1;
 }
 
 .story-read-sentence.active-reading {
   background: #fef08a;
   color: #78350f;
-  border-color: #f59e0b;
-  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.28);
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .story-read-sentence.active-reading.speaking {
   background: #fde047;
-  animation: sentence-pulse 1.4s infinite alternate;
+  color: #713f12;
+  font-weight: 600;
 }
 
-/* Word-by-word karaoke narration highlight */
+/* Word-by-word karaoke narration highlight - strictly zero layout shift */
 .story-read-sentence .story-word {
   display: inline;
-  padding: 0.08rem 0.16rem;
   border-radius: 4px;
-  transition: background-color 0.12s ease, color 0.12s ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-color 0.08s ease, color 0.08s ease;
+  font-weight: inherit;
 }
 
 .story-read-sentence.active-reading .story-word.word-speaking {
   background: #ea580c;
   color: #ffffff !important;
-  font-weight: 900;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.45);
-}
-
-@keyframes sentence-pulse {
-  0% { transform: scale(1); box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25); }
-  100% { transform: scale(1.02); box-shadow: 0 4px 16px rgba(245, 158, 11, 0.45); }
+  border-radius: 4px;
+  font-weight: inherit;
 }
 
 /* Progress bar inside reader */

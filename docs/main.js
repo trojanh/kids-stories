@@ -27,6 +27,61 @@
   // DOM Elements cache
   const appContainer = document.getElementById('app');
 
+  // Routing & Path resolution helpers for clean URLs (/story/:storyId)
+  function getAppBasePath() {
+    const pathname = window.location.pathname;
+    const storyIdx = pathname.indexOf('/story/');
+    if (storyIdx !== -1) {
+      return pathname.substring(0, storyIdx + 1);
+    }
+    if (pathname.endsWith('/index.html')) {
+      return pathname.substring(0, pathname.length - 10);
+    }
+    return pathname.endsWith('/') ? pathname : pathname + '/';
+  }
+
+  function getStoryUrl(storyId) {
+    const base = getAppBasePath();
+    return `${base}story/${encodeURIComponent(storyId)}`;
+  }
+
+  function getLibraryUrl() {
+    return getAppBasePath();
+  }
+
+  function navigateToStory(storyId, replace = false) {
+    const url = getStoryUrl(storyId);
+    if (replace) {
+      history.replaceState({ storyId }, '', url);
+    } else {
+      history.pushState({ storyId }, '', url);
+    }
+    renderReader(storyId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function navigateToLibrary(replace = false) {
+    const url = getLibraryUrl();
+    if (replace) {
+      history.replaceState({}, '', url);
+    } else {
+      history.pushState({}, '', url);
+    }
+    renderList();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Animal display formatting
+  function formatAnimalLabel(animal) {
+    if (!animal || animal === 'None' || animal === 'none') return 'None';
+    return animal.charAt(0).toUpperCase() + animal.slice(1);
+  }
+
+  function formatAnimalBadge(animal) {
+    if (!animal || animal === 'None' || animal === 'none') return '📖 Fable';
+    return `🐾 ${animal.charAt(0).toUpperCase() + animal.slice(1)}`;
+  }
+
   // Safe HTML escaping
   function escapeHtml(str) {
     if (!str) return '';
@@ -273,7 +328,7 @@
 
     appContainer.innerHTML = `
       <div class="site-header">
-        <a class="logo-group" href="#">
+        <a class="logo-group" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">
           <span class="logo-icon">📚</span>
           <div class="logo-text">
             <h1>Magic Kids Storybook</h1>
@@ -376,7 +431,7 @@
                   const thumbSvg = SvgArt.generateThumbnailSvg(s);
 
                   return `
-            <div class="story-card" onclick="location.hash='#story=${encodeURIComponent(s.id)}'">
+            <a class="story-card" href="${getStoryUrl(s.id)}" onclick="event.preventDefault(); window.StoryApp.goToStory('${encodeURIComponent(s.id)}')">
               <div>
                 <!-- Image Thumbnail of the Animal -->
                 <div class="card-thumbnail-wrapper">
@@ -387,7 +442,7 @@
                       ${isFav ? '❤️' : '🤍'}
                     </button>
                   </div>
-                  <span class="card-animal-tag">🐾 ${s.animal || 'Fable'}</span>
+                  <span class="card-animal-tag">${formatAnimalBadge(s.animal)}</span>
                 </div>
 
                 <h3 class="story-title">${s.title}</h3>
@@ -405,7 +460,7 @@
                   Read & Listen →
                 </span>
               </div>
-            </div>
+            </a>
           `;
                 })
                 .join('')
@@ -481,7 +536,7 @@
       surpriseBtn.addEventListener('click', () => {
         if (stories.length === 0) return;
         const rand = stories[Math.floor(Math.random() * stories.length)];
-        location.hash = `#story=${encodeURIComponent(rand.id)}`;
+        navigateToStory(rand.id);
       });
     }
 
@@ -590,7 +645,7 @@
         <div style="text-align: center; padding: 4rem 1rem;">
           <h2>Story not found!</h2>
           <p style="margin: 1rem 0;">We couldn't find the requested fable.</p>
-          <a class="btn-pill primary" href="#">← Back to Story List</a>
+          <a class="btn-pill primary" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Back to Story List</a>
         </div>
       `;
       return;
@@ -602,11 +657,20 @@
     TTS.stop();
     updateStorySEO(story);
 
-    if (window.TTS && window.TTS.prefetchStory) {
-      window.TTS.prefetchStory(story.id);
-    }
-
+    // 1. Render DOM & SVG illustration immediately for optimal FCP / LCP
     renderReaderUI();
+
+    // 2. Prefetch audio and word boundaries asynchronously in idle time
+    const schedulePrefetch = () => {
+      if (window.TTS && window.TTS.prefetchStory) {
+        window.TTS.prefetchStory(story.id);
+      }
+    };
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(schedulePrefetch, { timeout: 1500 });
+    } else {
+      setTimeout(schedulePrefetch, 50);
+    }
   }
 
   function renderReaderUI() {
@@ -635,7 +699,7 @@
     appContainer.innerHTML = `
       <div class="reader-wrapper">
         <div class="reader-navbar">
-          <a class="btn-pill" href="#">← Library</a>
+          <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Library</a>
           <div style="display: flex; gap: 0.5rem; align-items: center;">
             <button class="btn-pill" id="readerFavBtn" onclick="window.StoryApp.toggleFav('${story.id}', event)">
               ${isFav ? '❤️' : '🤍'}
@@ -652,16 +716,19 @@
             <div class="reader-title-area">
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
                 <h2>${story.title}</h2>
-                <div id="narrationBadgeContainer">
-                  ${
-                    TTS.hasStudioAudio(story.id)
-                      ? `<span class="badge-studio-audio" title="High-fidelity pre-generated studio narration">🎙️ Studio Narration (HQ)</span>`
-                      : `<span class="badge-browser-audio" title="Browser-synthesized voice">🔊 Browser Voice</span>`
-                  }
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  <div id="narrationBadgeContainer">
+                    ${
+                      TTS.hasStudioAudio(story.id)
+                        ? `<span class="badge-studio-audio" title="High-fidelity pre-generated studio narration">🎙️ Studio Narration (HQ)</span>`
+                        : `<span class="badge-browser-audio" title="Browser-synthesized voice">🔊 Browser Voice</span>`
+                    }
+                  </div>
+                  <a href="audio/${story.id}/story.mp3" target="_blank" rel="noopener" class="btn-pill" style="font-size: 0.75rem; padding: 0.25rem 0.6rem; text-decoration: none;" title="Download or open full story MP3 directly">🎧 MP3</a>
                 </div>
               </div>
               <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
-                Animal: <strong>${story.animal}</strong> • Characters: ${story.character.join(', ')}
+                Animal: <strong>${formatAnimalLabel(story.animal)}</strong> • Characters: ${story.character.join(', ')}
               </p>
             </div>
           </div>
@@ -1041,12 +1108,12 @@
       <canvas id="confettiCanvas"></canvas>
       <div class="reader-wrapper">
         <div class="reader-navbar">
-          <a class="btn-pill" href="#">← Library</a>
+          <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Library</a>
           <div style="display: flex; gap: 0.5rem; align-items: center;">
             <span class="theme-badge theme-${(story.theme || 'Animals').replace(/\s+/g, '')}">
               ${getThemeEmoji(story.theme)} ${story.theme || 'Animals'}
             </span>
-            <span class="card-animal-tag" style="position: static; background: #334155;">🐾 ${story.animal}</span>
+            <span class="card-animal-tag" style="position: static; background: #334155;">${formatAnimalBadge(story.animal)}</span>
           </div>
         </div>
 
@@ -1064,7 +1131,7 @@
               <h2 class="celebration-title">Story Completed!</h2>
               <div class="full-story-pill-row">
                 <span style="font-size: 0.9rem; font-weight: 700; color: #475569;">
-                  ${story.text.length} sentences • Animal: <strong>${story.animal}</strong>
+                  ${story.text.length} sentences • Animal: <strong>${formatAnimalLabel(story.animal)}</strong>
                 </span>
               </div>
               <h1 class="full-story-title">${story.title}</h1>
@@ -1094,10 +1161,10 @@
               <button class="btn-pill" id="replayStoryBtn">
                 🔄 Read Panel-by-Panel Again
               </button>
-              <a class="btn-pill primary" href="#story=${encodeURIComponent(nextStory.id)}">
+              <a class="btn-pill primary" href="${getStoryUrl(nextStory.id)}" onclick="event.preventDefault(); window.StoryApp.goToStory('${encodeURIComponent(nextStory.id)}')">
                 Next Story: ${nextStory.title} ➡️
               </a>
-              <a class="btn-pill" href="#">
+              <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">
                 📚 Back to Library
               </a>
             </div>
@@ -1203,18 +1270,27 @@
   // ==========================================================
 
   function router() {
-    const hash = location.hash;
-    if (!hash || hash === '#' || hash === '#/') {
-      renderList();
-      return;
-    }
-    const match = hash.match(/#story=([^&]+)/);
-    if (match) {
-      const id = decodeURIComponent(match[1]);
+    // 1. Check clean path route: /story/:storyId
+    const pathname = window.location.pathname;
+    const matchPath = pathname.match(/\/story\/([^/?#]+)/);
+    if (matchPath) {
+      const id = decodeURIComponent(matchPath[1]);
       renderReader(id);
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
+
+    // 2. Check legacy hash route: #story=:storyId or #/story/:storyId
+    const hash = window.location.hash;
+    const matchHash = hash.match(/#(?:story=|\/story\/)([^&?]+)/);
+    if (matchHash) {
+      const id = decodeURIComponent(matchHash[1]);
+      // Upgrade smoothly to clean path route without reload
+      navigateToStory(id, true);
+      return;
+    }
+
+    // 3. Default to library list
     renderList();
   }
 
@@ -1238,14 +1314,30 @@
   window.StoryApp = {
     toggleFav: toggleFavorite,
     toggleArtStyle: toggleArtStyle,
+    goToStory: navigateToStory,
+    goToLibrary: navigateToLibrary,
   };
 
+  window.addEventListener('popstate', router);
   window.addEventListener('hashchange', router);
 
   document.addEventListener('DOMContentLoaded', () => {
-    Promise.all([
-      fetchStories(),
-      window.TTS && window.TTS.ensureManifest ? window.TTS.ensureManifest() : Promise.resolve(),
-    ]).then(router);
+    fetchStories().then(() => {
+      // 1. Immediately render current route (FCP / LCP in < 800ms)
+      router();
+
+      // 2. Load audio manifest asynchronously in idle time off the critical path
+      const loadAudioAsync = () => {
+        if (window.TTS && window.TTS.loadManifest) {
+          window.TTS.loadManifest();
+        }
+      };
+
+      if (typeof window.requestIdleCallback === 'function') {
+        window.requestIdleCallback(loadAudioAsync, { timeout: 1500 });
+      } else {
+        setTimeout(loadAudioAsync, 50);
+      }
+    });
   });
 })();

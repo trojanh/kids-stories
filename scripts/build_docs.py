@@ -39,7 +39,7 @@ def generate_seo_files(stories):
         if sid:
             sitemap_lines.extend([
                 '  <url>',
-                f'    <loc>{BASE_URL}/#story={sid}</loc>',
+                f'    <loc>{BASE_URL}/story/{sid}</loc>',
                 f'    <lastmod>{today}</lastmod>',
                 '    <changefreq>monthly</changefreq>',
                 '    <priority>0.8</priority>',
@@ -73,7 +73,7 @@ def build():
     (SRC_UI / "data").mkdir(parents=True, exist_ok=True)
 
     # 1. Copy UI assets into docs/
-    for file_name in ["index.html", "style.css", "main.js", "tts.js", "svg-art.js", "rough.js"]:
+    for file_name in ["index.html", "404.html", "style.css", "main.js", "tts.js", "svg-art.js", "rough.js"]:
         src_file = SRC_UI / file_name
         dest_file = DOCS_DIR / file_name
         if src_file.exists():

@@ -33,6 +33,7 @@
       // In-Memory Audio Object Pool & Preload Cache
       this.audioPool = new Map();
       this.prefetchedStories = new Set();
+      this.storyWordsCache = new Map();
 
       // Rate settings (persisted in localStorage)
       const savedRate = parseFloat(localStorage.getItem(STORAGE_KEY_RATE));
@@ -52,8 +53,7 @@
       this.onVoicesReady = null;
       this.onManifestReady = null;
 
-      // Load pre-generated studio audio manifest
-      this.loadManifest();
+      // Manifest is loaded lazily or asynchronously off the critical rendering path
 
       if (this.supported) {
         this.loadVoices();
@@ -163,18 +163,18 @@
     }
 
     /**
-     * Gets or creates a pre-warmed, pre-buffered HTMLAudioElement from memory.
+     * Gets or creates a pre-buffered HTMLAudioElement from memory.
+     * Uses 'metadata' preload to protect initial page performance (LCP) from network congestion.
      */
     getOrCreateAudio(url) {
       if (this.audioPool.has(url)) {
         const audio = this.audioPool.get(url);
-        try { audio.currentTime = 0; } catch (e) {}
         audio.playbackRate = this.rate;
         return audio;
       }
 
       const audio = new Audio(url);
-      audio.preload = 'auto';
+      audio.preload = 'metadata';
       audio.playbackRate = this.rate;
 
       // Bound cache to 80 items max to prevent memory leakage
@@ -193,23 +193,47 @@
     }
 
     /**
-     * Whole-Story Background Audio Prefetcher.
-     * In Approach 2 (Single Audio), pre-buffers the single story.mp3 file into browser memory.
-     * In legacy mode, buffers all sentences in parallel.
+     * Asynchronously loads per-story word boundaries (only ~3 KB) on demand.
      */
-    prefetchStory(storyId) {
+    async loadStoryWords(storyId) {
+      if (this.storyWordsCache.has(storyId)) {
+        return this.storyWordsCache.get(storyId);
+      }
+      try {
+        const url = this.resolveAudioUrl(`audio/${storyId}/words.json`);
+        const res = await fetch(url);
+        if (res.ok) {
+          const data = await res.json();
+          this.storyWordsCache.set(storyId, data);
+          return data;
+        }
+      } catch (e) {}
+      return null;
+    }
+
+    /**
+     * Asynchronous background audio prefetcher.
+     * Preloads only metadata headers without downloading full audio files during page rendering.
+     */
+    async prefetchStory(storyId) {
+      if (!this.manifest) {
+        await this.ensureManifest();
+      }
       if (!this.hasStudioAudio(storyId) || this.prefetchedStories.has(storyId)) return;
       this.prefetchedStories.add(storyId);
 
       const s = this.manifest.stories[storyId];
       if (!s) return;
 
+      // Load detailed word boundaries for this active story in the background
+      this.loadStoryWords(storyId);
+
       // Mode 1: Single Continuous Audio (Approach 2)
       if (s.audio) {
         const url = this.resolveAudioUrl(s.audio);
         if (url && !this.audioPool.has(url)) {
           const a = new Audio(url);
-          a.preload = 'auto';
+          a.preload = 'metadata';
           this.audioPool.set(url, a);
         }
         return;
@@ -222,7 +246,7 @@
           const url = this.resolveAudioUrl(rawPath);
           if (url && !this.audioPool.has(url)) {
             const a = new Audio(url);
-            a.preload = 'auto';
+            a.preload = 'metadata';
             this.audioPool.set(url, a);
           }
         });
@@ -233,7 +257,7 @@
         const mUrl = this.resolveAudioUrl(mRaw);
         if (mUrl && !this.audioPool.has(mUrl)) {
           const ma = new Audio(mUrl);
-          ma.preload = 'auto';
+          ma.preload = 'metadata';
           this.audioPool.set(mUrl, ma);
         }
       }
@@ -554,6 +578,9 @@
 
       // Extract DOM word offsets from the sentence text
       const domWordSpans = this.getWordOffsets(text);
+      const fallbackWords = (!exactWords || exactWords.length === 0) ? domWordSpans : null;
+      const totalWeight = fallbackWords ? fallbackWords.reduce((sum, w) => sum + w.weight, 0) : 0;
+      const durationSec = Math.max(0.1, endSec - startSec);
 
       let segmentFinished = false;
 
@@ -566,40 +593,58 @@
         if (onFinishedCallback) onFinishedCallback();
       };
 
-      // Seek to segment start
-      try {
-        if (Math.abs(audio.currentTime - startSec) > 0.15) {
-          audio.currentTime = Math.max(0, startSec);
-        }
-      } catch (e) {}
-
       const updateTracking = () => {
-        if (!this.speaking || !this.currentAudio || this.currentAudio.paused || segmentFinished) return;
+        if (!this.speaking || !this.currentAudio || this.currentAudio.paused) return;
 
         const current = audio.currentTime;
 
-        // Check if segment reached completion
-        if (current >= endSec - 0.04) {
+        // Auto-pause when segment completes
+        if (current >= endSec - 0.05) {
           finishSegment();
           return;
         }
 
-        // Millisecond word karaoke tracking
-        if (this.onBoundary && exactWords && exactWords.length > 0) {
-          let activeWordIdx = -1;
-          for (let i = 0; i < exactWords.length; i++) {
-            if (current >= exactWords[i].s && current <= exactWords[i].e + 0.05) {
-              activeWordIdx = i;
-              break;
+        if (this.onBoundary) {
+          if (exactWords && exactWords.length > 0) {
+            // Millisecond-Exact Word Boundary Sync from Neural TTS
+            let activeWordIdx = -1;
+            for (let i = 0; i < exactWords.length; i++) {
+              if (current >= exactWords[i].s && current <= exactWords[i].e + 0.06) {
+                activeWordIdx = i;
+                break;
+              }
             }
-          }
 
-          if (activeWordIdx >= 0) {
-            const matchedSpan = domWordSpans[activeWordIdx] || domWordSpans[0];
-            if (matchedSpan) {
+            if (activeWordIdx >= 0) {
+              const matchedSpan = domWordSpans[activeWordIdx] || domWordSpans[0];
+              if (matchedSpan) {
+                this.onBoundary({
+                  charIndex: matchedSpan.start,
+                  charLength: matchedSpan.end - matchedSpan.start,
+                  name: 'word',
+                });
+              }
+            }
+          } else if (fallbackWords && fallbackWords.length > 0) {
+            // Proportional timing fallback within [startSec, endSec]
+            const progress = Math.min(1, Math.max(0, (current - startSec) / durationSec));
+            const targetWeight = progress * totalWeight;
+            let accum = 0;
+            let activeIndex = 0;
+
+            for (let i = 0; i < fallbackWords.length; i++) {
+              accum += fallbackWords[i].weight;
+              if (accum >= targetWeight) {
+                activeIndex = i;
+                break;
+              }
+            }
+
+            const activeWord = fallbackWords[activeIndex] || fallbackWords[fallbackWords.length - 1];
+            if (activeWord) {
               this.onBoundary({
-                charIndex: matchedSpan.start,
-                charLength: matchedSpan.end - matchedSpan.start,
+                charIndex: activeWord.start,
+                charLength: activeWord.end - activeWord.start,
                 name: 'word',
               });
             }
@@ -611,30 +656,41 @@
         }
       };
 
-      audio.onplay = () => {
-        this.speaking = true;
-        this.paused = false;
-        if (this.onStart) this.onStart();
-        if (domWordSpans.length > 0 && this.onBoundary) {
-          this.onBoundary({ charIndex: domWordSpans[0].start, charLength: domWordSpans[0].end - domWordSpans[0].start, name: 'word' });
+      const doSeekAndPlay = () => {
+        try {
+          audio.currentTime = Math.max(0, startSec);
+        } catch (e) {}
+
+        audio.onended = finishSegment;
+        audio.onerror = (e) => {
+          console.warn('[TTS] Studio audio range error, falling back to Web Speech:', e);
+          finishSegment();
+          this.speakNative(text, onFinishedCallback);
+        };
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            this.speaking = true;
+            this.paused = false;
+            if (this.onStart) this.onStart();
+            if (domWordSpans.length > 0 && this.onBoundary) {
+              this.onBoundary({ charIndex: domWordSpans[0].start, charLength: domWordSpans[0].end - domWordSpans[0].start, name: 'word' });
+            }
+            this.audioAnimFrame = requestAnimationFrame(updateTracking);
+          }).catch((err) => {
+            console.warn('[TTS] Audio playback restricted, falling back to Web Speech:', err);
+            this.speakNative(text, onFinishedCallback);
+          });
         }
-        this.audioAnimFrame = requestAnimationFrame(updateTracking);
       };
 
-      audio.onended = () => {
-        finishSegment();
-      };
-
-      audio.onerror = (e) => {
-        console.warn('[TTS] Audio cue range error, falling back to Web Speech:', e);
-        this.stop();
-        this.speakNative(text, onFinishedCallback);
-      };
-
-      audio.play().catch((err) => {
-        console.warn('[TTS] Audio playback restricted, falling back to Web Speech:', err);
-        this.speakNative(text, onFinishedCallback);
-      });
+      if (audio.readyState >= 1) {
+        doSeekAndPlay();
+      } else {
+        audio.addEventListener('loadedmetadata', doSeekAndPlay, { once: true });
+        audio.load();
+      }
     }
 
     /**
@@ -652,7 +708,8 @@
       if (s && s.audio && Array.isArray(s.sentences) && s.sentences[sentenceIndex] && typeof s.sentences[sentenceIndex].start === 'number') {
         const sent = s.sentences[sentenceIndex];
         const url = this.resolveAudioUrl(s.audio);
-        const exactWords = sent.words || null;
+        const cachedWords = this.storyWordsCache.get(storyId);
+        const exactWords = sent.words || (cachedWords && cachedWords.sentences ? cachedWords.sentences[sentenceIndex.toString()] : null);
         this.playAudioRange(url, sent.start, sent.end, text, onFinishedCallback, exactWords);
         return;
       }
@@ -681,7 +738,8 @@
       // Mode 1: Approach 2 Timestamp Cue in Single Audio
       if (s && s.audio && s.moral && typeof s.moral.start === 'number') {
         const url = this.resolveAudioUrl(s.audio);
-        const exactWords = s.moral.words || null;
+        const cachedWords = this.storyWordsCache.get(storyId);
+        const exactWords = s.moral.words || (cachedWords ? cachedWords.moral : null);
         this.playAudioRange(url, s.moral.start, s.moral.end, moralText, onFinishedCallback, exactWords);
         return;
       }
@@ -708,13 +766,14 @@
       if (s && s.audio) {
         const url = this.resolveAudioUrl(s.audio);
         let allWords = [];
-        if (s.sentences) {
-          s.sentences.forEach((sent) => {
-            if (sent.words) allWords = allWords.concat(sent.words);
+        const cachedWords = this.storyWordsCache.get(storyId) || (await this.loadStoryWords(storyId));
+        if (cachedWords && cachedWords.sentences) {
+          Object.keys(cachedWords.sentences).forEach((k) => {
+            allWords = allWords.concat(cachedWords.sentences[k]);
           });
         }
-        if (s.moral && s.moral.words) {
-          allWords = allWords.concat(s.moral.words);
+        if (cachedWords && cachedWords.moral) {
+          allWords = allWords.concat(cachedWords.moral);
         }
         this.playAudioUrl(url, fullText, onFinishedCallback, allWords);
         return;

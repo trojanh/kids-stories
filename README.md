@@ -23,7 +23,7 @@ An interactive, illustrated children's storybook app featuring **150+ classic fa
   - Seamless fallback to browser Web Speech API when offline or for unindexed tales.
   - Fine-grained speed slider ($0.5\times$ to $2.0\times$) persisted in `localStorage`.
   - Sentence-by-sentence reading with glowing visual highlight and auto-advance.
-  - Comprehensive guide: [Audio Streaming Optimization Reference](docs/AUDIO_STREAMING_OPTIMIZATION.md).
+  - Comprehensive guide: [Audio Streaming Optimization Plan](plans/audio_streaming_optimization_plan.md).
 - **Child-Friendly UI/UX**:
   - Touch-first design with large hit targets ($\ge 44\text{px}$).
   - Live search by story title, animal, characters, or moral keywords.

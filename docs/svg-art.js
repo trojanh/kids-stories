@@ -525,6 +525,9 @@
   // Map any character name to its drawer and relative scale
   function getCharacterConfig(rawName) {
     const k = (rawName || '').toLowerCase().trim();
+    if (!k || k === 'none' || k.includes('tree') || k.includes('pot') || k.includes('reed') || k.includes('stick') || k.includes('nettle') || k.includes('purse') || k.includes('filbert') || k.includes('reeds') || k.includes('pots')) {
+      return null;
+    }
     if (k.includes('tiger')) return { drawer: AVATARS.tiger, scale: 1.1 };
     if (k.includes('lion')) return { drawer: AVATARS.lion, scale: 1.15 };
     if (k.includes('elephant')) return { drawer: AVATARS.elephant, scale: 1.35 };
@@ -542,9 +545,9 @@
     if (k.includes('rooster') || k.includes('cock') || k.includes('hen')) return { drawer: AVATARS.rooster, scale: 0.85 };
     if (k.includes('boy') || k.includes('child')) return { drawer: AVATARS.boy, scale: 0.85 };
     if (k.includes('mother') || k.includes('milkmaid') || k.includes('woman')) return { drawer: AVATARS.woman, scale: 1.05 };
-    if (k.includes('man') || k.includes('farmer') || k.includes('shepherd') || k.includes('woodman') || k.includes('father') || k.includes('traveller')) return { drawer: AVATARS.man, scale: 1.1 };
+    if (k.includes('man') || k.includes('farmer') || k.includes('shepherd') || k.includes('woodman') || k.includes('father') || k.includes('traveller') || k.includes('traveler') || k.includes('companion') || k.includes('astrologer') || k.includes('miser') || k.includes('boaster')) return { drawer: AVATARS.man, scale: 1.1 };
 
-    return { drawer: AVATARS.fox, scale: 0.9 };
+    return null;
   }
 
   // Harmonic Stroke Color Deriver (prevents harsh black borders around bright colors in Rough.js)
@@ -567,7 +570,26 @@
     const title = (story.title || '').toLowerCase();
     const scale = isThumbnail ? 0.7 : 1.0;
 
-    // 1. TIGER & MICE / LION & MOUSE (Shady Mango Tree Canopy, Golden Seeds, Hunter's Net)
+    // 1. PLANE TREE (Broad leafy shady branches spreading overhead)
+    if (sid.includes('plane_tree') || title.includes('plane tree')) {
+      const treeScale = isThumbnail ? 0.75 : 1.0;
+      return `
+        <!-- Spreading Shady Plane Tree -->
+        <g transform="translate(180, 0) scale(${treeScale})" opacity="0.95">
+          <path d="M150 200 Q130 120 140 40" stroke="#78350F" stroke-width="26" fill="none" stroke-linecap="round" />
+          <path d="M140 60 Q50 45 -40 55" stroke="#78350F" stroke-width="16" fill="none" stroke-linecap="round" />
+          <path d="M140 75 Q170 60 200 50" stroke="#78350F" stroke-width="12" fill="none" stroke-linecap="round" />
+          <ellipse cx="40" cy="35" rx="100" ry="46" fill="#15803D" opacity="0.9" />
+          <ellipse cx="140" cy="30" rx="80" ry="40" fill="#16A34A" opacity="0.88" />
+          <ellipse cx="-30" cy="45" rx="70" ry="36" fill="#22C55E" opacity="0.85" />
+          <ellipse cx="80" cy="20" rx="75" ry="32" fill="#4ADE80" opacity="0.8" />
+          <line x1="-10" y1="75" x2="-25" y2="160" stroke="#FEF08A" stroke-width="1.5" opacity="0.35" stroke-dasharray="4,6" />
+          <line x1="60" y1="75" x2="45" y2="160" stroke="#FEF08A" stroke-width="1.5" opacity="0.35" stroke-dasharray="4,6" />
+        </g>
+      `;
+    }
+
+    // 2. TIGER & MICE / LION & MOUSE (Shady Mango Tree Canopy, Golden Seeds, Hunter's Net)
     if ((sid.includes('mouse') || sid.includes('mice')) && (sid.includes('lion') || sid.includes('tiger'))) {
       const netX = isThumbnail ? 30 : 75;
       const netY = isThumbnail ? 85 : 125;
@@ -822,7 +844,7 @@
     let sFlipped = true; // Flips to face LEFT into center
 
     // Ground line baseline adjustment (tiny animals like mice sit lower on ground)
-    if (pConfig.scale <= 0.7) pY = 158;
+    if (pConfig && pConfig.scale <= 0.7) pY = 158;
     if (sConfig && sConfig.scale <= 0.7) sY = 158;
 
     // Action detection
@@ -975,9 +997,15 @@
         ${storyProps}
 
         <!-- Character 1 (Protagonist) -->
+        ${
+          pConfig
+            ? `
         <g class="anim-character">
           ${pConfig.drawer(pX, pY, pConfig.scale, pFlipped, pState)}
         </g>
+        `
+            : ''
+        }
 
         <!-- Character 2 (Companion/Antagonist) -->
         ${
@@ -1003,13 +1031,6 @@
             : ''
         }
 
-        <!-- Panel Badge -->
-        <g transform="translate(10, 15)">
-          <rect width="70" height="24" rx="12" fill="rgba(0,0,0,0.4)" />
-          <text x="35" y="16" fill="#FFFFFF" font-family="'Nunito', sans-serif" font-size="11" font-weight="700" text-anchor="middle">
-            Panel ${panelIndex + 1}/${totalPanels}
-          </text>
-        </g>
       </svg>
     `;
 
@@ -1018,7 +1039,8 @@
 
   // Generate thumbnail SVG for story cards
   function generateThumbnailSvg(story) {
-    const pConfig = getCharacterConfig(story.animal || (story.character && story.character[0]) || 'fox');
+    const rawChar = (story.animal && story.animal !== 'None' ? story.animal : (story.character && story.character[0])) || 'man';
+    const pConfig = getCharacterConfig(rawChar) || { drawer: AVATARS.man, scale: 1.1 };
     const storyProps = getStoryProps(story, true, 0, 1);
     const uniqueId = (story.id || 'thumb').replace(/[^\w-]/g, '_');
 
