@@ -33,8 +33,10 @@ const server = http.createServer((req, res) => {
   if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
   let filePath;
   if (reqPath.startsWith('/data/')) {
-    // Serve JSON or other data files from src/data
-    filePath = path.join(PROJECT_ROOT, 'src', reqPath);
+    // Serve JSON or other data files from src/data (or src/ui/data fallback)
+    const p1 = path.join(PROJECT_ROOT, 'src', reqPath);
+    const p2 = path.join(PROJECT_ROOT, 'src', 'ui', reqPath);
+    filePath = fs.existsSync(p1) ? p1 : p2;
   } else {
     // Serve UI files from src/ui
     filePath = path.join(PROJECT_ROOT, 'src', 'ui', reqPath);

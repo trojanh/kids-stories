@@ -42,7 +42,8 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 STORIES_FILE = ROOT_DIR / "src" / "data" / "stories.json"
 SRC_AUDIO_DIR = ROOT_DIR / "src" / "ui" / "audio"
 DOCS_AUDIO_DIR = ROOT_DIR / "docs" / "audio"
-SRC_MANIFEST_FILE = ROOT_DIR / "src" / "ui" / "data" / "audio_manifest.json"
+SRC_UI_MANIFEST_FILE = ROOT_DIR / "src" / "ui" / "data" / "audio_manifest.json"
+SRC_DATA_MANIFEST_FILE = ROOT_DIR / "src" / "data" / "audio_manifest.json"
 DOCS_MANIFEST_FILE = ROOT_DIR / "docs" / "data" / "audio_manifest.json"
 
 DEFAULT_VOICE = "en-US-AnaNeural" # Friendly, warm children's narrator voice
@@ -180,12 +181,14 @@ async def main():
 
     # Load existing manifest if any
     manifest = {"version": "1.0", "default_voice": args.voice, "stories": {}}
-    if SRC_MANIFEST_FILE.exists():
-        try:
-            with open(SRC_MANIFEST_FILE, "r", encoding="utf-8") as f:
-                manifest = json.load(f)
-        except Exception:
-            pass
+    for m_path in [SRC_UI_MANIFEST_FILE, SRC_DATA_MANIFEST_FILE]:
+        if m_path.exists():
+            try:
+                with open(m_path, "r", encoding="utf-8") as f:
+                    manifest = json.load(f)
+                    break
+            except Exception:
+                pass
 
     total_files_generated = 0
     for s in selected_stories:
@@ -193,19 +196,39 @@ async def main():
         manifest["stories"][s["id"]] = entry
         total_files_generated += count
 
-    # Save manifest
-    SRC_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
+    # Auto-index all existing audio directories in src/ui/audio
+    stories_by_id = {s["id"]: s for s in all_stories}
+    if SRC_AUDIO_DIR.exists():
+        for story_dir in SRC_AUDIO_DIR.iterdir():
+            if story_dir.is_dir() and story_dir.name in stories_by_id:
+                sid = story_dir.name
+                if sid not in manifest["stories"]:
+                    s_obj = stories_by_id[sid]
+                    s_text = s_obj.get("text", [])
+                    if (story_dir / "sentence_0.mp3").exists():
+                        manifest["stories"][sid] = {
+                            "title": s_obj.get("title", sid),
+                            "voice": args.voice,
+                            "sentences": [f"audio/{sid}/sentence_{i}.mp3" for i in range(len(s_text))],
+                            "moral": f"audio/{sid}/moral.mp3",
+                            "full_story": f"audio/{sid}/full_story.mp3",
+                        }
+
+    # Save manifest across src/ui/data, src/data, and docs/data
+    SRC_UI_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
+    SRC_DATA_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
     DOCS_MANIFEST_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     manifest_json = json.dumps(manifest, indent=2, ensure_ascii=False)
-    SRC_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
+    SRC_UI_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
+    SRC_DATA_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
     DOCS_MANIFEST_FILE.write_text(manifest_json, encoding="utf-8")
 
     print("\n" + "=" * 60)
     print(f"✨ Batch generation complete!")
     print(f"• Total new files generated: {total_files_generated}")
     print(f"• Total narrated stories in manifest: {len(manifest['stories'])}")
-    print(f"• Manifest written to: {SRC_MANIFEST_FILE} and {DOCS_MANIFEST_FILE}")
+    print(f"• Manifest written to: {SRC_UI_MANIFEST_FILE}, {SRC_DATA_MANIFEST_FILE}, {DOCS_MANIFEST_FILE}")
     print("=" * 60)
 
 

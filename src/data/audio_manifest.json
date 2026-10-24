@@ -1,0 +1,507 @@
+{
+  "version": "1.0",
+  "default_voice": "en-US-AnaNeural",
+  "stories": {
+    "tiger_and_mice": {
+      "title": "The Tiger and the Mice",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/tiger_and_mice/sentence_0.mp3",
+        "audio/tiger_and_mice/sentence_1.mp3",
+        "audio/tiger_and_mice/sentence_2.mp3",
+        "audio/tiger_and_mice/sentence_3.mp3",
+        "audio/tiger_and_mice/sentence_4.mp3",
+        "audio/tiger_and_mice/sentence_5.mp3",
+        "audio/tiger_and_mice/sentence_6.mp3"
+      ],
+      "moral": "audio/tiger_and_mice/moral.mp3",
+      "full_story": "audio/tiger_and_mice/full_story.mp3"
+    },
+    "crow_and_water_pot": {
+      "title": "The Crow and the Water Pot",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/crow_and_water_pot/sentence_0.mp3",
+        "audio/crow_and_water_pot/sentence_1.mp3",
+        "audio/crow_and_water_pot/sentence_2.mp3",
+        "audio/crow_and_water_pot/sentence_3.mp3",
+        "audio/crow_and_water_pot/sentence_4.mp3",
+        "audio/crow_and_water_pot/sentence_5.mp3",
+        "audio/crow_and_water_pot/sentence_6.mp3"
+      ],
+      "moral": "audio/crow_and_water_pot/moral.mp3",
+      "full_story": "audio/crow_and_water_pot/full_story.mp3"
+    },
+    "tortoise_and_hare": {
+      "title": "The Tortoise and the Hare",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/tortoise_and_hare/sentence_0.mp3",
+        "audio/tortoise_and_hare/sentence_1.mp3",
+        "audio/tortoise_and_hare/sentence_2.mp3",
+        "audio/tortoise_and_hare/sentence_3.mp3",
+        "audio/tortoise_and_hare/sentence_4.mp3",
+        "audio/tortoise_and_hare/sentence_5.mp3",
+        "audio/tortoise_and_hare/sentence_6.mp3"
+      ],
+      "moral": "audio/tortoise_and_hare/moral.mp3",
+      "full_story": "audio/tortoise_and_hare/full_story.mp3"
+    },
+    "fox_and_grapes": {
+      "title": "The Fox and the Grapes",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/fox_and_grapes/sentence_0.mp3",
+        "audio/fox_and_grapes/sentence_1.mp3",
+        "audio/fox_and_grapes/sentence_2.mp3",
+        "audio/fox_and_grapes/sentence_3.mp3",
+        "audio/fox_and_grapes/sentence_4.mp3",
+        "audio/fox_and_grapes/sentence_5.mp3",
+        "audio/fox_and_grapes/sentence_6.mp3"
+      ],
+      "moral": "audio/fox_and_grapes/moral.mp3",
+      "full_story": "audio/fox_and_grapes/full_story.mp3"
+    },
+    "the_lion_and_the_mouse": {
+      "title": "The Lion And The Mouse",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_lion_and_the_mouse/sentence_0.mp3",
+        "audio/the_lion_and_the_mouse/sentence_1.mp3",
+        "audio/the_lion_and_the_mouse/sentence_2.mp3",
+        "audio/the_lion_and_the_mouse/sentence_3.mp3",
+        "audio/the_lion_and_the_mouse/sentence_4.mp3",
+        "audio/the_lion_and_the_mouse/sentence_5.mp3",
+        "audio/the_lion_and_the_mouse/sentence_6.mp3",
+        "audio/the_lion_and_the_mouse/sentence_7.mp3",
+        "audio/the_lion_and_the_mouse/sentence_8.mp3",
+        "audio/the_lion_and_the_mouse/sentence_9.mp3",
+        "audio/the_lion_and_the_mouse/sentence_10.mp3",
+        "audio/the_lion_and_the_mouse/sentence_11.mp3"
+      ],
+      "moral": "audio/the_lion_and_the_mouse/moral.mp3",
+      "full_story": "audio/the_lion_and_the_mouse/full_story.mp3"
+    },
+    "the_travelers_and_the_purse": {
+      "title": "The Travelers And The Purse",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_travelers_and_the_purse/sentence_0.mp3",
+        "audio/the_travelers_and_the_purse/sentence_1.mp3",
+        "audio/the_travelers_and_the_purse/sentence_2.mp3",
+        "audio/the_travelers_and_the_purse/sentence_3.mp3",
+        "audio/the_travelers_and_the_purse/sentence_4.mp3",
+        "audio/the_travelers_and_the_purse/sentence_5.mp3",
+        "audio/the_travelers_and_the_purse/sentence_6.mp3",
+        "audio/the_travelers_and_the_purse/sentence_7.mp3",
+        "audio/the_travelers_and_the_purse/sentence_8.mp3",
+        "audio/the_travelers_and_the_purse/sentence_9.mp3",
+        "audio/the_travelers_and_the_purse/sentence_10.mp3"
+      ],
+      "moral": "audio/the_travelers_and_the_purse/moral.mp3",
+      "full_story": "audio/the_travelers_and_the_purse/full_story.mp3"
+    },
+    "monkey_and_coconut": {
+      "title": "The Monkey and the Coconut",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/monkey_and_coconut/sentence_0.mp3",
+        "audio/monkey_and_coconut/sentence_1.mp3",
+        "audio/monkey_and_coconut/sentence_2.mp3",
+        "audio/monkey_and_coconut/sentence_3.mp3",
+        "audio/monkey_and_coconut/sentence_4.mp3",
+        "audio/monkey_and_coconut/sentence_5.mp3",
+        "audio/monkey_and_coconut/sentence_6.mp3"
+      ],
+      "moral": "audio/monkey_and_coconut/moral.mp3",
+      "full_story": "audio/monkey_and_coconut/full_story.mp3"
+    },
+    "hercules_and_the_wagoner": {
+      "title": "Hercules And The Wagoner",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/hercules_and_the_wagoner/sentence_0.mp3",
+        "audio/hercules_and_the_wagoner/sentence_1.mp3",
+        "audio/hercules_and_the_wagoner/sentence_2.mp3",
+        "audio/hercules_and_the_wagoner/sentence_3.mp3",
+        "audio/hercules_and_the_wagoner/sentence_4.mp3",
+        "audio/hercules_and_the_wagoner/sentence_5.mp3",
+        "audio/hercules_and_the_wagoner/sentence_6.mp3",
+        "audio/hercules_and_the_wagoner/sentence_7.mp3"
+      ],
+      "moral": "audio/hercules_and_the_wagoner/moral.mp3",
+      "full_story": "audio/hercules_and_the_wagoner/full_story.mp3"
+    },
+    "the_young_crab_and_his_mother": {
+      "title": "The Young Crab And His Mother",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_young_crab_and_his_mother/sentence_0.mp3",
+        "audio/the_young_crab_and_his_mother/sentence_1.mp3",
+        "audio/the_young_crab_and_his_mother/sentence_2.mp3",
+        "audio/the_young_crab_and_his_mother/sentence_3.mp3",
+        "audio/the_young_crab_and_his_mother/sentence_4.mp3",
+        "audio/the_young_crab_and_his_mother/sentence_5.mp3",
+        "audio/the_young_crab_and_his_mother/sentence_6.mp3"
+      ],
+      "moral": "audio/the_young_crab_and_his_mother/moral.mp3",
+      "full_story": "audio/the_young_crab_and_his_mother/full_story.mp3"
+    },
+    "the_tortoise_and_the_ducks": {
+      "title": "The Tortoise And The Ducks",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_tortoise_and_the_ducks/sentence_0.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_1.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_2.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_3.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_4.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_5.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_6.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_7.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_8.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_9.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_10.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_11.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_12.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_13.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_14.mp3",
+        "audio/the_tortoise_and_the_ducks/sentence_15.mp3"
+      ],
+      "moral": "audio/the_tortoise_and_the_ducks/moral.mp3",
+      "full_story": "audio/the_tortoise_and_the_ducks/full_story.mp3"
+    },
+    "the_ass_and_his_driver": {
+      "title": "The Ass And His Driver",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_ass_and_his_driver/sentence_0.mp3",
+        "audio/the_ass_and_his_driver/sentence_1.mp3",
+        "audio/the_ass_and_his_driver/sentence_2.mp3",
+        "audio/the_ass_and_his_driver/sentence_3.mp3",
+        "audio/the_ass_and_his_driver/sentence_4.mp3"
+      ],
+      "moral": "audio/the_ass_and_his_driver/moral.mp3",
+      "full_story": "audio/the_ass_and_his_driver/full_story.mp3"
+    },
+    "the_gnat_and_the_bull": {
+      "title": "The Gnat And The Bull",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_gnat_and_the_bull/sentence_0.mp3",
+        "audio/the_gnat_and_the_bull/sentence_1.mp3",
+        "audio/the_gnat_and_the_bull/sentence_2.mp3",
+        "audio/the_gnat_and_the_bull/sentence_3.mp3",
+        "audio/the_gnat_and_the_bull/sentence_4.mp3",
+        "audio/the_gnat_and_the_bull/sentence_5.mp3"
+      ],
+      "moral": "audio/the_gnat_and_the_bull/moral.mp3",
+      "full_story": "audio/the_gnat_and_the_bull/full_story.mp3"
+    },
+    "the_eagle_and_the_jackdaw": {
+      "title": "The Eagle And The Jackdaw",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_eagle_and_the_jackdaw/sentence_0.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_1.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_2.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_3.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_4.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_5.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_6.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_7.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_8.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_9.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_10.mp3",
+        "audio/the_eagle_and_the_jackdaw/sentence_11.mp3"
+      ],
+      "moral": "audio/the_eagle_and_the_jackdaw/moral.mp3",
+      "full_story": "audio/the_eagle_and_the_jackdaw/full_story.mp3"
+    },
+    "belling_the_cat": {
+      "title": "Belling The Cat",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/belling_the_cat/sentence_0.mp3",
+        "audio/belling_the_cat/sentence_1.mp3",
+        "audio/belling_the_cat/sentence_2.mp3",
+        "audio/belling_the_cat/sentence_3.mp3",
+        "audio/belling_the_cat/sentence_4.mp3",
+        "audio/belling_the_cat/sentence_5.mp3",
+        "audio/belling_the_cat/sentence_6.mp3",
+        "audio/belling_the_cat/sentence_7.mp3",
+        "audio/belling_the_cat/sentence_8.mp3",
+        "audio/belling_the_cat/sentence_9.mp3"
+      ],
+      "moral": "audio/belling_the_cat/moral.mp3",
+      "full_story": "audio/belling_the_cat/full_story.mp3"
+    },
+    "the_town_mouse_and_the_country_mouse": {
+      "title": "The Town Mouse And The Country Mouse",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_town_mouse_and_the_country_mouse/sentence_0.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_1.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_2.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_3.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_4.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_5.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_6.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_7.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_8.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_9.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_10.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_11.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_12.mp3",
+        "audio/the_town_mouse_and_the_country_mouse/sentence_13.mp3"
+      ],
+      "moral": "audio/the_town_mouse_and_the_country_mouse/moral.mp3",
+      "full_story": "audio/the_town_mouse_and_the_country_mouse/full_story.mp3"
+    },
+    "the_farmer_and_the_stork": {
+      "title": "The Farmer And The Stork",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_farmer_and_the_stork/sentence_0.mp3",
+        "audio/the_farmer_and_the_stork/sentence_1.mp3",
+        "audio/the_farmer_and_the_stork/sentence_2.mp3",
+        "audio/the_farmer_and_the_stork/sentence_3.mp3",
+        "audio/the_farmer_and_the_stork/sentence_4.mp3",
+        "audio/the_farmer_and_the_stork/sentence_5.mp3",
+        "audio/the_farmer_and_the_stork/sentence_6.mp3"
+      ],
+      "moral": "audio/the_farmer_and_the_stork/moral.mp3",
+      "full_story": "audio/the_farmer_and_the_stork/full_story.mp3"
+    },
+    "the_oxen_and_the_wheels": {
+      "title": "The Oxen And The Wheels",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_oxen_and_the_wheels/sentence_0.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_1.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_2.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_3.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_4.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_5.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_6.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_7.mp3",
+        "audio/the_oxen_and_the_wheels/sentence_8.mp3"
+      ],
+      "moral": "audio/the_oxen_and_the_wheels/moral.mp3",
+      "full_story": "audio/the_oxen_and_the_wheels/full_story.mp3"
+    },
+    "the_sheep_and_the_pig": {
+      "title": "The Sheep And The Pig",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_sheep_and_the_pig/sentence_0.mp3",
+        "audio/the_sheep_and_the_pig/sentence_1.mp3",
+        "audio/the_sheep_and_the_pig/sentence_2.mp3",
+        "audio/the_sheep_and_the_pig/sentence_3.mp3",
+        "audio/the_sheep_and_the_pig/sentence_4.mp3",
+        "audio/the_sheep_and_the_pig/sentence_5.mp3",
+        "audio/the_sheep_and_the_pig/sentence_6.mp3",
+        "audio/the_sheep_and_the_pig/sentence_7.mp3",
+        "audio/the_sheep_and_the_pig/sentence_8.mp3",
+        "audio/the_sheep_and_the_pig/sentence_9.mp3",
+        "audio/the_sheep_and_the_pig/sentence_10.mp3"
+      ],
+      "moral": "audio/the_sheep_and_the_pig/moral.mp3",
+      "full_story": "audio/the_sheep_and_the_pig/full_story.mp3"
+    },
+    "the_dog_the_cock_and_the_fox": {
+      "title": "The Dog, The Cock, And The Fox",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_dog_the_cock_and_the_fox/sentence_0.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_1.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_2.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_3.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_4.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_5.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_6.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_7.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_8.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_9.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_10.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_11.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_12.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_13.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_14.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_15.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_16.mp3",
+        "audio/the_dog_the_cock_and_the_fox/sentence_17.mp3"
+      ],
+      "moral": "audio/the_dog_the_cock_and_the_fox/moral.mp3",
+      "full_story": "audio/the_dog_the_cock_and_the_fox/full_story.mp3"
+    },
+    "the_shepherd_boy_and_the_wolf": {
+      "title": "The Shepherd Boy And The Wolf",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_shepherd_boy_and_the_wolf/sentence_0.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_1.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_2.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_3.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_4.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_5.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_6.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_7.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_8.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_9.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_10.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_11.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_12.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_13.mp3",
+        "audio/the_shepherd_boy_and_the_wolf/sentence_14.mp3"
+      ],
+      "moral": "audio/the_shepherd_boy_and_the_wolf/moral.mp3",
+      "full_story": "audio/the_shepherd_boy_and_the_wolf/full_story.mp3"
+    },
+    "the_bundle_of_sticks": {
+      "title": "The Bundle Of Sticks",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_bundle_of_sticks/sentence_0.mp3",
+        "audio/the_bundle_of_sticks/sentence_1.mp3",
+        "audio/the_bundle_of_sticks/sentence_2.mp3",
+        "audio/the_bundle_of_sticks/sentence_3.mp3",
+        "audio/the_bundle_of_sticks/sentence_4.mp3",
+        "audio/the_bundle_of_sticks/sentence_5.mp3",
+        "audio/the_bundle_of_sticks/sentence_6.mp3",
+        "audio/the_bundle_of_sticks/sentence_7.mp3",
+        "audio/the_bundle_of_sticks/sentence_8.mp3"
+      ],
+      "moral": "audio/the_bundle_of_sticks/moral.mp3",
+      "full_story": "audio/the_bundle_of_sticks/full_story.mp3"
+    },
+    "the_frogs_and_the_ox": {
+      "title": "The Frogs And The Ox",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_frogs_and_the_ox/sentence_0.mp3",
+        "audio/the_frogs_and_the_ox/sentence_1.mp3",
+        "audio/the_frogs_and_the_ox/sentence_2.mp3",
+        "audio/the_frogs_and_the_ox/sentence_3.mp3",
+        "audio/the_frogs_and_the_ox/sentence_4.mp3",
+        "audio/the_frogs_and_the_ox/sentence_5.mp3",
+        "audio/the_frogs_and_the_ox/sentence_6.mp3",
+        "audio/the_frogs_and_the_ox/sentence_7.mp3",
+        "audio/the_frogs_and_the_ox/sentence_8.mp3",
+        "audio/the_frogs_and_the_ox/sentence_9.mp3",
+        "audio/the_frogs_and_the_ox/sentence_10.mp3",
+        "audio/the_frogs_and_the_ox/sentence_11.mp3"
+      ],
+      "moral": "audio/the_frogs_and_the_ox/moral.mp3",
+      "full_story": "audio/the_frogs_and_the_ox/full_story.mp3"
+    },
+    "the_boy_and_the_filberts": {
+      "title": "The Boy And The Filberts",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_boy_and_the_filberts/sentence_0.mp3",
+        "audio/the_boy_and_the_filberts/sentence_1.mp3",
+        "audio/the_boy_and_the_filberts/sentence_2.mp3",
+        "audio/the_boy_and_the_filberts/sentence_3.mp3",
+        "audio/the_boy_and_the_filberts/sentence_4.mp3",
+        "audio/the_boy_and_the_filberts/sentence_5.mp3"
+      ],
+      "moral": "audio/the_boy_and_the_filberts/moral.mp3",
+      "full_story": "audio/the_boy_and_the_filberts/full_story.mp3"
+    },
+    "the_wolf_and_the_crane": {
+      "title": "The Wolf And The Crane",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_wolf_and_the_crane/sentence_0.mp3",
+        "audio/the_wolf_and_the_crane/sentence_1.mp3",
+        "audio/the_wolf_and_the_crane/sentence_2.mp3",
+        "audio/the_wolf_and_the_crane/sentence_3.mp3",
+        "audio/the_wolf_and_the_crane/sentence_4.mp3",
+        "audio/the_wolf_and_the_crane/sentence_5.mp3",
+        "audio/the_wolf_and_the_crane/sentence_6.mp3",
+        "audio/the_wolf_and_the_crane/sentence_7.mp3",
+        "audio/the_wolf_and_the_crane/sentence_8.mp3",
+        "audio/the_wolf_and_the_crane/sentence_9.mp3",
+        "audio/the_wolf_and_the_crane/sentence_10.mp3",
+        "audio/the_wolf_and_the_crane/sentence_11.mp3",
+        "audio/the_wolf_and_the_crane/sentence_12.mp3",
+        "audio/the_wolf_and_the_crane/sentence_13.mp3"
+      ],
+      "moral": "audio/the_wolf_and_the_crane/moral.mp3",
+      "full_story": "audio/the_wolf_and_the_crane/full_story.mp3"
+    },
+    "the_wolf_and_the_kid": {
+      "title": "The Wolf And The Kid",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_wolf_and_the_kid/sentence_0.mp3",
+        "audio/the_wolf_and_the_kid/sentence_1.mp3",
+        "audio/the_wolf_and_the_kid/sentence_2.mp3",
+        "audio/the_wolf_and_the_kid/sentence_3.mp3",
+        "audio/the_wolf_and_the_kid/sentence_4.mp3",
+        "audio/the_wolf_and_the_kid/sentence_5.mp3",
+        "audio/the_wolf_and_the_kid/sentence_6.mp3",
+        "audio/the_wolf_and_the_kid/sentence_7.mp3",
+        "audio/the_wolf_and_the_kid/sentence_8.mp3",
+        "audio/the_wolf_and_the_kid/sentence_9.mp3",
+        "audio/the_wolf_and_the_kid/sentence_10.mp3",
+        "audio/the_wolf_and_the_kid/sentence_11.mp3",
+        "audio/the_wolf_and_the_kid/sentence_12.mp3",
+        "audio/the_wolf_and_the_kid/sentence_13.mp3",
+        "audio/the_wolf_and_the_kid/sentence_14.mp3",
+        "audio/the_wolf_and_the_kid/sentence_15.mp3",
+        "audio/the_wolf_and_the_kid/sentence_16.mp3",
+        "audio/the_wolf_and_the_kid/sentence_17.mp3",
+        "audio/the_wolf_and_the_kid/sentence_18.mp3"
+      ],
+      "moral": "audio/the_wolf_and_the_kid/moral.mp3",
+      "full_story": "audio/the_wolf_and_the_kid/full_story.mp3"
+    },
+    "the_fox_and_the_grapes": {
+      "title": "The Fox And The Grapes",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_fox_and_the_grapes/sentence_0.mp3",
+        "audio/the_fox_and_the_grapes/sentence_1.mp3",
+        "audio/the_fox_and_the_grapes/sentence_2.mp3",
+        "audio/the_fox_and_the_grapes/sentence_3.mp3",
+        "audio/the_fox_and_the_grapes/sentence_4.mp3",
+        "audio/the_fox_and_the_grapes/sentence_5.mp3",
+        "audio/the_fox_and_the_grapes/sentence_6.mp3",
+        "audio/the_fox_and_the_grapes/sentence_7.mp3",
+        "audio/the_fox_and_the_grapes/sentence_8.mp3"
+      ],
+      "moral": "audio/the_fox_and_the_grapes/moral.mp3",
+      "full_story": "audio/the_fox_and_the_grapes/full_story.mp3"
+    },
+    "the_plane_tree": {
+      "title": "The Plane Tree",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_plane_tree/sentence_0.mp3",
+        "audio/the_plane_tree/sentence_1.mp3",
+        "audio/the_plane_tree/sentence_2.mp3",
+        "audio/the_plane_tree/sentence_3.mp3",
+        "audio/the_plane_tree/sentence_4.mp3",
+        "audio/the_plane_tree/sentence_5.mp3",
+        "audio/the_plane_tree/sentence_6.mp3",
+        "audio/the_plane_tree/sentence_7.mp3"
+      ],
+      "moral": "audio/the_plane_tree/moral.mp3",
+      "full_story": "audio/the_plane_tree/full_story.mp3"
+    },
+    "the_kid_and_the_wolf": {
+      "title": "The Kid And The Wolf",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_kid_and_the_wolf/sentence_0.mp3",
+        "audio/the_kid_and_the_wolf/sentence_1.mp3",
+        "audio/the_kid_and_the_wolf/sentence_2.mp3",
+        "audio/the_kid_and_the_wolf/sentence_3.mp3"
+      ],
+      "moral": "audio/the_kid_and_the_wolf/moral.mp3",
+      "full_story": "audio/the_kid_and_the_wolf/full_story.mp3"
+    }
+  }
+}
