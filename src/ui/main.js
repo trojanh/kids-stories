@@ -27,11 +27,123 @@
   // DOM Elements cache
   const appContainer = document.getElementById('app');
 
-  // Global TTS error handling to prevent state desync
+  // Safe HTML escaping
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // Pre-split sentence into words with character indices for real-time karaoke tracking
+  function renderSentenceWithWords(sentence, sentenceIdx) {
+    if (!sentence) return '';
+    const regex = /\S+/g;
+    let html = '';
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(sentence)) !== null) {
+      if (match.index > lastIndex) {
+        html += escapeHtml(sentence.substring(lastIndex, match.index));
+      }
+      const word = match[0];
+      const start = match.index;
+      const end = start + word.length;
+      html += `<span class="story-word" data-sent-idx="${sentenceIdx}" data-start="${start}" data-end="${end}">${escapeHtml(word)}</span>`;
+      lastIndex = match.index + word.length;
+    }
+    if (lastIndex < sentence.length) {
+      html += escapeHtml(sentence.substring(lastIndex));
+    }
+    return html;
+  }
+
+  // Karaoke word boundary highlighter
+  function highlightSpeakingWord(sentIdx, charIndex) {
+    const sentenceEl = document.getElementById(`storySent_${sentIdx}`);
+    if (!sentenceEl) return;
+
+    const words = sentenceEl.querySelectorAll('.story-word');
+    if (!words || words.length === 0) return;
+
+    let activeWord = null;
+    for (let i = 0; i < words.length; i++) {
+      const w = words[i];
+      const start = parseInt(w.getAttribute('data-start'), 10);
+      const end = parseInt(w.getAttribute('data-end'), 10);
+      if (charIndex >= start && charIndex < end) {
+        activeWord = w;
+        break;
+      }
+    }
+
+    if (!activeWord) {
+      for (let i = 0; i < words.length; i++) {
+        const w = words[i];
+        const end = parseInt(w.getAttribute('data-end'), 10);
+        if (charIndex <= end) {
+          activeWord = w;
+          break;
+        }
+      }
+    }
+
+    words.forEach((w) => {
+      if (w === activeWord) {
+        w.classList.add('word-speaking');
+      } else {
+        w.classList.remove('word-speaking');
+      }
+    });
+  }
+
+  function clearSpeakingWords() {
+    document.querySelectorAll('.story-word.word-speaking').forEach((w) => {
+      w.classList.remove('word-speaking');
+    });
+  }
+
+  function updateVoiceSelectOptions() {
+    const voiceSelect = document.getElementById('voiceSelect');
+    if (!voiceSelect || !window.TTS) return;
+
+    const rankedVoices = TTS.getRankedVoices();
+    if (rankedVoices.length === 0) return;
+
+    const bestVoice = TTS.getBestDefaultVoice();
+    const currentVal = voiceSelect.value || (bestVoice ? bestVoice.voiceURI : '');
+
+    voiceSelect.innerHTML = rankedVoices
+      .map(
+        (v) => `
+      <option value="${v.voiceURI}" ${v.voiceURI === currentVal ? 'selected' : ''}>
+        ${TTS.formatVoiceLabel(v)}
+      </option>
+    `
+      )
+      .join('');
+  }
+
+  // Global TTS lifecycle and boundary handling
   if (window.TTS) {
     TTS.onError = () => {
       isSpeaking = false;
+      clearSpeakingWords();
       updateSpeakingStateUI(false);
+    };
+
+    TTS.onBoundary = (boundary) => {
+      if (boundary.name === 'word') {
+        highlightSpeakingWord(currentSentenceIndex, boundary.charIndex);
+      }
+    };
+
+    TTS.onVoicesReady = () => {
+      updateVoiceSelectOptions();
     };
   }
 
@@ -134,6 +246,7 @@
   function renderList() {
     currentStory = null;
     TTS.stop();
+    clearSpeakingWords();
     resetCatalogSEO();
 
     const filtered = getFilteredStories();
@@ -500,7 +613,8 @@
     const panelSvg = SvgArt.generatePanelSvg(story, currentSentenceIndex);
 
     // Voices for selection
-    const voices = TTS.getVoices();
+    const rankedVoices = TTS.getRankedVoices();
+    const bestVoice = TTS.getBestDefaultVoice();
     const currentRate = TTS.getRate();
 
     appContainer.innerHTML = `
@@ -554,7 +668,7 @@
                   class="story-read-sentence ${idx === currentSentenceIndex ? 'active-reading' : ''}"
                   id="storySent_${idx}"
                   data-index="${idx}"
-                >${sentence} </span>
+                >${renderSentenceWithWords(sentence, idx)} </span>
               `
                 )
                 .join('')}
@@ -579,23 +693,25 @@
                 <span class="speed-value-badge" id="speedDisplay">${currentRate.toFixed(1)}×</span>
               </div>
 
-              <!-- Voice Selector (if multiple available) -->
+              <!-- Voice Selector with quality badges and preview button -->
               ${
-                voices.length > 1
+                rankedVoices.length > 0
                   ? `
                 <div class="voice-select-group">
-                  <select id="voiceSelect" title="Select Voice">
-                    ${voices
-                      .filter((v) => v.lang && v.lang.startsWith('en'))
+                  <select id="voiceSelect" title="Select Voice Narration">
+                    ${rankedVoices
                       .map(
                         (v) => `
-                      <option value="${v.voiceURI}" ${v === TTS.getBestDefaultVoice() ? 'selected' : ''}>
-                        ${v.name} (${v.lang})
+                      <option value="${v.voiceURI}" ${bestVoice && v.voiceURI === bestVoice.voiceURI ? 'selected' : ''}>
+                        ${TTS.formatVoiceLabel(v)}
                       </option>
                     `
                       )
                       .join('')}
                   </select>
+                  <button type="button" class="voice-preview-btn" id="previewVoiceBtn" title="Test this voice">
+                    🔊 Preview
+                  </button>
                 </div>
               `
                   : ''
@@ -642,6 +758,7 @@
 
   function updateSentenceHighlight(index, speaking) {
     if (!currentStory) return;
+    clearSpeakingWords();
     document.querySelectorAll('.story-read-sentence').forEach((el, i) => {
       if (i === index) {
         el.classList.add('active-reading');
@@ -718,7 +835,10 @@
         activeSentenceEl.classList.add('speaking');
       } else {
         activeSentenceEl.classList.remove('speaking');
+        clearSpeakingWords();
       }
+    } else if (!speaking) {
+      clearSpeakingWords();
     }
   }
 
@@ -832,6 +952,30 @@
       });
     }
 
+    const previewBtn = document.getElementById('previewVoiceBtn');
+    if (previewBtn) {
+      previewBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (autoAdvanceTimeout) {
+          clearTimeout(autoAdvanceTimeout);
+          autoAdvanceTimeout = null;
+        }
+        clearSpeakingWords();
+        updateSpeakingStateUI(false);
+        const select = document.getElementById('voiceSelect');
+        const uri = select ? select.value : null;
+        previewBtn.disabled = true;
+        previewBtn.innerText = '⏳ Playing...';
+        TTS.previewVoice(uri, () => {
+          if (previewBtn) {
+            previewBtn.disabled = false;
+            previewBtn.innerText = '🔊 Preview';
+          }
+        });
+      });
+    }
+
     const voiceSelect = document.getElementById('voiceSelect');
     if (voiceSelect) {
       voiceSelect.addEventListener('change', (e) => {
@@ -854,6 +998,7 @@
   function renderMoralScreen() {
     const story = currentStory;
     TTS.stop();
+    clearSpeakingWords();
 
     // Trigger celebratory confetti
     triggerConfetti();
