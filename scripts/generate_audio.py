@@ -250,6 +250,9 @@ async def main():
     parser = argparse.ArgumentParser(description="Batch generate continuous single-audio files with timestamp cue points for kids storybooks.")
     parser.add_argument("--stories", default="all", help="Comma-separated story IDs or 'all' (default: all).")
     parser.add_argument("--story", default=None, help="Alias for --stories <single_story_id>.")
+    parser.add_argument("--concurrency", type=int, default=5, help="Number of stories to generate concurrently in parallel (default: 5).")
+    parser.add_argument("--batch-index", type=int, default=None, help="Batch index (0-based) for manual multi-process batching.")
+    parser.add_argument("--total-batches", type=int, default=None, help="Total number of batches for manual multi-process batching.")
     parser.add_argument("--limit", type=int, default=None, help="Limit number of stories to process.")
     parser.add_argument("--voice", default=DEFAULT_VOICE, help=f"Edge-TTS voice (default: {DEFAULT_VOICE}).")
     parser.add_argument("--rate", default=DEFAULT_RATE, help=f"Speech rate (default: {rate_help}).")
@@ -290,28 +293,50 @@ async def main():
         else:
             selected_stories = [s for s in candidates if not is_story_complete(s, manifest)]
 
+    # Support batch slicing if requested
+    if args.batch_index is not None and args.total_batches is not None:
+        selected_stories = [s for idx, s in enumerate(selected_stories) if idx % args.total_batches == args.batch_index]
+
     if args.limit:
         selected_stories = selected_stories[:args.limit]
 
-    print(f"Starting Single Continuous Audio Pipeline (Approach 2)...")
+    batch_info = f" [Batch {args.batch_index + 1}/{args.total_batches}]" if args.batch_index is not None else ""
+    print(f"Starting Single Continuous Audio Pipeline (Approach 2){batch_info}...")
+    print(f"• Concurrency: {args.concurrency} parallel streams")
     print(f"• Voice: {args.voice} (Rate: {args.rate}, Pitch: {args.pitch})")
     print(f"• Stories to process: {len(selected_stories)} (out of {len(all_stories)} total)")
 
+    sem = asyncio.Semaphore(args.concurrency)
+    manifest_lock = asyncio.Lock()
     total_generated = 0
-    for s in selected_stories:
-        try:
-            entry = await generate_single_story_audio(s, args.voice, args.rate, args.pitch, args.overwrite)
-            manifest = load_manifest(args.voice)
-            manifest["stories"][s["id"]] = entry
-            save_manifest_to_disk(manifest)
-            total_generated += 1
-        except Exception as e:
-            print(f"   ⚠️ Error processing '{s.get('id')}': {e}", file=sys.stderr)
+    completed_counter = 0
 
+    async def worker(story):
+        nonlocal total_generated, completed_counter
+        async with sem:
+            try:
+                entry = await generate_single_story_audio(story, args.voice, args.rate, args.pitch, args.overwrite)
+                async with manifest_lock:
+                    m = load_manifest(args.voice)
+                    m["stories"][story["id"]] = entry
+                    save_manifest_to_disk(m)
+                    total_generated += 1
+                    completed_counter += 1
+                    print(f"   📊 Progress: {completed_counter}/{len(selected_stories)} completed ({story['id']})")
+                return entry
+            except Exception as e:
+                print(f"   ⚠️ Error processing '{story.get('id')}': {e}", file=sys.stderr)
+                return None
+
+    tasks = [worker(s) for s in selected_stories]
+    await asyncio.gather(*tasks)
+
+    # Final sync
+    manifest = load_manifest(args.voice)
     save_manifest_to_disk(manifest)
 
     print("\n" + "=" * 60)
-    print(f"✨ Single continuous audio pipeline run complete!")
+    print(f"✨ Single continuous audio pipeline run complete!{batch_info}")
     print(f"• Stories generated this run: {total_generated}")
     print(f"• Total narrated stories in manifest: {len(manifest.get('stories', {}))}")
     print(f"• Manifest synced to: {SRC_UI_MANIFEST_FILE}, {SRC_DATA_MANIFEST_FILE}, {DOCS_MANIFEST_FILE}")
