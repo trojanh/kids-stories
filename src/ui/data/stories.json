@@ -471,7 +471,8 @@
     "animal": "eagle",
     "character": [
       "eagle",
-      "lamb"
+      "lamb",
+      "jackdaw"
     ],
     "tags": [
       "eagle",
@@ -512,7 +513,7 @@
     "id": "the_boy_and_the_filberts",
     "title": "The Boy And The Filberts",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "boy",
       "mother"
@@ -702,7 +703,7 @@
     "id": "the_bundle_of_sticks",
     "title": "The Bundle Of Sticks",
     "theme": "Family",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "father",
       "sons"
@@ -955,7 +956,7 @@
     "id": "the_gnat_and_the_bull",
     "title": "The Gnat And The Bull",
     "theme": "Animals",
-    "animal": "fly",
+    "animal": "gnat",
     "character": [
       "fly",
       "bull",
@@ -989,7 +990,7 @@
     "id": "the_plane_tree",
     "title": "The Plane Tree",
     "theme": "Nature",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "traveller",
       "plane tree"
@@ -1101,7 +1102,7 @@
     "id": "the_travelers_and_the_purse",
     "title": "The Travelers And The Purse",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "traveller",
       "companion"
@@ -1219,7 +1220,7 @@
     "id": "the_owl_and_the_grasshopper",
     "title": "The Owl And The Grasshopper",
     "theme": "Animals",
-    "animal": "mice",
+    "animal": "owl",
     "character": [
       "mice",
       "grasshopper",
@@ -1309,7 +1310,7 @@
     "id": "the_oak_and_the_reeds",
     "title": "The Oak And The Reeds",
     "theme": "Nature",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "oak",
       "reed"
@@ -1356,11 +1357,12 @@
     "id": "the_rat_and_the_elephant",
     "title": "The Rat And The Elephant",
     "theme": "Animals",
-    "animal": "dog",
+    "animal": "rat",
     "character": [
       "dog",
       "cat",
-      "elephant"
+      "elephant",
+      "rat"
     ],
     "tags": [
       "dog",
@@ -1673,7 +1675,7 @@
     "id": "the_leap_at_rhodes",
     "title": "The Leap At Rhodes",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "boaster",
       "listener"
@@ -2434,9 +2436,11 @@
     "id": "the_vain_jackdaw_and_his_borrowed_feathers",
     "title": "The Vain Jackdaw And His Borrowed Feathers",
     "theme": "Animals",
-    "animal": "fly",
+    "animal": "jackdaw",
     "character": [
-      "fly"
+      "fly",
+      "jackdaw",
+      "peacock"
     ],
     "tags": [
       "fly"
@@ -2564,7 +2568,7 @@
     "id": "the_monkey_and_the_cat",
     "title": "The Monkey And The Cat",
     "theme": "Animals",
-    "animal": "mice",
+    "animal": "monkey",
     "character": [
       "mice",
       "monkey",
@@ -2775,9 +2779,10 @@
     "id": "the_heron",
     "title": "The Heron",
     "theme": "Animals",
-    "animal": "fish",
+    "animal": "heron",
     "character": [
-      "fish"
+      "fish",
+      "heron"
     ],
     "tags": [
       "fish",
@@ -3206,7 +3211,7 @@
     "id": "the_farmer_and_his_sons",
     "title": "The Farmer And His Sons",
     "theme": "Family",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "farmer",
       "sons"
@@ -3243,7 +3248,7 @@
     "id": "the_two_pots",
     "title": "The Two Pots",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "brass pot",
       "earthen pot"
@@ -3584,7 +3589,7 @@
     "id": "the_astrologer",
     "title": "The Astrologer",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "astrologer",
       "villager"
@@ -3655,7 +3660,7 @@
     "id": "mercury_and_the_woodman",
     "title": "Mercury And The Woodman",
     "theme": "Mythology",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "woodman",
       "mercury"
@@ -3813,7 +3818,8 @@
     "animal": "eagle",
     "character": [
       "eagle",
-      "fly"
+      "fly",
+      "serpent"
     ],
     "tags": [
       "eagle",
@@ -3929,7 +3935,8 @@
     "animal": "eagle",
     "character": [
       "eagle",
-      "hare"
+      "hare",
+      "beetle"
     ],
     "tags": [
       "eagle",
@@ -4181,7 +4188,7 @@
     "id": "the_miser",
     "title": "The Miser",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "miser",
       "thief",
@@ -4575,7 +4582,7 @@
     "id": "the_boy_and_the_nettles",
     "title": "The Boy And The Nettles",
     "theme": "Life Lessons",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "boy",
       "mother"
@@ -5158,10 +5165,12 @@
     "id": "the_bees_and_wasps_and_the_hornet",
     "title": "The Bees And Wasps, And The Hornet",
     "theme": "Animals",
-    "animal": "ant",
+    "animal": "bee",
     "character": [
       "ant",
-      "bee"
+      "bee",
+      "wasp",
+      "hornet"
     ],
     "tags": [
       "ant",
@@ -5267,7 +5276,8 @@
     "character": [
       "mouse",
       "mice",
-      "cat"
+      "cat",
+      "rat"
     ],
     "tags": [
       "mouse",
@@ -5493,7 +5503,7 @@
     "id": "the_man_and_the_satyr",
     "title": "The Man And The Satyr",
     "theme": "Mythology",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "man",
       "satyr"
@@ -5582,7 +5592,8 @@
     "theme": "Animals",
     "animal": "crow",
     "character": [
-      "crow"
+      "crow",
+      "swallow"
     ],
     "tags": [
       "crow",
@@ -5766,7 +5777,7 @@
     "id": "the_north_wind_and_the_sun",
     "title": "The North Wind And The Sun",
     "theme": "Nature",
-    "animal": "unknown",
+    "animal": "None",
     "character": [
       "north wind",
       "sun",

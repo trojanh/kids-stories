@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://trojanh.github.io/kids-stories/sitemap.xml
