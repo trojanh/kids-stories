@@ -53,7 +53,7 @@ const server = http.createServer((req, res) => {
 
   let filePath;
   if (reqPath.startsWith('/data/')) {
-    // Serve JSON or other data files from src/data (or src/ui/data fallback)
+    // Check src/data first, then fallback to src/ui/data
     const p1 = path.join(PROJECT_ROOT, 'src', reqPath);
     const p2 = path.join(PROJECT_ROOT, 'src', 'ui', reqPath);
     filePath = fs.existsSync(p1) ? p1 : p2;
