@@ -73,7 +73,7 @@ def build():
     (SRC_UI / "data").mkdir(parents=True, exist_ok=True)
 
     # 1. Copy UI assets into docs/
-    for file_name in ["index.html", "style.css", "main.js", "tts.js", "svg-art.js"]:
+    for file_name in ["index.html", "style.css", "main.js", "tts.js", "svg-art.js", "rough.js"]:
         src_file = SRC_UI / file_name
         dest_file = DOCS_DIR / file_name
         if src_file.exists():

@@ -606,6 +606,11 @@
                 <input type="checkbox" id="autoAdvanceToggle" ${autoAdvance ? 'checked' : ''} />
                 <span>Auto-Advance</span>
               </label>
+
+              <!-- Art Style Toggle: Rough.js Sketch vs Clean Vector -->
+              <button id="artStyleToggleBtn" class="art-style-btn" title="Toggle Illustration Style (Rough.js vs Vector)" onclick="window.StoryApp.toggleArtStyle()">
+                ${SvgArt.getRenderMode() === 'rough' ? '✏️ Style: Rough Sketch' : '✨ Style: Clean Vector'}
+              </button>
             </div>
 
             <!-- Primary Playback Buttons -->
@@ -1044,9 +1049,26 @@
     renderList();
   }
 
+  function toggleArtStyle() {
+    const current = SvgArt.getRenderMode();
+    const next = current === 'rough' ? 'clean' : 'rough';
+    SvgArt.setRenderMode(next);
+
+    const btn = document.getElementById('artStyleToggleBtn');
+    if (btn) {
+      btn.innerText = next === 'rough' ? '✏️ Style: Rough Sketch' : '✨ Style: Clean Vector';
+    }
+
+    const stage = document.querySelector('.reader-stage');
+    if (stage && currentStory) {
+      stage.innerHTML = SvgArt.generatePanelSvg(currentStory, currentSentenceIndex);
+    }
+  }
+
   // Global namespace for inline event hooks
   window.StoryApp = {
     toggleFav: toggleFavorite,
+    toggleArtStyle: toggleArtStyle,
   };
 
   window.addEventListener('hashchange', router);
