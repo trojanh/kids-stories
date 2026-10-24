@@ -48,6 +48,7 @@
       
 
         <!-- Character 1 (Protagonist) -->
+        
         <g class="anim-character">
           
       <g transform="translate(115, 145) scale(0.65, 0.65) translate(-50, -50)">
@@ -68,6 +69,7 @@
       </g>
     
         </g>
+        
 
         <!-- Character 2 (Companion/Antagonist) -->
         
@@ -100,12 +102,5 @@
         <!-- Sleeping zZz Animation (Targeting the EXACT character who is sleeping!) -->
         
 
-        <!-- Panel Badge -->
-        <g transform="translate(10, 15)">
-          <rect width="70" height="24" rx="12" fill="rgba(0,0,0,0.4)" />
-          <text x="35" y="16" fill="#FFFFFF" font-family="'Nunito', sans-serif" font-size="11" font-weight="700" text-anchor="middle">
-            Panel 8/12
-          </text>
-        </g>
       </svg>
     
