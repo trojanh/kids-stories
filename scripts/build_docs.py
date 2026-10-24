@@ -86,7 +86,21 @@ def build():
     shutil.copy2(stories_src, SRC_UI / "data" / "stories.json")
     print("Copied stories.json -> docs/data/stories.json and src/ui/data/stories.json")
 
-    # 3. Create .nojekyll in docs/ to ensure GitHub Pages doesn't ignore any files or folders
+    # 3. Copy audio_manifest.json and audio directory if present
+    manifest_src = SRC_UI / "data" / "audio_manifest.json"
+    if manifest_src.exists():
+        shutil.copy2(manifest_src, DOCS_DIR / "data" / "audio_manifest.json")
+        print("Copied audio_manifest.json -> docs/data/audio_manifest.json")
+
+    audio_src = SRC_UI / "audio"
+    if audio_src.exists():
+        audio_dest = DOCS_DIR / "audio"
+        if audio_dest.exists():
+            shutil.rmtree(audio_dest)
+        shutil.copytree(audio_src, audio_dest)
+        print("Copied pre-generated audio tree -> docs/audio/")
+
+    # 4. Create .nojekyll in docs/ to ensure GitHub Pages doesn't ignore any files or folders
     nojekyll = DOCS_DIR / ".nojekyll"
     nojekyll.write_text("", encoding="utf-8")
     print("Created docs/.nojekyll for GitHub Pages")

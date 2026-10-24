@@ -7,6 +7,7 @@
     "start": "node scripts/serveUi.js 8080",
     "dev": "node scripts/serveUi.js 8080",
     "build": "python3 scripts/build_docs.py",
+    "generate:audio": "python3 scripts/generate_audio.py",
     "test": "python3 -m pytest src/data/test_stories.py -v"
   },
   "keywords": [

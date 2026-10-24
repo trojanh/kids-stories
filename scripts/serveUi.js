@@ -21,6 +21,9 @@ function getMime(ext) {
     '.json': 'application/json',
     '.xml': 'application/xml',
     '.txt': 'text/plain',
+    '.mp3': 'audio/mpeg',
+    '.wav': 'audio/wav',
+    '.ogg': 'audio/ogg',
   };
   return map[ext.toLowerCase()] || 'application/octet-stream';
 }

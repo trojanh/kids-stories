@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "default_voice": "en-US-AnaNeural",
+  "stories": {
+    "tiger_and_mice": {
+      "title": "The Tiger and the Mice",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/tiger_and_mice/sentence_0.mp3",
+        "audio/tiger_and_mice/sentence_1.mp3",
+        "audio/tiger_and_mice/sentence_2.mp3",
+        "audio/tiger_and_mice/sentence_3.mp3",
+        "audio/tiger_and_mice/sentence_4.mp3",
+        "audio/tiger_and_mice/sentence_5.mp3",
+        "audio/tiger_and_mice/sentence_6.mp3"
+      ],
+      "moral": "audio/tiger_and_mice/moral.mp3",
+      "full_story": "audio/tiger_and_mice/full_story.mp3"
+    },
+    "crow_and_water_pot": {
+      "title": "The Crow and the Water Pot",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/crow_and_water_pot/sentence_0.mp3",
+        "audio/crow_and_water_pot/sentence_1.mp3",
+        "audio/crow_and_water_pot/sentence_2.mp3",
+        "audio/crow_and_water_pot/sentence_3.mp3",
+        "audio/crow_and_water_pot/sentence_4.mp3",
+        "audio/crow_and_water_pot/sentence_5.mp3",
+        "audio/crow_and_water_pot/sentence_6.mp3"
+      ],
+      "moral": "audio/crow_and_water_pot/moral.mp3",
+      "full_story": "audio/crow_and_water_pot/full_story.mp3"
+    },
+    "tortoise_and_hare": {
+      "title": "The Tortoise and the Hare",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/tortoise_and_hare/sentence_0.mp3",
+        "audio/tortoise_and_hare/sentence_1.mp3",
+        "audio/tortoise_and_hare/sentence_2.mp3",
+        "audio/tortoise_and_hare/sentence_3.mp3",
+        "audio/tortoise_and_hare/sentence_4.mp3",
+        "audio/tortoise_and_hare/sentence_5.mp3",
+        "audio/tortoise_and_hare/sentence_6.mp3"
+      ],
+      "moral": "audio/tortoise_and_hare/moral.mp3",
+      "full_story": "audio/tortoise_and_hare/full_story.mp3"
+    },
+    "fox_and_grapes": {
+      "title": "The Fox and the Grapes",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/fox_and_grapes/sentence_0.mp3",
+        "audio/fox_and_grapes/sentence_1.mp3",
+        "audio/fox_and_grapes/sentence_2.mp3",
+        "audio/fox_and_grapes/sentence_3.mp3",
+        "audio/fox_and_grapes/sentence_4.mp3",
+        "audio/fox_and_grapes/sentence_5.mp3",
+        "audio/fox_and_grapes/sentence_6.mp3"
+      ],
+      "moral": "audio/fox_and_grapes/moral.mp3",
+      "full_story": "audio/fox_and_grapes/full_story.mp3"
+    },
+    "the_lion_and_the_mouse": {
+      "title": "The Lion And The Mouse",
+      "voice": "en-US-AnaNeural",
+      "sentences": [
+        "audio/the_lion_and_the_mouse/sentence_0.mp3",
+        "audio/the_lion_and_the_mouse/sentence_1.mp3",
+        "audio/the_lion_and_the_mouse/sentence_2.mp3",
+        "audio/the_lion_and_the_mouse/sentence_3.mp3",
+        "audio/the_lion_and_the_mouse/sentence_4.mp3",
+        "audio/the_lion_and_the_mouse/sentence_5.mp3",
+        "audio/the_lion_and_the_mouse/sentence_6.mp3",
+        "audio/the_lion_and_the_mouse/sentence_7.mp3",
+        "audio/the_lion_and_the_mouse/sentence_8.mp3",
+        "audio/the_lion_and_the_mouse/sentence_9.mp3",
+        "audio/the_lion_and_the_mouse/sentence_10.mp3",
+        "audio/the_lion_and_the_mouse/sentence_11.mp3"
+      ],
+      "moral": "audio/the_lion_and_the_mouse/moral.mp3",
+      "full_story": "audio/the_lion_and_the_mouse/full_story.mp3"
+    }
+  }
+}

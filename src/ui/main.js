@@ -145,6 +145,17 @@
     TTS.onVoicesReady = () => {
       updateVoiceSelectOptions();
     };
+
+    TTS.onManifestReady = () => {
+      if (currentStory) {
+        const badgeContainer = document.getElementById('narrationBadgeContainer');
+        if (badgeContainer) {
+          badgeContainer.innerHTML = TTS.hasStudioAudio(currentStory.id)
+            ? `<span class="badge-studio-audio" title="High-fidelity pre-generated studio narration">🎙️ Studio Narration (HQ)</span>`
+            : `<span class="badge-browser-audio" title="Browser-synthesized voice">🔊 Browser Voice</span>`;
+        }
+      }
+    };
   }
 
   // Load dataset
@@ -635,8 +646,17 @@
           <!-- Story Header -->
           <div class="reader-header">
             <div class="reader-title-area">
-              <h2>${story.title}</h2>
-              <p style="font-size: 0.85rem; color: var(--text-muted);">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                <h2>${story.title}</h2>
+                <div id="narrationBadgeContainer">
+                  ${
+                    TTS.hasStudioAudio(story.id)
+                      ? `<span class="badge-studio-audio" title="High-fidelity pre-generated studio narration">🎙️ Studio Narration (HQ)</span>`
+                      : `<span class="badge-browser-audio" title="Browser-synthesized voice">🔊 Browser Voice</span>`
+                  }
+                </div>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
                 Animal: <strong>${story.animal}</strong> • Characters: ${story.character.join(', ')}
               </p>
             </div>
@@ -810,7 +830,7 @@
     isSpeaking = true;
     updateSpeakingStateUI(true);
 
-    TTS.speak(sentence, () => {
+    TTS.speakStorySentence(currentStory.id, currentSentenceIndex, sentence, () => {
       isSpeaking = false;
       updateSpeakingStateUI(false);
 
@@ -1004,7 +1024,7 @@
     triggerConfetti();
 
     // Read out the moral
-    TTS.speak(`In the end, the story reminds us: ${story.moral}`);
+    TTS.speakMoral(story.id, `In the end, the story reminds us: ${story.moral}`);
 
     // Generate story thumbnail as the background illustration
     const thumbSvg = SvgArt.generateThumbnailSvg(story);
@@ -1102,7 +1122,7 @@
           fullStorySpeaking = true;
           readFullBtn.innerHTML = '⏸️ Stop Narration';
           const fullText = story.text.join(' ') + ` In the end, the story reminds us: ${story.moral}`;
-          TTS.speak(fullText, () => {
+          TTS.speakFullStory(story.id, fullText, () => {
             fullStorySpeaking = false;
             if (readFullBtn) readFullBtn.innerHTML = '🔊 Listen to Full Story';
           });
