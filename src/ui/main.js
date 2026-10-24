@@ -290,7 +290,7 @@
 
       <footer class="site-footer">
         <p>✨ Magic Kids Storybook • Crafted with ❤️ for Curious Young Readers</p>
-        <p style="margin-top: 0.25rem; font-size: 0.8rem; opacity: 0.8;">Speech powered by Web Speech API • Works offline & on GitHub Pages</p>
+        <p style="margin-top: 0.25rem; font-size: 0.8rem; opacity: 0.8;">Speech powered by Web Speech API • Works offline</p>
       </footer>
     `;
 
