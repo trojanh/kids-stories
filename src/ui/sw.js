@@ -3,14 +3,14 @@
  * Provides offline reading, instant app launch, and background asset caching.
  */
 
-const CACHE_NAME = 'talepickle-v1.4';
+const CACHE_NAME = 'talepickle-v2.1';
 
 const PRECACHE_ASSETS = [
   './',
   'index.html',
-  'style.css?v=1.3',
-  'main.js?v=2.0',
-  'tts.js?v=2.0',
+  'style.css?v=2.1',
+  'main.js?v=2.1',
+  'tts.js?v=2.1',
   'svg-art.js?v=2.0',
   'rough.js?v=2.0',
   'manifest.webmanifest',

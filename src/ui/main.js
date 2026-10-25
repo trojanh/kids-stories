@@ -228,7 +228,8 @@
         const res = await fetch(p);
         if (res.ok) {
           stories = await res.json();
-          console.log(`Loaded ${stories.length} stories from ${p}`);
+          randomizedStories = shuffleArray(stories);
+          console.log(`Loaded ${stories.length} stories from ${p} (randomized listing order)`);
           return;
         }
       } catch (e) {

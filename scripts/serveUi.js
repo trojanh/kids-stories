@@ -83,7 +83,7 @@ const server = http.createServer((req, res) => {
     if (isAudio) {
       // High-performance long-term caching for static audio assets
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    } else if (ext === '.json' || ext === '.svg') {
+    } else if (ext === '.svg') {
       res.setHeader('Cache-Control', 'public, max-age=3600');
     } else {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');

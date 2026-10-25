@@ -1283,6 +1283,9 @@ body {
   }
 
   /* Sticky Illustration Stage on Mobile */
+  .reader-card {
+    overflow: visible;
+  }
   .reader-stage {
     position: sticky;
     top: 0;
