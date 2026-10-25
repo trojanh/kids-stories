@@ -6080,14 +6080,13 @@
     "moral": "The very things that make us different are often our greatest strengths."
   },
   {
-    "id": "chintu_the_brave_hedgehog",
-    "title": "Chintu and His Protective Quills",
+    "id": "spike_the_brave_hedgehog",
+    "title": "Spike and His Spiky Armor",
     "theme": "Animals",
     "animal": "hedgehog",
     "character": [
       "hedgehog",
       "rabbit",
-      "squirrel",
       "fox"
     ],
     "tags": [
@@ -6097,28 +6096,28 @@
     ],
     "length": "short",
     "text": [
-      "In the Sundarbans forest, Chintu the hedgehog was sad because he had prickly quills instead of soft fur like Cheeku the rabbit.",
-      "Whenever Saahi hedgehogs feel scared, they naturally tuck in their limbs and turn into a tight, spiky ball.",
-      "One sunny afternoon during a game of hide-and-seek, a cunning fox named Lallu stalked toward Cheeku.",
-      "Cheeku froze in terror, unable to move his feet as the hungry fox closed in.",
-      "Chintu quickly curled into a firm spiky ball and rolled down the slope like a bowling ball.",
-      "Chintu slammed straight into Lallu's tender paw, making the fox yelp in agony and flee.",
-      "Cheeku hugged his savior, reminding Chintu that his unique spikes were a true gift."
+      "In the Pinecone Woods, Spike the hedgehog was sad because he had prickly quills instead of soft fur like Clover the rabbit.",
+      "Whenever little hedgehogs feel scared, they naturally tuck in their paws and turn into a tight, spiky ball.",
+      "One sunny afternoon during a game of hide-and-seek, a hungry fox named Rusty crept toward Clover.",
+      "Clover froze in fear, unable to move her feet as the sneaky fox closed in.",
+      "Spike quickly curled into a firm spiky ball and rolled down the hill like a bowling ball.",
+      "Spike bumped straight into Rusty's tender paw, making the fox yelp in agony and flee.",
+      "Clover hugged her brave friend, reminding Spike that his special quills were a true gift."
     ],
     "panels": [
-      "chintu_the_brave_hedgehog_1.svg",
-      "chintu_the_brave_hedgehog_2.svg",
-      "chintu_the_brave_hedgehog_3.svg",
-      "chintu_the_brave_hedgehog_4.svg",
-      "chintu_the_brave_hedgehog_5.svg",
-      "chintu_the_brave_hedgehog_6.svg",
-      "chintu_the_brave_hedgehog_7.svg"
+      "spike_the_brave_hedgehog_1.svg",
+      "spike_the_brave_hedgehog_2.svg",
+      "spike_the_brave_hedgehog_3.svg",
+      "spike_the_brave_hedgehog_4.svg",
+      "spike_the_brave_hedgehog_5.svg",
+      "spike_the_brave_hedgehog_6.svg",
+      "spike_the_brave_hedgehog_7.svg"
     ],
     "moral": "Everyone is built with a special quality that becomes their greatest power."
   },
   {
-    "id": "golu_the_strong_shell",
-    "title": "Golu and the Shield Shell",
+    "id": "toby_the_strong_shell",
+    "title": "Toby and the Shield Shell",
     "theme": "Animals",
     "animal": "tortoise",
     "character": [
@@ -6134,28 +6133,28 @@
     ],
     "length": "short",
     "text": [
-      "Beside a sparkling lake, Golu the tortoise felt sad because he walked so slowly under his heavy shell.",
-      "His friend Neelu the deer could sprint like the wind, while Golu could only crawl step by step.",
-      "One afternoon, a fierce wildcat named Kalu leaped out of the shadows toward little baby bunny Gappu.",
-      "Gappu tripped in fear, and the wildcat pounced forward with razor-sharp claws extended.",
-      "Golu moved quickly over Gappu and pulled his head and legs deep inside his rock-hard shell.",
-      "Kalu swiped and bit the tough shell, hurting his own claws and teeth before running away crying.",
-      "Gappu was safe, and Golu realized his slow-moving shell was the ultimate protective shield."
+      "Beside a sparkling lake, Toby the tortoise felt sad because he walked so slowly under his heavy shell.",
+      "His friend Willow the deer could sprint like the wind, while Toby could only crawl step by step.",
+      "One sunny afternoon, a fierce wildcat named Shadow leaped out of the shadows toward little baby bunny Benny.",
+      "Benny tripped in fear, and the wildcat pounced forward with razor-sharp claws extended.",
+      "Toby moved quickly over Benny and pulled his head and legs deep inside his rock-hard shell.",
+      "Shadow clawed and bit the tough shell, hurting his own paws before running away crying.",
+      "Benny was safe, and Toby realized his slow-moving shell was the ultimate protective shield."
     ],
     "panels": [
-      "golu_the_strong_shell_1.svg",
-      "golu_the_strong_shell_2.svg",
-      "golu_the_strong_shell_3.svg",
-      "golu_the_strong_shell_4.svg",
-      "golu_the_strong_shell_5.svg",
-      "golu_the_strong_shell_6.svg",
-      "golu_the_strong_shell_7.svg"
+      "toby_the_strong_shell_1.svg",
+      "toby_the_strong_shell_2.svg",
+      "toby_the_strong_shell_3.svg",
+      "toby_the_strong_shell_4.svg",
+      "toby_the_strong_shell_5.svg",
+      "toby_the_strong_shell_6.svg",
+      "toby_the_strong_shell_7.svg"
     ],
     "moral": "Slowness and patience carry quiet, unbreakable strength."
   },
   {
-    "id": "rangoli_the_clever_chameleon",
-    "title": "Rangoli's Camouflage Magic",
+    "id": "cam_the_clever_chameleon",
+    "title": "Cam's Camouflage Magic",
     "theme": "Animals",
     "animal": "chameleon",
     "character": [
@@ -6170,28 +6169,28 @@
     ],
     "length": "short",
     "text": [
-      "Rangoli the chameleon felt jealous of Pari the parrot's bright, colorful feathers because he had no fixed color.",
+      "Cam the chameleon felt jealous of Polly the parrot's bright, colorful feathers because he had no fixed color.",
       "Chameleons naturally shift skin tones to blend seamlessly with green leaves or brown twigs.",
-      "Suddenly, a hunting eagle swooped down from the sky, locking its sharp eyes right onto Pari.",
-      "Pari was too frozen in fright to fly away from the incoming predator.",
-      "Rangoli shifted to dry-bark brown on a branch and flicked a dead leaf with his long tongue.",
-      "The eagle dove toward the moving leaf, could not spot the camouflaged Rangoli, and flew away confused.",
-      "Pari thanked Rangoli, proving that blending in can be far more powerful than standing out."
+      "Suddenly, a hunting eagle swooped down from the sky, locking its sharp eyes right onto Polly.",
+      "Polly was too frozen in fright to fly away from the incoming predator.",
+      "Cam shifted to dry-bark brown on a branch and flicked a dead leaf with his long tongue.",
+      "The eagle dove toward the moving leaf, could not spot the camouflaged Cam, and flew away confused.",
+      "Polly thanked Cam, proving that blending in can be far more powerful than standing out."
     ],
     "panels": [
-      "rangoli_the_clever_chameleon_1.svg",
-      "rangoli_the_clever_chameleon_2.svg",
-      "rangoli_the_clever_chameleon_3.svg",
-      "rangoli_the_clever_chameleon_4.svg",
-      "rangoli_the_clever_chameleon_5.svg",
-      "rangoli_the_clever_chameleon_6.svg",
-      "rangoli_the_clever_chameleon_7.svg"
+      "cam_the_clever_chameleon_1.svg",
+      "cam_the_clever_chameleon_2.svg",
+      "cam_the_clever_chameleon_3.svg",
+      "cam_the_clever_chameleon_4.svg",
+      "cam_the_clever_chameleon_5.svg",
+      "cam_the_clever_chameleon_6.svg",
+      "cam_the_clever_chameleon_7.svg"
     ],
     "moral": "True worth lies not in flashy looks, but in how we use our natural abilities."
   },
   {
-    "id": "gungun_and_bheema",
-    "title": "Gungun and Bheema Save the Forest",
+    "id": "piper_and_barnaby",
+    "title": "Piper and Barnaby Save the Forest",
     "theme": "Animals",
     "animal": "elephant",
     "character": [
@@ -6205,22 +6204,22 @@
     ],
     "length": "short",
     "text": [
-      "Gungun the cuckoo wished she was mighty like Bheema the elephant, while Bheema envied Gungun's ability to fly high.",
+      "Piper the cuckoo wished she was mighty like Barnaby the elephant, while Barnaby envied Piper's ability to fly high.",
       "One dry afternoon, a sudden brushfire broke out and started spreading fast across the forest floor.",
-      "Bheema was too low to see an escape route through the smoke, and Gungun was too small to put out the fire.",
-      "Gungun flew high into the sky, spotted a safe lake to the left, and called out clear directions.",
-      "Bheema used his enormous strength to clear fallen branches and sprayed water from his trunk along the path.",
-      "Guided from above by Gungun, Bheema extinguished the blaze and led all the animals to safety.",
+      "Barnaby was too low to see an escape route through the smoke, and Piper was too small to put out the fire.",
+      "Piper flew high into the sky, spotted a safe lake to the left, and called out clear directions.",
+      "Barnaby used his enormous strength to clear fallen branches and sprayed water from his trunk along the path.",
+      "Guided from above by Piper, Barnaby extinguished the blaze and led all the animals to safety.",
       "Both realized that combining their different gifts made them an unstoppable team."
     ],
     "panels": [
-      "gungun_and_bheema_1.svg",
-      "gungun_and_bheema_2.svg",
-      "gungun_and_bheema_3.svg",
-      "gungun_and_bheema_4.svg",
-      "gungun_and_bheema_5.svg",
-      "gungun_and_bheema_6.svg",
-      "gungun_and_bheema_7.svg"
+      "piper_and_barnaby_1.svg",
+      "piper_and_barnaby_2.svg",
+      "piper_and_barnaby_3.svg",
+      "piper_and_barnaby_4.svg",
+      "piper_and_barnaby_5.svg",
+      "piper_and_barnaby_6.svg",
+      "piper_and_barnaby_7.svg"
     ],
     "moral": "When different talents join forces, no challenge is too big to overcome."
   }
