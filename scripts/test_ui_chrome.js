@@ -99,6 +99,8 @@ async function run() {
         const footerTitle = document.querySelector('.footer-title');
         const footerSubtitle = document.querySelector('.footer-subtitle');
         const searchInput = document.getElementById('searchInput');
+        const themeCollapseBtn = document.getElementById('themeCollapseBtn');
+        const lengthCollapseBtn = document.getElementById('lengthCollapseBtn');
         const themeChips = document.querySelectorAll('.chip[data-theme]');
         const appTitle = document.querySelector('.logo-group h1');
 
@@ -108,8 +110,9 @@ async function run() {
           footerTitle: footerTitle ? footerTitle.innerText : null,
           footerSubtitle: footerSubtitle ? footerSubtitle.innerText : null,
           hasSearchInput: !!searchInput,
+          themeCollapseBtnText: themeCollapseBtn ? themeCollapseBtn.innerText.replace(/\\s+/g, ' ').trim() : null,
+          lengthCollapseBtnText: lengthCollapseBtn ? lengthCollapseBtn.innerText.replace(/\\s+/g, ' ').trim() : null,
           themeChipCount: themeChips.length,
-          firstThemeChipText: themeChips.length > 0 ? themeChips[0].innerText : null,
           appTitle: appTitle ? appTitle.innerText : null,
           firstStoryCardText: cards.length > 0 ? cards[0].querySelector('h3')?.innerText : null,
           cardThemeBadges: document.querySelectorAll('.story-card .theme-badge').length,
@@ -120,20 +123,42 @@ async function run() {
 
     console.log('5. Library Evaluation:', JSON.stringify(evalResult.result.value, null, 2));
 
-    // Test Animal Filter & Compact Pills UI
-    console.log('5b. Testing Animal Filters & Compact Single-Row UI...');
-    const animalFilterTest = await send('Runtime.evaluate', {
+    // Test Collapsible Filters (Theme & Length) and Animal Pills UI
+    console.log('5b. Testing Collapsible Theme & Length Filters and Animal Pills UI...');
+    const collapsibleTest = await send('Runtime.evaluate', {
       expression: `(() => {
-        // 1. Click Animals theme chip
-        const animalsThemeBtn = document.querySelector('.chip[data-theme="Animals"]');
-        if (!animalsThemeBtn) return { error: 'Animals theme chip not found' };
+        const themeBtn = document.getElementById('themeCollapseBtn');
+        const themeMenu = document.getElementById('themeDropdownMenu');
+        const lengthBtn = document.getElementById('lengthCollapseBtn');
+        const lengthMenu = document.getElementById('lengthDropdownMenu');
+
+        if (!themeBtn || !themeMenu || !lengthBtn || !lengthMenu) {
+          return { error: 'Collapsible filter elements missing' };
+        }
+
+        // 1. Initially closed
+        const initialThemeMenuOpen = themeMenu.classList.contains('open');
+
+        // 2. Click Theme button -> opens menu
+        themeBtn.click();
+        const menuOpenedOnClick = themeMenu.classList.contains('open');
+
+        // 3. Click Animals option in Theme menu (triggers renderList)
+        const animalsThemeBtn = themeMenu.querySelector('.chip[data-theme="Animals"]');
+        if (!animalsThemeBtn) return { error: 'Animals menu item not found' };
         animalsThemeBtn.click();
 
-        const animalRow = document.querySelector('.animal-pills-row');
-        if (!animalRow) return { error: 'animal-pills-row not rendered' };
+        // Re-query newly rendered elements
+        const themeBtnAfterThemeSelect = document.getElementById('themeCollapseBtn');
+        const themeMenuAfterThemeSelect = document.getElementById('themeDropdownMenu');
+        const themeMenuClosedAfterSelect = !themeMenuAfterThemeSelect.classList.contains('open');
+        const themeBtnTextAfterSelect = themeBtnAfterThemeSelect.innerText.replace(/\\s+/g, ' ').trim();
+        const themeBtnIsActive = themeBtnAfterThemeSelect.classList.contains('active');
 
-        const rowHeight = animalRow.offsetHeight;
-        const animalChips = Array.from(animalRow.querySelectorAll('.chip[data-animal]')).map(c => c.innerText.trim());
+        // Animal pills row should appear
+        const animalRow = document.querySelector('.animal-pills-row');
+        const rowHeight = animalRow ? animalRow.offsetHeight : 0;
+        const animalChips = animalRow ? Array.from(animalRow.querySelectorAll('.chip[data-animal]')).map(c => c.innerText.trim()) : [];
         const moreSelect = document.getElementById('moreAnimalsSelect');
         const selectOptionsCount = moreSelect ? moreSelect.options.length : 0;
 
@@ -141,34 +166,57 @@ async function run() {
         const forbiddenNonAnimals = ['Farmer', 'Countryman', 'Goatherd', 'Spendthrift', 'Wheel', 'Ass'];
         const leaked = forbiddenNonAnimals.filter(fa => animalChips.some(ac => ac.includes(fa)));
 
-        // 2. Click Fox chip
-        const foxBtn = animalRow.querySelector('.chip[data-animal="fox"]');
+        // 4. Test Fox chip
+        const foxBtn = animalRow ? animalRow.querySelector('.chip[data-animal="fox"]') : null;
         if (foxBtn) foxBtn.click();
         const foxCardsCount = document.querySelectorAll('.story-card').length;
         const foxHeader = document.querySelector('.results-count')?.innerText || '';
 
-        // 3. Toggle Fox off
-        if (foxBtn) foxBtn.click();
+        // Toggle Fox off
+        const foxBtnActive = document.querySelector('.animal-pills-row .chip.active[data-animal="fox"]');
+        if (foxBtnActive) foxBtnActive.click();
         const toggledCardsCount = document.querySelectorAll('.story-card').length;
 
-        // 4. Select Hedgehog from dropdown
-        if (moreSelect) {
-          moreSelect.value = 'hedgehog';
-          moreSelect.dispatchEvent(new Event('change'));
+        // 5. Test Hedgehog from dropdown
+        const freshMoreSelect = document.getElementById('moreAnimalsSelect');
+        if (freshMoreSelect) {
+          freshMoreSelect.value = 'hedgehog';
+          freshMoreSelect.dispatchEvent(new Event('change'));
         }
         const hedgehogPill = document.querySelector('.animal-pills-row .chip.active[data-animal="hedgehog"]');
         const hedgehogCardsCount = document.querySelectorAll('.story-card').length;
 
-        // 5. Clear Hedgehog pill
-        if (hedgehogPill) hedgehogPill.click();
-        const clearedCardsCount = document.querySelectorAll('.story-card').length;
+        // 6. Test Length collapsible filter
+        const currentLengthBtn = document.getElementById('lengthCollapseBtn');
+        const currentLengthMenu = document.getElementById('lengthDropdownMenu');
+        currentLengthBtn.click();
+        const lengthMenuOpened = currentLengthMenu.classList.contains('open');
 
-        // 6. Reset theme back to All
-        const allThemeBtn = document.querySelector('.chip[data-theme="All"]');
-        if (allThemeBtn) allThemeBtn.click();
-        const rowAfterAll = document.querySelector('.animal-pills-row');
+        const shortOption = currentLengthMenu.querySelector('.chip[data-length="short"]');
+        if (shortOption) shortOption.click();
+
+        // Re-query after renderList()
+        const lengthBtnAfterSelect = document.getElementById('lengthCollapseBtn');
+        const lengthMenuAfterSelect = document.getElementById('lengthDropdownMenu');
+        const lengthMenuClosed = !lengthMenuAfterSelect.classList.contains('open');
+        const lengthBtnText = lengthBtnAfterSelect.innerText.replace(/\\s+/g, ' ').trim();
+        const lengthBtnActive = lengthBtnAfterSelect.classList.contains('active');
+
+        // 7. Clear all filters button
+        const clearBtn = document.getElementById('clearAllFiltersBtn');
+        const hasClearBtn = !!clearBtn;
+        if (clearBtn) clearBtn.click();
+
+        const themeBtnAfterReset = document.getElementById('themeCollapseBtn').innerText.replace(/\\s+/g, ' ').trim();
+        const lengthBtnAfterReset = document.getElementById('lengthCollapseBtn').innerText.replace(/\\s+/g, ' ').trim();
+        const animalRowAfterReset = document.querySelector('.animal-pills-row');
 
         return {
+          initialThemeMenuOpen,
+          menuOpenedOnClick,
+          themeMenuClosedAfterSelect,
+          themeBtnTextAfterSelect,
+          themeBtnIsActive,
           rowHeight,
           animalChips,
           selectOptionsCount,
@@ -178,13 +226,26 @@ async function run() {
           toggledCardsCount,
           hasHedgehogPill: !!hedgehogPill,
           hedgehogCardsCount,
-          clearedCardsCount,
-          rowRemovedOnAll: !rowAfterAll,
+          lengthMenuOpened,
+          lengthMenuClosed,
+          lengthBtnText,
+          lengthBtnActive,
+          hasClearBtn,
+          themeBtnAfterReset,
+          lengthBtnAfterReset,
+          animalRowRemovedAfterReset: !animalRowAfterReset,
         };
       })()`,
       returnByValue: true,
     });
-    console.log('5b. Animal Filter Test Result:', JSON.stringify(animalFilterTest.result.value, null, 2));
+    console.log('5b. Collapsible Filter Test Result:', JSON.stringify(collapsibleTest.result.value, null, 2));
+
+    // Capture screenshot of the compact filter bar
+    console.log('5c. Capturing screenshot of compact collapsible filters...');
+    const shotData = await send('Page.captureScreenshot', { format: 'png' });
+    const previewPath = '/Users/rajantiwari/.gemini/antigravity/brain/f0bc0615-7b87-49a7-9033-77ce5c504dea/collapsible_filters_preview.png';
+    fs.writeFileSync(previewPath, Buffer.from(shotData.data, 'base64'));
+    console.log('Saved screenshot to:', previewPath);
 
     // Test Pagination: click Page 2
     console.log('6. Testing Pagination: clicking Page 2 button...');
@@ -260,14 +321,23 @@ async function run() {
     if (
       evalResult.result.value.cardCount === 24 &&
       evalResult.result.value.footerTitle === 'TalePickle' &&
+      evalResult.result.value.themeCollapseBtnText.includes('Theme:') &&
+      evalResult.result.value.lengthCollapseBtnText.includes('Length:') &&
       evalPage2.result.value.cardCount === 24 &&
       evalStory.result.value.title === 'The Brave Little Hedgehog' &&
       evalStory.result.value.hasStageSvg &&
       evalStory.result.value.hasMoralCard &&
-      animalFilterTest.result.value.rowHeight <= 40 &&
-      animalFilterTest.result.value.leaked.length === 0 &&
-      animalFilterTest.result.value.hasHedgehogPill &&
-      animalFilterTest.result.value.rowRemovedOnAll &&
+      collapsibleTest.result.value.menuOpenedOnClick &&
+      collapsibleTest.result.value.themeMenuClosedAfterSelect &&
+      collapsibleTest.result.value.themeBtnIsActive &&
+      collapsibleTest.result.value.rowHeight <= 45 &&
+      collapsibleTest.result.value.leaked.length === 0 &&
+      collapsibleTest.result.value.hasHedgehogPill &&
+      collapsibleTest.result.value.lengthMenuOpened &&
+      collapsibleTest.result.value.lengthMenuClosed &&
+      collapsibleTest.result.value.lengthBtnActive &&
+      collapsibleTest.result.value.hasClearBtn &&
+      collapsibleTest.result.value.animalRowRemovedAfterReset &&
       jsErrors.length === 0
     ) {
       console.log('🎉 ALL AUTOMATED HEADLESS CHROME CHECKS PASSED!');

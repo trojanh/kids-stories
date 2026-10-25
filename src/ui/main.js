@@ -167,6 +167,13 @@
     return a.charAt(0).toUpperCase() + a.slice(1);
   }
 
+  function formatLengthLabel(len) {
+    if (len === 'short') return '⚡ Short (≤7)';
+    if (len === 'medium') return '📖 Medium (8–14)';
+    if (len === 'long') return '🌟 Long (15+)';
+    return 'All Lengths';
+  }
+
   function getAnimalEmoji(animal) {
     const a = (animal || '').toLowerCase().trim();
     if (a.includes('fox')) return '🦊';
@@ -570,17 +577,88 @@
           />
         </div>
 
-        <div class="filter-pills-row">
-          <span class="filter-label">Themes:</span>
-          ${['All', 'Animals', 'Life Lessons', 'Family', 'Nature', 'Mythology']
-            .map(
-              (theme) => `
-            <button class="chip ${activeTheme === theme ? 'active' : ''}" data-theme="${theme}">
-              ${getThemeEmoji(theme)} ${theme}
+        <!-- Compact Collapsible Filters Row -->
+        <div class="compact-filters-row">
+          <!-- Collapsible Theme Filter -->
+          <div class="filter-dropdown" id="themeDropdown">
+            <button
+              class="collapse-filter-btn ${activeTheme !== 'All' ? 'active' : ''}"
+              id="themeCollapseBtn"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Filter stories by theme"
+            >
+              <span class="collapse-filter-label">Theme:</span>
+              <span class="collapse-filter-val">${getThemeEmoji(activeTheme)} ${activeTheme}</span>
+              <span class="collapse-filter-arrow">▾</span>
             </button>
+            <div class="filter-dropdown-menu" id="themeDropdownMenu">
+              ${['All', 'Animals', 'Life Lessons', 'Family', 'Nature', 'Mythology']
+                .map(
+                  (theme) => `
+                <button
+                  class="filter-menu-item chip ${activeTheme === theme ? 'active' : ''}"
+                  data-theme="${theme}"
+                  type="button"
+                >
+                  <span class="menu-item-emoji">${getThemeEmoji(theme)}</span>
+                  <span class="menu-item-text">${theme}</span>
+                  ${activeTheme === theme ? '<span class="menu-check">✓</span>' : ''}
+                </button>
+              `
+                )
+                .join('')}
+            </div>
+          </div>
+
+          <!-- Collapsible Length Filter -->
+          <div class="filter-dropdown" id="lengthDropdown">
+            <button
+              class="collapse-filter-btn ${activeLength !== 'All' ? 'active' : ''}"
+              id="lengthCollapseBtn"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Filter stories by length"
+            >
+              <span class="collapse-filter-label">Length:</span>
+              <span class="collapse-filter-val">${formatLengthLabel(activeLength)}</span>
+              <span class="collapse-filter-arrow">▾</span>
+            </button>
+            <div class="filter-dropdown-menu" id="lengthDropdownMenu">
+              ${[
+                { key: 'All', label: 'All Lengths', icon: '📖' },
+                { key: 'short', label: 'Short (≤7)', icon: '⚡' },
+                { key: 'medium', label: 'Medium (8–14)', icon: '📖' },
+                { key: 'long', label: 'Long (15+)', icon: '🌟' },
+              ]
+                .map(
+                  (l) => `
+                <button
+                  class="filter-menu-item chip ${activeLength === l.key ? 'active' : ''}"
+                  data-length="${l.key}"
+                  type="button"
+                >
+                  <span class="menu-item-emoji">${l.icon}</span>
+                  <span class="menu-item-text">${l.label}</span>
+                  ${activeLength === l.key ? '<span class="menu-check">✓</span>' : ''}
+                </button>
+              `
+                )
+                .join('')}
+            </div>
+          </div>
+
+          ${
+            activeTheme !== 'All' || activeLength !== 'All' || activeAnimal !== 'All' || showFavoritesOnly || searchQuery.trim()
+              ? `
+          <button class="filter-clear-pill" id="clearAllFiltersBtn" title="Reset all filters">
+            ✕ Clear Filters
+          </button>
           `
-            )
-            .join('')}
+              : ''
+          }
         </div>
 
         ${
@@ -641,24 +719,6 @@
               })()
             : ''
         }
-
-        <div class="filter-pills-row">
-          <span class="filter-label">Length:</span>
-          ${[
-            { key: 'All', label: 'All Lengths' },
-            { key: 'short', label: '⚡ Short (≤7)' },
-            { key: 'medium', label: '📖 Medium (8–14)' },
-            { key: 'long', label: '🌟 Long (15+)' },
-          ]
-            .map(
-              (l) => `
-            <button class="chip ${activeLength === l.key ? 'active' : ''}" data-length="${l.key}">
-              ${l.label}
-            </button>
-          `
-            )
-            .join('')}
-        </div>
       </div>
 
       <!-- Results Header -->
@@ -796,6 +856,79 @@
           newInp.focus();
           newInp.setSelectionRange(searchQuery.length, searchQuery.length);
         }
+      });
+    }
+
+    // Collapsible Dropdown Controls (Theme & Length)
+    const themeBtn = document.getElementById('themeCollapseBtn');
+    const themeMenu = document.getElementById('themeDropdownMenu');
+    const lengthBtn = document.getElementById('lengthCollapseBtn');
+    const lengthMenu = document.getElementById('lengthDropdownMenu');
+
+    function closeAllFilterMenus() {
+      if (themeMenu) themeMenu.classList.remove('open');
+      if (themeBtn) {
+        themeBtn.setAttribute('aria-expanded', 'false');
+        themeBtn.classList.remove('menu-open');
+      }
+      if (lengthMenu) lengthMenu.classList.remove('open');
+      if (lengthBtn) {
+        lengthBtn.setAttribute('aria-expanded', 'false');
+        lengthBtn.classList.remove('menu-open');
+      }
+    }
+
+    if (themeBtn && themeMenu) {
+      themeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = themeMenu.classList.contains('open');
+        closeAllFilterMenus();
+        if (!isOpen) {
+          themeMenu.classList.add('open');
+          themeBtn.setAttribute('aria-expanded', 'true');
+          themeBtn.classList.add('menu-open');
+        }
+      });
+    }
+
+    if (lengthBtn && lengthMenu) {
+      lengthBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = lengthMenu.classList.contains('open');
+        closeAllFilterMenus();
+        if (!isOpen) {
+          lengthMenu.classList.add('open');
+          lengthBtn.setAttribute('aria-expanded', 'true');
+          lengthBtn.classList.add('menu-open');
+        }
+      });
+    }
+
+    // Close menus when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.filter-dropdown')) {
+        closeAllFilterMenus();
+      }
+    });
+
+    // Close menus on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllFilterMenus();
+      }
+    });
+
+    // Clear all filters pill
+    const clearAllBtn = document.getElementById('clearAllFiltersBtn');
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', () => {
+        searchQuery = '';
+        activeTheme = 'All';
+        activeAnimal = 'All';
+        activeLength = 'All';
+        showFavoritesOnly = false;
+        currentPage = 1;
+        renderList();
       });
     }
 
