@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 *.tmp
 *.tmp.mp3
+scratch/
