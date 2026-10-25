@@ -66,5 +66,6 @@ if __name__ == "__main__":
     test_story_fields_present()
     test_unique_story_ids()
     test_story_lengths_and_panels_are_accurate()
-    print("All 152 stories passed integrity validation successfully!")
+    stories = load_stories()
+    print(f"All {len(stories)} stories passed integrity validation successfully!")
 
