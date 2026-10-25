@@ -149,9 +149,9 @@ async function run() {
     });
     console.log('Page 2 State:', JSON.stringify(evalPage2.result.value, null, 2));
 
-    // Test Reader Mode: navigate to newly added story pip_the_prickly_hero
-    console.log('7. Testing Reader Mode for newly added story: pip_the_prickly_hero...');
-    await send('Page.navigate', { url: `http://localhost:${PORT}/story/pip_the_prickly_hero` });
+    // Test Reader Mode: navigate to newly added story the_brave_little_hedgehog
+    console.log('7. Testing Reader Mode for newly added story: the_brave_little_hedgehog...');
+    await send('Page.navigate', { url: `http://localhost:${PORT}/story/the_brave_little_hedgehog` });
     await wait(2500);
 
     const evalStory = await send('Runtime.evaluate', {
@@ -195,7 +195,7 @@ async function run() {
       evalResult.result.value.cardCount === 24 &&
       evalResult.result.value.footerTitle === 'TalePickle' &&
       evalPage2.result.value.cardCount === 24 &&
-      evalStory.result.value.title === 'Pip the Prickly Hero' &&
+      evalStory.result.value.title === 'The Brave Little Hedgehog' &&
       evalStory.result.value.hasStageSvg &&
       evalStory.result.value.hasMoralCard &&
       jsErrors.length === 0

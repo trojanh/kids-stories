@@ -6043,8 +6043,8 @@
     "moral": "Pride goes before a fall."
   },
   {
-    "id": "pip_the_prickly_hero",
-    "title": "Pip the Prickly Hero",
+    "id": "the_brave_little_hedgehog",
+    "title": "The Brave Little Hedgehog",
     "theme": "Animals",
     "animal": "hedgehog",
     "character": [
@@ -6060,64 +6060,28 @@
     ],
     "length": "short",
     "text": [
-      "In the Whispering Woods, Pip the hedgehog loved playing with friends but disliked his sharp, pointy quills.",
-      "His friend Bramble had soft, fluffy fur, and Squeak could scamper up tall trees with ease.",
-      "While playing hide-and-seek near the meadow, a hungry fox prowled into the clearing toward Bramble.",
-      "Terrified and frozen in place, Bramble could not run away as the fox took slow steps closer.",
-      "Pip tucked his head in, rolled into a tight, spiky ball, and tumbled straight into the fox's sensitive paw.",
+      "In the green forest, a little hedgehog loved playing with his friends but disliked his sharp, pointy quills.",
+      "His friend the rabbit had soft, fluffy fur, and the squirrel could scamper up tall trees with ease.",
+      "While playing hide-and-seek near the meadow, a hungry fox prowled into the clearing toward the rabbit.",
+      "Terrified and frozen in place, the rabbit could not run away as the fox took slow steps closer.",
+      "The hedgehog tucked his head in, rolled into a tight, spiky ball, and tumbled straight into the fox's sensitive paw.",
       "Yelping in pain from the sharp quills, the fox scampered off into the dark woods.",
-      "Pip's friends cheered, and he finally realized his spikes made him unique and brave."
+      "The rabbit and the squirrel cheered, and the hedgehog finally realized his spikes made him unique and brave."
     ],
     "panels": [
-      "pip_the_prickly_hero_1.svg",
-      "pip_the_prickly_hero_2.svg",
-      "pip_the_prickly_hero_3.svg",
-      "pip_the_prickly_hero_4.svg",
-      "pip_the_prickly_hero_5.svg",
-      "pip_the_prickly_hero_6.svg",
-      "pip_the_prickly_hero_7.svg"
+      "the_brave_little_hedgehog_1.svg",
+      "the_brave_little_hedgehog_2.svg",
+      "the_brave_little_hedgehog_3.svg",
+      "the_brave_little_hedgehog_4.svg",
+      "the_brave_little_hedgehog_5.svg",
+      "the_brave_little_hedgehog_6.svg",
+      "the_brave_little_hedgehog_7.svg"
     ],
     "moral": "The very things that make us different are often our greatest strengths."
   },
   {
-    "id": "spike_the_brave_hedgehog",
-    "title": "Spike and His Spiky Armor",
-    "theme": "Animals",
-    "animal": "hedgehog",
-    "character": [
-      "hedgehog",
-      "rabbit",
-      "fox"
-    ],
-    "tags": [
-      "self-worth",
-      "bravery",
-      "friendship"
-    ],
-    "length": "short",
-    "text": [
-      "In the Pinecone Woods, Spike the hedgehog was sad because he had prickly quills instead of soft fur like Clover the rabbit.",
-      "Whenever little hedgehogs feel scared, they naturally tuck in their paws and turn into a tight, spiky ball.",
-      "One sunny afternoon during a game of hide-and-seek, a hungry fox named Rusty crept toward Clover.",
-      "Clover froze in fear, unable to move her feet as the sneaky fox closed in.",
-      "Spike quickly curled into a firm spiky ball and rolled down the hill like a bowling ball.",
-      "Spike bumped straight into Rusty's tender paw, making the fox yelp in agony and flee.",
-      "Clover hugged her brave friend, reminding Spike that his special quills were a true gift."
-    ],
-    "panels": [
-      "spike_the_brave_hedgehog_1.svg",
-      "spike_the_brave_hedgehog_2.svg",
-      "spike_the_brave_hedgehog_3.svg",
-      "spike_the_brave_hedgehog_4.svg",
-      "spike_the_brave_hedgehog_5.svg",
-      "spike_the_brave_hedgehog_6.svg",
-      "spike_the_brave_hedgehog_7.svg"
-    ],
-    "moral": "Everyone is built with a special quality that becomes their greatest power."
-  },
-  {
-    "id": "toby_the_strong_shell",
-    "title": "Toby and the Shield Shell",
+    "id": "the_tortoise_and_the_shield_shell",
+    "title": "The Tortoise and the Shield Shell",
     "theme": "Animals",
     "animal": "tortoise",
     "character": [
@@ -6133,28 +6097,28 @@
     ],
     "length": "short",
     "text": [
-      "Beside a sparkling lake, Toby the tortoise felt sad because he walked so slowly under his heavy shell.",
-      "His friend Willow the deer could sprint like the wind, while Toby could only crawl step by step.",
-      "One sunny afternoon, a fierce wildcat named Shadow leaped out of the shadows toward little baby bunny Benny.",
-      "Benny tripped in fear, and the wildcat pounced forward with razor-sharp claws extended.",
-      "Toby moved quickly over Benny and pulled his head and legs deep inside his rock-hard shell.",
-      "Shadow clawed and bit the tough shell, hurting his own paws before running away crying.",
-      "Benny was safe, and Toby realized his slow-moving shell was the ultimate protective shield."
+      "Beside a sparkling lake, a slow tortoise felt sad because he walked so slowly under his heavy shell.",
+      "His friend the deer could sprint like the wind, while the tortoise could only crawl step by step.",
+      "One sunny afternoon, a fierce wildcat leaped out of the shadows toward a little baby rabbit.",
+      "The baby rabbit tripped in fear, and the wildcat pounced forward with razor-sharp claws extended.",
+      "The tortoise moved quickly over the rabbit and pulled his head and legs deep inside his rock-hard shell.",
+      "The wildcat clawed and bit the tough shell, hurting his own paws before running away into the woods.",
+      "The little rabbit was safe, and the tortoise realized his slow-moving shell was the ultimate protective shield."
     ],
     "panels": [
-      "toby_the_strong_shell_1.svg",
-      "toby_the_strong_shell_2.svg",
-      "toby_the_strong_shell_3.svg",
-      "toby_the_strong_shell_4.svg",
-      "toby_the_strong_shell_5.svg",
-      "toby_the_strong_shell_6.svg",
-      "toby_the_strong_shell_7.svg"
+      "the_tortoise_and_the_shield_shell_1.svg",
+      "the_tortoise_and_the_shield_shell_2.svg",
+      "the_tortoise_and_the_shield_shell_3.svg",
+      "the_tortoise_and_the_shield_shell_4.svg",
+      "the_tortoise_and_the_shield_shell_5.svg",
+      "the_tortoise_and_the_shield_shell_6.svg",
+      "the_tortoise_and_the_shield_shell_7.svg"
     ],
     "moral": "Slowness and patience carry quiet, unbreakable strength."
   },
   {
-    "id": "cam_the_clever_chameleon",
-    "title": "Cam's Camouflage Magic",
+    "id": "the_clever_chameleon",
+    "title": "The Clever Chameleon",
     "theme": "Animals",
     "animal": "chameleon",
     "character": [
@@ -6169,28 +6133,28 @@
     ],
     "length": "short",
     "text": [
-      "Cam the chameleon felt jealous of Polly the parrot's bright, colorful feathers because he had no fixed color.",
-      "Chameleons naturally shift skin tones to blend seamlessly with green leaves or brown twigs.",
-      "Suddenly, a hunting eagle swooped down from the sky, locking its sharp eyes right onto Polly.",
-      "Polly was too frozen in fright to fly away from the incoming predator.",
-      "Cam shifted to dry-bark brown on a branch and flicked a dead leaf with his long tongue.",
-      "The eagle dove toward the moving leaf, could not spot the camouflaged Cam, and flew away confused.",
-      "Polly thanked Cam, proving that blending in can be far more powerful than standing out."
+      "A little chameleon felt jealous of the parrot's bright, colorful feathers because he had no fixed color of his own.",
+      "Chameleons naturally shift skin colors to blend seamlessly with green leaves or brown twigs.",
+      "Suddenly, a hunting eagle swooped down from the sky, locking sharp eyes right onto the parrot.",
+      "The parrot was too frozen in fright to fly away from the incoming predator.",
+      "The chameleon shifted to tree-bark brown on a branch and flicked a dry leaf with his long tongue.",
+      "The eagle dove toward the fluttering leaf, could not spot the hidden chameleon, and flew away confused.",
+      "The parrot thanked the clever chameleon, proving that blending in can be far more powerful than standing out."
     ],
     "panels": [
-      "cam_the_clever_chameleon_1.svg",
-      "cam_the_clever_chameleon_2.svg",
-      "cam_the_clever_chameleon_3.svg",
-      "cam_the_clever_chameleon_4.svg",
-      "cam_the_clever_chameleon_5.svg",
-      "cam_the_clever_chameleon_6.svg",
-      "cam_the_clever_chameleon_7.svg"
+      "the_clever_chameleon_1.svg",
+      "the_clever_chameleon_2.svg",
+      "the_clever_chameleon_3.svg",
+      "the_clever_chameleon_4.svg",
+      "the_clever_chameleon_5.svg",
+      "the_clever_chameleon_6.svg",
+      "the_clever_chameleon_7.svg"
     ],
     "moral": "True worth lies not in flashy looks, but in how we use our natural abilities."
   },
   {
-    "id": "piper_and_barnaby",
-    "title": "Piper and Barnaby Save the Forest",
+    "id": "the_cuckoo_and_the_elephant",
+    "title": "The Cuckoo and the Elephant",
     "theme": "Animals",
     "animal": "elephant",
     "character": [
@@ -6204,23 +6168,167 @@
     ],
     "length": "short",
     "text": [
-      "Piper the cuckoo wished she was mighty like Barnaby the elephant, while Barnaby envied Piper's ability to fly high.",
+      "A little cuckoo wished she was mighty like the elephant, while the elephant envied the cuckoo's ability to fly high into the sky.",
       "One dry afternoon, a sudden brushfire broke out and started spreading fast across the forest floor.",
-      "Barnaby was too low to see an escape route through the smoke, and Piper was too small to put out the fire.",
-      "Piper flew high into the sky, spotted a safe lake to the left, and called out clear directions.",
-      "Barnaby used his enormous strength to clear fallen branches and sprayed water from his trunk along the path.",
-      "Guided from above by Piper, Barnaby extinguished the blaze and led all the animals to safety.",
-      "Both realized that combining their different gifts made them an unstoppable team."
+      "The elephant was too low to see an escape route through the smoke, and the cuckoo was too small to put out the fire.",
+      "The cuckoo flew high into the sky, spotted a safe blue lake to the left, and called out clear directions.",
+      "The elephant used his enormous strength to clear fallen branches and sprayed water from his trunk along the path.",
+      "Guided from above by the cuckoo, the elephant extinguished the blaze and led all the animals to safety.",
+      "Both the cuckoo and the elephant realized that combining their different gifts made them an unstoppable team."
     ],
     "panels": [
-      "piper_and_barnaby_1.svg",
-      "piper_and_barnaby_2.svg",
-      "piper_and_barnaby_3.svg",
-      "piper_and_barnaby_4.svg",
-      "piper_and_barnaby_5.svg",
-      "piper_and_barnaby_6.svg",
-      "piper_and_barnaby_7.svg"
+      "the_cuckoo_and_the_elephant_1.svg",
+      "the_cuckoo_and_the_elephant_2.svg",
+      "the_cuckoo_and_the_elephant_3.svg",
+      "the_cuckoo_and_the_elephant_4.svg",
+      "the_cuckoo_and_the_elephant_5.svg",
+      "the_cuckoo_and_the_elephant_6.svg",
+      "the_cuckoo_and_the_elephant_7.svg"
     ],
     "moral": "When different talents join forces, no challenge is too big to overcome."
+  },
+  {
+    "id": "the_little_firefly",
+    "title": "The Little Firefly",
+    "theme": "Animals",
+    "animal": "firefly",
+    "character": [
+      "firefly",
+      "butterfly",
+      "mouse"
+    ],
+    "tags": [
+      "hope",
+      "courage",
+      "guidance"
+    ],
+    "length": "short",
+    "text": [
+      "In a flowering meadow, a little firefly felt plain because he lacked the colorful wings of the butterfly and the sweet song of the cricket.",
+      "During the sunny day, other insects hardly noticed his quiet presence among the tall grass.",
+      "When sudden dark storm clouds rolled in at twilight, a frightened baby mouse lost her way in the shadowy forest.",
+      "The mouse could not see the path and shivered as cold raindrops began to fall.",
+      "The firefly flew forward and lit his bright, glowing belly like a warm golden lantern.",
+      "Flitting steadily ahead through the darkness, the firefly illuminated every root and stone along the path.",
+      "The baby mouse reached her burrow safely, thanking the little firefly whose hidden light had guided her home."
+    ],
+    "panels": [
+      "the_little_firefly_1.svg",
+      "the_little_firefly_2.svg",
+      "the_little_firefly_3.svg",
+      "the_little_firefly_4.svg",
+      "the_little_firefly_5.svg",
+      "the_little_firefly_6.svg",
+      "the_little_firefly_7.svg"
+    ],
+    "moral": "Even the quietest gift can shine with great purpose when needed most."
+  },
+  {
+    "id": "the_beaver_and_the_rising_river",
+    "title": "The Beaver and the Rising River",
+    "theme": "Animals",
+    "animal": "beaver",
+    "character": [
+      "beaver",
+      "rabbit",
+      "deer"
+    ],
+    "tags": [
+      "perseverance",
+      "protection",
+      "hard work"
+    ],
+    "length": "short",
+    "text": [
+      "Beside a rushing stream, a young beaver felt self-conscious about his wide, flat tail and large front teeth.",
+      "His friend the rabbit had soft paws, and the deer could leap gracefully across the clearing.",
+      "One rainy afternoon, the river broke its bank and floodwaters rushed toward the rabbits' cozy burrow.",
+      "The little rabbits were trapped on a slippery mound as the muddy water rose higher.",
+      "The beaver sprang into action, quickly cutting sturdy branches and using his broad tail to pack thick mud.",
+      "In moments, his strong dam blocked the flood, guiding the rushing water safely away.",
+      "The forest animals cheered, and the beaver realized his flat tail and strong teeth were wonderful tools to protect his friends."
+    ],
+    "panels": [
+      "the_beaver_and_the_rising_river_1.svg",
+      "the_beaver_and_the_rising_river_2.svg",
+      "the_beaver_and_the_rising_river_3.svg",
+      "the_beaver_and_the_rising_river_4.svg",
+      "the_beaver_and_the_rising_river_5.svg",
+      "the_beaver_and_the_rising_river_6.svg",
+      "the_beaver_and_the_rising_river_7.svg"
+    ],
+    "moral": "What makes us different can be the very gift that saves the day."
+  },
+  {
+    "id": "the_pelican_and_the_rapids",
+    "title": "The Pelican and the Rapids",
+    "theme": "Animals",
+    "animal": "pelican",
+    "character": [
+      "pelican",
+      "duck",
+      "swan"
+    ],
+    "tags": [
+      "kindness",
+      "rescue",
+      "humility"
+    ],
+    "length": "short",
+    "text": [
+      "Beside a wide river, a young pelican felt shy about his large, floppy beak compared to the swan's elegant neck.",
+      "While the graceful ducks drifted smoothly across the ripples, the pelican felt clumsy with his heavy bill.",
+      "One stormy evening, a sudden torrent swept three little ducklings down the rushing rapids.",
+      "The tiny ducklings could not fight the swirling currents and cried out as they drifted toward the waterfall.",
+      "The pelican dove swiftly through the mist, opened his wide bill, and gently scooped all three ducklings into his warm pouch.",
+      "Lifting smoothly into the air, the pelican flew upstream and placed the ducklings safely beside their mother.",
+      "The grateful river birds cheered, and the pelican realized his wide beak was the greatest rescue vessel of all."
+    ],
+    "panels": [
+      "the_pelican_and_the_rapids_1.svg",
+      "the_pelican_and_the_rapids_2.svg",
+      "the_pelican_and_the_rapids_3.svg",
+      "the_pelican_and_the_rapids_4.svg",
+      "the_pelican_and_the_rapids_5.svg",
+      "the_pelican_and_the_rapids_6.svg",
+      "the_pelican_and_the_rapids_7.svg"
+    ],
+    "moral": "True worth is found not in fancy looks, but in how we help others."
+  },
+  {
+    "id": "the_kangaroos_cozy_pouch",
+    "title": "The Kangaroo's Cozy Pouch",
+    "theme": "Animals",
+    "animal": "kangaroo",
+    "character": [
+      "kangaroo",
+      "rabbit",
+      "fox"
+    ],
+    "tags": [
+      "bravery",
+      "protection",
+      "self-acceptance"
+    ],
+    "length": "short",
+    "text": [
+      "In the sunlit valley, a young kangaroo felt awkward about her giant bouncy feet and wide belly pouch.",
+      "Her friends could scamper lightly across the grass, while she could only bounce with loud thuds.",
+      "One afternoon, a sneaky fox crept out of the rocks toward a little baby rabbit.",
+      "The tiny rabbit froze in fear, too small to outrun the approaching predator.",
+      "The kangaroo bounded over, gently scooped the baby rabbit into her soft, deep pouch, and leaped high into the air.",
+      "With giant bounds over rocks and fallen logs, she carried the little one far beyond the fox's reach.",
+      "The valley animals cheered the rescue, and the kangaroo realized her pouch and powerful legs were a true blessing."
+    ],
+    "panels": [
+      "the_kangaroos_cozy_pouch_1.svg",
+      "the_kangaroos_cozy_pouch_2.svg",
+      "the_kangaroos_cozy_pouch_3.svg",
+      "the_kangaroos_cozy_pouch_4.svg",
+      "the_kangaroos_cozy_pouch_5.svg",
+      "the_kangaroos_cozy_pouch_6.svg",
+      "the_kangaroos_cozy_pouch_7.svg"
+    ],
+    "moral": "Every unique trait is a strength waiting for the right moment to shine."
   }
 ]

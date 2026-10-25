@@ -34,27 +34,41 @@ This document details the architecture, file modifications, international locali
 | **18** | Add pagination with query params (`?page=1`) | ✅ Completed | Implemented 24 stories/page pagination with `?page=X` synchronization, popstate history, and scroll-to-top | `src/ui/main.js`, `src/ui/style.css` |
 | **19** | Add SEO / AI discovery text & structured metadata | ✅ Completed | Added `.seo-discovery-card` on catalog, updated JSON-LD Schema.org, Open Graph, and meta tags | `src/ui/index.html`, `src/ui/main.js` |
 | **20** | Make theme & length filters concise for mobile view | ✅ Completed | Horizontal smooth touch-scrolling row with compact chips and hidden scrollbars on mobile | `src/ui/style.css` |
-| **21** | Add 5 new stories from Gemini share link to collection | ✅ Completed | Localized character names for international audience, added to collection (now 157 stories total) | `src/data/stories.json`, `src/ui/data/stories.json` |
+| **21** | Add new stories to collection (expanding to 160 total) | ✅ Completed | Removed duplicate hedgehog story; added 8 distinct animal stories (animal names only) with custom vector SVGs | `src/data/stories.json`, `src/ui/data/stories.json` |
 | **22** | Add full PWA support (Manifest, Service Worker, Offline) | ✅ Completed | Created `manifest.webmanifest`, SVG app icons, and network-first Service Worker with offline caching | `src/ui/manifest.webmanifest`, `src/ui/sw.js` |
 
 ---
 
-## 2. International Story Localization & Audio Pipeline
+## 2. Animal-Only Fable Localization, Custom Vector SVGs & Audio Pipeline
 
-The 5 newly added stories were revised with internationally identifiable, warm, and memorable character names while keeping the text accessible and easy for early readers:
+All proper human-like character names were removed to embrace the authentic, timeless style of Aesop's fables where characters are known strictly by their animal identities. In addition, the duplicate hedgehog story was replaced with distinct new animal fables (`firefly`, `beaver`, `pelican`, `kangaroo`), each paired with custom vector SVG artwork in `svg-art.js` and studio narration audio:
 
-| Story ID | Final Title | Characters | Setting & Moral | Audio Duration |
+| Story ID | Fable Title | Animal Characters | Setting & Moral | Audio Duration |
 |---|---|---|---|---|
-| `pip_the_prickly_hero` | **Pip the Prickly Hero** | **Pip** (hedgehog), **Bramble** (rabbit), **Squeak** (squirrel), fox | Whispering Woods • *"The very things that make us different are often our greatest strengths."* | 59.7s (132 words) |
-| `spike_the_brave_hedgehog` | **Spike and His Spiky Armor** | **Spike** (hedgehog), **Clover** (rabbit), **Rusty** (fox) | Pinecone Woods • *"Everyone is built with a special quality that becomes their greatest power."* | 60.0s (137 words) |
-| `toby_the_strong_shell` | **Toby and the Shield Shell** | **Toby** (tortoise), **Willow** (deer), **Benny** (bunny), **Shadow** (wildcat) | Lakeside Meadow • *"Slowness and patience carry quiet, unbreakable strength."* | 58.3s (126 words) |
-| `cam_the_clever_chameleon` | **Cam's Camouflage Magic** | **Cam** (chameleon), **Polly** (parrot), eagle | Forest Canopy • *"True worth lies not in flashy looks, but in how we use our natural abilities."* | 58.0s (132 words) |
-| `piper_and_barnaby` | **Piper and Barnaby Save the Forest** | **Piper** (cuckoo), **Barnaby** (elephant) | Green Forest • *"When different talents join forces, no challenge is too big to overcome."* | 61.3s (140 words) |
+| `the_brave_little_hedgehog` | **The Brave Little Hedgehog** | Hedgehog, Rabbit, Squirrel, Fox | Green Forest • *"The very things that make us different are often our greatest strengths."* | 61.8s (142 words) |
+| `the_tortoise_and_the_shield_shell` | **The Tortoise and the Shield Shell** | Tortoise, Deer, Rabbit, Wildcat | Lakeside Meadow • *"Slowness and patience carry quiet, unbreakable strength."* | 59.7s (134 words) |
+| `the_clever_chameleon` | **The Clever Chameleon** | Chameleon, Parrot, Eagle | Forest Canopy • *"True worth lies not in flashy looks, but in how we use our natural abilities."* | 60.2s (139 words) |
+| `the_cuckoo_and_the_elephant` | **The Cuckoo and the Elephant** | Cuckoo, Elephant | Deep Woods • *"When different talents join forces, no challenge is too big to overcome."* | 64.6s (156 words) |
+| `the_little_firefly` | **The Little Firefly** | Firefly, Butterfly, Mouse | Flowering Meadow • *"Even the quietest gift can shine with great purpose when needed most."* | 61.7s (143 words) |
+| `the_beaver_and_the_rising_river` | **The Beaver and the Rising River** | Beaver, Rabbit, Deer | Riverbank • *"What makes us different can be the very gift that saves the day."* | 60.7s (138 words) |
+| `the_pelican_and_the_rapids` | **The Pelican and the Rapids** | Pelican, Duck, Swan | Wide River • *"True worth is found not in fancy looks, but in how we help others."* | 64.7s (147 words) |
+| `the_kangaroos_cozy_pouch` | **The Kangaroo's Cozy Pouch** | Kangaroo, Rabbit, Fox | Sunlit Valley • *"Every unique trait is a strength waiting for the right moment to shine."* | 60.0s (139 words) |
+
+### Custom Vector SVG Avatars
+Implemented dedicated handcrafted vector SVG avatar renderers in `src/ui/svg-art.js` for all newly introduced animals:
+- `hedgehog`: Spiky fan coat, warm snout, black nose, little paws
+- `chameleon`: Vibrant body, head crest, swivel eye, curly tail
+- `cuckoo`: Streamlined songbird body, wing feathers, singing beak
+- `firefly`: Translucent wings, dark thorax, glowing lantern belly with aura
+- `beaver`: Paddle tail with cross-hatch texture, rich brown body, white buck teeth
+- `pelican`: Silver-grey feathers, neck curve, famous yellow scoop beak pouch
+- `kangaroo`: Muscular tail, alert ears, deep pouch, powerful jumping feet
+- `wildcat`: Spotted tawny coat, sharp ears, fierce green eyes
 
 ### Audio Generation
 - Synthesized single continuous high-fidelity audio tracks using Edge-TTS (`en-US-AnaNeural`) with rate `-4%` and pitch `+2Hz`.
 - Generated word-level timestamp boundaries (`words.json`) for millimeter-exact karaoke sync.
-- Updated `data/audio_manifest.json` — all **157 / 157 stories** now have complete studio narration coverage.
+- Updated `data/audio_manifest.json` — all **160 / 160 stories** now have complete studio narration coverage.
 
 ---
 

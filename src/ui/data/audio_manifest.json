@@ -9036,152 +9036,340 @@
         "end": 76.146
       }
     },
-    "pip_the_prickly_hero": {
-      "title": "Pip the Prickly Hero",
+    "the_tortoise_and_the_shield_shell": {
+      "title": "The Tortoise and the Shield Shell",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/pip_the_prickly_hero/story.mp3",
-      "duration": 59.727,
+      "audio": "audio/the_tortoise_and_the_shield_shell/story.mp3",
+      "duration": 59.674,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 7.433
+          "end": 7.133
         },
         {
           "index": 1,
-          "start": 8.333,
-          "end": 15.052
+          "start": 8.034,
+          "end": 14.036
         },
         {
           "index": 2,
-          "start": 15.951,
-          "end": 22.188
+          "start": 14.935,
+          "end": 21.172
         },
         {
           "index": 3,
-          "start": 23.086,
-          "end": 29.948
+          "start": 22.07,
+          "end": 28.919
         },
         {
           "index": 4,
-          "start": 30.846,
-          "end": 38.385
+          "start": 29.818,
+          "end": 36.419
         },
         {
           "index": 5,
-          "start": 39.284,
-          "end": 44.948
+          "start": 37.318,
+          "end": 43.945
         },
         {
           "index": 6,
-          "start": 45.846,
-          "end": 51.589
+          "start": 44.844,
+          "end": 51.888
         }
       ],
       "moral": {
-        "start": 52.487,
-        "end": 59.727
+        "start": 52.786,
+        "end": 59.674
       }
     },
-    "spike_the_brave_hedgehog": {
-      "title": "Spike and His Spiky Armor",
+    "the_brave_little_hedgehog": {
+      "title": "The Brave Little Hedgehog",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/spike_the_brave_hedgehog/story.mp3",
-      "duration": 60.0,
+      "audio": "audio/the_brave_little_hedgehog/story.mp3",
+      "duration": 61.849,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 8.305
+          "end": 7.576
         },
         {
           "index": 1,
-          "start": 9.206,
-          "end": 16.628
+          "start": 8.477,
+          "end": 15.391
         },
         {
           "index": 2,
-          "start": 17.526,
-          "end": 24.635
+          "start": 16.289,
+          "end": 22.526
         },
         {
           "index": 3,
-          "start": 25.534,
-          "end": 31.081
+          "start": 23.424,
+          "end": 30.352
         },
         {
           "index": 4,
-          "start": 31.979,
-          "end": 37.878
+          "start": 31.25,
+          "end": 39.31
         },
         {
           "index": 5,
-          "start": 38.776,
-          "end": 44.909
+          "start": 40.208,
+          "end": 45.872
         },
         {
           "index": 6,
-          "start": 45.807,
-          "end": 51.758
+          "start": 46.771,
+          "end": 53.711
         }
       ],
       "moral": {
-        "start": 52.656,
-        "end": 60.0
+        "start": 54.609,
+        "end": 61.849
       }
     },
-    "toby_the_strong_shell": {
-      "title": "Toby and the Shield Shell",
+    "the_clever_chameleon": {
+      "title": "The Clever Chameleon",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/toby_the_strong_shell/story.mp3",
-      "duration": 58.294,
+      "audio": "audio/the_clever_chameleon/story.mp3",
+      "duration": 60.247,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 7.172
+          "end": 7.446
         },
         {
           "index": 1,
-          "start": 8.073,
-          "end": 14.388
+          "start": 8.346,
+          "end": 15.065
         },
         {
           "index": 2,
-          "start": 15.286,
-          "end": 22.643
+          "start": 15.964,
+          "end": 22.396
         },
         {
           "index": 3,
-          "start": 23.542,
-          "end": 29.687
+          "start": 23.294,
+          "end": 28.19
         },
         {
           "index": 4,
-          "start": 30.586,
-          "end": 36.693
+          "start": 29.089,
+          "end": 35.234
         },
         {
           "index": 5,
-          "start": 37.591,
-          "end": 43.346
+          "start": 36.133,
+          "end": 43.151
         },
         {
           "index": 6,
-          "start": 44.245,
-          "end": 50.508
+          "start": 44.062,
+          "end": 51.016
         }
       ],
       "moral": {
-        "start": 51.406,
-        "end": 58.294
+        "start": 51.914,
+        "end": 60.247
       }
     },
-    "cam_the_clever_chameleon": {
-      "title": "Cam's Camouflage Magic",
+    "the_little_firefly": {
+      "title": "The Little Firefly",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/cam_the_clever_chameleon/story.mp3",
-      "duration": 58.034,
+      "audio": "audio/the_little_firefly/story.mp3",
+      "duration": 61.745,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 8.787
+        },
+        {
+          "index": 1,
+          "start": 9.688,
+          "end": 15.872
+        },
+        {
+          "index": 2,
+          "start": 16.771,
+          "end": 24.674
+        },
+        {
+          "index": 3,
+          "start": 25.573,
+          "end": 30.586
+        },
+        {
+          "index": 4,
+          "start": 31.484,
+          "end": 37.513
+        },
+        {
+          "index": 5,
+          "start": 38.411,
+          "end": 45.625
+        },
+        {
+          "index": 6,
+          "start": 46.523,
+          "end": 53.437
+        }
+      ],
+      "moral": {
+        "start": 54.336,
+        "end": 61.745
+      }
+    },
+    "the_cuckoo_and_the_elephant": {
+      "title": "The Cuckoo and the Elephant",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_cuckoo_and_the_elephant/story.mp3",
+      "duration": 64.596,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 8.045
+        },
+        {
+          "index": 1,
+          "start": 8.945,
+          "end": 15.859
+        },
+        {
+          "index": 2,
+          "start": 16.758,
+          "end": 23.919
+        },
+        {
+          "index": 3,
+          "start": 24.818,
+          "end": 32.214
+        },
+        {
+          "index": 4,
+          "start": 33.112,
+          "end": 40.3
+        },
+        {
+          "index": 5,
+          "start": 41.198,
+          "end": 47.995
+        },
+        {
+          "index": 6,
+          "start": 48.893,
+          "end": 55.56
+        }
+      ],
+      "moral": {
+        "start": 56.458,
+        "end": 64.596
+      }
+    },
+    "the_pelican_and_the_rapids": {
+      "title": "The Pelican and the Rapids",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_pelican_and_the_rapids/story.mp3",
+      "duration": 64.74,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 8.097
+        },
+        {
+          "index": 1,
+          "start": 8.997,
+          "end": 15.99
+        },
+        {
+          "index": 2,
+          "start": 16.888,
+          "end": 23.19
+        },
+        {
+          "index": 3,
+          "start": 24.089,
+          "end": 30.716
+        },
+        {
+          "index": 4,
+          "start": 31.615,
+          "end": 40.013
+        },
+        {
+          "index": 5,
+          "start": 40.911,
+          "end": 48.112
+        },
+        {
+          "index": 6,
+          "start": 49.01,
+          "end": 56.224
+        }
+      ],
+      "moral": {
+        "start": 57.122,
+        "end": 64.74
+      }
+    },
+    "the_beaver_and_the_rising_river": {
+      "title": "The Beaver and the Rising River",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_beaver_and_the_rising_river/story.mp3",
+      "duration": 60.69,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 7.954
+        },
+        {
+          "index": 1,
+          "start": 8.854,
+          "end": 14.753
+        },
+        {
+          "index": 2,
+          "start": 15.651,
+          "end": 22.513
+        },
+        {
+          "index": 3,
+          "start": 23.411,
+          "end": 28.464
+        },
+        {
+          "index": 4,
+          "start": 29.362,
+          "end": 36.576
+        },
+        {
+          "index": 5,
+          "start": 37.474,
+          "end": 43.555
+        },
+        {
+          "index": 6,
+          "start": 44.453,
+          "end": 53.073
+        }
+      ],
+      "moral": {
+        "start": 53.971,
+        "end": 60.69
+      }
+    },
+    "the_kangaroos_cozy_pouch": {
+      "title": "The Kangaroo's Cozy Pouch",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_kangaroos_cozy_pouch/story.mp3",
+      "duration": 60.026,
       "sentences": [
         {
           "index": 0,
@@ -9191,84 +9379,37 @@
         {
           "index": 1,
           "start": 7.982,
-          "end": 14.662
+          "end": 14.023
         },
         {
           "index": 2,
-          "start": 15.56,
-          "end": 22.096
+          "start": 14.922,
+          "end": 20.391
         },
         {
           "index": 3,
-          "start": 22.995,
-          "end": 27.591
+          "start": 21.289,
+          "end": 26.68
         },
         {
           "index": 4,
-          "start": 28.49,
-          "end": 34.076
+          "start": 27.578,
+          "end": 35.807
         },
         {
           "index": 5,
-          "start": 34.974,
-          "end": 42.018
+          "start": 36.706,
+          "end": 43.828
         },
         {
           "index": 6,
-          "start": 42.917,
-          "end": 48.802
+          "start": 44.727,
+          "end": 52.148
         }
       ],
       "moral": {
-        "start": 49.701,
-        "end": 58.034
-      }
-    },
-    "piper_and_barnaby": {
-      "title": "Piper and Barnaby Save the Forest",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/piper_and_barnaby/story.mp3",
-      "duration": 61.328,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 7.667
-        },
-        {
-          "index": 1,
-          "start": 8.568,
-          "end": 15.482
-        },
-        {
-          "index": 2,
-          "start": 16.38,
-          "end": 23.281
-        },
-        {
-          "index": 3,
-          "start": 24.18,
-          "end": 31.042
-        },
-        {
-          "index": 4,
-          "start": 31.94,
-          "end": 38.906
-        },
-        {
-          "index": 5,
-          "start": 39.805,
-          "end": 46.302
-        },
-        {
-          "index": 6,
-          "start": 47.201,
-          "end": 52.292
-        }
-      ],
-      "moral": {
-        "start": 53.19,
-        "end": 61.328
+        "start": 53.047,
+        "end": 60.026
       }
     }
   }

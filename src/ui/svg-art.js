@@ -520,6 +520,213 @@
         <path d="M42 38 L58 38 L56 66 L44 66 Z" fill="#FFFFFF" opacity="0.9" />
       `
       ),
+
+    // 19. HEDGEHOG (Facing Right with Spiky Coat)
+    hedgehog: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Spiky Fan Back -->
+        <path d="M22 62 Q12 40 26 28 Q44 14 66 26 Q74 34 76 46 Z" fill="#78350F" />
+        <polygon points="20,50 8,46 22,40" fill="#451A03" />
+        <polygon points="26,34 16,24 32,24" fill="#451A03" />
+        <polygon points="40,20 36,8 48,16" fill="#451A03" />
+        <polygon points="56,18 60,6 66,18" fill="#451A03" />
+        <polygon points="72,24 82,16 76,30" fill="#451A03" />
+        <!-- Round Warm Body -->
+        <ellipse cx="48" cy="52" rx="22" ry="16" fill="#B45309" />
+        <!-- Friendly Snout -->
+        <path d="M58 42 Q78 48 80 54 Q70 62 58 60 Z" fill="#FDE68A" />
+        <circle cx="80" cy="53" r="3" fill="#1E293B" />
+        <!-- Eye & Twinkle -->
+        ${
+          state === 'sleeping'
+            ? `<path d="M64 48 Q68 52 72 48" stroke="#1E293B" stroke-width="2" fill="none" />`
+            : `<circle cx="67" cy="48" r="2.5" fill="#1E293B" /><circle cx="68" cy="47" r="0.8" fill="#FFFFFF" />`
+        }
+        <circle cx="56" cy="42" r="3.5" fill="#FDE68A" />
+        <!-- Little Paws -->
+        <ellipse cx="42" cy="67" rx="4" ry="3" fill="#78350F" /><ellipse cx="58" cy="67" rx="4" ry="3" fill="#78350F" />
+      `
+      ),
+
+    // 20. CHAMELEON (Facing Right with Curly Tail)
+    chameleon: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Curly Tail on Left -->
+        <path d="M26 52 Q12 50 14 36 Q18 28 26 34 Q30 40 24 44" fill="none" stroke="#059669" stroke-width="4.5" stroke-linecap="round" />
+        <!-- Body -->
+        <ellipse cx="48" cy="48" rx="22" ry="16" fill="#10B981" />
+        <!-- Head & Crest -->
+        <path d="M50 32 Q64 26 74 34 Z" fill="#059669" />
+        <path d="M66 38 Q82 46 76 56 Z" fill="#10B981" />
+        <!-- Big Swivel Chameleon Eye -->
+        <circle cx="66" cy="42" r="6.5" fill="#34D399" stroke="#059669" stroke-width="1.5" />
+        <circle cx="68" cy="42" r="2.5" fill="#1E293B" />
+        <circle cx="69" cy="41" r="0.8" fill="#FFFFFF" />
+        <!-- Claws Grasping -->
+        <line x1="40" y1="64" x2="36" y2="72" stroke="#047857" stroke-width="3" stroke-linecap="round" />
+        <line x1="56" y1="64" x2="54" y2="72" stroke="#047857" stroke-width="3" stroke-linecap="round" />
+      `
+      ),
+
+    // 21. CUCKOO / SONGBIRD (Facing Right with Singing Beak)
+    cuckoo: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Tail Feathers extending Left -->
+        <polygon points="18,50 4,44 6,58" fill="#0284C7" />
+        <!-- Body & Wing -->
+        <ellipse cx="46" cy="48" rx="20" ry="15" fill="#38BDF8" />
+        <path d="M36 40 Q52 36 60 50 Q46 56 36 40 Z" fill="#0369A1" />
+        <!-- Head -->
+        <circle cx="66" cy="38" r="12" fill="#38BDF8" />
+        <circle cx="70" cy="35" r="3" fill="#FFFFFF" /><circle cx="71" cy="35" r="1.8" fill="#1E293B" />
+        <!-- Open Singing Beak -->
+        <polygon points="76,35 90,38 76,41" fill="#F59E0B" />
+        <polygon points="76,41 86,44 76,45" fill="#D97706" />
+        <!-- Feet -->
+        <line x1="42" y1="63" x2="40" y2="72" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
+        <line x1="52" y1="63" x2="52" y2="72" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" />
+      `
+      ),
+
+    // 22. FIREFLY (Facing Right with Glowing Lantern Abdomen)
+    firefly: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Glowing Tail Aura -->
+        <ellipse cx="28" cy="52" rx="18" ry="14" fill="#FEF08A" opacity="0.45" />
+        <ellipse cx="28" cy="52" rx="13" ry="10" fill="#FACC15" />
+        <!-- Body -->
+        <ellipse cx="46" cy="48" rx="11" ry="9" fill="#1E293B" />
+        <!-- Translucent Wings -->
+        <ellipse cx="38" cy="36" rx="16" ry="7" fill="#E2E8F0" opacity="0.8" transform="rotate(-20 38 36)" />
+        <!-- Head & Big Friendly Eyes -->
+        <circle cx="60" cy="46" r="8" fill="#0F172A" />
+        <circle cx="63" cy="44" r="2.5" fill="#F8FAFC" /><circle cx="64" cy="44" r="1.5" fill="#0284C7" />
+        <!-- Antennae with golden tip -->
+        <path d="M62 40 Q66 30 72 28" fill="none" stroke="#1E293B" stroke-width="1.8" stroke-linecap="round" />
+        <circle cx="72" cy="28" r="1.8" fill="#FACC15" />
+      `
+      ),
+
+    // 23. BEAVER (Facing Right with Paddle Tail & Buck Teeth)
+    beaver: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Paddle Tail extending Left -->
+        <ellipse cx="14" cy="54" rx="16" ry="9" fill="#451A03" transform="rotate(-15 14 54)" />
+        <path d="M6 50 L22 58 M10 46 L26 54" stroke="#78350F" stroke-width="1.5" />
+        <!-- Plump Body -->
+        <ellipse cx="48" cy="50" rx="24" ry="18" fill="#78350F" />
+        <ellipse cx="50" cy="52" rx="14" ry="11" fill="#92400E" />
+        <!-- Round Head & Ears -->
+        <circle cx="68" cy="40" r="14" fill="#78350F" />
+        <circle cx="62" cy="28" r="4.5" fill="#451A03" />
+        <!-- Eye -->
+        <circle cx="72" cy="38" r="2.5" fill="#1E293B" /><circle cx="73" cy="37" r="0.8" fill="#FFFFFF" />
+        <!-- Signature White Buck Teeth -->
+        <rect x="76" y="45" width="4" height="6" rx="1" fill="#FFFFFF" />
+        <line x1="78" y1="45" x2="78" y2="51" stroke="#E2E8F0" stroke-width="0.8" />
+        <!-- Sturdy Paws -->
+        <circle cx="42" cy="67" r="5" fill="#451A03" /><circle cx="60" cy="67" r="5" fill="#451A03" />
+      `
+      ),
+
+    // 24. PELICAN (Facing Right with Big Scoop Pouch)
+    pelican: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Body & Wing -->
+        <ellipse cx="42" cy="50" rx="22" ry="17" fill="#F8FAFC" />
+        <path d="M28 42 Q46 38 56 50 Q42 56 28 42 Z" fill="#CBD5E1" />
+        <!-- Neck & Head -->
+        <path d="M54 50 Q60 38 66 32" stroke="#F8FAFC" stroke-width="12" stroke-linecap="round" fill="none" />
+        <circle cx="68" cy="30" r="10" fill="#F8FAFC" />
+        <circle cx="71" cy="28" r="2.5" fill="#0F172A" /><circle cx="72" cy="27" r="0.8" fill="#FFFFFF" />
+        <!-- Famous Yellow Scoop Beak Pouch -->
+        <path d="M74 28 L96 32 Q88 48 72 44 Z" fill="#F59E0B" />
+        <path d="M74 28 L96 32" stroke="#D97706" stroke-width="2" />
+        <!-- Webbed Foot -->
+        <polygon points="38,67 30,76 46,76" fill="#F59E0B" />
+      `
+      ),
+
+    // 25. KANGAROO (Facing Right with Pouch & Big Jumping Feet)
+    kangaroo: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Powerful Tail extending Left -->
+        <path d="M32 58 Q14 62 4 72" fill="none" stroke="#B45309" stroke-width="7" stroke-linecap="round" />
+        <!-- Torso & Deep Cozy Pouch -->
+        <ellipse cx="48" cy="46" rx="18" ry="20" fill="#D97706" />
+        <path d="M44 48 Q56 58 60 48" fill="#FDE68A" stroke="#B45309" stroke-width="1.5" />
+        <!-- Head & Alert Ears -->
+        <circle cx="64" cy="26" r="10" fill="#D97706" />
+        <ellipse cx="60" cy="12" rx="3" ry="9" fill="#D97706" transform="rotate(-15 60 12)" />
+        <ellipse cx="66" cy="12" rx="3" ry="9" fill="#B45309" transform="rotate(10 66 12)" />
+        <!-- Eye & Nose -->
+        <circle cx="67" cy="25" r="2.5" fill="#1E293B" /><circle cx="73" cy="28" r="2" fill="#451A03" />
+        <!-- Small Paws & Big Jumping Foot -->
+        <path d="M56 40 L64 42" stroke="#B45309" stroke-width="3" stroke-linecap="round" />
+        <ellipse cx="46" cy="68" rx="16" ry="5" fill="#B45309" />
+      `
+      ),
+
+    // 26. WILDCAT (Facing Right with Pointed Ears & Claws)
+    wildcat: (x, y, scale = 1, isFlipped = false, state = 'normal') =>
+      wrapAvatar(
+        x,
+        y,
+        scale,
+        isFlipped,
+        `
+        <!-- Long Curved Tail -->
+        <path d="M30 52 Q10 46 6 30" fill="none" stroke="#D97706" stroke-width="4" stroke-linecap="round" />
+        <!-- Body & Spots -->
+        <ellipse cx="50" cy="50" rx="22" ry="16" fill="#F59E0B" />
+        <circle cx="44" cy="46" r="2.5" fill="#B45309" /><circle cx="56" cy="52" r="2.5" fill="#B45309" />
+        <!-- Head & Sharp Ears -->
+        <circle cx="70" cy="38" r="12" fill="#F59E0B" />
+        <polygon points="64,28 60,16 68,26" fill="#B45309" />
+        <polygon points="74,28 78,16 70,26" fill="#B45309" />
+        <!-- Fierce Green Eyes -->
+        <ellipse cx="73" cy="36" rx="3" ry="2" fill="#10B981" />
+        <circle cx="73" cy="36" r="1.5" fill="#0F172A" />
+        <circle cx="82" cy="40" r="2" fill="#B45309" />
+        <!-- Paws -->
+        <circle cx="42" cy="67" r="5" fill="#B45309" /><circle cx="64" cy="67" r="5" fill="#B45309" />
+      `
+      ),
   };
 
   // Map any character name to its drawer and relative scale
@@ -535,9 +742,25 @@
     if (k.includes('fox')) return { drawer: AVATARS.fox, scale: 0.9 };
     if (k.includes('mouse') || k.includes('rat') || k.includes('mice')) return { drawer: AVATARS.mouse, scale: 0.65 };
     if (k.includes('tortoise') || k.includes('turtle')) return { drawer: AVATARS.tortoise, scale: 0.85 };
-    if (k.includes('hare') || k.includes('rabbit')) return { drawer: AVATARS.hare, scale: 0.9 };
+    if (k.includes('hare') || k.includes('rabbit') || k.includes('bunny')) return { drawer: AVATARS.hare, scale: 0.9 };
     if (k.includes('crane') || k.includes('stork') || k.includes('heron')) return { drawer: AVATARS.crane, scale: 1.05 };
     if (k.includes('crow') || k.includes('raven') || k.includes('jackdaw') || k.includes('eagle')) return { drawer: AVATARS.crow, scale: 0.85 };
+    if (k.includes('hedgehog')) return { drawer: AVATARS.hedgehog, scale: 0.85 };
+    if (k.includes('chameleon')) return { drawer: AVATARS.chameleon, scale: 0.9 };
+    if (k.includes('cuckoo') || k.includes('parrot') || k.includes('songbird') || k.includes('bird')) return { drawer: AVATARS.cuckoo, scale: 0.8 };
+    if (k.includes('firefly')) return { drawer: AVATARS.firefly, scale: 0.75 };
+    if (k.includes('beaver')) return { drawer: AVATARS.beaver, scale: 0.95 };
+    if (k.includes('pelican') || k.includes('duck') || k.includes('swan')) return { drawer: AVATARS.pelican, scale: 1.05 };
+    if (k.includes('kangaroo')) return { drawer: AVATARS.kangaroo, scale: 1.15 };
+    if (k.includes('wildcat') || k.includes('cat')) return { drawer: AVATARS.wildcat, scale: 0.95 };
+    if (k.includes('monkey')) return { drawer: AVATARS.monkey, scale: 0.85 };
+    if (k.includes('dog')) return { drawer: AVATARS.dog, scale: 0.95 };
+    if (k.includes('sheep') || k.includes('lamb')) return { drawer: AVATARS.sheep, scale: 0.95 };
+    if (k.includes('ox') || k.includes('bull') || k.includes('cow') || k.includes('bullock')) return { drawer: AVATARS.ox, scale: 1.25 };
+    if (k.includes('rooster') || k.includes('cock') || k.includes('hen')) return { drawer: AVATARS.rooster, scale: 0.85 };
+    if (k.includes('boy') || k.includes('child')) return { drawer: AVATARS.boy, scale: 0.85 };
+    if (k.includes('mother') || k.includes('milkmaid') || k.includes('woman')) return { drawer: AVATARS.woman, scale: 1.05 };
+    if (k.includes('man') || k.includes('farmer') || k.includes('shepherd') || k.includes('woodman') || k.includes('father') || k.includes('traveller') || k.includes('traveler') || k.includes('companion') || k.includes('astrologer') || k.includes('miser') || k.includes('boaster')) return { drawer: AVATARS.man, scale: 1.1 };
     if (k.includes('monkey')) return { drawer: AVATARS.monkey, scale: 0.85 };
     if (k.includes('dog')) return { drawer: AVATARS.dog, scale: 0.95 };
     if (k.includes('sheep') || k.includes('lamb')) return { drawer: AVATARS.sheep, scale: 0.95 };
