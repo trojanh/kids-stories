@@ -22,6 +22,7 @@ function getMime(ext) {
     '.json': 'application/json',
     '.xml': 'application/xml',
     '.txt': 'text/plain',
+    '.webmanifest': 'application/manifest+json',
     '.mp3': 'audio/mpeg',
     '.wav': 'audio/wav',
     '.ogg': 'audio/ogg',
@@ -53,7 +54,7 @@ const server = http.createServer((req, res) => {
 
   let filePath;
   if (reqPath.startsWith('/data/')) {
-    // Serve JSON or other data files from src/data (or src/ui/data fallback)
+    // Check src/data first, then fallback to src/ui/data
     const p1 = path.join(PROJECT_ROOT, 'src', reqPath);
     const p2 = path.join(PROJECT_ROOT, 'src', 'ui', reqPath);
     filePath = fs.existsSync(p1) ? p1 : p2;
@@ -82,7 +83,7 @@ const server = http.createServer((req, res) => {
     if (isAudio) {
       // High-performance long-term caching for static audio assets
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    } else if (ext === '.json' || ext === '.svg') {
+    } else if (ext === '.svg') {
       res.setHeader('Cache-Control', 'public, max-age=3600');
     } else {
       res.setHeader('Cache-Control', 'no-cache, must-revalidate');

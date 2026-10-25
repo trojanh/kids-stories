@@ -563,6 +563,7 @@
       };
 
       audio.onplay = () => {
+        if (loadTimer) clearTimeout(loadTimer);
         this.speaking = true;
         this.paused = false;
         if (this.onStart) this.onStart();
@@ -573,19 +574,31 @@
       };
 
       audio.onended = () => {
+        if (loadTimer) clearTimeout(loadTimer);
         this.stop();
         if (this.onEnd) this.onEnd();
         if (onFinishedCallback) onFinishedCallback();
       };
 
       audio.onerror = (e) => {
+        if (loadTimer) clearTimeout(loadTimer);
         console.warn('[TTS] Studio audio file error, falling back to Web Speech:', e);
         this.stop();
         this.speakNative(text, onFinishedCallback);
       };
 
+      var loadTimer = setTimeout(() => {
+        if (audio.readyState === 0) {
+          console.warn('[TTS] Audio play timed out, falling back to Web Speech');
+          this.stop();
+          this.speakNative(text, onFinishedCallback);
+        }
+      }, 2500);
+
       audio.play().catch((err) => {
+        if (loadTimer) clearTimeout(loadTimer);
         console.warn('[TTS] Audio playback restricted, falling back to Web Speech:', err);
+        this.stop();
         this.speakNative(text, onFinishedCallback);
       });
     }
@@ -593,6 +606,7 @@
     /**
      * Plays a specific timestamp cue range [startSec, endSec] of a single continuous story audio file.
      * Provides 0ms instant seeking, millisecond-exact word karaoke, and auto-pauses at segment completion.
+     * Automatically falls back to Web Speech API if audio is missing, 404, offline, or stalls.
      */
     playAudioRange(url, startSec, endSec, text, onFinishedCallback, exactWords = null) {
       this.stop();
@@ -707,15 +721,43 @@
             this.audioAnimFrame = requestAnimationFrame(updateTracking);
           }).catch((err) => {
             console.warn('[TTS] Audio playback restricted, falling back to Web Speech:', err);
+            finishSegment();
             this.speakNative(text, onFinishedCallback);
           });
         }
       };
 
+      let loadTimer = null;
+      const cleanupListeners = () => {
+        if (loadTimer) {
+          clearTimeout(loadTimer);
+          loadTimer = null;
+        }
+        audio.removeEventListener('loadedmetadata', onLoaded);
+        audio.removeEventListener('error', onLoadError);
+      };
+
+      const onLoaded = () => {
+        cleanupListeners();
+        doSeekAndPlay();
+      };
+
+      const onLoadError = (err) => {
+        cleanupListeners();
+        console.warn('[TTS] Audio load error/missing, falling back to Web Speech:', err);
+        finishSegment();
+        this.speakNative(text, onFinishedCallback);
+      };
+
       if (audio.readyState >= 1) {
         doSeekAndPlay();
       } else {
-        audio.addEventListener('loadedmetadata', doSeekAndPlay, { once: true });
+        loadTimer = setTimeout(() => {
+          console.warn('[TTS] Audio metadata load timed out after 2.5s, falling back to Web Speech');
+          onLoadError('timeout');
+        }, 2500);
+        audio.addEventListener('loadedmetadata', onLoaded, { once: true });
+        audio.addEventListener('error', onLoadError, { once: true });
         audio.load();
       }
     }

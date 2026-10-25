@@ -6041,5 +6041,186 @@
       "the_fighting_cocks_and_the_eagle_6.svg"
     ],
     "moral": "Pride goes before a fall."
+  },
+  {
+    "id": "pip_the_prickly_hero",
+    "title": "Pip the Prickly Hero",
+    "theme": "Animals",
+    "animal": "hedgehog",
+    "character": [
+      "hedgehog",
+      "rabbit",
+      "squirrel",
+      "fox"
+    ],
+    "tags": [
+      "self-acceptance",
+      "courage",
+      "friendship"
+    ],
+    "length": "short",
+    "text": [
+      "In the Whispering Woods, Pip the hedgehog loved playing with friends but disliked his sharp, pointy quills.",
+      "His friend Bramble had soft, fluffy fur, and Squeak could scamper up tall trees with ease.",
+      "While playing hide-and-seek near the meadow, a hungry fox prowled into the clearing toward Bramble.",
+      "Terrified and frozen in place, Bramble could not run away as the fox took slow steps closer.",
+      "Pip tucked his head in, rolled into a tight, spiky ball, and tumbled straight into the fox's sensitive paw.",
+      "Yelping in pain from the sharp quills, the fox scampered off into the dark woods.",
+      "Pip's friends cheered, and he finally realized his spikes made him unique and brave."
+    ],
+    "panels": [
+      "pip_the_prickly_hero_1.svg",
+      "pip_the_prickly_hero_2.svg",
+      "pip_the_prickly_hero_3.svg",
+      "pip_the_prickly_hero_4.svg",
+      "pip_the_prickly_hero_5.svg",
+      "pip_the_prickly_hero_6.svg",
+      "pip_the_prickly_hero_7.svg"
+    ],
+    "moral": "The very things that make us different are often our greatest strengths."
+  },
+  {
+    "id": "spike_the_brave_hedgehog",
+    "title": "Spike and His Spiky Armor",
+    "theme": "Animals",
+    "animal": "hedgehog",
+    "character": [
+      "hedgehog",
+      "rabbit",
+      "fox"
+    ],
+    "tags": [
+      "self-worth",
+      "bravery",
+      "friendship"
+    ],
+    "length": "short",
+    "text": [
+      "In the Pinecone Woods, Spike the hedgehog was sad because he had prickly quills instead of soft fur like Clover the rabbit.",
+      "Whenever little hedgehogs feel scared, they naturally tuck in their paws and turn into a tight, spiky ball.",
+      "One sunny afternoon during a game of hide-and-seek, a hungry fox named Rusty crept toward Clover.",
+      "Clover froze in fear, unable to move her feet as the sneaky fox closed in.",
+      "Spike quickly curled into a firm spiky ball and rolled down the hill like a bowling ball.",
+      "Spike bumped straight into Rusty's tender paw, making the fox yelp in agony and flee.",
+      "Clover hugged her brave friend, reminding Spike that his special quills were a true gift."
+    ],
+    "panels": [
+      "spike_the_brave_hedgehog_1.svg",
+      "spike_the_brave_hedgehog_2.svg",
+      "spike_the_brave_hedgehog_3.svg",
+      "spike_the_brave_hedgehog_4.svg",
+      "spike_the_brave_hedgehog_5.svg",
+      "spike_the_brave_hedgehog_6.svg",
+      "spike_the_brave_hedgehog_7.svg"
+    ],
+    "moral": "Everyone is built with a special quality that becomes their greatest power."
+  },
+  {
+    "id": "toby_the_strong_shell",
+    "title": "Toby and the Shield Shell",
+    "theme": "Animals",
+    "animal": "tortoise",
+    "character": [
+      "tortoise",
+      "deer",
+      "rabbit",
+      "wildcat"
+    ],
+    "tags": [
+      "patience",
+      "protection",
+      "strength"
+    ],
+    "length": "short",
+    "text": [
+      "Beside a sparkling lake, Toby the tortoise felt sad because he walked so slowly under his heavy shell.",
+      "His friend Willow the deer could sprint like the wind, while Toby could only crawl step by step.",
+      "One sunny afternoon, a fierce wildcat named Shadow leaped out of the shadows toward little baby bunny Benny.",
+      "Benny tripped in fear, and the wildcat pounced forward with razor-sharp claws extended.",
+      "Toby moved quickly over Benny and pulled his head and legs deep inside his rock-hard shell.",
+      "Shadow clawed and bit the tough shell, hurting his own paws before running away crying.",
+      "Benny was safe, and Toby realized his slow-moving shell was the ultimate protective shield."
+    ],
+    "panels": [
+      "toby_the_strong_shell_1.svg",
+      "toby_the_strong_shell_2.svg",
+      "toby_the_strong_shell_3.svg",
+      "toby_the_strong_shell_4.svg",
+      "toby_the_strong_shell_5.svg",
+      "toby_the_strong_shell_6.svg",
+      "toby_the_strong_shell_7.svg"
+    ],
+    "moral": "Slowness and patience carry quiet, unbreakable strength."
+  },
+  {
+    "id": "cam_the_clever_chameleon",
+    "title": "Cam's Camouflage Magic",
+    "theme": "Animals",
+    "animal": "chameleon",
+    "character": [
+      "chameleon",
+      "parrot",
+      "eagle"
+    ],
+    "tags": [
+      "cleverness",
+      "camouflage",
+      "rescue"
+    ],
+    "length": "short",
+    "text": [
+      "Cam the chameleon felt jealous of Polly the parrot's bright, colorful feathers because he had no fixed color.",
+      "Chameleons naturally shift skin tones to blend seamlessly with green leaves or brown twigs.",
+      "Suddenly, a hunting eagle swooped down from the sky, locking its sharp eyes right onto Polly.",
+      "Polly was too frozen in fright to fly away from the incoming predator.",
+      "Cam shifted to dry-bark brown on a branch and flicked a dead leaf with his long tongue.",
+      "The eagle dove toward the moving leaf, could not spot the camouflaged Cam, and flew away confused.",
+      "Polly thanked Cam, proving that blending in can be far more powerful than standing out."
+    ],
+    "panels": [
+      "cam_the_clever_chameleon_1.svg",
+      "cam_the_clever_chameleon_2.svg",
+      "cam_the_clever_chameleon_3.svg",
+      "cam_the_clever_chameleon_4.svg",
+      "cam_the_clever_chameleon_5.svg",
+      "cam_the_clever_chameleon_6.svg",
+      "cam_the_clever_chameleon_7.svg"
+    ],
+    "moral": "True worth lies not in flashy looks, but in how we use our natural abilities."
+  },
+  {
+    "id": "piper_and_barnaby",
+    "title": "Piper and Barnaby Save the Forest",
+    "theme": "Animals",
+    "animal": "elephant",
+    "character": [
+      "cuckoo",
+      "elephant"
+    ],
+    "tags": [
+      "teamwork",
+      "cooperation",
+      "friendship"
+    ],
+    "length": "short",
+    "text": [
+      "Piper the cuckoo wished she was mighty like Barnaby the elephant, while Barnaby envied Piper's ability to fly high.",
+      "One dry afternoon, a sudden brushfire broke out and started spreading fast across the forest floor.",
+      "Barnaby was too low to see an escape route through the smoke, and Piper was too small to put out the fire.",
+      "Piper flew high into the sky, spotted a safe lake to the left, and called out clear directions.",
+      "Barnaby used his enormous strength to clear fallen branches and sprayed water from his trunk along the path.",
+      "Guided from above by Piper, Barnaby extinguished the blaze and led all the animals to safety.",
+      "Both realized that combining their different gifts made them an unstoppable team."
+    ],
+    "panels": [
+      "piper_and_barnaby_1.svg",
+      "piper_and_barnaby_2.svg",
+      "piper_and_barnaby_3.svg",
+      "piper_and_barnaby_4.svg",
+      "piper_and_barnaby_5.svg",
+      "piper_and_barnaby_6.svg",
+      "piper_and_barnaby_7.svg"
+    ],
+    "moral": "When different talents join forces, no challenge is too big to overcome."
   }
 ]

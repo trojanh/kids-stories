@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
 
-import pytest
+try:
+    import pytest
+except ImportError:
+    pytest = None
 
 STORIES_PATH = Path(__file__).with_name("stories.json")
 
@@ -57,4 +60,12 @@ def test_story_lengths_and_panels_are_accurate():
         assert (
             len(story["panels"]) == n
         ), f"Story {story['id']} has {len(story['panels'])} panels for {n} text sentences"
+
+
+if __name__ == "__main__":
+    test_story_fields_present()
+    test_unique_story_ids()
+    test_story_lengths_and_panels_are_accurate()
+    stories = load_stories()
+    print(f"All {len(stories)} stories passed integrity validation successfully!")
 

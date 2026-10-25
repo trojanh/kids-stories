@@ -16,14 +16,53 @@
   }
 
   const STORAGE_KEY_FAVS = 'kids_storybook_favorites';
+  const STORIES_PER_PAGE = 24;
 
   let stories = [];
+  let randomizedStories = [];
+  let currentPage = 1;
   let currentStory = null;
   let currentSentenceIndex = 0;
   let autoAdvance = true;
   let autoAdvanceTimeout = null;
   let isSpeaking = false;
   let favorites = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_FAVS) || '[]'));
+
+  // Utility: Fisher-Yates array shuffle for randomized discovery
+  function shuffleArray(arr) {
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  // URL & Pagination helpers
+  function readPageFromUrl() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const p = parseInt(params.get('page'), 10);
+      return !isNaN(p) && p >= 1 ? p : 1;
+    } catch (e) {
+      return 1;
+    }
+  }
+
+  function getLibraryUrlWithPage(page) {
+    const base = getLibraryUrl();
+    return page > 1 ? `${base}?page=${page}` : base;
+  }
+
+  // Common footer component across all views
+  function renderFooter() {
+    return `
+      <footer class="site-footer">
+        <div class="footer-title">TalePickle</div>
+        <div class="footer-subtitle">Crafted with ❤️ for young readers and curious minds.</div>
+      </footer>
+    `;
+  }
 
   // Filtering state
   let searchQuery = '';
@@ -68,11 +107,12 @@
   }
 
   function navigateToLibrary(replace = false) {
-    const url = getLibraryUrl();
+    currentPage = readPageFromUrl();
+    const url = currentPage > 1 ? getLibraryUrlWithPage(currentPage) : getLibraryUrl();
     if (replace) {
-      history.replaceState({}, '', url);
+      history.replaceState({ page: currentPage }, '', url);
     } else {
-      history.pushState({}, '', url);
+      history.pushState({ page: currentPage }, '', url);
     }
     renderList();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -228,7 +268,8 @@
         const res = await fetch(p);
         if (res.ok) {
           stories = await res.json();
-          console.log(`Loaded ${stories.length} stories from ${p}`);
+          randomizedStories = shuffleArray(stories);
+          console.log(`Loaded ${stories.length} stories from ${p} (randomized listing order)`);
           return;
         }
       } catch (e) {
@@ -281,7 +322,8 @@
   }
 
   function getFilteredStories() {
-    return stories.filter((s) => {
+    const source = randomizedStories && randomizedStories.length > 0 ? randomizedStories : stories;
+    return source.filter((s) => {
       // Theme filter
       if (activeTheme !== 'All') {
         const t = s.theme || 'Animals';
@@ -317,6 +359,25 @@
     });
   }
 
+  function renderPaginationControls(totalPages, currPage) {
+    if (totalPages <= 1) return '';
+    let buttonsHtml = '';
+
+    buttonsHtml += `<button class="pagination-btn" data-page="${currPage - 1}" ${currPage <= 1 ? 'disabled' : ''}>« Prev</button>`;
+
+    for (let p = 1; p <= totalPages; p++) {
+      if (p === 1 || p === totalPages || (p >= currPage - 2 && p <= currPage + 2)) {
+        buttonsHtml += `<button class="pagination-btn ${p === currPage ? 'active' : ''}" data-page="${p}">${p}</button>`;
+      } else if (p === currPage - 3 || p === currPage + 3) {
+        buttonsHtml += `<span class="pagination-ellipsis">…</span>`;
+      }
+    }
+
+    buttonsHtml += `<button class="pagination-btn" data-page="${currPage + 1}" ${currPage >= totalPages ? 'disabled' : ''}>Next »</button>`;
+
+    return `<div class="pagination-container">${buttonsHtml}</div>`;
+  }
+
   function renderList() {
     currentStory = null;
     TTS.stop();
@@ -324,15 +385,12 @@
     resetCatalogSEO();
 
     const filtered = getFilteredStories();
-
-    const themeCounts = {
-      All: stories.length,
-      Animals: stories.filter((s) => s.theme === 'Animals').length,
-      'Life Lessons': stories.filter((s) => s.theme === 'Life Lessons').length,
-      Family: stories.filter((s) => s.theme === 'Family').length,
-      Nature: stories.filter((s) => s.theme === 'Nature').length,
-      Mythology: stories.filter((s) => s.theme === 'Mythology').length,
-    };
+    const totalPages = Math.ceil(filtered.length / STORIES_PER_PAGE);
+    if (currentPage > totalPages && totalPages > 0) {
+      currentPage = 1;
+    }
+    const startIndex = (currentPage - 1) * STORIES_PER_PAGE;
+    const paginatedStories = filtered.slice(startIndex, startIndex + STORIES_PER_PAGE);
 
     appContainer.innerHTML = `
       <div class="site-header">
@@ -340,7 +398,7 @@
           <span class="logo-icon">🥒📚</span>
           <div class="logo-text">
             <h1>TalePickle</h1>
-            <p>150+ Illustrated Tales with Voice Narration</p>
+            <p>Illustrated Fables with Voice Narration</p>
           </div>
         </a>
         <div class="header-actions">
@@ -355,9 +413,9 @@
       <div class="hero-card">
         <div class="hero-content">
           <span class="hero-tag">🌟 Read, Listen & Learn</span>
-          <h2 class="hero-title">Fun Stories with Sweet Lessons for Little Minds</h2>
+          <h2 class="hero-title">Fun Stories & Moral Tales for Curious Minds</h2>
           <p class="hero-desc">
-            Explore beautiful fables rewritten in simple, kid-friendly English. Tap any story to listen with speech narration and animated comic panels!
+            Explore timeless illustrated fables and bedtime stories brought to life. Tap any story to enjoy word-by-word read-aloud voice narration and delightful animations!
           </p>
           <button class="btn-pill primary" id="heroStartBtn">Start Exploring Tales ✨</button>
         </div>
@@ -382,7 +440,7 @@
             .map(
               (theme) => `
             <button class="chip ${activeTheme === theme ? 'active' : ''}" data-theme="${theme}">
-              ${getThemeEmoji(theme)} ${theme} (${themeCounts[theme] || 0})
+              ${getThemeEmoji(theme)} ${theme}
             </button>
           `
             )
@@ -393,9 +451,9 @@
           <span class="filter-label">Length:</span>
           ${[
             { key: 'All', label: 'All Lengths' },
-            { key: 'short', label: '⚡ Short (≤7 sentences)' },
-            { key: 'medium', label: '📖 Medium (8–14 sentences)' },
-            { key: 'long', label: '🌟 Long (15+ sentences)' },
+            { key: 'short', label: '⚡ Short (≤7)' },
+            { key: 'medium', label: '📖 Medium (8–14)' },
+            { key: 'long', label: '🌟 Long (15+)' },
           ]
             .map(
               (l) => `
@@ -411,10 +469,11 @@
       <!-- Results Header -->
       <div class="results-header">
         <div class="results-count">
-          Showing <strong>${filtered.length}</strong> of ${stories.length} stories
+          <strong>Explore Stories</strong>
           ${activeTheme !== 'All' ? `• Theme: ${activeTheme}` : ''}
           ${activeLength !== 'All' ? `• Length: ${activeLength}` : ''}
           ${showFavoritesOnly ? `• Favorites only` : ''}
+          ${searchQuery.trim() ? `• Matching "${escapeHtml(searchQuery)}"` : ''}
         </div>
       </div>
 
@@ -430,9 +489,8 @@
             <button class="btn-pill primary" style="margin-top: 1rem;" id="resetFiltersBtn">Reset All Filters</button>
           </div>
         `
-            : filtered
+            : paginatedStories
                 .map((s) => {
-                  const themeCls = 'theme-' + (s.theme || 'Animals').replace(/\s+/g, '');
                   const isFav = favorites.has(s.id);
                   const firstSentence = (s.text && s.text[0]) || '';
                   const totalSentences = (s.text && s.text.length) || 0;
@@ -445,7 +503,6 @@
                 <div class="card-thumbnail-wrapper">
                   ${thumbSvg}
                   <div class="thumb-overlay-top">
-                    <span class="theme-badge ${themeCls}">${getThemeEmoji(s.theme)} ${s.theme || 'Animals'}</span>
                     <button class="fav-btn" data-id="${s.id}" title="Save Favorite" onclick="window.StoryApp.toggleFav('${s.id}', event)">
                       ${isFav ? '❤️' : '🤍'}
                     </button>
@@ -475,10 +532,17 @@
         }
       </div>
 
-      <footer class="site-footer">
-        <p>✨ TalePickle • Crafted with ❤️ for Curious Young Readers</p>
-        <p style="margin-top: 0.25rem; font-size: 0.8rem; opacity: 0.8;">Speech powered by Web Speech API • Works offline</p>
-      </footer>
+      <!-- Pagination Controls -->
+      ${renderPaginationControls(totalPages, currentPage)}
+
+      <!-- SEO Discovery Text -->
+      <div class="seo-discovery-card">
+        <p>
+          🌟 <strong>Ad-Free Kids Stories & Bedtime Fables:</strong> TalePickle brings classic moral stories, animal adventures, and night time tales to life with sentence-by-sentence read-aloud voice narration, speech speed control, and colorful animated panels for children.
+        </p>
+      </div>
+
+      ${renderFooter()}
     `;
 
     attachListEvents();
@@ -512,6 +576,7 @@
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
+        currentPage = 1;
         renderList();
         // keep focus in input
         const newInp = document.getElementById('searchInput');
@@ -526,6 +591,7 @@
     document.querySelectorAll('.chip[data-theme]').forEach((btn) => {
       btn.addEventListener('click', () => {
         activeTheme = btn.getAttribute('data-theme');
+        currentPage = 1;
         renderList();
       });
     });
@@ -534,7 +600,22 @@
     document.querySelectorAll('.chip[data-length]').forEach((btn) => {
       btn.addEventListener('click', () => {
         activeLength = btn.getAttribute('data-length');
+        currentPage = 1;
         renderList();
+      });
+    });
+
+    // Pagination buttons
+    document.querySelectorAll('.pagination-btn[data-page]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const p = parseInt(btn.getAttribute('data-page'), 10);
+        if (!isNaN(p) && p >= 1 && p !== currentPage) {
+          currentPage = p;
+          const url = getLibraryUrlWithPage(p);
+          history.pushState({ page: p }, '', url);
+          renderList();
+          window.scrollTo({ top: 320, behavior: 'smooth' });
+        }
       });
     });
 
@@ -553,6 +634,7 @@
     if (favFilterBtn) {
       favFilterBtn.addEventListener('click', () => {
         showFavoritesOnly = !showFavoritesOnly;
+        currentPage = 1;
         renderList();
       });
     }
@@ -572,6 +654,7 @@
         activeTheme = 'All';
         activeLength = 'All';
         showFavoritesOnly = false;
+        currentPage = 1;
         renderList();
       });
     }
@@ -747,6 +830,9 @@
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
                 <h2>${story.title}</h2>
                 <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  <button class="hero-story-play-btn ${isSpeaking ? 'speaking' : ''}" id="heroPlayStoryBtn" type="button">
+                    ${isSpeaking ? '⏸️ Pause Story' : '▶️ Play Story'}
+                  </button>
                   <div id="narrationBadgeContainer">
                     ${
                       TTS.hasStudioAudio(story.id)
@@ -757,9 +843,10 @@
                   <a href="audio/${story.id}/story.mp3" target="_blank" rel="noopener" class="btn-pill" style="font-size: 0.75rem; padding: 0.25rem 0.6rem; text-decoration: none;" title="Download or open full story MP3 directly">🎧 MP3</a>
                 </div>
               </div>
-              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
-                Animal: <strong>${formatAnimalLabel(story.animal)}</strong> • Characters: ${story.character.join(', ')}
-              </p>
+              <div class="story-character-pills">
+                <span class="story-animal-pill">🐾 ${formatAnimalLabel(story.animal)}</span>
+                ${story.character.map((c) => `<span class="story-char-chip">${formatAnimalLabel(c)}</span>`).join('')}
+              </div>
             </div>
           </div>
 
@@ -777,9 +864,9 @@
           <div class="story-reader-text-container">
             <div class="narration-counter-row">
               <span class="narration-counter" id="sentenceCounter">
-                Reading Sentence ${currentSentenceIndex + 1} of ${totalSentences}
+                Sentence ${currentSentenceIndex + 1} of ${totalSentences}
               </span>
-              <span class="click-hint">💡 Tap any sentence to listen</span>
+              <span class="click-hint">💡 Tap sentence to jump</span>
             </div>
             <div class="story-full-paragraphs" id="fullStoryParagraphs">
               ${story.text
@@ -793,63 +880,20 @@
               `
                 )
                 .join('')}
+
+              <!-- Moral at the End of Story -->
+              <div class="reader-story-moral-card" id="readerStoryMoral">
+                <span style="font-size: 1.6rem;">🌟</span>
+                <div>
+                  <div class="reader-moral-header">Moral of the Story</div>
+                  <div class="reader-moral-text">"${escapeHtml(story.moral)}"</div>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Audio & Playback Controls -->
           <div class="reader-controls-bar">
-            <div class="controls-row-top">
-              <!-- Speed Slider -->
-              <div class="speed-control-group">
-                <span>⚡ Speed:</span>
-                <input
-                  type="range"
-                  class="speed-slider"
-                  id="ttsSpeedSlider"
-                  min="0.5"
-                  max="1.8"
-                  step="0.1"
-                  value="${currentRate}"
-                />
-                <span class="speed-value-badge" id="speedDisplay">${currentRate.toFixed(1)}×</span>
-              </div>
-
-              <!-- Voice Selector with quality badges and preview button -->
-              ${
-                rankedVoices.length > 0
-                  ? `
-                <div class="voice-select-group">
-                  <select id="voiceSelect" title="Select Voice Narration">
-                    ${rankedVoices
-                      .map(
-                        (v) => `
-                      <option value="${v.voiceURI}" ${bestVoice && v.voiceURI === bestVoice.voiceURI ? 'selected' : ''}>
-                        ${TTS.formatVoiceLabel(v)}
-                      </option>
-                    `
-                      )
-                      .join('')}
-                  </select>
-                  <button type="button" class="voice-preview-btn" id="previewVoiceBtn" title="Test this voice">
-                    🔊 Preview
-                  </button>
-                </div>
-              `
-                  : ''
-              }
-
-              <!-- Auto-read toggle -->
-              <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
-                <input type="checkbox" id="autoAdvanceToggle" ${autoAdvance ? 'checked' : ''} />
-                <span>Auto-Advance</span>
-              </label>
-
-              <!-- Art Style Toggle: Rough.js Sketch vs Clean Vector -->
-              <button id="artStyleToggleBtn" class="art-style-btn" title="Toggle Illustration Style (Rough.js vs Vector)" onclick="window.StoryApp.toggleArtStyle()">
-                ${SvgArt.getRenderMode() === 'rough' ? '✏️ Style: Rough Sketch' : '✨ Style: Clean Vector'}
-              </button>
-            </div>
-
             <!-- Primary Playback Buttons -->
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
               <button class="circle-btn" id="prevSentenceBtn" title="Previous Sentence" ${currentSentenceIndex === 0 ? 'disabled' : ''}>
@@ -857,8 +901,8 @@
               </button>
 
               <div class="playback-buttons">
-                <button class="circle-btn play-btn" id="playTtsBtn" title="Listen to Sentence">
-                  ${isSpeaking ? '⏸️' : '🔊'}
+                <button class="circle-btn play-btn" id="playTtsBtn" title="Play / Pause Sentence">
+                  ${isSpeaking ? '⏸️' : '▶️'}
                 </button>
                 <button class="circle-btn" id="repeatSentenceBtn" title="Replay Sentence">
                   🔄
@@ -868,9 +912,70 @@
               <button class="circle-btn" id="nextSentenceBtn" title="Next Sentence">
                 ⏭️
               </button>
+
+              <button class="settings-toggle-btn" id="audioSettingsToggleBtn" type="button" title="Audio & Narration Settings">
+                ⚙️ Narration Settings ▾
+              </button>
+            </div>
+
+            <!-- Collapsible Secondary Settings Drawer -->
+            <div class="audio-settings-drawer" id="audioSettingsDrawer" hidden>
+              <div class="controls-row-top">
+                <!-- Speed Slider -->
+                <div class="speed-control-group">
+                  <span>⚡ Speed:</span>
+                  <input
+                    type="range"
+                    class="speed-slider"
+                    id="ttsSpeedSlider"
+                    min="0.5"
+                    max="1.8"
+                    step="0.1"
+                    value="${currentRate}"
+                  />
+                  <span class="speed-value-badge" id="speedDisplay">${currentRate.toFixed(1)}×</span>
+                </div>
+
+                <!-- Voice Selector with quality badges and preview button -->
+                ${
+                  rankedVoices.length > 0
+                    ? `
+                  <div class="voice-select-group">
+                    <select id="voiceSelect" title="Select Voice Narration">
+                      ${rankedVoices
+                        .map(
+                          (v) => `
+                        <option value="${v.voiceURI}" ${bestVoice && v.voiceURI === bestVoice.voiceURI ? 'selected' : ''}>
+                          ${TTS.formatVoiceLabel(v)}
+                        </option>
+                      `
+                        )
+                        .join('')}
+                    </select>
+                    <button type="button" class="voice-preview-btn" id="previewVoiceBtn" title="Test this voice">
+                      🔊 Preview
+                    </button>
+                  </div>
+                `
+                    : ''
+                }
+
+                <!-- Auto-read toggle -->
+                <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
+                  <input type="checkbox" id="autoAdvanceToggle" ${autoAdvance ? 'checked' : ''} />
+                  <span>Auto-Advance</span>
+                </label>
+
+                <!-- Art Style Toggle: Rough.js Sketch vs Clean Vector -->
+                <button id="artStyleToggleBtn" class="art-style-btn" title="Toggle Illustration Style (Rough.js vs Vector)" onclick="window.StoryApp.toggleArtStyle()">
+                  ${SvgArt.getRenderMode() === 'rough' ? '✏️ Style: Rough Sketch' : '✨ Style: Clean Vector'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        ${renderFooter()}
       </div>
     `;
 
@@ -905,7 +1010,7 @@
     // Update counter
     const counter = document.getElementById('sentenceCounter');
     if (counter) {
-      counter.innerText = `Reading Sentence ${index + 1} of ${currentStory.text.length}`;
+      counter.innerText = `Sentence ${index + 1} of ${currentStory.text.length}`;
     }
 
     // Update SVG stage panel
@@ -948,7 +1053,14 @@
 
   function updateSpeakingStateUI(speaking) {
     const playBtn = document.getElementById('playTtsBtn');
-    if (playBtn) playBtn.innerHTML = speaking ? '⏸️' : '🔊';
+    if (playBtn) playBtn.innerHTML = speaking ? '⏸️' : '▶️';
+
+    const heroPlayBtn = document.getElementById('heroPlayStoryBtn');
+    if (heroPlayBtn) {
+      heroPlayBtn.innerHTML = speaking ? '⏸️ Pause Story' : '▶️ Play Story';
+      if (speaking) heroPlayBtn.classList.add('speaking');
+      else heroPlayBtn.classList.remove('speaking');
+    }
 
     const activeSentenceEl = document.getElementById(`storySent_${currentSentenceIndex}`);
     if (activeSentenceEl) {
@@ -1037,6 +1149,38 @@
       });
     }
 
+    const heroPlayBtn = document.getElementById('heroPlayStoryBtn');
+    if (heroPlayBtn) {
+      heroPlayBtn.addEventListener('click', () => {
+        if (isSpeaking) {
+          if (autoAdvanceTimeout) {
+            clearTimeout(autoAdvanceTimeout);
+            autoAdvanceTimeout = null;
+          }
+          TTS.stop();
+          isSpeaking = false;
+          updateSpeakingStateUI(false);
+        } else {
+          autoAdvance = true;
+          const autoToggle = document.getElementById('autoAdvanceToggle');
+          if (autoToggle) autoToggle.checked = true;
+          speakCurrentSentence();
+        }
+      });
+    }
+
+    const settingsToggleBtn = document.getElementById('audioSettingsToggleBtn');
+    const settingsDrawer = document.getElementById('audioSettingsDrawer');
+    if (settingsToggleBtn && settingsDrawer) {
+      settingsToggleBtn.addEventListener('click', () => {
+        const isHidden = settingsDrawer.hidden;
+        settingsDrawer.hidden = !isHidden;
+        settingsToggleBtn.innerHTML = !isHidden
+          ? '⚙️ Narration Settings ▾'
+          : '⚙️ Close Settings ▴';
+      });
+    }
+
     const repeatBtn = document.getElementById('repeatSentenceBtn');
     if (repeatBtn) {
       repeatBtn.addEventListener('click', () => {
@@ -1109,6 +1253,34 @@
       autoToggle.addEventListener('change', (e) => {
         autoAdvance = e.target.checked;
       });
+    }
+  }
+
+  function handleQuizAnswer(qNum, optIdx, isCorrect) {
+    const card = document.getElementById(`quizQ${qNum}`);
+    const feedback = document.getElementById(`quizFeedback${qNum}`);
+    if (!card || !feedback) return;
+
+    const btns = card.querySelectorAll('.quiz-option-btn');
+    btns.forEach((btn, idx) => {
+      if (idx === optIdx) {
+        if (isCorrect) {
+          btn.classList.add('correct');
+          btn.classList.remove('incorrect');
+        } else {
+          btn.classList.add('incorrect');
+          btn.classList.remove('correct');
+        }
+      }
+    });
+
+    feedback.hidden = false;
+    if (isCorrect) {
+      feedback.className = 'quiz-feedback success';
+      feedback.innerText = '🌟 Super star! That is completely right!';
+    } else {
+      feedback.className = 'quiz-feedback retry';
+      feedback.innerText = '🤔 Not quite, pick another answer to try again!';
     }
   }
 
@@ -1186,6 +1358,47 @@
               <div class="moral-quote">"${story.moral}"</div>
             </div>
 
+            <!-- Interactive Comprehension Quiz -->
+            <div class="quiz-section">
+              <div class="quiz-title">
+                <span>🧠 Fun Story Quiz</span>
+              </div>
+
+              <!-- Question 1: Moral Lesson -->
+              <div class="quiz-question-card" id="quizQ1">
+                <div class="quiz-question-text">1. What important lesson does this story teach us?</div>
+                <div class="quiz-options">
+                  <button type="button" class="quiz-option-btn" onclick="window.StoryApp.answerQuiz(1, 0, true)">
+                    A. "${escapeHtml(story.moral)}"
+                  </button>
+                  <button type="button" class="quiz-option-btn" onclick="window.StoryApp.answerQuiz(1, 1, false)">
+                    B. "Never share or play with friends in the woods."
+                  </button>
+                  <button type="button" class="quiz-option-btn" onclick="window.StoryApp.answerQuiz(1, 2, false)">
+                    C. "Only big, noisy animals can be brave."
+                  </button>
+                </div>
+                <div class="quiz-feedback" id="quizFeedback1" hidden></div>
+              </div>
+
+              <!-- Question 2: Character / Detail -->
+              <div class="quiz-question-card" id="quizQ2">
+                <div class="quiz-question-text">2. Who is the featured animal in this fable?</div>
+                <div class="quiz-options">
+                  <button type="button" class="quiz-option-btn" onclick="window.StoryApp.answerQuiz(2, 0, false)">
+                    A. 🐲 A mythical fire dragon
+                  </button>
+                  <button type="button" class="quiz-option-btn" onclick="window.StoryApp.answerQuiz(2, 1, true)">
+                    B. 🐾 ${formatAnimalLabel(story.animal)} (${escapeHtml(story.title)})
+                  </button>
+                  <button type="button" class="quiz-option-btn" onclick="window.StoryApp.answerQuiz(2, 2, false)">
+                    C. 🤖 A silver space robot
+                  </button>
+                </div>
+                <div class="quiz-feedback" id="quizFeedback2" hidden></div>
+              </div>
+            </div>
+
             <!-- Actions -->
             <div class="celebration-actions">
               <button class="btn-pill" id="replayStoryBtn">
@@ -1200,6 +1413,8 @@
             </div>
           </div>
         </div>
+
+        ${renderFooter()}
       </div>
     `;
 
@@ -1321,6 +1536,7 @@
     }
 
     // 3. Default to library list
+    currentPage = readPageFromUrl();
     renderList();
   }
 
@@ -1347,6 +1563,7 @@
     goToStory: navigateToStory,
     goToLibrary: navigateToLibrary,
     getBasePath: getAppBasePath,
+    answerQuiz: handleQuizAnswer,
   };
 
   window.addEventListener('popstate', router);

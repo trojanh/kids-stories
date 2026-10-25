@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1e1b4b" flood-opacity="0.35" />
+    </filter>
+  </defs>
+  <!-- Rounded App Icon Background -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  
+  <!-- Outer Glow Circle -->
+  <circle cx="256" cy="256" r="188" fill="#ffffff" opacity="0.15" />
+  
+  <!-- Storybook Illustration -->
+  <g filter="url(#shadow)">
+    <!-- Book Base -->
+    <path d="M 120 340 C 180 320, 240 330, 256 345 C 272 330, 332 320, 392 340 L 392 210 C 332 190, 272 200, 256 215 C 240 200, 180 190, 120 210 Z" fill="#ffffff" />
+    <path d="M 256 215 L 256 345" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+    
+    <!-- Pickle Character -->
+    <g transform="translate(256, 175)">
+      <!-- Pickle Body -->
+      <path d="M -32 -60 C -12 -80, 12 -80, 32 -60 C 50 -40, 52 40, 32 60 C 12 80, -12 80, -32 60 C -52 40, -50 -40, -32 -60 Z" fill="#22c55e" stroke="#15803d" stroke-width="6" />
+      <!-- Pickle bumps -->
+      <circle cx="-16" cy="-35" r="5" fill="#16a34a" />
+      <circle cx="18" cy="-20" r="6" fill="#16a34a" />
+      <circle cx="-12" cy="15" r="5.5" fill="#16a34a" />
+      <circle cx="15" cy="35" r="4.5" fill="#16a34a" />
+      
+      <!-- Cheerful Face -->
+      <circle cx="-12" cy="-15" r="5" fill="#0f172a" />
+      <circle cx="12" cy="-15" r="5" fill="#0f172a" />
+      <circle cx="-10" cy="-17" r="1.8" fill="#ffffff" />
+      <circle cx="14" cy="-17" r="1.8" fill="#ffffff" />
+      <!-- Smile -->
+      <path d="M -12 5 Q 0 18, 12 5" fill="none" stroke="#0f172a" stroke-width="4" stroke-linecap="round" />
+      <!-- Blush -->
+      <ellipse cx="-20" cy="-2" rx="4" ry="2.5" fill="#f43f5e" opacity="0.6" />
+      <ellipse cx="20" cy="-2" rx="4" ry="2.5" fill="#f43f5e" opacity="0.6" />
+    </g>
+    
+    <!-- Sparkles / Stars -->
+    <text x="355" y="160" font-size="44">✨</text>
+    <text x="95" y="190" font-size="38">🌟</text>
+  </g>
+</svg>
