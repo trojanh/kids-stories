@@ -170,19 +170,17 @@
     ]
   },
   {
-    "id": "the_wolf_and_the_kid",
-    "title": "The Wolf And The Kid",
+    "id": "the_wolf_and_the_little_goat",
+    "title": "The Wolf And The Little Goat",
     "theme": "Animals",
-    "animal": "wolf",
+    "animal": "goat",
     "character": [
-      "wolf",
-      "kid",
-      "goat"
+      "goat",
+      "wolf"
     ],
     "tags": [
-      "wolf",
-      "kid",
-      "goat"
+      "goat",
+      "wolf"
     ],
     "length": "long",
     "text": [
@@ -207,25 +205,25 @@
       "The wolf dropped his flute and fled, wishing he had never stopped to make music!"
     ],
     "panels": [
-      "the_wolf_and_the_kid_1.svg",
-      "the_wolf_and_the_kid_2.svg",
-      "the_wolf_and_the_kid_3.svg",
-      "the_wolf_and_the_kid_4.svg",
-      "the_wolf_and_the_kid_5.svg",
-      "the_wolf_and_the_kid_6.svg",
-      "the_wolf_and_the_kid_7.svg",
-      "the_wolf_and_the_kid_8.svg",
-      "the_wolf_and_the_kid_9.svg",
-      "the_wolf_and_the_kid_10.svg",
-      "the_wolf_and_the_kid_11.svg",
-      "the_wolf_and_the_kid_12.svg",
-      "the_wolf_and_the_kid_13.svg",
-      "the_wolf_and_the_kid_14.svg",
-      "the_wolf_and_the_kid_15.svg",
-      "the_wolf_and_the_kid_16.svg",
-      "the_wolf_and_the_kid_17.svg",
-      "the_wolf_and_the_kid_18.svg",
-      "the_wolf_and_the_kid_19.svg"
+      "the_wolf_and_the_little_goat_1.svg",
+      "the_wolf_and_the_little_goat_2.svg",
+      "the_wolf_and_the_little_goat_3.svg",
+      "the_wolf_and_the_little_goat_4.svg",
+      "the_wolf_and_the_little_goat_5.svg",
+      "the_wolf_and_the_little_goat_6.svg",
+      "the_wolf_and_the_little_goat_7.svg",
+      "the_wolf_and_the_little_goat_8.svg",
+      "the_wolf_and_the_little_goat_9.svg",
+      "the_wolf_and_the_little_goat_10.svg",
+      "the_wolf_and_the_little_goat_11.svg",
+      "the_wolf_and_the_little_goat_12.svg",
+      "the_wolf_and_the_little_goat_13.svg",
+      "the_wolf_and_the_little_goat_14.svg",
+      "the_wolf_and_the_little_goat_15.svg",
+      "the_wolf_and_the_little_goat_16.svg",
+      "the_wolf_and_the_little_goat_17.svg",
+      "the_wolf_and_the_little_goat_18.svg",
+      "the_wolf_and_the_little_goat_19.svg"
     ],
     "moral": "Do not let anything turn you from your purpose."
   },
@@ -363,21 +361,19 @@
     "moral": "Do not attempt the impossible."
   },
   {
-    "id": "the_dog_the_cock_and_the_fox",
-    "title": "The Dog, The Cock, And The Fox",
+    "id": "the_dog_the_rooster_and_the_fox",
+    "title": "The Dog, The Rooster, And The Fox",
     "theme": "Animals",
     "animal": "fox",
     "character": [
-      "fox",
       "dog",
-      "fly",
-      "cock"
+      "rooster",
+      "fox"
     ],
     "tags": [
-      "fox",
       "dog",
-      "fly",
-      "cock"
+      "rooster",
+      "fox"
     ],
     "length": "long",
     "text": [
@@ -401,24 +397,24 @@
       "The greedy fox ran around the trunk, and the dog jumped out and caught him!"
     ],
     "panels": [
-      "the_dog_the_cock_and_the_fox_1.svg",
-      "the_dog_the_cock_and_the_fox_2.svg",
-      "the_dog_the_cock_and_the_fox_3.svg",
-      "the_dog_the_cock_and_the_fox_4.svg",
-      "the_dog_the_cock_and_the_fox_5.svg",
-      "the_dog_the_cock_and_the_fox_6.svg",
-      "the_dog_the_cock_and_the_fox_7.svg",
-      "the_dog_the_cock_and_the_fox_8.svg",
-      "the_dog_the_cock_and_the_fox_9.svg",
-      "the_dog_the_cock_and_the_fox_10.svg",
-      "the_dog_the_cock_and_the_fox_11.svg",
-      "the_dog_the_cock_and_the_fox_12.svg",
-      "the_dog_the_cock_and_the_fox_13.svg",
-      "the_dog_the_cock_and_the_fox_14.svg",
-      "the_dog_the_cock_and_the_fox_15.svg",
-      "the_dog_the_cock_and_the_fox_16.svg",
-      "the_dog_the_cock_and_the_fox_17.svg",
-      "the_dog_the_cock_and_the_fox_18.svg"
+      "the_dog_the_rooster_and_the_fox_1.svg",
+      "the_dog_the_rooster_and_the_fox_2.svg",
+      "the_dog_the_rooster_and_the_fox_3.svg",
+      "the_dog_the_rooster_and_the_fox_4.svg",
+      "the_dog_the_rooster_and_the_fox_5.svg",
+      "the_dog_the_rooster_and_the_fox_6.svg",
+      "the_dog_the_rooster_and_the_fox_7.svg",
+      "the_dog_the_rooster_and_the_fox_8.svg",
+      "the_dog_the_rooster_and_the_fox_9.svg",
+      "the_dog_the_rooster_and_the_fox_10.svg",
+      "the_dog_the_rooster_and_the_fox_11.svg",
+      "the_dog_the_rooster_and_the_fox_12.svg",
+      "the_dog_the_rooster_and_the_fox_13.svg",
+      "the_dog_the_rooster_and_the_fox_14.svg",
+      "the_dog_the_rooster_and_the_fox_15.svg",
+      "the_dog_the_rooster_and_the_fox_16.svg",
+      "the_dog_the_rooster_and_the_fox_17.svg",
+      "the_dog_the_rooster_and_the_fox_18.svg"
     ],
     "moral": "Those who try to deceive may expect to be paid in their own coin."
   },
@@ -510,8 +506,8 @@
     "moral": "Do not let your vanity make you overestimate your powers."
   },
   {
-    "id": "the_boy_and_the_filberts",
-    "title": "The Boy And The Filberts",
+    "id": "the_boy_and_the_jar_of_nuts",
+    "title": "The Boy And The Jar Of Nuts",
     "theme": "Life Lessons",
     "animal": "None",
     "character": [
@@ -519,9 +515,8 @@
       "mother"
     ],
     "tags": [
-      "greed",
-      "contentment",
-      "wisdom"
+      "boy",
+      "nuts"
     ],
     "length": "short",
     "text": [
@@ -533,18 +528,18 @@
       "\"Take half the nuts, dear son, and your hand will slide out easily.\""
     ],
     "panels": [
-      "the_boy_and_the_filberts_1.svg",
-      "the_boy_and_the_filberts_2.svg",
-      "the_boy_and_the_filberts_3.svg",
-      "the_boy_and_the_filberts_4.svg",
-      "the_boy_and_the_filberts_5.svg",
-      "the_boy_and_the_filberts_6.svg"
+      "the_boy_and_the_jar_of_nuts_1.svg",
+      "the_boy_and_the_jar_of_nuts_2.svg",
+      "the_boy_and_the_jar_of_nuts_3.svg",
+      "the_boy_and_the_jar_of_nuts_4.svg",
+      "the_boy_and_the_jar_of_nuts_5.svg",
+      "the_boy_and_the_jar_of_nuts_6.svg"
     ],
     "moral": "Do not attempt too much at once."
   },
   {
-    "id": "hercules_and_the_wagoner",
-    "title": "Hercules And The Wagoner",
+    "id": "hercules_and_the_farmer",
+    "title": "Hercules And The Farmer",
     "theme": "Life Lessons",
     "animal": "horse",
     "character": [
@@ -553,9 +548,8 @@
       "horse"
     ],
     "tags": [
-      "perseverance",
-      "wisdom",
-      "courage"
+      "hercules",
+      "farmer"
     ],
     "length": "medium",
     "text": [
@@ -569,31 +563,29 @@
       "The farmer pushed hard, the horses pulled, and the cart rolled out easily!"
     ],
     "panels": [
-      "hercules_and_the_wagoner_1.svg",
-      "hercules_and_the_wagoner_2.svg",
-      "hercules_and_the_wagoner_3.svg",
-      "hercules_and_the_wagoner_4.svg",
-      "hercules_and_the_wagoner_5.svg",
-      "hercules_and_the_wagoner_6.svg",
-      "hercules_and_the_wagoner_7.svg",
-      "hercules_and_the_wagoner_8.svg"
+      "hercules_and_the_farmer_1.svg",
+      "hercules_and_the_farmer_2.svg",
+      "hercules_and_the_farmer_3.svg",
+      "hercules_and_the_farmer_4.svg",
+      "hercules_and_the_farmer_5.svg",
+      "hercules_and_the_farmer_6.svg",
+      "hercules_and_the_farmer_7.svg",
+      "hercules_and_the_farmer_8.svg"
     ],
     "moral": "Self help is the best help."
   },
   {
-    "id": "the_kid_and_the_wolf",
-    "title": "The Kid And The Wolf",
+    "id": "the_little_goat_and_the_wolf",
+    "title": "The Little Goat And The Wolf",
     "theme": "Animals",
-    "animal": "wolf",
+    "animal": "goat",
     "character": [
-      "wolf",
-      "kid",
-      "sheep"
+      "goat",
+      "wolf"
     ],
     "tags": [
-      "wolf",
-      "kid",
-      "sheep"
+      "goat",
+      "wolf"
     ],
     "length": "short",
     "text": [
@@ -603,10 +595,10 @@
       "\"It is the high roof that speaks so bravely today, not your own little heart!\""
     ],
     "panels": [
-      "the_kid_and_the_wolf_1.svg",
-      "the_kid_and_the_wolf_2.svg",
-      "the_kid_and_the_wolf_3.svg",
-      "the_kid_and_the_wolf_4.svg"
+      "the_little_goat_and_the_wolf_1.svg",
+      "the_little_goat_and_the_wolf_2.svg",
+      "the_little_goat_and_the_wolf_3.svg",
+      "the_little_goat_and_the_wolf_4.svg"
     ],
     "moral": "Do not say anything at any time that you would not say at all times."
   },
@@ -787,16 +779,16 @@
     "moral": "Expect no reward for serving the wicked."
   },
   {
-    "id": "the_ass_and_his_driver",
-    "title": "The Ass And His Driver",
+    "id": "the_donkey_and_his_driver",
+    "title": "The Donkey And His Driver",
     "theme": "Animals",
-    "animal": "ass",
+    "animal": "donkey",
     "character": [
-      "ass"
+      "donkey"
     ],
     "tags": [
-      "ass",
-      "friendship"
+      "donkey",
+      "driver"
     ],
     "length": "short",
     "text": [
@@ -807,11 +799,11 @@
       "The master let go, and the silly donkey tumbled headfirst down the hill!"
     ],
     "panels": [
-      "the_ass_and_his_driver_1.svg",
-      "the_ass_and_his_driver_2.svg",
-      "the_ass_and_his_driver_3.svg",
-      "the_ass_and_his_driver_4.svg",
-      "the_ass_and_his_driver_5.svg"
+      "the_donkey_and_his_driver_1.svg",
+      "the_donkey_and_his_driver_2.svg",
+      "the_donkey_and_his_driver_3.svg",
+      "the_donkey_and_his_driver_4.svg",
+      "the_donkey_and_his_driver_5.svg"
     ],
     "moral": "They who will not listen to reason but stubbornly go their own way against the friendly advice of those who are wiser than they, are on the road to misfortune."
   },
@@ -953,19 +945,17 @@
     "moral": "Liars are not believed even when they speak the truth."
   },
   {
-    "id": "the_gnat_and_the_bull",
-    "title": "The Gnat And The Bull",
+    "id": "the_fly_and_the_bull",
+    "title": "The Fly And The Bull",
     "theme": "Animals",
-    "animal": "gnat",
+    "animal": "fly",
     "character": [
       "fly",
-      "bull",
-      "gnat"
+      "bull"
     ],
     "tags": [
       "fly",
-      "bull",
-      "gnat"
+      "bull"
     ],
     "length": "short",
     "text": [
@@ -977,12 +967,12 @@
       "\"I did not notice when you arrived, nor will I care when you leave.\""
     ],
     "panels": [
-      "the_gnat_and_the_bull_1.svg",
-      "the_gnat_and_the_bull_2.svg",
-      "the_gnat_and_the_bull_3.svg",
-      "the_gnat_and_the_bull_4.svg",
-      "the_gnat_and_the_bull_5.svg",
-      "the_gnat_and_the_bull_6.svg"
+      "the_fly_and_the_bull_1.svg",
+      "the_fly_and_the_bull_2.svg",
+      "the_fly_and_the_bull_3.svg",
+      "the_fly_and_the_bull_4.svg",
+      "the_fly_and_the_bull_5.svg",
+      "the_fly_and_the_bull_6.svg"
     ],
     "moral": "The smaller the mind the greater the conceit."
   },
@@ -1142,18 +1132,17 @@
     "moral": "We cannot expect any one to share our misfortunes unless we are willing to share our good fortune also."
   },
   {
-    "id": "the_lion_and_the_ass_24",
-    "title": "The Lion And The Ass",
+    "id": "the_lion_and_the_silly_donkey",
+    "title": "The Lion And The Silly Donkey",
     "theme": "Animals",
     "animal": "lion",
     "character": [
       "lion",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "lion",
-      "ass",
-      "wisdom"
+      "donkey"
     ],
     "length": "short",
     "text": [
@@ -1163,10 +1152,10 @@
       "Seeing only a foolish donkey, the noble king calmly walked on, ignoring him completely."
     ],
     "panels": [
-      "the_lion_and_the_ass_24_1.svg",
-      "the_lion_and_the_ass_24_2.svg",
-      "the_lion_and_the_ass_24_3.svg",
-      "the_lion_and_the_ass_24_4.svg"
+      "the_lion_and_the_silly_donkey_1.svg",
+      "the_lion_and_the_silly_donkey_2.svg",
+      "the_lion_and_the_silly_donkey_3.svg",
+      "the_lion_and_the_silly_donkey_4.svg"
     ],
     "moral": "Do not resent the remarks of a fool. Ignore them."
   },
@@ -1440,8 +1429,8 @@
     "moral": "Always stop to think whether your fun may not be the cause of another's unhappiness."
   },
   {
-    "id": "the_crow_and_the_pitcher",
-    "title": "The Crow And The Pitcher",
+    "id": "the_crow_and_the_clay_pot",
+    "title": "The Crow And The Clay Pot",
     "theme": "Animals",
     "animal": "crow",
     "character": [
@@ -1449,7 +1438,7 @@
     ],
     "tags": [
       "crow",
-      "friendship"
+      "clay pot"
     ],
     "length": "short",
     "text": [
@@ -1461,12 +1450,12 @@
       "With every pebble, the water rose until the clever crow could drink happily!"
     ],
     "panels": [
-      "the_crow_and_the_pitcher_1.svg",
-      "the_crow_and_the_pitcher_2.svg",
-      "the_crow_and_the_pitcher_3.svg",
-      "the_crow_and_the_pitcher_4.svg",
-      "the_crow_and_the_pitcher_5.svg",
-      "the_crow_and_the_pitcher_6.svg"
+      "the_crow_and_the_clay_pot_1.svg",
+      "the_crow_and_the_clay_pot_2.svg",
+      "the_crow_and_the_clay_pot_3.svg",
+      "the_crow_and_the_clay_pot_4.svg",
+      "the_crow_and_the_clay_pot_5.svg",
+      "the_crow_and_the_clay_pot_6.svg"
     ],
     "moral": "In a pinch a good use of our wits may help us out."
   },
@@ -1503,15 +1492,16 @@
     "moral": "There's a time for work and a time for play"
   },
   {
-    "id": "the_ass_carrying_the_image",
-    "title": "The Ass Carrying The Image",
+    "id": "the_donkey_carrying_the_statue",
+    "title": "The Donkey Carrying The Statue",
     "theme": "Animals",
-    "animal": "ass",
+    "animal": "donkey",
     "character": [
-      "ass"
+      "donkey"
     ],
     "tags": [
-      "ass"
+      "donkey",
+      "statue"
     ],
     "length": "short",
     "text": [
@@ -1524,13 +1514,13 @@
       "\"Keep moving, silly donkey! The people bow to the statue, not to you!\""
     ],
     "panels": [
-      "the_ass_carrying_the_image_1.svg",
-      "the_ass_carrying_the_image_2.svg",
-      "the_ass_carrying_the_image_3.svg",
-      "the_ass_carrying_the_image_4.svg",
-      "the_ass_carrying_the_image_5.svg",
-      "the_ass_carrying_the_image_6.svg",
-      "the_ass_carrying_the_image_7.svg"
+      "the_donkey_carrying_the_statue_1.svg",
+      "the_donkey_carrying_the_statue_2.svg",
+      "the_donkey_carrying_the_statue_3.svg",
+      "the_donkey_carrying_the_statue_4.svg",
+      "the_donkey_carrying_the_statue_5.svg",
+      "the_donkey_carrying_the_statue_6.svg",
+      "the_donkey_carrying_the_statue_7.svg"
     ],
     "moral": "Do not try to take the credit to yourself that is due to others."
   },
@@ -1597,15 +1587,16 @@
     "moral": "It is better to yield than to come to misfortune through stubbornness."
   },
   {
-    "id": "the_ass_and_the_load_of_salt",
-    "title": "The Ass And The Load Of Salt",
+    "id": "the_donkey_and_the_load_of_salt",
+    "title": "The Donkey And The Load Of Salt",
     "theme": "Animals",
-    "animal": "ass",
+    "animal": "donkey",
     "character": [
-      "ass"
+      "donkey"
     ],
     "tags": [
-      "ass"
+      "donkey",
+      "salt"
     ],
     "length": "medium",
     "text": [
@@ -1619,14 +1610,14 @@
       "At the river, the donkey fell in again. But when he got up, the sponges had soaked up all the water and were ten times heavier than before. The sad donkey dragged himself home with a much bigger load."
     ],
     "panels": [
-      "the_ass_and_the_load_of_salt_1.svg",
-      "the_ass_and_the_load_of_salt_2.svg",
-      "the_ass_and_the_load_of_salt_3.svg",
-      "the_ass_and_the_load_of_salt_4.svg",
-      "the_ass_and_the_load_of_salt_5.svg",
-      "the_ass_and_the_load_of_salt_6.svg",
-      "the_ass_and_the_load_of_salt_7.svg",
-      "the_ass_and_the_load_of_salt_8.svg"
+      "the_donkey_and_the_load_of_salt_1.svg",
+      "the_donkey_and_the_load_of_salt_2.svg",
+      "the_donkey_and_the_load_of_salt_3.svg",
+      "the_donkey_and_the_load_of_salt_4.svg",
+      "the_donkey_and_the_load_of_salt_5.svg",
+      "the_donkey_and_the_load_of_salt_6.svg",
+      "the_donkey_and_the_load_of_salt_7.svg",
+      "the_donkey_and_the_load_of_salt_8.svg"
     ],
     "moral": "The same measures will not suit all circumstances."
   },
@@ -1705,15 +1696,16 @@
     "moral": "Deeds count, not boasting words."
   },
   {
-    "id": "the_cock_and_the_jewel",
-    "title": "The Cock And The Jewel",
+    "id": "the_rooster_and_the_jewel",
+    "title": "The Rooster And The Jewel",
     "theme": "Animals",
-    "animal": "cock",
+    "animal": "rooster",
     "character": [
-      "cock"
+      "rooster"
     ],
     "tags": [
-      "cock"
+      "rooster",
+      "jewel"
     ],
     "length": "short",
     "text": [
@@ -1722,9 +1714,9 @@
       "But as for me, I would choose a single grain of rice over all the jewels in the world!"
     ],
     "panels": [
-      "the_cock_and_the_jewel_1.svg",
-      "the_cock_and_the_jewel_2.svg",
-      "the_cock_and_the_jewel_3.svg"
+      "the_rooster_and_the_jewel_1.svg",
+      "the_rooster_and_the_jewel_2.svg",
+      "the_rooster_and_the_jewel_3.svg"
     ],
     "moral": "Precious things are without value to those who cannot prize them."
   },
@@ -1801,19 +1793,19 @@
     "moral": "Preparedness for war is the best guarantee of peace."
   },
   {
-    "id": "the_ass_the_fox_and_the_lion",
-    "title": "The Ass, The Fox, And The Lion",
+    "id": "the_donkey_the_fox_and_the_lion",
+    "title": "The Donkey, The Fox, And The Lion",
     "theme": "Animals",
     "animal": "fox",
     "character": [
       "fox",
       "lion",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "fox",
       "lion",
-      "ass"
+      "donkey"
     ],
     "length": "medium",
     "text": [
@@ -1831,18 +1823,18 @@
       "And the Donkey who had trusted a traitor was left to face the Lion alone."
     ],
     "panels": [
-      "the_ass_the_fox_and_the_lion_1.svg",
-      "the_ass_the_fox_and_the_lion_2.svg",
-      "the_ass_the_fox_and_the_lion_3.svg",
-      "the_ass_the_fox_and_the_lion_4.svg",
-      "the_ass_the_fox_and_the_lion_5.svg",
-      "the_ass_the_fox_and_the_lion_6.svg",
-      "the_ass_the_fox_and_the_lion_7.svg",
-      "the_ass_the_fox_and_the_lion_8.svg",
-      "the_ass_the_fox_and_the_lion_9.svg",
-      "the_ass_the_fox_and_the_lion_10.svg",
-      "the_ass_the_fox_and_the_lion_11.svg",
-      "the_ass_the_fox_and_the_lion_12.svg"
+      "the_donkey_the_fox_and_the_lion_1.svg",
+      "the_donkey_the_fox_and_the_lion_2.svg",
+      "the_donkey_the_fox_and_the_lion_3.svg",
+      "the_donkey_the_fox_and_the_lion_4.svg",
+      "the_donkey_the_fox_and_the_lion_5.svg",
+      "the_donkey_the_fox_and_the_lion_6.svg",
+      "the_donkey_the_fox_and_the_lion_7.svg",
+      "the_donkey_the_fox_and_the_lion_8.svg",
+      "the_donkey_the_fox_and_the_lion_9.svg",
+      "the_donkey_the_fox_and_the_lion_10.svg",
+      "the_donkey_the_fox_and_the_lion_11.svg",
+      "the_donkey_the_fox_and_the_lion_12.svg"
     ],
     "moral": "Traitors may expect treachery."
   },
@@ -2358,18 +2350,17 @@
     "moral": "Acquaintance with evil blinds us to its dangers."
   },
   {
-    "id": "the_lion_and_the_ass_56",
-    "title": "The Lion And The Ass",
+    "id": "the_lion_and_the_donkey",
+    "title": "The Lion And The Donkey",
     "theme": "Animals",
     "animal": "lion",
     "character": [
       "lion",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "lion",
-      "ass",
-      "pride"
+      "donkey"
     ],
     "length": "short",
     "text": [
@@ -2382,13 +2373,13 @@
       "Yes, indeed, said the Lion. And if I had not known you, I would surely have run away too!"
     ],
     "panels": [
-      "the_lion_and_the_ass_56_1.svg",
-      "the_lion_and_the_ass_56_2.svg",
-      "the_lion_and_the_ass_56_3.svg",
-      "the_lion_and_the_ass_56_4.svg",
-      "the_lion_and_the_ass_56_5.svg",
-      "the_lion_and_the_ass_56_6.svg",
-      "the_lion_and_the_ass_56_7.svg"
+      "the_lion_and_the_donkey_1.svg",
+      "the_lion_and_the_donkey_2.svg",
+      "the_lion_and_the_donkey_3.svg",
+      "the_lion_and_the_donkey_4.svg",
+      "the_lion_and_the_donkey_5.svg",
+      "the_lion_and_the_donkey_6.svg",
+      "the_lion_and_the_donkey_7.svg"
     ],
     "moral": "The loud-mouthed boaster does not impress nor frighten those who know him."
   },
@@ -2521,17 +2512,17 @@
     "moral": "One falsehood leads to another."
   },
   {
-    "id": "the_wolf_and_the_ass",
-    "title": "The Wolf And The Ass",
+    "id": "the_wolf_and_the_donkey",
+    "title": "The Wolf And The Donkey",
     "theme": "Animals",
     "animal": "wolf",
     "character": [
       "wolf",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "wolf",
-      "ass"
+      "donkey"
     ],
     "length": "medium",
     "text": [
@@ -2549,18 +2540,18 @@
       "I should stick to what I know."
     ],
     "panels": [
-      "the_wolf_and_the_ass_1.svg",
-      "the_wolf_and_the_ass_2.svg",
-      "the_wolf_and_the_ass_3.svg",
-      "the_wolf_and_the_ass_4.svg",
-      "the_wolf_and_the_ass_5.svg",
-      "the_wolf_and_the_ass_6.svg",
-      "the_wolf_and_the_ass_7.svg",
-      "the_wolf_and_the_ass_8.svg",
-      "the_wolf_and_the_ass_9.svg",
-      "the_wolf_and_the_ass_10.svg",
-      "the_wolf_and_the_ass_11.svg",
-      "the_wolf_and_the_ass_12.svg"
+      "the_wolf_and_the_donkey_1.svg",
+      "the_wolf_and_the_donkey_2.svg",
+      "the_wolf_and_the_donkey_3.svg",
+      "the_wolf_and_the_donkey_4.svg",
+      "the_wolf_and_the_donkey_5.svg",
+      "the_wolf_and_the_donkey_6.svg",
+      "the_wolf_and_the_donkey_7.svg",
+      "the_wolf_and_the_donkey_8.svg",
+      "the_wolf_and_the_donkey_9.svg",
+      "the_wolf_and_the_donkey_10.svg",
+      "the_wolf_and_the_donkey_11.svg",
+      "the_wolf_and_the_donkey_12.svg"
     ],
     "moral": "Stick to your trade."
   },
@@ -2814,17 +2805,17 @@
     "moral": "Do not be too hard to suit or you may have to be content with the worst or with nothing at all."
   },
   {
-    "id": "the_cock_and_the_fox",
-    "title": "The Cock And The Fox",
+    "id": "the_rooster_and_the_fox",
+    "title": "The Rooster And The Fox",
     "theme": "Animals",
-    "animal": "fox",
+    "animal": "rooster",
     "character": [
-      "fox",
-      "cock"
+      "rooster",
+      "fox"
     ],
     "tags": [
-      "fox",
-      "cock"
+      "rooster",
+      "fox"
     ],
     "length": "long",
     "text": [
@@ -2848,24 +2839,24 @@
       "The Rooster smiled to himself, tucked his head under his wing, and went peacefully to sleep. He had cleverly tricked a very cunning enemy."
     ],
     "panels": [
-      "the_cock_and_the_fox_1.svg",
-      "the_cock_and_the_fox_2.svg",
-      "the_cock_and_the_fox_3.svg",
-      "the_cock_and_the_fox_4.svg",
-      "the_cock_and_the_fox_5.svg",
-      "the_cock_and_the_fox_6.svg",
-      "the_cock_and_the_fox_7.svg",
-      "the_cock_and_the_fox_8.svg",
-      "the_cock_and_the_fox_9.svg",
-      "the_cock_and_the_fox_10.svg",
-      "the_cock_and_the_fox_11.svg",
-      "the_cock_and_the_fox_12.svg",
-      "the_cock_and_the_fox_13.svg",
-      "the_cock_and_the_fox_14.svg",
-      "the_cock_and_the_fox_15.svg",
-      "the_cock_and_the_fox_16.svg",
-      "the_cock_and_the_fox_17.svg",
-      "the_cock_and_the_fox_18.svg"
+      "the_rooster_and_the_fox_1.svg",
+      "the_rooster_and_the_fox_2.svg",
+      "the_rooster_and_the_fox_3.svg",
+      "the_rooster_and_the_fox_4.svg",
+      "the_rooster_and_the_fox_5.svg",
+      "the_rooster_and_the_fox_6.svg",
+      "the_rooster_and_the_fox_7.svg",
+      "the_rooster_and_the_fox_8.svg",
+      "the_rooster_and_the_fox_9.svg",
+      "the_rooster_and_the_fox_10.svg",
+      "the_rooster_and_the_fox_11.svg",
+      "the_rooster_and_the_fox_12.svg",
+      "the_rooster_and_the_fox_13.svg",
+      "the_rooster_and_the_fox_14.svg",
+      "the_rooster_and_the_fox_15.svg",
+      "the_rooster_and_the_fox_16.svg",
+      "the_rooster_and_the_fox_17.svg",
+      "the_rooster_and_the_fox_18.svg"
     ],
     "moral": "The trickster is easily tricked."
   },
@@ -2932,15 +2923,17 @@
     "moral": "An invitation prompted by selfishness is not to be accepted."
   },
   {
-    "id": "the_ass_and_the_grasshoppers",
-    "title": "The Ass And The Grasshoppers",
+    "id": "the_donkey_and_the_grasshoppers",
+    "title": "The Donkey And The Grasshoppers",
     "theme": "Animals",
-    "animal": "ass",
+    "animal": "donkey",
     "character": [
-      "ass"
+      "donkey",
+      "grasshopper"
     ],
     "tags": [
-      "ass"
+      "donkey",
+      "grasshopper"
     ],
     "length": "medium",
     "text": [
@@ -2954,14 +2947,14 @@
       "Of course, the poor Donkey soon became very weak and died."
     ],
     "panels": [
-      "the_ass_and_the_grasshoppers_1.svg",
-      "the_ass_and_the_grasshoppers_2.svg",
-      "the_ass_and_the_grasshoppers_3.svg",
-      "the_ass_and_the_grasshoppers_4.svg",
-      "the_ass_and_the_grasshoppers_5.svg",
-      "the_ass_and_the_grasshoppers_6.svg",
-      "the_ass_and_the_grasshoppers_7.svg",
-      "the_ass_and_the_grasshoppers_8.svg"
+      "the_donkey_and_the_grasshoppers_1.svg",
+      "the_donkey_and_the_grasshoppers_2.svg",
+      "the_donkey_and_the_grasshoppers_3.svg",
+      "the_donkey_and_the_grasshoppers_4.svg",
+      "the_donkey_and_the_grasshoppers_5.svg",
+      "the_donkey_and_the_grasshoppers_6.svg",
+      "the_donkey_and_the_grasshoppers_7.svg",
+      "the_donkey_and_the_grasshoppers_8.svg"
     ],
     "moral": "The laws of nature are unchangeable."
   },
@@ -2969,15 +2962,14 @@
     "id": "the_mule",
     "title": "The Mule",
     "theme": "Animals",
-    "animal": "ass",
+    "animal": "mule",
     "character": [
-      "ass",
+      "donkey",
       "mule"
     ],
     "tags": [
-      "ass",
-      "mule",
-      "pride"
+      "donkey",
+      "mule"
     ],
     "length": "short",
     "text": [
@@ -3037,19 +3029,19 @@
     "moral": "Look before you leap."
   },
   {
-    "id": "the_cat_the_cock_and_the_young_mouse",
-    "title": "The Cat, The Cock, And The Young Mouse",
+    "id": "the_cat_the_rooster_and_the_young_mouse",
+    "title": "The Cat, The Rooster, And The Young Mouse",
     "theme": "Animals",
     "animal": "mouse",
     "character": [
-      "mouse",
       "cat",
-      "cock"
+      "rooster",
+      "mouse"
     ],
     "tags": [
-      "mouse",
       "cat",
-      "cock"
+      "rooster",
+      "mouse"
     ],
     "length": "long",
     "text": [
@@ -3071,22 +3063,22 @@
       "The scary one was just a Rooster. He would never hurt you. The Cat eats us! Be glad you are safe, my child, and always remember — never judge anyone by their looks."
     ],
     "panels": [
-      "the_cat_the_cock_and_the_young_mouse_1.svg",
-      "the_cat_the_cock_and_the_young_mouse_2.svg",
-      "the_cat_the_cock_and_the_young_mouse_3.svg",
-      "the_cat_the_cock_and_the_young_mouse_4.svg",
-      "the_cat_the_cock_and_the_young_mouse_5.svg",
-      "the_cat_the_cock_and_the_young_mouse_6.svg",
-      "the_cat_the_cock_and_the_young_mouse_7.svg",
-      "the_cat_the_cock_and_the_young_mouse_8.svg",
-      "the_cat_the_cock_and_the_young_mouse_9.svg",
-      "the_cat_the_cock_and_the_young_mouse_10.svg",
-      "the_cat_the_cock_and_the_young_mouse_11.svg",
-      "the_cat_the_cock_and_the_young_mouse_12.svg",
-      "the_cat_the_cock_and_the_young_mouse_13.svg",
-      "the_cat_the_cock_and_the_young_mouse_14.svg",
-      "the_cat_the_cock_and_the_young_mouse_15.svg",
-      "the_cat_the_cock_and_the_young_mouse_16.svg"
+      "the_cat_the_rooster_and_the_young_mouse_1.svg",
+      "the_cat_the_rooster_and_the_young_mouse_2.svg",
+      "the_cat_the_rooster_and_the_young_mouse_3.svg",
+      "the_cat_the_rooster_and_the_young_mouse_4.svg",
+      "the_cat_the_rooster_and_the_young_mouse_5.svg",
+      "the_cat_the_rooster_and_the_young_mouse_6.svg",
+      "the_cat_the_rooster_and_the_young_mouse_7.svg",
+      "the_cat_the_rooster_and_the_young_mouse_8.svg",
+      "the_cat_the_rooster_and_the_young_mouse_9.svg",
+      "the_cat_the_rooster_and_the_young_mouse_10.svg",
+      "the_cat_the_rooster_and_the_young_mouse_11.svg",
+      "the_cat_the_rooster_and_the_young_mouse_12.svg",
+      "the_cat_the_rooster_and_the_young_mouse_13.svg",
+      "the_cat_the_rooster_and_the_young_mouse_14.svg",
+      "the_cat_the_rooster_and_the_young_mouse_15.svg",
+      "the_cat_the_rooster_and_the_young_mouse_16.svg"
     ],
     "moral": "Do not trust alone to outward appearances."
   },
@@ -3428,8 +3420,8 @@
     "moral": "Learn from my fate not to take pity on a scoundrel."
   },
   {
-    "id": "the_stick_stag",
-    "title": "The Stick Stag",
+    "id": "the_sick_stag",
+    "title": "The Sick Stag",
     "theme": "Animals",
     "animal": "stag",
     "character": [
@@ -3446,10 +3438,10 @@
       "Of course, they were all hungry, and they helped themselves to the Stag's food. Soon the poor Stag had nothing left and slowly starved."
     ],
     "panels": [
-      "the_stick_stag_1.svg",
-      "the_stick_stag_2.svg",
-      "the_stick_stag_3.svg",
-      "the_stick_stag_4.svg"
+      "the_sick_stag_1.svg",
+      "the_sick_stag_2.svg",
+      "the_sick_stag_3.svg",
+      "the_sick_stag_4.svg"
     ],
     "moral": "Good will is worth nothing unless it is accompanied by good acts."
   },
@@ -3488,18 +3480,17 @@
     "moral": "It is unwise to treat old friends badly for the sake of new ones."
   },
   {
-    "id": "the_spendthrift_and_the_swallow",
-    "title": "The Spendthrift And The Swallow",
+    "id": "the_young_man_and_the_swallow",
+    "title": "The Young Man And The Swallow",
     "theme": "Animals",
     "animal": "swallow",
     "character": [
-      "spendthrift",
+      "young man",
       "swallow"
     ],
     "tags": [
-      "wisdom",
-      "contentment",
-      "patience"
+      "young man",
+      "swallow"
     ],
     "length": "short",
     "text": [
@@ -3510,11 +3501,11 @@
       "But a few days later, the weather turned bitterly cold. The poor Swallow shivered, and so did the foolish young man, standing there in his thin tunic with bare arms and knees."
     ],
     "panels": [
-      "the_spendthrift_and_the_swallow_1.svg",
-      "the_spendthrift_and_the_swallow_2.svg",
-      "the_spendthrift_and_the_swallow_3.svg",
-      "the_spendthrift_and_the_swallow_4.svg",
-      "the_spendthrift_and_the_swallow_5.svg"
+      "the_young_man_and_the_swallow_1.svg",
+      "the_young_man_and_the_swallow_2.svg",
+      "the_young_man_and_the_swallow_3.svg",
+      "the_young_man_and_the_swallow_4.svg",
+      "the_young_man_and_the_swallow_5.svg"
     ],
     "moral": "One swallow does not make a summer."
   },
@@ -3657,8 +3648,8 @@
     "moral": "In unity is strength."
   },
   {
-    "id": "mercury_and_the_woodman",
-    "title": "Mercury And The Woodman",
+    "id": "mercury_and_the_woodcutter",
+    "title": "Mercury And The Woodcutter",
     "theme": "Mythology",
     "animal": "None",
     "character": [
@@ -3666,9 +3657,8 @@
       "mercury"
     ],
     "tags": [
-      "honesty",
-      "wisdom",
-      "greed"
+      "mercury",
+      "woodcutter"
     ],
     "length": "long",
     "text": [
@@ -3700,32 +3690,32 @@
       "And when they went back the next day to look for their own axes, they were nowhere to be found."
     ],
     "panels": [
-      "mercury_and_the_woodman_1.svg",
-      "mercury_and_the_woodman_2.svg",
-      "mercury_and_the_woodman_3.svg",
-      "mercury_and_the_woodman_4.svg",
-      "mercury_and_the_woodman_5.svg",
-      "mercury_and_the_woodman_6.svg",
-      "mercury_and_the_woodman_7.svg",
-      "mercury_and_the_woodman_8.svg",
-      "mercury_and_the_woodman_9.svg",
-      "mercury_and_the_woodman_10.svg",
-      "mercury_and_the_woodman_11.svg",
-      "mercury_and_the_woodman_12.svg",
-      "mercury_and_the_woodman_13.svg",
-      "mercury_and_the_woodman_14.svg",
-      "mercury_and_the_woodman_15.svg",
-      "mercury_and_the_woodman_16.svg",
-      "mercury_and_the_woodman_17.svg",
-      "mercury_and_the_woodman_18.svg",
-      "mercury_and_the_woodman_19.svg",
-      "mercury_and_the_woodman_20.svg",
-      "mercury_and_the_woodman_21.svg",
-      "mercury_and_the_woodman_22.svg",
-      "mercury_and_the_woodman_23.svg",
-      "mercury_and_the_woodman_24.svg",
-      "mercury_and_the_woodman_25.svg",
-      "mercury_and_the_woodman_26.svg"
+      "mercury_and_the_woodcutter_1.svg",
+      "mercury_and_the_woodcutter_2.svg",
+      "mercury_and_the_woodcutter_3.svg",
+      "mercury_and_the_woodcutter_4.svg",
+      "mercury_and_the_woodcutter_5.svg",
+      "mercury_and_the_woodcutter_6.svg",
+      "mercury_and_the_woodcutter_7.svg",
+      "mercury_and_the_woodcutter_8.svg",
+      "mercury_and_the_woodcutter_9.svg",
+      "mercury_and_the_woodcutter_10.svg",
+      "mercury_and_the_woodcutter_11.svg",
+      "mercury_and_the_woodcutter_12.svg",
+      "mercury_and_the_woodcutter_13.svg",
+      "mercury_and_the_woodcutter_14.svg",
+      "mercury_and_the_woodcutter_15.svg",
+      "mercury_and_the_woodcutter_16.svg",
+      "mercury_and_the_woodcutter_17.svg",
+      "mercury_and_the_woodcutter_18.svg",
+      "mercury_and_the_woodcutter_19.svg",
+      "mercury_and_the_woodcutter_20.svg",
+      "mercury_and_the_woodcutter_21.svg",
+      "mercury_and_the_woodcutter_22.svg",
+      "mercury_and_the_woodcutter_23.svg",
+      "mercury_and_the_woodcutter_24.svg",
+      "mercury_and_the_woodcutter_25.svg",
+      "mercury_and_the_woodcutter_26.svg"
     ],
     "moral": "Honesty is the best policy."
   },
@@ -3812,19 +3802,17 @@
     "moral": "Be content with your lot."
   },
   {
-    "id": "the_serpent_and_the_eagle",
-    "title": "The Serpent And The Eagle",
+    "id": "the_snake_and_the_eagle",
+    "title": "The Snake And The Eagle",
     "theme": "Animals",
-    "animal": "eagle",
+    "animal": "snake",
     "character": [
-      "eagle",
-      "fly",
-      "serpent"
+      "snake",
+      "eagle"
     ],
     "tags": [
-      "eagle",
-      "fly",
-      "kindness"
+      "snake",
+      "eagle"
     ],
     "length": "medium",
     "text": [
@@ -3843,19 +3831,19 @@
       "The Eagle swooped down and snatched the poisoned horn right out of the farmer's hands, and flew away with it to hide it somewhere safe forever."
     ],
     "panels": [
-      "the_serpent_and_the_eagle_1.svg",
-      "the_serpent_and_the_eagle_2.svg",
-      "the_serpent_and_the_eagle_3.svg",
-      "the_serpent_and_the_eagle_4.svg",
-      "the_serpent_and_the_eagle_5.svg",
-      "the_serpent_and_the_eagle_6.svg",
-      "the_serpent_and_the_eagle_7.svg",
-      "the_serpent_and_the_eagle_8.svg",
-      "the_serpent_and_the_eagle_9.svg",
-      "the_serpent_and_the_eagle_10.svg",
-      "the_serpent_and_the_eagle_11.svg",
-      "the_serpent_and_the_eagle_12.svg",
-      "the_serpent_and_the_eagle_13.svg"
+      "the_snake_and_the_eagle_1.svg",
+      "the_snake_and_the_eagle_2.svg",
+      "the_snake_and_the_eagle_3.svg",
+      "the_snake_and_the_eagle_4.svg",
+      "the_snake_and_the_eagle_5.svg",
+      "the_snake_and_the_eagle_6.svg",
+      "the_snake_and_the_eagle_7.svg",
+      "the_snake_and_the_eagle_8.svg",
+      "the_snake_and_the_eagle_9.svg",
+      "the_snake_and_the_eagle_10.svg",
+      "the_snake_and_the_eagle_11.svg",
+      "the_snake_and_the_eagle_12.svg",
+      "the_snake_and_the_eagle_13.svg"
     ],
     "moral": "An act of kindness is well repaid."
   },
@@ -4042,17 +4030,17 @@
     "moral": "It all depends on the point of view, and who tells the story."
   },
   {
-    "id": "the_ass_and_the_lap_dog",
-    "title": "The Ass And The Lap Dog",
+    "id": "the_donkey_and_the_lap_dog",
+    "title": "The Donkey And The Lap Dog",
     "theme": "Animals",
     "animal": "dog",
     "character": [
       "dog",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "dog",
-      "ass"
+      "donkey"
     ],
     "length": "medium",
     "text": [
@@ -4071,19 +4059,19 @@
       "There the Donkey was left alone to feel sorry for his foolishness, which had earned him nothing but a good thrashing."
     ],
     "panels": [
-      "the_ass_and_the_lap_dog_1.svg",
-      "the_ass_and_the_lap_dog_2.svg",
-      "the_ass_and_the_lap_dog_3.svg",
-      "the_ass_and_the_lap_dog_4.svg",
-      "the_ass_and_the_lap_dog_5.svg",
-      "the_ass_and_the_lap_dog_6.svg",
-      "the_ass_and_the_lap_dog_7.svg",
-      "the_ass_and_the_lap_dog_8.svg",
-      "the_ass_and_the_lap_dog_9.svg",
-      "the_ass_and_the_lap_dog_10.svg",
-      "the_ass_and_the_lap_dog_11.svg",
-      "the_ass_and_the_lap_dog_12.svg",
-      "the_ass_and_the_lap_dog_13.svg"
+      "the_donkey_and_the_lap_dog_1.svg",
+      "the_donkey_and_the_lap_dog_2.svg",
+      "the_donkey_and_the_lap_dog_3.svg",
+      "the_donkey_and_the_lap_dog_4.svg",
+      "the_donkey_and_the_lap_dog_5.svg",
+      "the_donkey_and_the_lap_dog_6.svg",
+      "the_donkey_and_the_lap_dog_7.svg",
+      "the_donkey_and_the_lap_dog_8.svg",
+      "the_donkey_and_the_lap_dog_9.svg",
+      "the_donkey_and_the_lap_dog_10.svg",
+      "the_donkey_and_the_lap_dog_11.svg",
+      "the_donkey_and_the_lap_dog_12.svg",
+      "the_donkey_and_the_lap_dog_13.svg"
     ],
     "moral": "Behavior that is regarded as agreeable in one is very rude and impertinent in another."
   },
@@ -4610,7 +4598,7 @@
     "animal": "lion",
     "character": [
       "lion",
-      "ass",
+      "donkey",
       "bear",
       "fly",
       "boar",
@@ -4618,7 +4606,7 @@
     ],
     "tags": [
       "lion",
-      "ass",
+      "donkey",
       "bear",
       "fly",
       "boar",
@@ -4917,19 +4905,19 @@
     "moral": "Everything is fair in love."
   },
   {
-    "id": "the_stag_the_sheep_and_the_wolf",
-    "title": "The Stag, The Sheep, And The Wolf",
+    "id": "the_deer_the_sheep_and_the_wolf",
+    "title": "The Deer, The Sheep, And The Wolf",
     "theme": "Animals",
-    "animal": "wolf",
+    "animal": "deer",
     "character": [
-      "wolf",
+      "deer",
       "sheep",
-      "stag"
+      "wolf"
     ],
     "tags": [
-      "wolf",
+      "deer",
       "sheep",
-      "stag"
+      "wolf"
     ],
     "length": "medium",
     "text": [
@@ -4943,14 +4931,14 @@
       "\"And you run so fast that I could never catch you to get it back!\""
     ],
     "panels": [
-      "the_stag_the_sheep_and_the_wolf_1.svg",
-      "the_stag_the_sheep_and_the_wolf_2.svg",
-      "the_stag_the_sheep_and_the_wolf_3.svg",
-      "the_stag_the_sheep_and_the_wolf_4.svg",
-      "the_stag_the_sheep_and_the_wolf_5.svg",
-      "the_stag_the_sheep_and_the_wolf_6.svg",
-      "the_stag_the_sheep_and_the_wolf_7.svg",
-      "the_stag_the_sheep_and_the_wolf_8.svg"
+      "the_deer_the_sheep_and_the_wolf_1.svg",
+      "the_deer_the_sheep_and_the_wolf_2.svg",
+      "the_deer_the_sheep_and_the_wolf_3.svg",
+      "the_deer_the_sheep_and_the_wolf_4.svg",
+      "the_deer_the_sheep_and_the_wolf_5.svg",
+      "the_deer_the_sheep_and_the_wolf_6.svg",
+      "the_deer_the_sheep_and_the_wolf_7.svg",
+      "the_deer_the_sheep_and_the_wolf_8.svg"
     ],
     "moral": "Two blacks do not make a white."
   },
@@ -4964,7 +4952,7 @@
       "fox",
       "tiger",
       "lion",
-      "ass",
+      "donkey",
       "sheep",
       "lamb",
       "bear",
@@ -4975,7 +4963,7 @@
       "fox",
       "tiger",
       "lion",
-      "ass",
+      "donkey",
       "sheep",
       "lamb",
       "bear",
@@ -5373,15 +5361,16 @@
     "moral": "The flatterer lives at the expense of those who will listen to him."
   },
   {
-    "id": "the_ass_and_his_shadow",
-    "title": "The Ass And His Shadow",
+    "id": "the_donkey_and_his_shadow",
+    "title": "The Donkey And His Shadow",
     "theme": "Animals",
-    "animal": "ass",
+    "animal": "donkey",
     "character": [
-      "ass"
+      "donkey"
     ],
     "tags": [
-      "ass"
+      "donkey",
+      "shadow"
     ],
     "length": "short",
     "text": [
@@ -5394,28 +5383,27 @@
       "While the two foolish men fought, the donkey ran away and left them behind."
     ],
     "panels": [
-      "the_ass_and_his_shadow_1.svg",
-      "the_ass_and_his_shadow_2.svg",
-      "the_ass_and_his_shadow_3.svg",
-      "the_ass_and_his_shadow_4.svg",
-      "the_ass_and_his_shadow_5.svg",
-      "the_ass_and_his_shadow_6.svg",
-      "the_ass_and_his_shadow_7.svg"
+      "the_donkey_and_his_shadow_1.svg",
+      "the_donkey_and_his_shadow_2.svg",
+      "the_donkey_and_his_shadow_3.svg",
+      "the_donkey_and_his_shadow_4.svg",
+      "the_donkey_and_his_shadow_5.svg",
+      "the_donkey_and_his_shadow_6.svg",
+      "the_donkey_and_his_shadow_7.svg"
     ],
     "moral": "In quarreling about the shadow we often lose the substance."
   },
   {
-    "id": "the_miller_his_son_and_the_ass",
-    "title": "The Miller, His Son, And The Ass",
+    "id": "the_miller_his_son_and_the_donkey",
+    "title": "The Miller, His Son, And The Donkey",
     "theme": "Animals",
     "animal": "donkey",
     "character": [
-      "donkey",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "donkey",
-      "ass"
+      "miller"
     ],
     "length": "long",
     "text": [
@@ -5443,28 +5431,28 @@
       "By trying to please everyone, the miller pleased nobody and lost his donkey too."
     ],
     "panels": [
-      "the_miller_his_son_and_the_ass_1.svg",
-      "the_miller_his_son_and_the_ass_2.svg",
-      "the_miller_his_son_and_the_ass_3.svg",
-      "the_miller_his_son_and_the_ass_4.svg",
-      "the_miller_his_son_and_the_ass_5.svg",
-      "the_miller_his_son_and_the_ass_6.svg",
-      "the_miller_his_son_and_the_ass_7.svg",
-      "the_miller_his_son_and_the_ass_8.svg",
-      "the_miller_his_son_and_the_ass_9.svg",
-      "the_miller_his_son_and_the_ass_10.svg",
-      "the_miller_his_son_and_the_ass_11.svg",
-      "the_miller_his_son_and_the_ass_12.svg",
-      "the_miller_his_son_and_the_ass_13.svg",
-      "the_miller_his_son_and_the_ass_14.svg",
-      "the_miller_his_son_and_the_ass_15.svg",
-      "the_miller_his_son_and_the_ass_16.svg",
-      "the_miller_his_son_and_the_ass_17.svg",
-      "the_miller_his_son_and_the_ass_18.svg",
-      "the_miller_his_son_and_the_ass_19.svg",
-      "the_miller_his_son_and_the_ass_20.svg",
-      "the_miller_his_son_and_the_ass_21.svg",
-      "the_miller_his_son_and_the_ass_22.svg"
+      "the_miller_his_son_and_the_donkey_1.svg",
+      "the_miller_his_son_and_the_donkey_2.svg",
+      "the_miller_his_son_and_the_donkey_3.svg",
+      "the_miller_his_son_and_the_donkey_4.svg",
+      "the_miller_his_son_and_the_donkey_5.svg",
+      "the_miller_his_son_and_the_donkey_6.svg",
+      "the_miller_his_son_and_the_donkey_7.svg",
+      "the_miller_his_son_and_the_donkey_8.svg",
+      "the_miller_his_son_and_the_donkey_9.svg",
+      "the_miller_his_son_and_the_donkey_10.svg",
+      "the_miller_his_son_and_the_donkey_11.svg",
+      "the_miller_his_son_and_the_donkey_12.svg",
+      "the_miller_his_son_and_the_donkey_13.svg",
+      "the_miller_his_son_and_the_donkey_14.svg",
+      "the_miller_his_son_and_the_donkey_15.svg",
+      "the_miller_his_son_and_the_donkey_16.svg",
+      "the_miller_his_son_and_the_donkey_17.svg",
+      "the_miller_his_son_and_the_donkey_18.svg",
+      "the_miller_his_son_and_the_donkey_19.svg",
+      "the_miller_his_son_and_the_donkey_20.svg",
+      "the_miller_his_son_and_the_donkey_21.svg",
+      "the_miller_his_son_and_the_donkey_22.svg"
     ],
     "moral": "If you try to please all, you please none."
   },
@@ -5500,18 +5488,17 @@
     "moral": "A kindness is never wasted."
   },
   {
-    "id": "the_man_and_the_satyr",
-    "title": "The Man And The Satyr",
+    "id": "the_man_and_the_woodland_spirit",
+    "title": "The Man And The Woodland Spirit",
     "theme": "Mythology",
     "animal": "None",
     "character": [
       "man",
-      "satyr"
+      "woodland spirit"
     ],
     "tags": [
-      "honesty",
-      "wisdom",
-      "friendship"
+      "man",
+      "woodland spirit"
     ],
     "length": "medium",
     "text": [
@@ -5530,19 +5517,19 @@
       "\"I will never trust someone who blows hot and cold with the same breath!\""
     ],
     "panels": [
-      "the_man_and_the_satyr_1.svg",
-      "the_man_and_the_satyr_2.svg",
-      "the_man_and_the_satyr_3.svg",
-      "the_man_and_the_satyr_4.svg",
-      "the_man_and_the_satyr_5.svg",
-      "the_man_and_the_satyr_6.svg",
-      "the_man_and_the_satyr_7.svg",
-      "the_man_and_the_satyr_8.svg",
-      "the_man_and_the_satyr_9.svg",
-      "the_man_and_the_satyr_10.svg",
-      "the_man_and_the_satyr_11.svg",
-      "the_man_and_the_satyr_12.svg",
-      "the_man_and_the_satyr_13.svg"
+      "the_man_and_the_woodland_spirit_1.svg",
+      "the_man_and_the_woodland_spirit_2.svg",
+      "the_man_and_the_woodland_spirit_3.svg",
+      "the_man_and_the_woodland_spirit_4.svg",
+      "the_man_and_the_woodland_spirit_5.svg",
+      "the_man_and_the_woodland_spirit_6.svg",
+      "the_man_and_the_woodland_spirit_7.svg",
+      "the_man_and_the_woodland_spirit_8.svg",
+      "the_man_and_the_woodland_spirit_9.svg",
+      "the_man_and_the_woodland_spirit_10.svg",
+      "the_man_and_the_woodland_spirit_11.svg",
+      "the_man_and_the_woodland_spirit_12.svg",
+      "the_man_and_the_woodland_spirit_13.svg"
     ],
     "moral": "The man who talks for both sides is not to be trusted by either."
   },
@@ -5651,8 +5638,8 @@
     "moral": "Mother love is blind."
   },
   {
-    "id": "the_lion_the_ass_and_the_fox",
-    "title": "The Lion, The Ass, And The Fox",
+    "id": "the_lion_the_donkey_and_the_fox",
+    "title": "The Lion, The Donkey, And The Fox",
     "theme": "Animals",
     "animal": "goat",
     "character": [
@@ -5660,14 +5647,14 @@
       "ox",
       "fox",
       "lion",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "goat",
       "ox",
       "fox",
       "lion",
-      "ass"
+      "donkey"
     ],
     "length": "medium",
     "text": [
@@ -5683,16 +5670,16 @@
       "\"I learned it from the poor donkey,\" whispered the fox, backing safely away."
     ],
     "panels": [
-      "the_lion_the_ass_and_the_fox_1.svg",
-      "the_lion_the_ass_and_the_fox_2.svg",
-      "the_lion_the_ass_and_the_fox_3.svg",
-      "the_lion_the_ass_and_the_fox_4.svg",
-      "the_lion_the_ass_and_the_fox_5.svg",
-      "the_lion_the_ass_and_the_fox_6.svg",
-      "the_lion_the_ass_and_the_fox_7.svg",
-      "the_lion_the_ass_and_the_fox_8.svg",
-      "the_lion_the_ass_and_the_fox_9.svg",
-      "the_lion_the_ass_and_the_fox_10.svg"
+      "the_lion_the_donkey_and_the_fox_1.svg",
+      "the_lion_the_donkey_and_the_fox_2.svg",
+      "the_lion_the_donkey_and_the_fox_3.svg",
+      "the_lion_the_donkey_and_the_fox_4.svg",
+      "the_lion_the_donkey_and_the_fox_5.svg",
+      "the_lion_the_donkey_and_the_fox_6.svg",
+      "the_lion_the_donkey_and_the_fox_7.svg",
+      "the_lion_the_donkey_and_the_fox_8.svg",
+      "the_lion_the_donkey_and_the_fox_9.svg",
+      "the_lion_the_donkey_and_the_fox_10.svg"
     ],
     "moral": "Learn from the misfortunes of others."
   },
@@ -5895,19 +5882,17 @@
     "moral": "Do not give up friends for foes."
   },
   {
-    "id": "the_fox_and_the_cock",
-    "title": "The Fox And The Cock",
+    "id": "the_fox_and_the_rooster",
+    "title": "The Fox And The Rooster",
     "theme": "Animals",
     "animal": "fox",
     "character": [
       "fox",
-      "cock",
-      "hen"
+      "rooster"
     ],
     "tags": [
       "fox",
-      "cock",
-      "hen"
+      "rooster"
     ],
     "length": "medium",
     "text": [
@@ -5923,34 +5908,33 @@
       "He crowed loudly, waking the farmer, who ran out and caught the naughty fox."
     ],
     "panels": [
-      "the_fox_and_the_cock_1.svg",
-      "the_fox_and_the_cock_2.svg",
-      "the_fox_and_the_cock_3.svg",
-      "the_fox_and_the_cock_4.svg",
-      "the_fox_and_the_cock_5.svg",
-      "the_fox_and_the_cock_6.svg",
-      "the_fox_and_the_cock_7.svg",
-      "the_fox_and_the_cock_8.svg",
-      "the_fox_and_the_cock_9.svg",
-      "the_fox_and_the_cock_10.svg"
+      "the_fox_and_the_rooster_1.svg",
+      "the_fox_and_the_rooster_2.svg",
+      "the_fox_and_the_rooster_3.svg",
+      "the_fox_and_the_rooster_4.svg",
+      "the_fox_and_the_rooster_5.svg",
+      "the_fox_and_the_rooster_6.svg",
+      "the_fox_and_the_rooster_7.svg",
+      "the_fox_and_the_rooster_8.svg",
+      "the_fox_and_the_rooster_9.svg",
+      "the_fox_and_the_rooster_10.svg"
     ],
     "moral": "The wicked deserve no aid."
   },
   {
-    "id": "the_ass_in_the_lions_skin",
-    "title": "The Ass In The Lion'S Skin",
+    "id": "the_donkey_in_the_lions_skin",
+    "title": "The Donkey In The Lion's Skin",
     "theme": "Animals",
     "animal": "fox",
     "character": [
       "fox",
       "lion",
-      "ass"
+      "donkey"
     ],
     "tags": [
       "fox",
       "lion",
-      "ass",
-      "wisdom"
+      "donkey"
     ],
     "length": "short",
     "text": [
@@ -5963,13 +5947,13 @@
       "\"But your silly donkey bray gave your foolish secret away at once!\""
     ],
     "panels": [
-      "the_ass_in_the_lions_skin_1.svg",
-      "the_ass_in_the_lions_skin_2.svg",
-      "the_ass_in_the_lions_skin_3.svg",
-      "the_ass_in_the_lions_skin_4.svg",
-      "the_ass_in_the_lions_skin_5.svg",
-      "the_ass_in_the_lions_skin_6.svg",
-      "the_ass_in_the_lions_skin_7.svg"
+      "the_donkey_in_the_lions_skin_1.svg",
+      "the_donkey_in_the_lions_skin_2.svg",
+      "the_donkey_in_the_lions_skin_3.svg",
+      "the_donkey_in_the_lions_skin_4.svg",
+      "the_donkey_in_the_lions_skin_5.svg",
+      "the_donkey_in_the_lions_skin_6.svg",
+      "the_donkey_in_the_lions_skin_7.svg"
     ],
     "moral": "A fool may deceive by his dress and appearance, but his words will soon show what he really is."
   },
@@ -6006,22 +5990,17 @@
     "moral": "A small gain is worth more than a large promise."
   },
   {
-    "id": "the_fighting_cocks_and_the_eagle",
-    "title": "The Fighting Cocks And The Eagle",
+    "id": "the_fighting_roosters_and_the_eagle",
+    "title": "The Fighting Roosters And The Eagle",
     "theme": "Animals",
-    "animal": "eagle",
+    "animal": "rooster",
     "character": [
-      "eagle",
-      "bear",
-      "cock",
-      "hen"
+      "rooster",
+      "eagle"
     ],
     "tags": [
-      "eagle",
-      "bear",
-      "cock",
-      "hen",
-      "pride"
+      "rooster",
+      "eagle"
     ],
     "length": "short",
     "text": [
@@ -6033,12 +6012,12 @@
       "Seeing this, the other rooster stepped out safely to rule the courtyard in peace."
     ],
     "panels": [
-      "the_fighting_cocks_and_the_eagle_1.svg",
-      "the_fighting_cocks_and_the_eagle_2.svg",
-      "the_fighting_cocks_and_the_eagle_3.svg",
-      "the_fighting_cocks_and_the_eagle_4.svg",
-      "the_fighting_cocks_and_the_eagle_5.svg",
-      "the_fighting_cocks_and_the_eagle_6.svg"
+      "the_fighting_roosters_and_the_eagle_1.svg",
+      "the_fighting_roosters_and_the_eagle_2.svg",
+      "the_fighting_roosters_and_the_eagle_3.svg",
+      "the_fighting_roosters_and_the_eagle_4.svg",
+      "the_fighting_roosters_and_the_eagle_5.svg",
+      "the_fighting_roosters_and_the_eagle_6.svg"
     ],
     "moral": "Pride goes before a fall."
   },

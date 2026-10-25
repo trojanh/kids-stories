@@ -36,6 +36,10 @@ This document details the architecture, file modifications, international locali
 | **20** | Make theme & length filters concise for mobile view | ✅ Completed | Horizontal smooth touch-scrolling row with compact chips and hidden scrollbars on mobile | `src/ui/style.css` |
 | **21** | Add new stories to collection (expanding to 160 total) | ✅ Completed | Removed duplicate hedgehog story; added 8 distinct animal stories (animal names only) with custom vector SVGs | `src/data/stories.json`, `src/ui/data/stories.json` |
 | **22** | Add full PWA support (Manifest, Service Worker, Offline) | ✅ Completed | Created `manifest.webmanifest`, SVG app icons, and network-first Service Worker with offline caching | `src/ui/manifest.webmanifest`, `src/ui/sw.js` |
+| **23** | Show additional animal tags when themes are selected | ✅ Completed | Rendered dynamic animal tags when a theme (e.g. Animals) is selected; strictly single-row with top 8 frequent animals + dropdown | `src/ui/main.js`, `src/ui/style.css` |
+| **24** | Compact animal filter UI & exclude non-animals | ✅ Completed | Replaced multi-row clutter with 38px horizontal pill bar + "More Animals (N) ▾" select; excluded non-animals (Farmer, Wheel, etc.); mapped Ass → Donkey | `src/ui/main.js`, `src/ui/style.css` |
+| **25** | Title & story text terminology consistency audit | ✅ Completed | Harmonized 34 story titles with their modernised story texts: "The Donkey Carrying The Statue", "The Sick Stag" (fixed typo), "Rooster" instead of "Cock", "Donkey" instead of "Ass", etc. | `src/data/stories.json`, `src/data/audio_manifest.json`, `src/ui/data/` |
+| **26** | Story ID alignment with updated titles & alias redirects | ✅ Completed | Renamed 31 story IDs to match their titles exactly (e.g. `the_donkey_carrying_the_statue`), renamed audio asset directories, updated manifest, and added seamless router `ID_ALIASES` | `src/data/stories.json`, `src/data/audio_manifest.json`, `src/ui/audio/`, `src/ui/main.js` |
 
 ---
 
@@ -89,13 +93,14 @@ Resolved Chromium cross-world service worker preload mismatches by routing `data
 ## 4. Verification & Quality Assurance
 
 1. **Schema & Integrity Validation (`npm test`)**:
-   - `python3 src/data/test_stories.py` passed across all 157 stories.
+   - `python3 src/data/test_stories.py` passed across all 160 stories.
 2. **Build Pipeline (`npm run build`)**:
    - Synchronized static data bundles to `src/ui/data/`.
-   - Regenerated `sitemap.xml` with 158 canonical URLs.
-   - Verified 157 narrated story audios in `src/ui/audio/`.
+   - Regenerated `sitemap.xml` with 161 canonical URLs.
+   - Verified 160 narrated story audios in `src/ui/audio/`.
 3. **Headless Chrome Automation (`scripts/test_ui_chrome.js`)**:
    - Validated initial 24-card library render with 0 console errors.
    - Tested interactive pagination to page 2 (`?page=2`).
    - Verified 0 `.theme-badge` elements on cards across all themes.
+   - Tested compact single-row animal filter UI (height ≤ 38px, top 8 pills + dropdown, zero non-animal leakage, toggle & clear actions).
    - Tested reader view navigation, sticky stage SVG, moral display, and studio narration badges.

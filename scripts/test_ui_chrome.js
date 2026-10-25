@@ -120,6 +120,72 @@ async function run() {
 
     console.log('5. Library Evaluation:', JSON.stringify(evalResult.result.value, null, 2));
 
+    // Test Animal Filter & Compact Pills UI
+    console.log('5b. Testing Animal Filters & Compact Single-Row UI...');
+    const animalFilterTest = await send('Runtime.evaluate', {
+      expression: `(() => {
+        // 1. Click Animals theme chip
+        const animalsThemeBtn = document.querySelector('.chip[data-theme="Animals"]');
+        if (!animalsThemeBtn) return { error: 'Animals theme chip not found' };
+        animalsThemeBtn.click();
+
+        const animalRow = document.querySelector('.animal-pills-row');
+        if (!animalRow) return { error: 'animal-pills-row not rendered' };
+
+        const rowHeight = animalRow.offsetHeight;
+        const animalChips = Array.from(animalRow.querySelectorAll('.chip[data-animal]')).map(c => c.innerText.trim());
+        const moreSelect = document.getElementById('moreAnimalsSelect');
+        const selectOptionsCount = moreSelect ? moreSelect.options.length : 0;
+
+        // Check for non-animals leakage
+        const forbiddenNonAnimals = ['Farmer', 'Countryman', 'Goatherd', 'Spendthrift', 'Wheel', 'Ass'];
+        const leaked = forbiddenNonAnimals.filter(fa => animalChips.some(ac => ac.includes(fa)));
+
+        // 2. Click Fox chip
+        const foxBtn = animalRow.querySelector('.chip[data-animal="fox"]');
+        if (foxBtn) foxBtn.click();
+        const foxCardsCount = document.querySelectorAll('.story-card').length;
+        const foxHeader = document.querySelector('.results-count')?.innerText || '';
+
+        // 3. Toggle Fox off
+        if (foxBtn) foxBtn.click();
+        const toggledCardsCount = document.querySelectorAll('.story-card').length;
+
+        // 4. Select Hedgehog from dropdown
+        if (moreSelect) {
+          moreSelect.value = 'hedgehog';
+          moreSelect.dispatchEvent(new Event('change'));
+        }
+        const hedgehogPill = document.querySelector('.animal-pills-row .chip.active[data-animal="hedgehog"]');
+        const hedgehogCardsCount = document.querySelectorAll('.story-card').length;
+
+        // 5. Clear Hedgehog pill
+        if (hedgehogPill) hedgehogPill.click();
+        const clearedCardsCount = document.querySelectorAll('.story-card').length;
+
+        // 6. Reset theme back to All
+        const allThemeBtn = document.querySelector('.chip[data-theme="All"]');
+        if (allThemeBtn) allThemeBtn.click();
+        const rowAfterAll = document.querySelector('.animal-pills-row');
+
+        return {
+          rowHeight,
+          animalChips,
+          selectOptionsCount,
+          leaked,
+          foxCardsCount,
+          foxHeaderMatches: foxHeader.includes('Fox'),
+          toggledCardsCount,
+          hasHedgehogPill: !!hedgehogPill,
+          hedgehogCardsCount,
+          clearedCardsCount,
+          rowRemovedOnAll: !rowAfterAll,
+        };
+      })()`,
+      returnByValue: true,
+    });
+    console.log('5b. Animal Filter Test Result:', JSON.stringify(animalFilterTest.result.value, null, 2));
+
     // Test Pagination: click Page 2
     console.log('6. Testing Pagination: clicking Page 2 button...');
     const page2Result = await send('Runtime.evaluate', {
@@ -198,6 +264,10 @@ async function run() {
       evalStory.result.value.title === 'The Brave Little Hedgehog' &&
       evalStory.result.value.hasStageSvg &&
       evalStory.result.value.hasMoralCard &&
+      animalFilterTest.result.value.rowHeight <= 40 &&
+      animalFilterTest.result.value.leaked.length === 0 &&
+      animalFilterTest.result.value.hasHedgehogPill &&
+      animalFilterTest.result.value.rowRemovedOnAll &&
       jsErrors.length === 0
     ) {
       console.log('🎉 ALL AUTOMATED HEADLESS CHROME CHECKS PASSED!');

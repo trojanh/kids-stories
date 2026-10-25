@@ -65,9 +65,13 @@
   }
 
   // Filtering state
-  let searchQuery = '';
-  let activeTheme = 'All';
-  let activeLength = 'All';
+  const initialParams = (() => {
+    try { return new URLSearchParams(window.location.search); } catch (e) { return null; }
+  })();
+  let searchQuery = (initialParams && initialParams.get('q')) || '';
+  let activeTheme = (initialParams && initialParams.get('theme')) || 'All';
+  let activeLength = (initialParams && initialParams.get('length')) || 'All';
+  let activeAnimal = (initialParams && initialParams.get('animal')) || 'All';
   let showFavoritesOnly = false;
 
   // DOM Elements cache
@@ -118,15 +122,110 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const VALID_ANIMALS = new Set([
+    'ant', 'bat', 'bear', 'beaver', 'bee', 'beetle', 'boar', 'bull', 'butterfly',
+    'camel', 'cat', 'chameleon', 'cock', 'cow', 'crab', 'crane', 'crow', 'cuckoo', 'deer',
+    'dog', 'donkey', 'dove', 'duck', 'eagle', 'elephant', 'firefly', 'fish', 'fly', 'fox',
+    'frog', 'gnat', 'goat', 'goose', 'grasshopper', 'hare', 'hawk', 'hedgehog', 'hen', 'heron',
+    'hornet', 'horse', 'jackal', 'jackdaw', 'kangaroo', 'kite', 'lamb', 'lark', 'leopard', 'lion',
+    'mole', 'monkey', 'mouse', 'mule', 'owl', 'ox', 'panther', 'parrot', 'peacock', 'pelican',
+    'pig', 'porcupine', 'rat', 'raven', 'rooster', 'serpent', 'sheep', 'snake', 'spider',
+    'squirrel', 'stag', 'stork', 'swallow', 'swan', 'tiger', 'tortoise', 'viper', 'wasp', 'wildcat', 'wolf'
+  ]);
+
+  const ANIMAL_CANONICAL_MAP = {
+    'ass': 'donkey',
+    'mice': 'mouse',
+    'kid': 'goat',
+    'wild goat': 'goat',
+    'mother mole': 'mole',
+    'rabbit': 'hare',
+  };
+
+  const NON_ANIMALS = new Set([
+    'astrologer', 'boaster', 'boy', 'brass pot', 'companion', 'countryman',
+    'earthen pot', 'farmer', 'father', 'goatherd', 'hercules', 'listener',
+    'man', 'mercury', 'milkmaid', 'miser', 'mother', 'north wind', 'oak',
+    'plane tree', 'reed', 'satyr', 'sons', 'spendthrift', 'stranger', 'sun',
+    'thief', 'traveller', 'traveler', 'trees', 'villager', 'wallet', 'wheel',
+    'widow', 'wife', 'wind', 'woodman', 'none'
+  ]);
+
+  function getCanonicalAnimal(name) {
+    if (!name) return null;
+    const n = name.toLowerCase().trim();
+    if (NON_ANIMALS.has(n)) return null;
+    const mapped = ANIMAL_CANONICAL_MAP[n] || n;
+    return VALID_ANIMALS.has(mapped) ? mapped : null;
+  }
+
   // Animal display formatting
   function formatAnimalLabel(animal) {
-    if (!animal || animal === 'None' || animal === 'none') return 'None';
-    return animal.charAt(0).toUpperCase() + animal.slice(1);
+    if (!animal || animal === 'None' || animal === 'none') return '';
+    const a = animal.toLowerCase().trim();
+    if (a === 'ass') return 'Donkey';
+    return a.charAt(0).toUpperCase() + a.slice(1);
+  }
+
+  function getAnimalEmoji(animal) {
+    const a = (animal || '').toLowerCase().trim();
+    if (a.includes('fox')) return '🦊';
+    if (a.includes('lion')) return '🦁';
+    if (a.includes('wolf') || a.includes('jackal')) return '🐺';
+    if (a.includes('tortoise') || a.includes('turtle')) return '🐢';
+    if (a.includes('hare') || a.includes('rabbit') || a.includes('bunny')) return '🐰';
+    if (a.includes('hedgehog') || a.includes('porcupine')) return '🦔';
+    if (a.includes('elephant')) return '🐘';
+    if (a.includes('crow') || a.includes('raven') || a.includes('jackdaw')) return '🦅';
+    if (a.includes('eagle') || a.includes('hawk') || a.includes('kite')) return '🦅';
+    if (a.includes('dove')) return '🕊️';
+    if (a.includes('cuckoo') || a.includes('bird') || a.includes('swallow') || a.includes('lark')) return '🐦';
+    if (a.includes('parrot')) return '🦜';
+    if (a.includes('owl')) return '🦉';
+    if (a.includes('chameleon')) return '🦎';
+    if (a.includes('mouse') || a.includes('rat') || a.includes('mice')) return '🐭';
+    if (a.includes('frog') || a.includes('toad')) return '🐸';
+    if (a.includes('bear')) return '🐻';
+    if (a.includes('monkey') || a.includes('ape')) return '🐒';
+    if (a.includes('dog') || a.includes('hound')) return '🐶';
+    if (a.includes('cat') || a.includes('wildcat')) return '🐱';
+    if (a.includes('tiger') || a.includes('leopard') || a.includes('panther')) return '🐯';
+    if (a.includes('deer') || a.includes('stag') || a.includes('hind')) return '🦌';
+    if (a.includes('horse')) return '🐴';
+    if (a.includes('donkey') || a.includes('ass') || a.includes('mule')) return '🫏';
+    if (a.includes('ox') || a.includes('bull') || a.includes('cow') || a.includes('bullock')) return '🐂';
+    if (a.includes('sheep') || a.includes('lamb') || a.includes('ram')) return '🐑';
+    if (a.includes('goat') || a.includes('kid')) return '🐐';
+    if (a.includes('crane') || a.includes('stork') || a.includes('heron')) return '🦩';
+    if (a.includes('peacock')) return '🦚';
+    if (a.includes('swan')) return '🦢';
+    if (a.includes('goose') || a.includes('geese')) return '🪿';
+    if (a.includes('cock') || a.includes('rooster') || a.includes('hen')) return '🐓';
+    if (a.includes('beaver')) return '🦫';
+    if (a.includes('pelican') || a.includes('duck')) return '🦆';
+    if (a.includes('kangaroo')) return '🦘';
+    if (a.includes('bee')) return '🐝';
+    if (a.includes('ant')) return '🐜';
+    if (a.includes('butterfly')) return '🦋';
+    if (a.includes('beetle')) return '🪲';
+    if (a.includes('spider')) return '🕷️';
+    if (a.includes('grasshopper')) return '🦗';
+    if (a.includes('gnat') || a.includes('fly')) return '🪰';
+    if (a.includes('firefly')) return '✨';
+    if (a.includes('crab')) return '🦀';
+    if (a.includes('fish')) return '🐟';
+    if (a.includes('snake') || a.includes('viper') || a.includes('serpent')) return '🐍';
+    if (a.includes('camel')) return '🐪';
+    if (a.includes('pig') || a.includes('boar')) return '🐗';
+    if (a.includes('squirrel') || a.includes('chipmunk')) return '🐿️';
+    return '🐾';
   }
 
   function formatAnimalBadge(animal) {
     if (!animal || animal === 'None' || animal === 'none') return '📖 Fable';
-    return `🐾 ${animal.charAt(0).toUpperCase() + animal.slice(1)}`;
+    const canonical = getCanonicalAnimal(animal) || animal;
+    const emoji = getAnimalEmoji(canonical);
+    return `${emoji} ${formatAnimalLabel(canonical)}`;
   }
 
   // Safe HTML escaping
@@ -321,6 +420,32 @@
     }
   }
 
+  // Extract and rank canonical animals belonging to a specific theme
+  function getAnimalsForTheme(theme) {
+    const matchingStories = stories.filter((s) => {
+      if (theme === 'All') return true;
+      const t = s.theme || 'Animals';
+      return t === theme;
+    });
+
+    const animalCounts = {};
+    for (const s of matchingStories) {
+      const candidates = new Set(
+        [s.animal, ...(s.character || [])]
+          .map(getCanonicalAnimal)
+          .filter(Boolean)
+      );
+      for (const a of candidates) {
+        animalCounts[a] = (animalCounts[a] || 0) + 1;
+      }
+    }
+
+    return Object.keys(animalCounts).sort((a, b) => {
+      const diff = animalCounts[b] - animalCounts[a];
+      return diff !== 0 ? diff : a.localeCompare(b);
+    });
+  }
+
   function getFilteredStories() {
     const source = randomizedStories && randomizedStories.length > 0 ? randomizedStories : stories;
     return source.filter((s) => {
@@ -332,6 +457,17 @@
         if (activeTheme === 'Family' && t !== 'Family') return false;
         if (activeTheme === 'Nature' && t !== 'Nature') return false;
         if (activeTheme === 'Mythology' && t !== 'Mythology') return false;
+      }
+
+      // Animal filter (when active)
+      if (activeAnimal !== 'All') {
+        const target = activeAnimal.toLowerCase();
+        const storyAnimals = new Set(
+          [s.animal, ...(s.character || [])]
+            .map(getCanonicalAnimal)
+            .filter(Boolean)
+        );
+        if (!storyAnimals.has(target)) return false;
       }
 
       // Length filter
@@ -447,6 +583,65 @@
             .join('')}
         </div>
 
+        ${
+          activeTheme !== 'All'
+            ? (() => {
+                const allAnimalsInTheme = getAnimalsForTheme(activeTheme);
+                if (allAnimalsInTheme.length === 0) return '';
+                const topAnimals = allAnimalsInTheme.slice(0, 8);
+                const otherAnimals = allAnimalsInTheme.slice(8);
+                const isSelectedInOthers = otherAnimals.some(
+                  (a) => a.toLowerCase() === activeAnimal.toLowerCase()
+                );
+
+                return `
+        <div class="animal-pills-row">
+          <span class="filter-label">🐾 Animal:</span>
+          <button class="chip ${activeAnimal === 'All' ? 'active' : ''}" data-animal="All">
+            All
+          </button>
+          ${
+            isSelectedInOthers
+              ? `
+          <button class="chip active" data-animal="${escapeHtml(activeAnimal)}" title="Click to clear animal filter">
+            ${formatAnimalBadge(activeAnimal)} ✕
+          </button>
+          `
+              : ''
+          }
+          ${topAnimals
+            .map(
+              (animal) => `
+            <button class="chip ${activeAnimal.toLowerCase() === animal.toLowerCase() ? 'active' : ''}" data-animal="${escapeHtml(animal)}">
+              ${formatAnimalBadge(animal)}
+            </button>
+          `
+            )
+            .join('')}
+          ${
+            otherAnimals.length > 0
+              ? `
+          <select class="animal-select-pill" id="moreAnimalsSelect" title="More animals in ${escapeHtml(activeTheme)}">
+            <option value="">More Animals (${otherAnimals.length}) ▾</option>
+            ${otherAnimals
+              .map(
+                (a) => `
+              <option value="${escapeHtml(a)}" ${activeAnimal.toLowerCase() === a.toLowerCase() ? 'selected' : ''}>
+                ${formatAnimalBadge(a)}
+              </option>
+            `
+              )
+              .join('')}
+          </select>
+          `
+              : ''
+          }
+        </div>
+        `;
+              })()
+            : ''
+        }
+
         <div class="filter-pills-row">
           <span class="filter-label">Length:</span>
           ${[
@@ -471,6 +666,7 @@
         <div class="results-count">
           <strong>Explore Stories</strong>
           ${activeTheme !== 'All' ? `• Theme: ${activeTheme}` : ''}
+          ${activeAnimal !== 'All' ? `• Animal: ${formatAnimalBadge(activeAnimal)}` : ''}
           ${activeLength !== 'All' ? `• Length: ${activeLength}` : ''}
           ${showFavoritesOnly ? `• Favorites only` : ''}
           ${searchQuery.trim() ? `• Matching "${escapeHtml(searchQuery)}"` : ''}
@@ -511,6 +707,22 @@
                 </div>
 
                 <h3 class="story-title">${s.title}</h3>
+                ${(() => {
+                  const cardAnimals = Array.from(
+                    new Set(
+                      [s.animal, ...(s.character || [])]
+                        .map(getCanonicalAnimal)
+                        .filter(Boolean)
+                    )
+                  ).slice(0, 3);
+                  if (cardAnimals.length === 0) return '';
+                  return `
+                <div class="card-character-tags">
+                  ${cardAnimals
+                    .map((c) => `<span class="card-char-tag">${formatAnimalBadge(c)}</span>`)
+                    .join('')}
+                </div>`;
+                })()}
                 <p class="story-preview">${firstSentence}</p>
                 <div class="story-moral-chip">
                   💡 <strong>Moral:</strong> ${s.moral}
@@ -591,10 +803,31 @@
     document.querySelectorAll('.chip[data-theme]').forEach((btn) => {
       btn.addEventListener('click', () => {
         activeTheme = btn.getAttribute('data-theme');
+        activeAnimal = 'All';
         currentPage = 1;
         renderList();
       });
     });
+
+    // Animal filter chips
+    document.querySelectorAll('.chip[data-animal]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-animal');
+        activeAnimal = (activeAnimal.toLowerCase() === selected.toLowerCase() && selected !== 'All') ? 'All' : selected;
+        currentPage = 1;
+        renderList();
+      });
+    });
+
+    // More animals select dropdown
+    const moreAnimalsSelect = document.getElementById('moreAnimalsSelect');
+    if (moreAnimalsSelect) {
+      moreAnimalsSelect.addEventListener('change', (e) => {
+        activeAnimal = e.target.value || 'All';
+        currentPage = 1;
+        renderList();
+      });
+    }
 
     // Length filter chips
     document.querySelectorAll('.chip[data-length]').forEach((btn) => {
@@ -652,6 +885,7 @@
       resetBtn.addEventListener('click', () => {
         searchQuery = '';
         activeTheme = 'All';
+        activeAnimal = 'All';
         activeLength = 'All';
         showFavoritesOnly = false;
         currentPage = 1;
@@ -751,7 +985,46 @@
     return null;
   }
 
+  const ID_ALIASES = {
+    'the_ass_carrying_the_image': 'the_donkey_carrying_the_statue',
+    'the_ass_and_his_driver': 'the_donkey_and_his_driver',
+    'the_ass_and_the_load_of_salt': 'the_donkey_and_the_load_of_salt',
+    'the_ass_the_fox_and_the_lion': 'the_donkey_the_fox_and_the_lion',
+    'the_lion_and_the_ass_56': 'the_lion_and_the_donkey',
+    'the_lion_and_the_ass_24': 'the_lion_and_the_silly_donkey',
+    'the_wolf_and_the_ass': 'the_wolf_and_the_donkey',
+    'the_ass_and_the_lap_dog': 'the_donkey_and_the_lap_dog',
+    'the_ass_and_his_shadow': 'the_donkey_and_his_shadow',
+    'the_miller_his_son_and_the_ass': 'the_miller_his_son_and_the_donkey',
+    'the_lion_the_ass_and_the_fox': 'the_lion_the_donkey_and_the_fox',
+    'the_ass_and_the_grasshoppers': 'the_donkey_and_the_grasshoppers',
+    'the_ass_in_the_lions_skin': 'the_donkey_in_the_lions_skin',
+    'the_dog_the_cock_and_the_fox': 'the_dog_the_rooster_and_the_fox',
+    'the_cock_and_the_jewel': 'the_rooster_and_the_jewel',
+    'the_cock_and_the_fox': 'the_rooster_and_the_fox',
+    'the_cat_the_cock_and_the_young_mouse': 'the_cat_the_rooster_and_the_young_mouse',
+    'the_fox_and_the_cock': 'the_fox_and_the_rooster',
+    'the_fighting_cocks_and_the_eagle': 'the_fighting_roosters_and_the_eagle',
+    'the_wolf_and_the_kid': 'the_wolf_and_the_little_goat',
+    'the_kid_and_the_wolf': 'the_little_goat_and_the_wolf',
+    'the_stick_stag': 'the_sick_stag',
+    'the_boy_and_the_filberts': 'the_boy_and_the_jar_of_nuts',
+    'hercules_and_the_wagoner': 'hercules_and_the_farmer',
+    'mercury_and_the_woodman': 'mercury_and_the_woodcutter',
+    'the_serpent_and_the_eagle': 'the_snake_and_the_eagle',
+    'the_stag_the_sheep_and_the_wolf': 'the_deer_the_sheep_and_the_wolf',
+    'the_gnat_and_the_bull': 'the_fly_and_the_bull',
+    'the_crow_and_the_pitcher': 'the_crow_and_the_clay_pot',
+    'the_man_and_the_satyr': 'the_man_and_the_woodland_spirit',
+    'the_spendthrift_and_the_swallow': 'the_young_man_and_the_swallow',
+  };
+
   function renderReader(storyId) {
+    if (ID_ALIASES[storyId]) {
+      const canonicalId = ID_ALIASES[storyId];
+      history.replaceState({ storyId: canonicalId }, '', getStoryUrl(canonicalId));
+      storyId = canonicalId;
+    }
     const story = stories.find((s) => s.id === storyId);
     if (!story) {
       appContainer.innerHTML = `
