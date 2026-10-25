@@ -376,58 +376,6 @@
         "end": 46.81
       }
     },
-    "hercules_and_the_wagoner": {
-      "title": "Hercules And The Wagoner",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/hercules_and_the_wagoner/story.mp3",
-      "duration": 51.758,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.597
-        },
-        {
-          "index": 1,
-          "start": 6.497,
-          "end": 11.354
-        },
-        {
-          "index": 2,
-          "start": 12.253,
-          "end": 18.151
-        },
-        {
-          "index": 3,
-          "start": 19.049,
-          "end": 24.375
-        },
-        {
-          "index": 4,
-          "start": 25.273,
-          "end": 30.221
-        },
-        {
-          "index": 5,
-          "start": 31.12,
-          "end": 34.453
-        },
-        {
-          "index": 6,
-          "start": 35.352,
-          "end": 40.143
-        },
-        {
-          "index": 7,
-          "start": 41.042,
-          "end": 46.25
-        }
-      ],
-      "moral": {
-        "start": 47.148,
-        "end": 51.758
-      }
-    },
     "the_young_crab_and_his_mother": {
       "title": "The Young Crab And His Mother",
       "voice": "en-US-AnaNeural",
@@ -565,85 +513,6 @@
       "moral": {
         "start": 93.854,
         "end": 100.599
-      }
-    },
-    "the_ass_and_his_driver": {
-      "title": "The Ass And His Driver",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_and_his_driver/story.mp3",
-      "duration": 41.471,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.363
-        },
-        {
-          "index": 1,
-          "start": 6.263,
-          "end": 11.315
-        },
-        {
-          "index": 2,
-          "start": 12.214,
-          "end": 16.953
-        },
-        {
-          "index": 3,
-          "start": 17.852,
-          "end": 22.37
-        },
-        {
-          "index": 4,
-          "start": 23.268,
-          "end": 28.229
-        }
-      ],
-      "moral": {
-        "start": 29.128,
-        "end": 41.471
-      }
-    },
-    "the_gnat_and_the_bull": {
-      "title": "The Gnat And The Bull",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_gnat_and_the_bull/story.mp3",
-      "duration": 41.641,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.675
-        },
-        {
-          "index": 1,
-          "start": 6.576,
-          "end": 11.576
-        },
-        {
-          "index": 2,
-          "start": 12.474,
-          "end": 17.995
-        },
-        {
-          "index": 3,
-          "start": 18.893,
-          "end": 24.076
-        },
-        {
-          "index": 4,
-          "start": 24.974,
-          "end": 30.091
-        },
-        {
-          "index": 5,
-          "start": 30.99,
-          "end": 35.365
-        }
-      ],
-      "moral": {
-        "start": 36.263,
-        "end": 41.641
       }
     },
     "the_eagle_and_the_jackdaw": {
@@ -1033,108 +902,6 @@
         "end": 70.846
       }
     },
-    "the_dog_the_cock_and_the_fox": {
-      "title": "The Dog, The Cock, And The Fox",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_dog_the_cock_and_the_fox/story.mp3",
-      "duration": 113.49,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.972
-        },
-        {
-          "index": 1,
-          "start": 5.872,
-          "end": 11.25
-        },
-        {
-          "index": 2,
-          "start": 12.148,
-          "end": 18.216
-        },
-        {
-          "index": 3,
-          "start": 19.115,
-          "end": 23.906
-        },
-        {
-          "index": 4,
-          "start": 24.805,
-          "end": 30.169
-        },
-        {
-          "index": 5,
-          "start": 31.068,
-          "end": 36.615
-        },
-        {
-          "index": 6,
-          "start": 37.513,
-          "end": 42.201
-        },
-        {
-          "index": 7,
-          "start": 43.099,
-          "end": 47.786
-        },
-        {
-          "index": 8,
-          "start": 48.685,
-          "end": 53.372
-        },
-        {
-          "index": 9,
-          "start": 54.271,
-          "end": 58.724
-        },
-        {
-          "index": 10,
-          "start": 59.622,
-          "end": 64.909
-        },
-        {
-          "index": 11,
-          "start": 65.807,
-          "end": 70.938
-        },
-        {
-          "index": 12,
-          "start": 71.836,
-          "end": 76.589
-        },
-        {
-          "index": 13,
-          "start": 77.487,
-          "end": 84.349
-        },
-        {
-          "index": 14,
-          "start": 85.247,
-          "end": 89.635
-        },
-        {
-          "index": 15,
-          "start": 90.534,
-          "end": 94.896
-        },
-        {
-          "index": 16,
-          "start": 95.794,
-          "end": 99.909
-        },
-        {
-          "index": 17,
-          "start": 100.807,
-          "end": 105.716
-        }
-      ],
-      "moral": {
-        "start": 106.615,
-        "end": 113.49
-      }
-    },
     "the_shepherd_boy_and_the_wolf": {
       "title": "The Shepherd Boy And The Wolf",
       "voice": "en-US-AnaNeural",
@@ -1351,48 +1118,6 @@
         "end": 61.914
       }
     },
-    "the_boy_and_the_filberts": {
-      "title": "The Boy And The Filberts",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_boy_and_the_filberts/story.mp3",
-      "duration": 40.313,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.985
-        },
-        {
-          "index": 1,
-          "start": 5.885,
-          "end": 11.406
-        },
-        {
-          "index": 2,
-          "start": 12.305,
-          "end": 16.445
-        },
-        {
-          "index": 3,
-          "start": 17.344,
-          "end": 22.214
-        },
-        {
-          "index": 4,
-          "start": 23.112,
-          "end": 28.568
-        },
-        {
-          "index": 5,
-          "start": 29.466,
-          "end": 34.362
-        }
-      ],
-      "moral": {
-        "start": 35.26,
-        "end": 40.313
-      }
-    },
     "the_wolf_and_the_crane": {
       "title": "The Wolf And The Crane",
       "voice": "en-US-AnaNeural",
@@ -1473,113 +1198,6 @@
       "moral": {
         "start": 71.367,
         "end": 76.979
-      }
-    },
-    "the_wolf_and_the_kid": {
-      "title": "The Wolf And The Kid",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_wolf_and_the_kid/story.mp3",
-      "duration": 110.43,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.698
-        },
-        {
-          "index": 1,
-          "start": 5.599,
-          "end": 10.365
-        },
-        {
-          "index": 2,
-          "start": 11.263,
-          "end": 16.003
-        },
-        {
-          "index": 3,
-          "start": 16.901,
-          "end": 21.224
-        },
-        {
-          "index": 4,
-          "start": 22.122,
-          "end": 26.159
-        },
-        {
-          "index": 5,
-          "start": 27.057,
-          "end": 31.771
-        },
-        {
-          "index": 6,
-          "start": 32.669,
-          "end": 37.227
-        },
-        {
-          "index": 7,
-          "start": 38.125,
-          "end": 42.318
-        },
-        {
-          "index": 8,
-          "start": 43.216,
-          "end": 48.281
-        },
-        {
-          "index": 9,
-          "start": 49.18,
-          "end": 53.997
-        },
-        {
-          "index": 10,
-          "start": 54.909,
-          "end": 58.776
-        },
-        {
-          "index": 11,
-          "start": 59.675,
-          "end": 64.336
-        },
-        {
-          "index": 12,
-          "start": 65.234,
-          "end": 69.922
-        },
-        {
-          "index": 13,
-          "start": 70.82,
-          "end": 75.742
-        },
-        {
-          "index": 14,
-          "start": 76.641,
-          "end": 81.133
-        },
-        {
-          "index": 15,
-          "start": 82.031,
-          "end": 86.901
-        },
-        {
-          "index": 16,
-          "start": 87.799,
-          "end": 91.875
-        },
-        {
-          "index": 17,
-          "start": 92.773,
-          "end": 97.734
-        },
-        {
-          "index": 18,
-          "start": 98.633,
-          "end": 103.828
-        }
-      ],
-      "moral": {
-        "start": 104.727,
-        "end": 110.43
       }
     },
     "the_fox_and_the_grapes": {
@@ -1691,70 +1309,6 @@
         "end": 50.039
       }
     },
-    "the_kid_and_the_wolf": {
-      "title": "The Kid And The Wolf",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_kid_and_the_wolf/story.mp3",
-      "duration": 29.909,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.063
-        },
-        {
-          "index": 1,
-          "start": 5.964,
-          "end": 10.286
-        },
-        {
-          "index": 2,
-          "start": 11.185,
-          "end": 15.716
-        },
-        {
-          "index": 3,
-          "start": 16.615,
-          "end": 21.771
-        }
-      ],
-      "moral": {
-        "start": 22.682,
-        "end": 29.909
-      }
-    },
-    "the_lion_and_the_ass_24": {
-      "title": "The Lion And The Ass",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_lion_and_the_ass_24/story.mp3",
-      "duration": 31.966,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.896
-        },
-        {
-          "index": 1,
-          "start": 6.797,
-          "end": 11.523
-        },
-        {
-          "index": 2,
-          "start": 12.422,
-          "end": 16.862
-        },
-        {
-          "index": 3,
-          "start": 17.76,
-          "end": 24.193
-        }
-      ],
-      "moral": {
-        "start": 25.091,
-        "end": 31.966
-      }
-    },
     "the_lion_the_bear_and_the_fox": {
       "title": "The Lion, The Bear, And The Fox",
       "voice": "en-US-AnaNeural",
@@ -1839,78 +1393,6 @@
         "end": 60.495
       }
     },
-    "the_ass_the_fox_and_the_lion": {
-      "title": "The Ass, The Fox, And The Lion",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_the_fox_and_the_lion/story.mp3",
-      "duration": 88.984,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 6.341
-        },
-        {
-          "index": 1,
-          "start": 7.24,
-          "end": 15.104
-        },
-        {
-          "index": 2,
-          "start": 16.003,
-          "end": 20.404
-        },
-        {
-          "index": 3,
-          "start": 21.302,
-          "end": 25.794
-        },
-        {
-          "index": 4,
-          "start": 26.693,
-          "end": 33.047
-        },
-        {
-          "index": 5,
-          "start": 33.945,
-          "end": 47.917
-        },
-        {
-          "index": 6,
-          "start": 48.815,
-          "end": 52.526
-        },
-        {
-          "index": 7,
-          "start": 53.425,
-          "end": 62.07
-        },
-        {
-          "index": 8,
-          "start": 62.969,
-          "end": 66.016
-        },
-        {
-          "index": 9,
-          "start": 66.914,
-          "end": 73.164
-        },
-        {
-          "index": 10,
-          "start": 74.062,
-          "end": 77.604
-        },
-        {
-          "index": 11,
-          "start": 78.503,
-          "end": 83.177
-        }
-      ],
-      "moral": {
-        "start": 84.076,
-        "end": 88.984
-      }
-    },
     "a_raven_and_a_swan": {
       "title": "A Raven And A Swan",
       "voice": "en-US-AnaNeural",
@@ -1946,53 +1428,6 @@
       "moral": {
         "start": 39.284,
         "end": 44.714
-      }
-    },
-    "the_ass_carrying_the_image": {
-      "title": "The Ass Carrying The Image",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_carrying_the_image/story.mp3",
-      "duration": 48.477,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.477
-        },
-        {
-          "index": 1,
-          "start": 5.378,
-          "end": 10.547
-        },
-        {
-          "index": 2,
-          "start": 11.445,
-          "end": 16.771
-        },
-        {
-          "index": 3,
-          "start": 17.669,
-          "end": 21.875
-        },
-        {
-          "index": 4,
-          "start": 22.773,
-          "end": 28.359
-        },
-        {
-          "index": 5,
-          "start": 29.258,
-          "end": 33.919
-        },
-        {
-          "index": 6,
-          "start": 34.818,
-          "end": 40.742
-        }
-      ],
-      "moral": {
-        "start": 41.641,
-        "end": 48.477
       }
     },
     "the_ants_and_the_grasshopper": {
@@ -2082,58 +1517,6 @@
       "moral": {
         "start": 50.99,
         "end": 57.891
-      }
-    },
-    "the_ass_and_the_load_of_salt": {
-      "title": "The Ass And The Load Of Salt",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_and_the_load_of_salt/story.mp3",
-      "duration": 82.813,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 7.93
-        },
-        {
-          "index": 1,
-          "start": 8.828,
-          "end": 17.799
-        },
-        {
-          "index": 2,
-          "start": 18.698,
-          "end": 25.221
-        },
-        {
-          "index": 3,
-          "start": 26.12,
-          "end": 34.427
-        },
-        {
-          "index": 4,
-          "start": 35.326,
-          "end": 39.544
-        },
-        {
-          "index": 5,
-          "start": 40.443,
-          "end": 48.971
-        },
-        {
-          "index": 6,
-          "start": 49.87,
-          "end": 59.635
-        },
-        {
-          "index": 7,
-          "start": 60.533,
-          "end": 75.703
-        }
-      ],
-      "moral": {
-        "start": 76.602,
-        "end": 82.813
       }
     },
     "the_fox_and_the_stork": {
@@ -2432,33 +1815,6 @@
       "moral": {
         "start": 83.047,
         "end": 89.661
-      }
-    },
-    "the_cock_and_the_jewel": {
-      "title": "The Cock And The Jewel",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_cock_and_the_jewel/story.mp3",
-      "duration": 35.117,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 11.328
-        },
-        {
-          "index": 1,
-          "start": 12.226,
-          "end": 20.938
-        },
-        {
-          "index": 2,
-          "start": 21.836,
-          "end": 27.396
-        }
-      ],
-      "moral": {
-        "start": 28.294,
-        "end": 35.117
       }
     },
     "the_boys_and_the_frogs": {
@@ -2992,48 +2348,6 @@
       "moral": {
         "start": 63.763,
         "end": 69.857
-      }
-    },
-    "the_crow_and_the_pitcher": {
-      "title": "The Crow And The Pitcher",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_crow_and_the_pitcher/story.mp3",
-      "duration": 39.818,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.102
-        },
-        {
-          "index": 1,
-          "start": 6.003,
-          "end": 9.74
-        },
-        {
-          "index": 2,
-          "start": 10.638,
-          "end": 14.909
-        },
-        {
-          "index": 3,
-          "start": 15.807,
-          "end": 21.393
-        },
-        {
-          "index": 4,
-          "start": 22.292,
-          "end": 26.94
-        },
-        {
-          "index": 5,
-          "start": 27.839,
-          "end": 33.034
-        }
-      ],
-      "moral": {
-        "start": 33.932,
-        "end": 39.818
       }
     },
     "the_birds_the_beasts_and_the_bat": {
@@ -3636,53 +2950,6 @@
         "end": 39.31
       }
     },
-    "the_lion_and_the_ass_56": {
-      "title": "The Lion And The Ass",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_lion_and_the_ass_56/story.mp3",
-      "duration": 62.526,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 3.644
-        },
-        {
-          "index": 1,
-          "start": 4.544,
-          "end": 12.695
-        },
-        {
-          "index": 2,
-          "start": 13.594,
-          "end": 21.94
-        },
-        {
-          "index": 3,
-          "start": 22.839,
-          "end": 35.872
-        },
-        {
-          "index": 4,
-          "start": 36.771,
-          "end": 40.82
-        },
-        {
-          "index": 5,
-          "start": 41.719,
-          "end": 45.716
-        },
-        {
-          "index": 6,
-          "start": 46.615,
-          "end": 54.245
-        }
-      ],
-      "moral": {
-        "start": 55.143,
-        "end": 62.526
-      }
-    },
     "the_dog_and_his_masters_dinner": {
       "title": "The Dog And His Master'S Dinner",
       "voice": "en-US-AnaNeural",
@@ -3748,120 +3015,6 @@
       "moral": {
         "start": 56.849,
         "end": 62.344
-      }
-    },
-    "the_wolf_and_the_ass": {
-      "title": "The Wolf And The Ass",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_wolf_and_the_ass/story.mp3",
-      "duration": 82.878,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 6.873
-        },
-        {
-          "index": 1,
-          "start": 7.773,
-          "end": 13.151
-        },
-        {
-          "index": 2,
-          "start": 14.05,
-          "end": 18.737
-        },
-        {
-          "index": 3,
-          "start": 19.635,
-          "end": 27.344
-        },
-        {
-          "index": 4,
-          "start": 28.242,
-          "end": 37.604
-        },
-        {
-          "index": 5,
-          "start": 38.503,
-          "end": 44.505
-        },
-        {
-          "index": 6,
-          "start": 45.404,
-          "end": 51.159
-        },
-        {
-          "index": 7,
-          "start": 52.057,
-          "end": 58.307
-        },
-        {
-          "index": 8,
-          "start": 59.206,
-          "end": 66.523
-        },
-        {
-          "index": 9,
-          "start": 67.422,
-          "end": 72.018
-        },
-        {
-          "index": 10,
-          "start": 72.917,
-          "end": 75.234
-        },
-        {
-          "index": 11,
-          "start": 76.133,
-          "end": 77.904
-        }
-      ],
-      "moral": {
-        "start": 78.802,
-        "end": 82.878
-      }
-    },
-    "the_fighting_cocks_and_the_eagle": {
-      "title": "The Fighting Cocks And The Eagle",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_fighting_cocks_and_the_eagle/story.mp3",
-      "duration": 41.536,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.128
-        },
-        {
-          "index": 1,
-          "start": 6.029,
-          "end": 10.703
-        },
-        {
-          "index": 2,
-          "start": 11.602,
-          "end": 16.732
-        },
-        {
-          "index": 3,
-          "start": 17.63,
-          "end": 23.333
-        },
-        {
-          "index": 4,
-          "start": 24.232,
-          "end": 29.857
-        },
-        {
-          "index": 5,
-          "start": 30.755,
-          "end": 36.107
-        }
-      ],
-      "moral": {
-        "start": 37.005,
-        "end": 41.536
       }
     },
     "the_mouse_and_the_weasel": {
@@ -3944,38 +3097,6 @@
       "moral": {
         "start": 69.115,
         "end": 74.089
-      }
-    },
-    "the_stick_stag": {
-      "title": "The Stick Stag",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_stick_stag/story.mp3",
-      "duration": 34.492,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 2.602
-        },
-        {
-          "index": 1,
-          "start": 3.503,
-          "end": 10.456
-        },
-        {
-          "index": 2,
-          "start": 11.354,
-          "end": 15.625
-        },
-        {
-          "index": 3,
-          "start": 16.523,
-          "end": 26.796
-        }
-      ],
-      "moral": {
-        "start": 27.695,
-        "end": 34.492
       }
     },
     "the_wolf_and_the_shepherd_75": {
@@ -4268,58 +3389,6 @@
         "end": 66.146
       }
     },
-    "the_ass_and_the_grasshoppers": {
-      "title": "The Ass And The Grasshoppers",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_and_the_grasshoppers/story.mp3",
-      "duration": 61.745,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 7.771
-        },
-        {
-          "index": 1,
-          "start": 8.672,
-          "end": 13.177
-        },
-        {
-          "index": 2,
-          "start": 14.076,
-          "end": 20.091
-        },
-        {
-          "index": 3,
-          "start": 20.99,
-          "end": 26.94
-        },
-        {
-          "index": 4,
-          "start": 27.839,
-          "end": 33.672
-        },
-        {
-          "index": 5,
-          "start": 34.57,
-          "end": 44.063
-        },
-        {
-          "index": 6,
-          "start": 44.961,
-          "end": 50.156
-        },
-        {
-          "index": 7,
-          "start": 51.055,
-          "end": 55.469
-        }
-      ],
-      "moral": {
-        "start": 56.367,
-        "end": 61.745
-      }
-    },
     "the_goatherd_and_the_wild_goats": {
       "title": "The Goatherd And The Wild Goats",
       "voice": "en-US-AnaNeural",
@@ -4444,98 +3513,6 @@
       "moral": {
         "start": 32.956,
         "end": 38.594
-      }
-    },
-    "the_cat_the_cock_and_the_young_mouse": {
-      "title": "The Cat, The Cock, And The Young Mouse",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_cat_the_cock_and_the_young_mouse/story.mp3",
-      "duration": 125.404,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 7.005
-        },
-        {
-          "index": 1,
-          "start": 7.904,
-          "end": 11.979
-        },
-        {
-          "index": 2,
-          "start": 12.878,
-          "end": 20.417
-        },
-        {
-          "index": 3,
-          "start": 21.315,
-          "end": 28.698
-        },
-        {
-          "index": 4,
-          "start": 29.596,
-          "end": 35.625
-        },
-        {
-          "index": 5,
-          "start": 36.523,
-          "end": 42.331
-        },
-        {
-          "index": 6,
-          "start": 43.229,
-          "end": 52.604
-        },
-        {
-          "index": 7,
-          "start": 53.516,
-          "end": 56.966
-        },
-        {
-          "index": 8,
-          "start": 57.865,
-          "end": 61.901
-        },
-        {
-          "index": 9,
-          "start": 62.8,
-          "end": 72.109
-        },
-        {
-          "index": 10,
-          "start": 73.008,
-          "end": 78.581
-        },
-        {
-          "index": 11,
-          "start": 79.479,
-          "end": 84.44
-        },
-        {
-          "index": 12,
-          "start": 85.339,
-          "end": 91.667
-        },
-        {
-          "index": 13,
-          "start": 92.565,
-          "end": 97.904
-        },
-        {
-          "index": 14,
-          "start": 98.802,
-          "end": 103.242
-        },
-        {
-          "index": 15,
-          "start": 104.141,
-          "end": 118.711
-        }
-      ],
-      "moral": {
-        "start": 119.609,
-        "end": 125.404
       }
     },
     "the_fighting_bulls_and_the_frog": {
@@ -5112,108 +4089,6 @@
         "end": 61.732
       }
     },
-    "the_cock_and_the_fox": {
-      "title": "The Cock And The Fox",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_cock_and_the_fox/story.mp3",
-      "duration": 141.406,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 7.146
-        },
-        {
-          "index": 1,
-          "start": 8.047,
-          "end": 13.359
-        },
-        {
-          "index": 2,
-          "start": 14.258,
-          "end": 24.049
-        },
-        {
-          "index": 3,
-          "start": 24.948,
-          "end": 31.25
-        },
-        {
-          "index": 4,
-          "start": 32.148,
-          "end": 42.734
-        },
-        {
-          "index": 5,
-          "start": 43.633,
-          "end": 47.083
-        },
-        {
-          "index": 6,
-          "start": 47.982,
-          "end": 56.484
-        },
-        {
-          "index": 7,
-          "start": 57.383,
-          "end": 61.745
-        },
-        {
-          "index": 8,
-          "start": 62.656,
-          "end": 67.852
-        },
-        {
-          "index": 9,
-          "start": 68.75,
-          "end": 75.664
-        },
-        {
-          "index": 10,
-          "start": 76.562,
-          "end": 83.307
-        },
-        {
-          "index": 11,
-          "start": 84.206,
-          "end": 88.88
-        },
-        {
-          "index": 12,
-          "start": 89.779,
-          "end": 93.385
-        },
-        {
-          "index": 13,
-          "start": 94.284,
-          "end": 99.414
-        },
-        {
-          "index": 14,
-          "start": 100.312,
-          "end": 105.99
-        },
-        {
-          "index": 15,
-          "start": 106.888,
-          "end": 110.807
-        },
-        {
-          "index": 16,
-          "start": 111.706,
-          "end": 124.688
-        },
-        {
-          "index": 17,
-          "start": 125.586,
-          "end": 135.651
-        }
-      ],
-      "moral": {
-        "start": 136.549,
-        "end": 141.406
-      }
-    },
     "the_fisherman_and_the_little_fish": {
       "title": "The Fisherman And The Little Fish",
       "voice": "en-US-AnaNeural",
@@ -5313,53 +4188,6 @@
         "end": 51.016
       }
     },
-    "the_ass_in_the_lions_skin": {
-      "title": "The Ass In The Lion'S Skin",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_in_the_lions_skin/story.mp3",
-      "duration": 47.448,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.738
-        },
-        {
-          "index": 1,
-          "start": 5.638,
-          "end": 10.169
-        },
-        {
-          "index": 2,
-          "start": 11.068,
-          "end": 15.352
-        },
-        {
-          "index": 3,
-          "start": 16.25,
-          "end": 21.367
-        },
-        {
-          "index": 4,
-          "start": 22.266,
-          "end": 26.589
-        },
-        {
-          "index": 5,
-          "start": 27.487,
-          "end": 32.214
-        },
-        {
-          "index": 6,
-          "start": 33.112,
-          "end": 37.474
-        }
-      ],
-      "moral": {
-        "start": 38.372,
-        "end": 47.448
-      }
-    },
     "the_dog_and_the_oyster": {
       "title": "The Dog And The Oyster",
       "voice": "en-US-AnaNeural",
@@ -5400,68 +4228,6 @@
       "moral": {
         "start": 33.073,
         "end": 39.922
-      }
-    },
-    "the_fox_and_the_cock": {
-      "title": "The Fox And The Cock",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_fox_and_the_cock/story.mp3",
-      "duration": 61.211,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.584
-        },
-        {
-          "index": 1,
-          "start": 6.484,
-          "end": 11.25
-        },
-        {
-          "index": 2,
-          "start": 12.148,
-          "end": 16.836
-        },
-        {
-          "index": 3,
-          "start": 17.734,
-          "end": 22.331
-        },
-        {
-          "index": 4,
-          "start": 23.229,
-          "end": 27.786
-        },
-        {
-          "index": 5,
-          "start": 28.685,
-          "end": 34.336
-        },
-        {
-          "index": 6,
-          "start": 35.234,
-          "end": 38.997
-        },
-        {
-          "index": 7,
-          "start": 39.896,
-          "end": 44.336
-        },
-        {
-          "index": 8,
-          "start": 45.234,
-          "end": 49.414
-        },
-        {
-          "index": 9,
-          "start": 50.312,
-          "end": 55.716
-        }
-      ],
-      "moral": {
-        "start": 56.615,
-        "end": 61.211
       }
     },
     "the_astrologer": {
@@ -5786,148 +4552,6 @@
         "end": 37.956
       }
     },
-    "mercury_and_the_woodman": {
-      "title": "Mercury And The Woodman",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/mercury_and_the_woodman/story.mp3",
-      "duration": 159.023,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.959
-        },
-        {
-          "index": 1,
-          "start": 5.859,
-          "end": 9.635
-        },
-        {
-          "index": 2,
-          "start": 10.534,
-          "end": 14.987
-        },
-        {
-          "index": 3,
-          "start": 15.885,
-          "end": 19.948
-        },
-        {
-          "index": 4,
-          "start": 20.846,
-          "end": 22.982
-        },
-        {
-          "index": 5,
-          "start": 23.88,
-          "end": 29.401
-        },
-        {
-          "index": 6,
-          "start": 30.299,
-          "end": 35.964
-        },
-        {
-          "index": 7,
-          "start": 36.862,
-          "end": 42.734
-        },
-        {
-          "index": 8,
-          "start": 43.633,
-          "end": 47.852
-        },
-        {
-          "index": 9,
-          "start": 48.75,
-          "end": 52.109
-        },
-        {
-          "index": 10,
-          "start": 53.008,
-          "end": 57.005
-        },
-        {
-          "index": 11,
-          "start": 57.904,
-          "end": 62.161
-        },
-        {
-          "index": 12,
-          "start": 63.06,
-          "end": 71.888
-        },
-        {
-          "index": 13,
-          "start": 72.786,
-          "end": 78.945
-        },
-        {
-          "index": 14,
-          "start": 79.844,
-          "end": 84.479
-        },
-        {
-          "index": 15,
-          "start": 85.378,
-          "end": 88.555
-        },
-        {
-          "index": 16,
-          "start": 89.453,
-          "end": 100.143
-        },
-        {
-          "index": 17,
-          "start": 101.042,
-          "end": 108.581
-        },
-        {
-          "index": 18,
-          "start": 109.479,
-          "end": 113.737
-        },
-        {
-          "index": 19,
-          "start": 114.635,
-          "end": 120.729
-        },
-        {
-          "index": 20,
-          "start": 121.628,
-          "end": 124.87
-        },
-        {
-          "index": 21,
-          "start": 125.768,
-          "end": 128.268
-        },
-        {
-          "index": 22,
-          "start": 129.167,
-          "end": 134.883
-        },
-        {
-          "index": 23,
-          "start": 135.781,
-          "end": 138.828
-        },
-        {
-          "index": 24,
-          "start": 139.727,
-          "end": 146.641
-        },
-        {
-          "index": 25,
-          "start": 147.539,
-          "end": 153.359
-        }
-      ],
-      "moral": {
-        "start": 154.258,
-        "end": 159.023
-      }
-    },
     "the_lions_share": {
       "title": "The Lion'S Share",
       "voice": "en-US-AnaNeural",
@@ -6104,68 +4728,6 @@
         "end": 32.083
       }
     },
-    "the_lion_the_ass_and_the_fox": {
-      "title": "The Lion, The Ass, And The Fox",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_lion_the_ass_and_the_fox/story.mp3",
-      "duration": 64.492,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.805
-        },
-        {
-          "index": 1,
-          "start": 6.706,
-          "end": 12.044
-        },
-        {
-          "index": 2,
-          "start": 12.943,
-          "end": 18.398
-        },
-        {
-          "index": 3,
-          "start": 19.297,
-          "end": 23.724
-        },
-        {
-          "index": 4,
-          "start": 24.622,
-          "end": 29.115
-        },
-        {
-          "index": 5,
-          "start": 30.013,
-          "end": 34.427
-        },
-        {
-          "index": 6,
-          "start": 35.326,
-          "end": 40.664
-        },
-        {
-          "index": 7,
-          "start": 41.562,
-          "end": 46.68
-        },
-        {
-          "index": 8,
-          "start": 47.578,
-          "end": 52.409
-        },
-        {
-          "index": 9,
-          "start": 53.307,
-          "end": 58.516
-        }
-      ],
-      "moral": {
-        "start": 59.414,
-        "end": 64.492
-      }
-    },
     "jupiter_and_the_monkey": {
       "title": "Jupiter And The Monkey",
       "voice": "en-US-AnaNeural",
@@ -6216,120 +4778,6 @@
       "moral": {
         "start": 47.943,
         "end": 52.331
-      }
-    },
-    "the_serpent_and_the_eagle": {
-      "title": "The Serpent And The Eagle",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_serpent_and_the_eagle/story.mp3",
-      "duration": 78.711,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.363
-        },
-        {
-          "index": 1,
-          "start": 6.263,
-          "end": 9.909
-        },
-        {
-          "index": 2,
-          "start": 10.807,
-          "end": 14.479
-        },
-        {
-          "index": 3,
-          "start": 15.378,
-          "end": 22.292
-        },
-        {
-          "index": 4,
-          "start": 23.189,
-          "end": 26.184
-        },
-        {
-          "index": 5,
-          "start": 27.083,
-          "end": 34.128
-        },
-        {
-          "index": 6,
-          "start": 35.026,
-          "end": 36.758
-        },
-        {
-          "index": 7,
-          "start": 37.656,
-          "end": 39.987
-        },
-        {
-          "index": 8,
-          "start": 40.885,
-          "end": 48.255
-        },
-        {
-          "index": 9,
-          "start": 49.154,
-          "end": 51.888
-        },
-        {
-          "index": 10,
-          "start": 52.786,
-          "end": 58.893
-        },
-        {
-          "index": 11,
-          "start": 59.792,
-          "end": 62.539
-        },
-        {
-          "index": 12,
-          "start": 63.438,
-          "end": 72.435
-        }
-      ],
-      "moral": {
-        "start": 73.333,
-        "end": 78.711
-      }
-    },
-    "the_spendthrift_and_the_swallow": {
-      "title": "The Spendthrift And The Swallow",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_spendthrift_and_the_swallow/story.mp3",
-      "duration": 59.141,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 10.182
-        },
-        {
-          "index": 1,
-          "start": 11.081,
-          "end": 18.685
-        },
-        {
-          "index": 2,
-          "start": 19.583,
-          "end": 24.648
-        },
-        {
-          "index": 3,
-          "start": 25.547,
-          "end": 39.31
-        },
-        {
-          "index": 4,
-          "start": 40.208,
-          "end": 53.177
-        }
-      ],
-      "moral": {
-        "start": 54.076,
-        "end": 59.141
       }
     },
     "the_wolf_in_sheeps_clothing": {
@@ -6585,83 +5033,6 @@
       "moral": {
         "start": 47.76,
         "end": 54.44
-      }
-    },
-    "the_ass_and_the_lap_dog": {
-      "title": "The Ass And The Lap Dog",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_and_the_lap_dog/story.mp3",
-      "duration": 102.305,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.256
-        },
-        {
-          "index": 1,
-          "start": 5.156,
-          "end": 14.505
-        },
-        {
-          "index": 2,
-          "start": 15.404,
-          "end": 21.862
-        },
-        {
-          "index": 3,
-          "start": 22.76,
-          "end": 26.25
-        },
-        {
-          "index": 4,
-          "start": 27.148,
-          "end": 31.328
-        },
-        {
-          "index": 5,
-          "start": 32.227,
-          "end": 37.539
-        },
-        {
-          "index": 6,
-          "start": 38.438,
-          "end": 43.034
-        },
-        {
-          "index": 7,
-          "start": 43.932,
-          "end": 54.492
-        },
-        {
-          "index": 8,
-          "start": 55.391,
-          "end": 62.266
-        },
-        {
-          "index": 9,
-          "start": 63.164,
-          "end": 70.469
-        },
-        {
-          "index": 10,
-          "start": 71.367,
-          "end": 76.654
-        },
-        {
-          "index": 11,
-          "start": 77.552,
-          "end": 84.596
-        },
-        {
-          "index": 12,
-          "start": 85.495,
-          "end": 92.773
-        }
-      ],
-      "moral": {
-        "start": 93.672,
-        "end": 102.305
       }
     },
     "the_milkmaid_and_her_pail": {
@@ -6966,83 +5337,6 @@
         "end": 86.654
       }
     },
-    "the_man_and_the_satyr": {
-      "title": "The Man And The Satyr",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_man_and_the_satyr/story.mp3",
-      "duration": 77.526,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 5.323
-        },
-        {
-          "index": 1,
-          "start": 6.224,
-          "end": 10.456
-        },
-        {
-          "index": 2,
-          "start": 11.354,
-          "end": 16.471
-        },
-        {
-          "index": 3,
-          "start": 17.37,
-          "end": 21.367
-        },
-        {
-          "index": 4,
-          "start": 22.266,
-          "end": 26.797
-        },
-        {
-          "index": 5,
-          "start": 27.695,
-          "end": 32.487
-        },
-        {
-          "index": 6,
-          "start": 33.385,
-          "end": 37.617
-        },
-        {
-          "index": 7,
-          "start": 38.516,
-          "end": 43.203
-        },
-        {
-          "index": 8,
-          "start": 44.102,
-          "end": 48.047
-        },
-        {
-          "index": 9,
-          "start": 48.945,
-          "end": 52.865
-        },
-        {
-          "index": 10,
-          "start": 53.763,
-          "end": 58.008
-        },
-        {
-          "index": 11,
-          "start": 58.906,
-          "end": 64.089
-        },
-        {
-          "index": 12,
-          "start": 64.987,
-          "end": 69.505
-        }
-      ],
-      "moral": {
-        "start": 70.404,
-        "end": 77.526
-      }
-    },
     "the_ant_and_the_dove": {
       "title": "The Ant And The Dove",
       "voice": "en-US-AnaNeural",
@@ -7237,175 +5531,6 @@
       "moral": {
         "start": 44.401,
         "end": 51.497
-      }
-    },
-    "the_miller_his_son_and_the_ass": {
-      "title": "The Miller, His Son, And The Ass",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_miller_his_son_and_the_ass/story.mp3",
-      "duration": 127.891,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.685
-        },
-        {
-          "index": 1,
-          "start": 5.586,
-          "end": 9.909
-        },
-        {
-          "index": 2,
-          "start": 10.807,
-          "end": 15.3
-        },
-        {
-          "index": 3,
-          "start": 16.198,
-          "end": 22.083
-        },
-        {
-          "index": 4,
-          "start": 22.982,
-          "end": 27.526
-        },
-        {
-          "index": 5,
-          "start": 28.424,
-          "end": 32.292
-        },
-        {
-          "index": 6,
-          "start": 33.19,
-          "end": 37.526
-        },
-        {
-          "index": 7,
-          "start": 38.425,
-          "end": 42.331
-        },
-        {
-          "index": 8,
-          "start": 43.229,
-          "end": 48.568
-        },
-        {
-          "index": 9,
-          "start": 49.479,
-          "end": 53.737
-        },
-        {
-          "index": 10,
-          "start": 54.635,
-          "end": 59.753
-        },
-        {
-          "index": 11,
-          "start": 60.651,
-          "end": 65.938
-        },
-        {
-          "index": 12,
-          "start": 66.836,
-          "end": 71.654
-        },
-        {
-          "index": 13,
-          "start": 72.552,
-          "end": 76.875
-        },
-        {
-          "index": 14,
-          "start": 77.773,
-          "end": 83.529
-        },
-        {
-          "index": 15,
-          "start": 84.427,
-          "end": 88.503
-        },
-        {
-          "index": 16,
-          "start": 89.401,
-          "end": 93.177
-        },
-        {
-          "index": 17,
-          "start": 94.076,
-          "end": 99.297
-        },
-        {
-          "index": 18,
-          "start": 100.195,
-          "end": 104.466
-        },
-        {
-          "index": 19,
-          "start": 105.365,
-          "end": 109.948
-        },
-        {
-          "index": 20,
-          "start": 110.846,
-          "end": 114.818
-        },
-        {
-          "index": 21,
-          "start": 115.716,
-          "end": 121.354
-        }
-      ],
-      "moral": {
-        "start": 122.253,
-        "end": 127.891
-      }
-    },
-    "the_ass_and_his_shadow": {
-      "title": "The Ass And His Shadow",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_ass_and_his_shadow/story.mp3",
-      "duration": 46.836,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.204
-        },
-        {
-          "index": 1,
-          "start": 5.104,
-          "end": 9.844
-        },
-        {
-          "index": 2,
-          "start": 10.742,
-          "end": 15.273
-        },
-        {
-          "index": 3,
-          "start": 16.172,
-          "end": 20.651
-        },
-        {
-          "index": 4,
-          "start": 21.549,
-          "end": 26.771
-        },
-        {
-          "index": 5,
-          "start": 27.669,
-          "end": 33.477
-        },
-        {
-          "index": 6,
-          "start": 34.375,
-          "end": 39.453
-        }
-      ],
-      "moral": {
-        "start": 40.352,
-        "end": 46.836
       }
     },
     "the_bat_and_the_weasels": {
@@ -8487,58 +6612,6 @@
         "end": 50.573
       }
     },
-    "the_stag_the_sheep_and_the_wolf": {
-      "title": "The Stag, The Sheep, And The Wolf",
-      "voice": "en-US-AnaNeural",
-      "audio": "audio/the_stag_the_sheep_and_the_wolf/story.mp3",
-      "duration": 48.724,
-      "sentences": [
-        {
-          "index": 0,
-          "start": 0.102,
-          "end": 4.724
-        },
-        {
-          "index": 1,
-          "start": 5.625,
-          "end": 10.885
-        },
-        {
-          "index": 2,
-          "start": 11.784,
-          "end": 16.823
-        },
-        {
-          "index": 3,
-          "start": 17.721,
-          "end": 23.958
-        },
-        {
-          "index": 4,
-          "start": 24.857,
-          "end": 28.437
-        },
-        {
-          "index": 5,
-          "start": 29.336,
-          "end": 32.474
-        },
-        {
-          "index": 6,
-          "start": 33.372,
-          "end": 38.19
-        },
-        {
-          "index": 7,
-          "start": 39.089,
-          "end": 42.995
-        }
-      ],
-      "moral": {
-        "start": 43.893,
-        "end": 48.724
-      }
-    },
     "the_shepherd_and_the_lion": {
       "title": "The Shepherd And The Lion",
       "voice": "en-US-AnaNeural",
@@ -9036,152 +7109,340 @@
         "end": 76.146
       }
     },
-    "pip_the_prickly_hero": {
-      "title": "Pip the Prickly Hero",
+    "the_tortoise_and_the_shield_shell": {
+      "title": "The Tortoise and the Shield Shell",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/pip_the_prickly_hero/story.mp3",
-      "duration": 59.727,
+      "audio": "audio/the_tortoise_and_the_shield_shell/story.mp3",
+      "duration": 59.674,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 7.433
+          "end": 7.133
         },
         {
           "index": 1,
-          "start": 8.333,
-          "end": 15.052
+          "start": 8.034,
+          "end": 14.036
         },
         {
           "index": 2,
-          "start": 15.951,
-          "end": 22.188
+          "start": 14.935,
+          "end": 21.172
         },
         {
           "index": 3,
-          "start": 23.086,
-          "end": 29.948
+          "start": 22.07,
+          "end": 28.919
         },
         {
           "index": 4,
-          "start": 30.846,
-          "end": 38.385
+          "start": 29.818,
+          "end": 36.419
         },
         {
           "index": 5,
-          "start": 39.284,
-          "end": 44.948
+          "start": 37.318,
+          "end": 43.945
         },
         {
           "index": 6,
-          "start": 45.846,
-          "end": 51.589
+          "start": 44.844,
+          "end": 51.888
         }
       ],
       "moral": {
-        "start": 52.487,
-        "end": 59.727
+        "start": 52.786,
+        "end": 59.674
       }
     },
-    "spike_the_brave_hedgehog": {
-      "title": "Spike and His Spiky Armor",
+    "the_brave_little_hedgehog": {
+      "title": "The Brave Little Hedgehog",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/spike_the_brave_hedgehog/story.mp3",
-      "duration": 60.0,
+      "audio": "audio/the_brave_little_hedgehog/story.mp3",
+      "duration": 61.849,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 8.305
+          "end": 7.576
         },
         {
           "index": 1,
-          "start": 9.206,
-          "end": 16.628
+          "start": 8.477,
+          "end": 15.391
         },
         {
           "index": 2,
-          "start": 17.526,
-          "end": 24.635
+          "start": 16.289,
+          "end": 22.526
         },
         {
           "index": 3,
-          "start": 25.534,
-          "end": 31.081
+          "start": 23.424,
+          "end": 30.352
         },
         {
           "index": 4,
-          "start": 31.979,
-          "end": 37.878
+          "start": 31.25,
+          "end": 39.31
         },
         {
           "index": 5,
-          "start": 38.776,
-          "end": 44.909
+          "start": 40.208,
+          "end": 45.872
         },
         {
           "index": 6,
-          "start": 45.807,
-          "end": 51.758
+          "start": 46.771,
+          "end": 53.711
         }
       ],
       "moral": {
-        "start": 52.656,
-        "end": 60.0
+        "start": 54.609,
+        "end": 61.849
       }
     },
-    "toby_the_strong_shell": {
-      "title": "Toby and the Shield Shell",
+    "the_clever_chameleon": {
+      "title": "The Clever Chameleon",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/toby_the_strong_shell/story.mp3",
-      "duration": 58.294,
+      "audio": "audio/the_clever_chameleon/story.mp3",
+      "duration": 60.247,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 7.172
+          "end": 7.446
         },
         {
           "index": 1,
-          "start": 8.073,
-          "end": 14.388
+          "start": 8.346,
+          "end": 15.065
         },
         {
           "index": 2,
-          "start": 15.286,
-          "end": 22.643
+          "start": 15.964,
+          "end": 22.396
         },
         {
           "index": 3,
-          "start": 23.542,
-          "end": 29.687
+          "start": 23.294,
+          "end": 28.19
         },
         {
           "index": 4,
-          "start": 30.586,
-          "end": 36.693
+          "start": 29.089,
+          "end": 35.234
         },
         {
           "index": 5,
-          "start": 37.591,
-          "end": 43.346
+          "start": 36.133,
+          "end": 43.151
         },
         {
           "index": 6,
-          "start": 44.245,
-          "end": 50.508
+          "start": 44.062,
+          "end": 51.016
         }
       ],
       "moral": {
-        "start": 51.406,
-        "end": 58.294
+        "start": 51.914,
+        "end": 60.247
       }
     },
-    "cam_the_clever_chameleon": {
-      "title": "Cam's Camouflage Magic",
+    "the_little_firefly": {
+      "title": "The Little Firefly",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/cam_the_clever_chameleon/story.mp3",
-      "duration": 58.034,
+      "audio": "audio/the_little_firefly/story.mp3",
+      "duration": 61.745,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 8.787
+        },
+        {
+          "index": 1,
+          "start": 9.688,
+          "end": 15.872
+        },
+        {
+          "index": 2,
+          "start": 16.771,
+          "end": 24.674
+        },
+        {
+          "index": 3,
+          "start": 25.573,
+          "end": 30.586
+        },
+        {
+          "index": 4,
+          "start": 31.484,
+          "end": 37.513
+        },
+        {
+          "index": 5,
+          "start": 38.411,
+          "end": 45.625
+        },
+        {
+          "index": 6,
+          "start": 46.523,
+          "end": 53.437
+        }
+      ],
+      "moral": {
+        "start": 54.336,
+        "end": 61.745
+      }
+    },
+    "the_cuckoo_and_the_elephant": {
+      "title": "The Cuckoo and the Elephant",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_cuckoo_and_the_elephant/story.mp3",
+      "duration": 64.596,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 8.045
+        },
+        {
+          "index": 1,
+          "start": 8.945,
+          "end": 15.859
+        },
+        {
+          "index": 2,
+          "start": 16.758,
+          "end": 23.919
+        },
+        {
+          "index": 3,
+          "start": 24.818,
+          "end": 32.214
+        },
+        {
+          "index": 4,
+          "start": 33.112,
+          "end": 40.3
+        },
+        {
+          "index": 5,
+          "start": 41.198,
+          "end": 47.995
+        },
+        {
+          "index": 6,
+          "start": 48.893,
+          "end": 55.56
+        }
+      ],
+      "moral": {
+        "start": 56.458,
+        "end": 64.596
+      }
+    },
+    "the_pelican_and_the_rapids": {
+      "title": "The Pelican and the Rapids",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_pelican_and_the_rapids/story.mp3",
+      "duration": 64.74,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 8.097
+        },
+        {
+          "index": 1,
+          "start": 8.997,
+          "end": 15.99
+        },
+        {
+          "index": 2,
+          "start": 16.888,
+          "end": 23.19
+        },
+        {
+          "index": 3,
+          "start": 24.089,
+          "end": 30.716
+        },
+        {
+          "index": 4,
+          "start": 31.615,
+          "end": 40.013
+        },
+        {
+          "index": 5,
+          "start": 40.911,
+          "end": 48.112
+        },
+        {
+          "index": 6,
+          "start": 49.01,
+          "end": 56.224
+        }
+      ],
+      "moral": {
+        "start": 57.122,
+        "end": 64.74
+      }
+    },
+    "the_beaver_and_the_rising_river": {
+      "title": "The Beaver and the Rising River",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_beaver_and_the_rising_river/story.mp3",
+      "duration": 60.69,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 7.954
+        },
+        {
+          "index": 1,
+          "start": 8.854,
+          "end": 14.753
+        },
+        {
+          "index": 2,
+          "start": 15.651,
+          "end": 22.513
+        },
+        {
+          "index": 3,
+          "start": 23.411,
+          "end": 28.464
+        },
+        {
+          "index": 4,
+          "start": 29.362,
+          "end": 36.576
+        },
+        {
+          "index": 5,
+          "start": 37.474,
+          "end": 43.555
+        },
+        {
+          "index": 6,
+          "start": 44.453,
+          "end": 53.073
+        }
+      ],
+      "moral": {
+        "start": 53.971,
+        "end": 60.69
+      }
+    },
+    "the_kangaroos_cozy_pouch": {
+      "title": "The Kangaroo's Cozy Pouch",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_kangaroos_cozy_pouch/story.mp3",
+      "duration": 60.026,
       "sentences": [
         {
           "index": 0,
@@ -9191,84 +7452,1964 @@
         {
           "index": 1,
           "start": 7.982,
-          "end": 14.662
+          "end": 14.023
         },
         {
           "index": 2,
-          "start": 15.56,
-          "end": 22.096
+          "start": 14.922,
+          "end": 20.391
         },
         {
           "index": 3,
-          "start": 22.995,
-          "end": 27.591
+          "start": 21.289,
+          "end": 26.68
         },
         {
           "index": 4,
-          "start": 28.49,
-          "end": 34.076
+          "start": 27.578,
+          "end": 35.807
         },
         {
           "index": 5,
-          "start": 34.974,
-          "end": 42.018
+          "start": 36.706,
+          "end": 43.828
         },
         {
           "index": 6,
-          "start": 42.917,
-          "end": 48.802
+          "start": 44.727,
+          "end": 52.148
         }
       ],
       "moral": {
-        "start": 49.701,
-        "end": 58.034
+        "start": 53.047,
+        "end": 60.026
       }
     },
-    "piper_and_barnaby": {
-      "title": "Piper and Barnaby Save the Forest",
+    "the_donkey_carrying_the_statue": {
+      "title": "The Donkey Carrying The Statue",
       "voice": "en-US-AnaNeural",
-      "audio": "audio/piper_and_barnaby/story.mp3",
-      "duration": 61.328,
+      "audio": "audio/the_donkey_carrying_the_statue/story.mp3",
+      "duration": 48.477,
       "sentences": [
         {
           "index": 0,
           "start": 0.102,
-          "end": 7.667
+          "end": 4.477
         },
         {
           "index": 1,
-          "start": 8.568,
-          "end": 15.482
+          "start": 5.378,
+          "end": 10.547
         },
         {
           "index": 2,
-          "start": 16.38,
-          "end": 23.281
+          "start": 11.445,
+          "end": 16.771
         },
         {
           "index": 3,
-          "start": 24.18,
-          "end": 31.042
+          "start": 17.669,
+          "end": 21.875
         },
         {
           "index": 4,
-          "start": 31.94,
-          "end": 38.906
+          "start": 22.773,
+          "end": 28.359
         },
         {
           "index": 5,
-          "start": 39.805,
-          "end": 46.302
+          "start": 29.258,
+          "end": 33.919
         },
         {
           "index": 6,
-          "start": 47.201,
-          "end": 52.292
+          "start": 34.818,
+          "end": 40.742
         }
       ],
       "moral": {
-        "start": 53.19,
-        "end": 61.328
+        "start": 41.641,
+        "end": 48.477
+      }
+    },
+    "the_donkey_and_his_driver": {
+      "title": "The Donkey And His Driver",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_and_his_driver/story.mp3",
+      "duration": 41.471,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.363
+        },
+        {
+          "index": 1,
+          "start": 6.263,
+          "end": 11.315
+        },
+        {
+          "index": 2,
+          "start": 12.214,
+          "end": 16.953
+        },
+        {
+          "index": 3,
+          "start": 17.852,
+          "end": 22.37
+        },
+        {
+          "index": 4,
+          "start": 23.268,
+          "end": 28.229
+        }
+      ],
+      "moral": {
+        "start": 29.128,
+        "end": 41.471
+      }
+    },
+    "the_donkey_and_the_load_of_salt": {
+      "title": "The Donkey And The Load Of Salt",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_and_the_load_of_salt/story.mp3",
+      "duration": 82.813,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 7.93
+        },
+        {
+          "index": 1,
+          "start": 8.828,
+          "end": 17.799
+        },
+        {
+          "index": 2,
+          "start": 18.698,
+          "end": 25.221
+        },
+        {
+          "index": 3,
+          "start": 26.12,
+          "end": 34.427
+        },
+        {
+          "index": 4,
+          "start": 35.326,
+          "end": 39.544
+        },
+        {
+          "index": 5,
+          "start": 40.443,
+          "end": 48.971
+        },
+        {
+          "index": 6,
+          "start": 49.87,
+          "end": 59.635
+        },
+        {
+          "index": 7,
+          "start": 60.533,
+          "end": 75.703
+        }
+      ],
+      "moral": {
+        "start": 76.602,
+        "end": 82.813
+      }
+    },
+    "the_donkey_the_fox_and_the_lion": {
+      "title": "The Donkey, The Fox, And The Lion",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_the_fox_and_the_lion/story.mp3",
+      "duration": 88.984,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 6.341
+        },
+        {
+          "index": 1,
+          "start": 7.24,
+          "end": 15.104
+        },
+        {
+          "index": 2,
+          "start": 16.003,
+          "end": 20.404
+        },
+        {
+          "index": 3,
+          "start": 21.302,
+          "end": 25.794
+        },
+        {
+          "index": 4,
+          "start": 26.693,
+          "end": 33.047
+        },
+        {
+          "index": 5,
+          "start": 33.945,
+          "end": 47.917
+        },
+        {
+          "index": 6,
+          "start": 48.815,
+          "end": 52.526
+        },
+        {
+          "index": 7,
+          "start": 53.425,
+          "end": 62.07
+        },
+        {
+          "index": 8,
+          "start": 62.969,
+          "end": 66.016
+        },
+        {
+          "index": 9,
+          "start": 66.914,
+          "end": 73.164
+        },
+        {
+          "index": 10,
+          "start": 74.062,
+          "end": 77.604
+        },
+        {
+          "index": 11,
+          "start": 78.503,
+          "end": 83.177
+        }
+      ],
+      "moral": {
+        "start": 84.076,
+        "end": 88.984
+      }
+    },
+    "the_lion_and_the_donkey": {
+      "title": "The Lion And The Donkey",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_lion_and_the_donkey/story.mp3",
+      "duration": 62.526,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 3.644
+        },
+        {
+          "index": 1,
+          "start": 4.544,
+          "end": 12.695
+        },
+        {
+          "index": 2,
+          "start": 13.594,
+          "end": 21.94
+        },
+        {
+          "index": 3,
+          "start": 22.839,
+          "end": 35.872
+        },
+        {
+          "index": 4,
+          "start": 36.771,
+          "end": 40.82
+        },
+        {
+          "index": 5,
+          "start": 41.719,
+          "end": 45.716
+        },
+        {
+          "index": 6,
+          "start": 46.615,
+          "end": 54.245
+        }
+      ],
+      "moral": {
+        "start": 55.143,
+        "end": 62.526
+      }
+    },
+    "the_lion_and_the_silly_donkey": {
+      "title": "The Lion And The Silly Donkey",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_lion_and_the_silly_donkey/story.mp3",
+      "duration": 31.966,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.896
+        },
+        {
+          "index": 1,
+          "start": 6.797,
+          "end": 11.523
+        },
+        {
+          "index": 2,
+          "start": 12.422,
+          "end": 16.862
+        },
+        {
+          "index": 3,
+          "start": 17.76,
+          "end": 24.193
+        }
+      ],
+      "moral": {
+        "start": 25.091,
+        "end": 31.966
+      }
+    },
+    "the_wolf_and_the_donkey": {
+      "title": "The Wolf And The Donkey",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_wolf_and_the_donkey/story.mp3",
+      "duration": 82.878,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 6.873
+        },
+        {
+          "index": 1,
+          "start": 7.773,
+          "end": 13.151
+        },
+        {
+          "index": 2,
+          "start": 14.05,
+          "end": 18.737
+        },
+        {
+          "index": 3,
+          "start": 19.635,
+          "end": 27.344
+        },
+        {
+          "index": 4,
+          "start": 28.242,
+          "end": 37.604
+        },
+        {
+          "index": 5,
+          "start": 38.503,
+          "end": 44.505
+        },
+        {
+          "index": 6,
+          "start": 45.404,
+          "end": 51.159
+        },
+        {
+          "index": 7,
+          "start": 52.057,
+          "end": 58.307
+        },
+        {
+          "index": 8,
+          "start": 59.206,
+          "end": 66.523
+        },
+        {
+          "index": 9,
+          "start": 67.422,
+          "end": 72.018
+        },
+        {
+          "index": 10,
+          "start": 72.917,
+          "end": 75.234
+        },
+        {
+          "index": 11,
+          "start": 76.133,
+          "end": 77.904
+        }
+      ],
+      "moral": {
+        "start": 78.802,
+        "end": 82.878
+      }
+    },
+    "the_donkey_and_the_lap_dog": {
+      "title": "The Donkey And The Lap Dog",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_and_the_lap_dog/story.mp3",
+      "duration": 102.305,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.256
+        },
+        {
+          "index": 1,
+          "start": 5.156,
+          "end": 14.505
+        },
+        {
+          "index": 2,
+          "start": 15.404,
+          "end": 21.862
+        },
+        {
+          "index": 3,
+          "start": 22.76,
+          "end": 26.25
+        },
+        {
+          "index": 4,
+          "start": 27.148,
+          "end": 31.328
+        },
+        {
+          "index": 5,
+          "start": 32.227,
+          "end": 37.539
+        },
+        {
+          "index": 6,
+          "start": 38.438,
+          "end": 43.034
+        },
+        {
+          "index": 7,
+          "start": 43.932,
+          "end": 54.492
+        },
+        {
+          "index": 8,
+          "start": 55.391,
+          "end": 62.266
+        },
+        {
+          "index": 9,
+          "start": 63.164,
+          "end": 70.469
+        },
+        {
+          "index": 10,
+          "start": 71.367,
+          "end": 76.654
+        },
+        {
+          "index": 11,
+          "start": 77.552,
+          "end": 84.596
+        },
+        {
+          "index": 12,
+          "start": 85.495,
+          "end": 92.773
+        }
+      ],
+      "moral": {
+        "start": 93.672,
+        "end": 102.305
+      }
+    },
+    "the_donkey_and_his_shadow": {
+      "title": "The Donkey And His Shadow",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_and_his_shadow/story.mp3",
+      "duration": 46.836,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.204
+        },
+        {
+          "index": 1,
+          "start": 5.104,
+          "end": 9.844
+        },
+        {
+          "index": 2,
+          "start": 10.742,
+          "end": 15.273
+        },
+        {
+          "index": 3,
+          "start": 16.172,
+          "end": 20.651
+        },
+        {
+          "index": 4,
+          "start": 21.549,
+          "end": 26.771
+        },
+        {
+          "index": 5,
+          "start": 27.669,
+          "end": 33.477
+        },
+        {
+          "index": 6,
+          "start": 34.375,
+          "end": 39.453
+        }
+      ],
+      "moral": {
+        "start": 40.352,
+        "end": 46.836
+      }
+    },
+    "the_miller_his_son_and_the_donkey": {
+      "title": "The Miller, His Son, And The Donkey",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_miller_his_son_and_the_donkey/story.mp3",
+      "duration": 127.891,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.685
+        },
+        {
+          "index": 1,
+          "start": 5.586,
+          "end": 9.909
+        },
+        {
+          "index": 2,
+          "start": 10.807,
+          "end": 15.3
+        },
+        {
+          "index": 3,
+          "start": 16.198,
+          "end": 22.083
+        },
+        {
+          "index": 4,
+          "start": 22.982,
+          "end": 27.526
+        },
+        {
+          "index": 5,
+          "start": 28.424,
+          "end": 32.292
+        },
+        {
+          "index": 6,
+          "start": 33.19,
+          "end": 37.526
+        },
+        {
+          "index": 7,
+          "start": 38.425,
+          "end": 42.331
+        },
+        {
+          "index": 8,
+          "start": 43.229,
+          "end": 48.568
+        },
+        {
+          "index": 9,
+          "start": 49.479,
+          "end": 53.737
+        },
+        {
+          "index": 10,
+          "start": 54.635,
+          "end": 59.753
+        },
+        {
+          "index": 11,
+          "start": 60.651,
+          "end": 65.938
+        },
+        {
+          "index": 12,
+          "start": 66.836,
+          "end": 71.654
+        },
+        {
+          "index": 13,
+          "start": 72.552,
+          "end": 76.875
+        },
+        {
+          "index": 14,
+          "start": 77.773,
+          "end": 83.529
+        },
+        {
+          "index": 15,
+          "start": 84.427,
+          "end": 88.503
+        },
+        {
+          "index": 16,
+          "start": 89.401,
+          "end": 93.177
+        },
+        {
+          "index": 17,
+          "start": 94.076,
+          "end": 99.297
+        },
+        {
+          "index": 18,
+          "start": 100.195,
+          "end": 104.466
+        },
+        {
+          "index": 19,
+          "start": 105.365,
+          "end": 109.948
+        },
+        {
+          "index": 20,
+          "start": 110.846,
+          "end": 114.818
+        },
+        {
+          "index": 21,
+          "start": 115.716,
+          "end": 121.354
+        }
+      ],
+      "moral": {
+        "start": 122.253,
+        "end": 127.891
+      }
+    },
+    "the_lion_the_donkey_and_the_fox": {
+      "title": "The Lion, The Donkey, And The Fox",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_lion_the_donkey_and_the_fox/story.mp3",
+      "duration": 64.492,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.805
+        },
+        {
+          "index": 1,
+          "start": 6.706,
+          "end": 12.044
+        },
+        {
+          "index": 2,
+          "start": 12.943,
+          "end": 18.398
+        },
+        {
+          "index": 3,
+          "start": 19.297,
+          "end": 23.724
+        },
+        {
+          "index": 4,
+          "start": 24.622,
+          "end": 29.115
+        },
+        {
+          "index": 5,
+          "start": 30.013,
+          "end": 34.427
+        },
+        {
+          "index": 6,
+          "start": 35.326,
+          "end": 40.664
+        },
+        {
+          "index": 7,
+          "start": 41.562,
+          "end": 46.68
+        },
+        {
+          "index": 8,
+          "start": 47.578,
+          "end": 52.409
+        },
+        {
+          "index": 9,
+          "start": 53.307,
+          "end": 58.516
+        }
+      ],
+      "moral": {
+        "start": 59.414,
+        "end": 64.492
+      }
+    },
+    "the_donkey_and_the_grasshoppers": {
+      "title": "The Donkey And The Grasshoppers",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_and_the_grasshoppers/story.mp3",
+      "duration": 61.745,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 7.771
+        },
+        {
+          "index": 1,
+          "start": 8.672,
+          "end": 13.177
+        },
+        {
+          "index": 2,
+          "start": 14.076,
+          "end": 20.091
+        },
+        {
+          "index": 3,
+          "start": 20.99,
+          "end": 26.94
+        },
+        {
+          "index": 4,
+          "start": 27.839,
+          "end": 33.672
+        },
+        {
+          "index": 5,
+          "start": 34.57,
+          "end": 44.063
+        },
+        {
+          "index": 6,
+          "start": 44.961,
+          "end": 50.156
+        },
+        {
+          "index": 7,
+          "start": 51.055,
+          "end": 55.469
+        }
+      ],
+      "moral": {
+        "start": 56.367,
+        "end": 61.745
+      }
+    },
+    "the_donkey_in_the_lions_skin": {
+      "title": "The Donkey In The Lion's Skin",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_donkey_in_the_lions_skin/story.mp3",
+      "duration": 47.448,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.738
+        },
+        {
+          "index": 1,
+          "start": 5.638,
+          "end": 10.169
+        },
+        {
+          "index": 2,
+          "start": 11.068,
+          "end": 15.352
+        },
+        {
+          "index": 3,
+          "start": 16.25,
+          "end": 21.367
+        },
+        {
+          "index": 4,
+          "start": 22.266,
+          "end": 26.589
+        },
+        {
+          "index": 5,
+          "start": 27.487,
+          "end": 32.214
+        },
+        {
+          "index": 6,
+          "start": 33.112,
+          "end": 37.474
+        }
+      ],
+      "moral": {
+        "start": 38.372,
+        "end": 47.448
+      }
+    },
+    "the_dog_the_rooster_and_the_fox": {
+      "title": "The Dog, The Rooster, And The Fox",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_dog_the_rooster_and_the_fox/story.mp3",
+      "duration": 113.49,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.972
+        },
+        {
+          "index": 1,
+          "start": 5.872,
+          "end": 11.25
+        },
+        {
+          "index": 2,
+          "start": 12.148,
+          "end": 18.216
+        },
+        {
+          "index": 3,
+          "start": 19.115,
+          "end": 23.906
+        },
+        {
+          "index": 4,
+          "start": 24.805,
+          "end": 30.169
+        },
+        {
+          "index": 5,
+          "start": 31.068,
+          "end": 36.615
+        },
+        {
+          "index": 6,
+          "start": 37.513,
+          "end": 42.201
+        },
+        {
+          "index": 7,
+          "start": 43.099,
+          "end": 47.786
+        },
+        {
+          "index": 8,
+          "start": 48.685,
+          "end": 53.372
+        },
+        {
+          "index": 9,
+          "start": 54.271,
+          "end": 58.724
+        },
+        {
+          "index": 10,
+          "start": 59.622,
+          "end": 64.909
+        },
+        {
+          "index": 11,
+          "start": 65.807,
+          "end": 70.938
+        },
+        {
+          "index": 12,
+          "start": 71.836,
+          "end": 76.589
+        },
+        {
+          "index": 13,
+          "start": 77.487,
+          "end": 84.349
+        },
+        {
+          "index": 14,
+          "start": 85.247,
+          "end": 89.635
+        },
+        {
+          "index": 15,
+          "start": 90.534,
+          "end": 94.896
+        },
+        {
+          "index": 16,
+          "start": 95.794,
+          "end": 99.909
+        },
+        {
+          "index": 17,
+          "start": 100.807,
+          "end": 105.716
+        }
+      ],
+      "moral": {
+        "start": 106.615,
+        "end": 113.49
+      }
+    },
+    "the_rooster_and_the_jewel": {
+      "title": "The Rooster And The Jewel",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_rooster_and_the_jewel/story.mp3",
+      "duration": 35.117,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 11.328
+        },
+        {
+          "index": 1,
+          "start": 12.226,
+          "end": 20.938
+        },
+        {
+          "index": 2,
+          "start": 21.836,
+          "end": 27.396
+        }
+      ],
+      "moral": {
+        "start": 28.294,
+        "end": 35.117
+      }
+    },
+    "the_rooster_and_the_fox": {
+      "title": "The Rooster And The Fox",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_rooster_and_the_fox/story.mp3",
+      "duration": 141.406,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 7.146
+        },
+        {
+          "index": 1,
+          "start": 8.047,
+          "end": 13.359
+        },
+        {
+          "index": 2,
+          "start": 14.258,
+          "end": 24.049
+        },
+        {
+          "index": 3,
+          "start": 24.948,
+          "end": 31.25
+        },
+        {
+          "index": 4,
+          "start": 32.148,
+          "end": 42.734
+        },
+        {
+          "index": 5,
+          "start": 43.633,
+          "end": 47.083
+        },
+        {
+          "index": 6,
+          "start": 47.982,
+          "end": 56.484
+        },
+        {
+          "index": 7,
+          "start": 57.383,
+          "end": 61.745
+        },
+        {
+          "index": 8,
+          "start": 62.656,
+          "end": 67.852
+        },
+        {
+          "index": 9,
+          "start": 68.75,
+          "end": 75.664
+        },
+        {
+          "index": 10,
+          "start": 76.562,
+          "end": 83.307
+        },
+        {
+          "index": 11,
+          "start": 84.206,
+          "end": 88.88
+        },
+        {
+          "index": 12,
+          "start": 89.779,
+          "end": 93.385
+        },
+        {
+          "index": 13,
+          "start": 94.284,
+          "end": 99.414
+        },
+        {
+          "index": 14,
+          "start": 100.312,
+          "end": 105.99
+        },
+        {
+          "index": 15,
+          "start": 106.888,
+          "end": 110.807
+        },
+        {
+          "index": 16,
+          "start": 111.706,
+          "end": 124.688
+        },
+        {
+          "index": 17,
+          "start": 125.586,
+          "end": 135.651
+        }
+      ],
+      "moral": {
+        "start": 136.549,
+        "end": 141.406
+      }
+    },
+    "the_cat_the_rooster_and_the_young_mouse": {
+      "title": "The Cat, The Rooster, And The Young Mouse",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_cat_the_rooster_and_the_young_mouse/story.mp3",
+      "duration": 125.404,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 7.005
+        },
+        {
+          "index": 1,
+          "start": 7.904,
+          "end": 11.979
+        },
+        {
+          "index": 2,
+          "start": 12.878,
+          "end": 20.417
+        },
+        {
+          "index": 3,
+          "start": 21.315,
+          "end": 28.698
+        },
+        {
+          "index": 4,
+          "start": 29.596,
+          "end": 35.625
+        },
+        {
+          "index": 5,
+          "start": 36.523,
+          "end": 42.331
+        },
+        {
+          "index": 6,
+          "start": 43.229,
+          "end": 52.604
+        },
+        {
+          "index": 7,
+          "start": 53.516,
+          "end": 56.966
+        },
+        {
+          "index": 8,
+          "start": 57.865,
+          "end": 61.901
+        },
+        {
+          "index": 9,
+          "start": 62.8,
+          "end": 72.109
+        },
+        {
+          "index": 10,
+          "start": 73.008,
+          "end": 78.581
+        },
+        {
+          "index": 11,
+          "start": 79.479,
+          "end": 84.44
+        },
+        {
+          "index": 12,
+          "start": 85.339,
+          "end": 91.667
+        },
+        {
+          "index": 13,
+          "start": 92.565,
+          "end": 97.904
+        },
+        {
+          "index": 14,
+          "start": 98.802,
+          "end": 103.242
+        },
+        {
+          "index": 15,
+          "start": 104.141,
+          "end": 118.711
+        }
+      ],
+      "moral": {
+        "start": 119.609,
+        "end": 125.404
+      }
+    },
+    "the_fox_and_the_rooster": {
+      "title": "The Fox And The Rooster",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_fox_and_the_rooster/story.mp3",
+      "duration": 61.211,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.584
+        },
+        {
+          "index": 1,
+          "start": 6.484,
+          "end": 11.25
+        },
+        {
+          "index": 2,
+          "start": 12.148,
+          "end": 16.836
+        },
+        {
+          "index": 3,
+          "start": 17.734,
+          "end": 22.331
+        },
+        {
+          "index": 4,
+          "start": 23.229,
+          "end": 27.786
+        },
+        {
+          "index": 5,
+          "start": 28.685,
+          "end": 34.336
+        },
+        {
+          "index": 6,
+          "start": 35.234,
+          "end": 38.997
+        },
+        {
+          "index": 7,
+          "start": 39.896,
+          "end": 44.336
+        },
+        {
+          "index": 8,
+          "start": 45.234,
+          "end": 49.414
+        },
+        {
+          "index": 9,
+          "start": 50.312,
+          "end": 55.716
+        }
+      ],
+      "moral": {
+        "start": 56.615,
+        "end": 61.211
+      }
+    },
+    "the_fighting_roosters_and_the_eagle": {
+      "title": "The Fighting Roosters And The Eagle",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_fighting_roosters_and_the_eagle/story.mp3",
+      "duration": 41.536,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.128
+        },
+        {
+          "index": 1,
+          "start": 6.029,
+          "end": 10.703
+        },
+        {
+          "index": 2,
+          "start": 11.602,
+          "end": 16.732
+        },
+        {
+          "index": 3,
+          "start": 17.63,
+          "end": 23.333
+        },
+        {
+          "index": 4,
+          "start": 24.232,
+          "end": 29.857
+        },
+        {
+          "index": 5,
+          "start": 30.755,
+          "end": 36.107
+        }
+      ],
+      "moral": {
+        "start": 37.005,
+        "end": 41.536
+      }
+    },
+    "the_wolf_and_the_little_goat": {
+      "title": "The Wolf And The Little Goat",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_wolf_and_the_little_goat/story.mp3",
+      "duration": 110.43,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.698
+        },
+        {
+          "index": 1,
+          "start": 5.599,
+          "end": 10.365
+        },
+        {
+          "index": 2,
+          "start": 11.263,
+          "end": 16.003
+        },
+        {
+          "index": 3,
+          "start": 16.901,
+          "end": 21.224
+        },
+        {
+          "index": 4,
+          "start": 22.122,
+          "end": 26.159
+        },
+        {
+          "index": 5,
+          "start": 27.057,
+          "end": 31.771
+        },
+        {
+          "index": 6,
+          "start": 32.669,
+          "end": 37.227
+        },
+        {
+          "index": 7,
+          "start": 38.125,
+          "end": 42.318
+        },
+        {
+          "index": 8,
+          "start": 43.216,
+          "end": 48.281
+        },
+        {
+          "index": 9,
+          "start": 49.18,
+          "end": 53.997
+        },
+        {
+          "index": 10,
+          "start": 54.909,
+          "end": 58.776
+        },
+        {
+          "index": 11,
+          "start": 59.675,
+          "end": 64.336
+        },
+        {
+          "index": 12,
+          "start": 65.234,
+          "end": 69.922
+        },
+        {
+          "index": 13,
+          "start": 70.82,
+          "end": 75.742
+        },
+        {
+          "index": 14,
+          "start": 76.641,
+          "end": 81.133
+        },
+        {
+          "index": 15,
+          "start": 82.031,
+          "end": 86.901
+        },
+        {
+          "index": 16,
+          "start": 87.799,
+          "end": 91.875
+        },
+        {
+          "index": 17,
+          "start": 92.773,
+          "end": 97.734
+        },
+        {
+          "index": 18,
+          "start": 98.633,
+          "end": 103.828
+        }
+      ],
+      "moral": {
+        "start": 104.727,
+        "end": 110.43
+      }
+    },
+    "the_little_goat_and_the_wolf": {
+      "title": "The Little Goat And The Wolf",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_little_goat_and_the_wolf/story.mp3",
+      "duration": 29.909,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.063
+        },
+        {
+          "index": 1,
+          "start": 5.964,
+          "end": 10.286
+        },
+        {
+          "index": 2,
+          "start": 11.185,
+          "end": 15.716
+        },
+        {
+          "index": 3,
+          "start": 16.615,
+          "end": 21.771
+        }
+      ],
+      "moral": {
+        "start": 22.682,
+        "end": 29.909
+      }
+    },
+    "the_sick_stag": {
+      "title": "The Sick Stag",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_sick_stag/story.mp3",
+      "duration": 34.492,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 2.602
+        },
+        {
+          "index": 1,
+          "start": 3.503,
+          "end": 10.456
+        },
+        {
+          "index": 2,
+          "start": 11.354,
+          "end": 15.625
+        },
+        {
+          "index": 3,
+          "start": 16.523,
+          "end": 26.796
+        }
+      ],
+      "moral": {
+        "start": 27.695,
+        "end": 34.492
+      }
+    },
+    "the_boy_and_the_jar_of_nuts": {
+      "title": "The Boy And The Jar Of Nuts",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_boy_and_the_jar_of_nuts/story.mp3",
+      "duration": 40.313,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.985
+        },
+        {
+          "index": 1,
+          "start": 5.885,
+          "end": 11.406
+        },
+        {
+          "index": 2,
+          "start": 12.305,
+          "end": 16.445
+        },
+        {
+          "index": 3,
+          "start": 17.344,
+          "end": 22.214
+        },
+        {
+          "index": 4,
+          "start": 23.112,
+          "end": 28.568
+        },
+        {
+          "index": 5,
+          "start": 29.466,
+          "end": 34.362
+        }
+      ],
+      "moral": {
+        "start": 35.26,
+        "end": 40.313
+      }
+    },
+    "hercules_and_the_farmer": {
+      "title": "Hercules And The Farmer",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/hercules_and_the_farmer/story.mp3",
+      "duration": 51.758,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.597
+        },
+        {
+          "index": 1,
+          "start": 6.497,
+          "end": 11.354
+        },
+        {
+          "index": 2,
+          "start": 12.253,
+          "end": 18.151
+        },
+        {
+          "index": 3,
+          "start": 19.049,
+          "end": 24.375
+        },
+        {
+          "index": 4,
+          "start": 25.273,
+          "end": 30.221
+        },
+        {
+          "index": 5,
+          "start": 31.12,
+          "end": 34.453
+        },
+        {
+          "index": 6,
+          "start": 35.352,
+          "end": 40.143
+        },
+        {
+          "index": 7,
+          "start": 41.042,
+          "end": 46.25
+        }
+      ],
+      "moral": {
+        "start": 47.148,
+        "end": 51.758
+      }
+    },
+    "mercury_and_the_woodcutter": {
+      "title": "Mercury And The Woodcutter",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/mercury_and_the_woodcutter/story.mp3",
+      "duration": 159.023,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.959
+        },
+        {
+          "index": 1,
+          "start": 5.859,
+          "end": 9.635
+        },
+        {
+          "index": 2,
+          "start": 10.534,
+          "end": 14.987
+        },
+        {
+          "index": 3,
+          "start": 15.885,
+          "end": 19.948
+        },
+        {
+          "index": 4,
+          "start": 20.846,
+          "end": 22.982
+        },
+        {
+          "index": 5,
+          "start": 23.88,
+          "end": 29.401
+        },
+        {
+          "index": 6,
+          "start": 30.299,
+          "end": 35.964
+        },
+        {
+          "index": 7,
+          "start": 36.862,
+          "end": 42.734
+        },
+        {
+          "index": 8,
+          "start": 43.633,
+          "end": 47.852
+        },
+        {
+          "index": 9,
+          "start": 48.75,
+          "end": 52.109
+        },
+        {
+          "index": 10,
+          "start": 53.008,
+          "end": 57.005
+        },
+        {
+          "index": 11,
+          "start": 57.904,
+          "end": 62.161
+        },
+        {
+          "index": 12,
+          "start": 63.06,
+          "end": 71.888
+        },
+        {
+          "index": 13,
+          "start": 72.786,
+          "end": 78.945
+        },
+        {
+          "index": 14,
+          "start": 79.844,
+          "end": 84.479
+        },
+        {
+          "index": 15,
+          "start": 85.378,
+          "end": 88.555
+        },
+        {
+          "index": 16,
+          "start": 89.453,
+          "end": 100.143
+        },
+        {
+          "index": 17,
+          "start": 101.042,
+          "end": 108.581
+        },
+        {
+          "index": 18,
+          "start": 109.479,
+          "end": 113.737
+        },
+        {
+          "index": 19,
+          "start": 114.635,
+          "end": 120.729
+        },
+        {
+          "index": 20,
+          "start": 121.628,
+          "end": 124.87
+        },
+        {
+          "index": 21,
+          "start": 125.768,
+          "end": 128.268
+        },
+        {
+          "index": 22,
+          "start": 129.167,
+          "end": 134.883
+        },
+        {
+          "index": 23,
+          "start": 135.781,
+          "end": 138.828
+        },
+        {
+          "index": 24,
+          "start": 139.727,
+          "end": 146.641
+        },
+        {
+          "index": 25,
+          "start": 147.539,
+          "end": 153.359
+        }
+      ],
+      "moral": {
+        "start": 154.258,
+        "end": 159.023
+      }
+    },
+    "the_snake_and_the_eagle": {
+      "title": "The Snake And The Eagle",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_snake_and_the_eagle/story.mp3",
+      "duration": 78.711,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.363
+        },
+        {
+          "index": 1,
+          "start": 6.263,
+          "end": 9.909
+        },
+        {
+          "index": 2,
+          "start": 10.807,
+          "end": 14.479
+        },
+        {
+          "index": 3,
+          "start": 15.378,
+          "end": 22.292
+        },
+        {
+          "index": 4,
+          "start": 23.189,
+          "end": 26.184
+        },
+        {
+          "index": 5,
+          "start": 27.083,
+          "end": 34.128
+        },
+        {
+          "index": 6,
+          "start": 35.026,
+          "end": 36.758
+        },
+        {
+          "index": 7,
+          "start": 37.656,
+          "end": 39.987
+        },
+        {
+          "index": 8,
+          "start": 40.885,
+          "end": 48.255
+        },
+        {
+          "index": 9,
+          "start": 49.154,
+          "end": 51.888
+        },
+        {
+          "index": 10,
+          "start": 52.786,
+          "end": 58.893
+        },
+        {
+          "index": 11,
+          "start": 59.792,
+          "end": 62.539
+        },
+        {
+          "index": 12,
+          "start": 63.438,
+          "end": 72.435
+        }
+      ],
+      "moral": {
+        "start": 73.333,
+        "end": 78.711
+      }
+    },
+    "the_deer_the_sheep_and_the_wolf": {
+      "title": "The Deer, The Sheep, And The Wolf",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_deer_the_sheep_and_the_wolf/story.mp3",
+      "duration": 48.724,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 4.724
+        },
+        {
+          "index": 1,
+          "start": 5.625,
+          "end": 10.885
+        },
+        {
+          "index": 2,
+          "start": 11.784,
+          "end": 16.823
+        },
+        {
+          "index": 3,
+          "start": 17.721,
+          "end": 23.958
+        },
+        {
+          "index": 4,
+          "start": 24.857,
+          "end": 28.437
+        },
+        {
+          "index": 5,
+          "start": 29.336,
+          "end": 32.474
+        },
+        {
+          "index": 6,
+          "start": 33.372,
+          "end": 38.19
+        },
+        {
+          "index": 7,
+          "start": 39.089,
+          "end": 42.995
+        }
+      ],
+      "moral": {
+        "start": 43.893,
+        "end": 48.724
+      }
+    },
+    "the_fly_and_the_bull": {
+      "title": "The Fly And The Bull",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_fly_and_the_bull/story.mp3",
+      "duration": 41.641,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.675
+        },
+        {
+          "index": 1,
+          "start": 6.576,
+          "end": 11.576
+        },
+        {
+          "index": 2,
+          "start": 12.474,
+          "end": 17.995
+        },
+        {
+          "index": 3,
+          "start": 18.893,
+          "end": 24.076
+        },
+        {
+          "index": 4,
+          "start": 24.974,
+          "end": 30.091
+        },
+        {
+          "index": 5,
+          "start": 30.99,
+          "end": 35.365
+        }
+      ],
+      "moral": {
+        "start": 36.263,
+        "end": 41.641
+      }
+    },
+    "the_crow_and_the_clay_pot": {
+      "title": "The Crow And The Clay Pot",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_crow_and_the_clay_pot/story.mp3",
+      "duration": 39.818,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.102
+        },
+        {
+          "index": 1,
+          "start": 6.003,
+          "end": 9.74
+        },
+        {
+          "index": 2,
+          "start": 10.638,
+          "end": 14.909
+        },
+        {
+          "index": 3,
+          "start": 15.807,
+          "end": 21.393
+        },
+        {
+          "index": 4,
+          "start": 22.292,
+          "end": 26.94
+        },
+        {
+          "index": 5,
+          "start": 27.839,
+          "end": 33.034
+        }
+      ],
+      "moral": {
+        "start": 33.932,
+        "end": 39.818
+      }
+    },
+    "the_man_and_the_woodland_spirit": {
+      "title": "The Man And The Woodland Spirit",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_man_and_the_woodland_spirit/story.mp3",
+      "duration": 77.526,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 5.323
+        },
+        {
+          "index": 1,
+          "start": 6.224,
+          "end": 10.456
+        },
+        {
+          "index": 2,
+          "start": 11.354,
+          "end": 16.471
+        },
+        {
+          "index": 3,
+          "start": 17.37,
+          "end": 21.367
+        },
+        {
+          "index": 4,
+          "start": 22.266,
+          "end": 26.797
+        },
+        {
+          "index": 5,
+          "start": 27.695,
+          "end": 32.487
+        },
+        {
+          "index": 6,
+          "start": 33.385,
+          "end": 37.617
+        },
+        {
+          "index": 7,
+          "start": 38.516,
+          "end": 43.203
+        },
+        {
+          "index": 8,
+          "start": 44.102,
+          "end": 48.047
+        },
+        {
+          "index": 9,
+          "start": 48.945,
+          "end": 52.865
+        },
+        {
+          "index": 10,
+          "start": 53.763,
+          "end": 58.008
+        },
+        {
+          "index": 11,
+          "start": 58.906,
+          "end": 64.089
+        },
+        {
+          "index": 12,
+          "start": 64.987,
+          "end": 69.505
+        }
+      ],
+      "moral": {
+        "start": 70.404,
+        "end": 77.526
+      }
+    },
+    "the_young_man_and_the_swallow": {
+      "title": "The Young Man And The Swallow",
+      "voice": "en-US-AnaNeural",
+      "audio": "audio/the_young_man_and_the_swallow/story.mp3",
+      "duration": 59.141,
+      "sentences": [
+        {
+          "index": 0,
+          "start": 0.102,
+          "end": 10.182
+        },
+        {
+          "index": 1,
+          "start": 11.081,
+          "end": 18.685
+        },
+        {
+          "index": 2,
+          "start": 19.583,
+          "end": 24.648
+        },
+        {
+          "index": 3,
+          "start": 25.547,
+          "end": 39.31
+        },
+        {
+          "index": 4,
+          "start": 40.208,
+          "end": 53.177
+        }
+      ],
+      "moral": {
+        "start": 54.076,
+        "end": 59.141
       }
     }
   }
