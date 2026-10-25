@@ -3,14 +3,14 @@
  * Provides offline reading, instant app launch, and background asset caching.
  */
 
-const CACHE_NAME = 'talepickle-v2.1';
+const CACHE_NAME = 'talepickle-v2.2';
 
 const PRECACHE_ASSETS = [
   './',
   'index.html',
-  'style.css?v=2.1',
-  'main.js?v=2.1',
-  'tts.js?v=2.1',
+  'style.css?v=2.2',
+  'main.js?v=2.2',
+  'tts.js?v=2.2',
   'svg-art.js?v=2.0',
   'rough.js?v=2.0',
   'manifest.webmanifest',
@@ -64,19 +64,18 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2. Data JSON files (stories.json, audio_manifest.json): Stale-While-Revalidate
+  // 2. Data JSON files (stories.json, audio_manifest.json): Network First with Cache Fallback
   if (url.pathname.includes('/data/') && url.pathname.endsWith('.json')) {
     event.respondWith(
-      caches.open(CACHE_NAME).then(async (cache) => {
-        const cached = await cache.match(req);
-        const fetchPromise = fetch(req).then((networkRes) => {
+      fetch(req)
+        .then((networkRes) => {
           if (networkRes && networkRes.status === 200) {
-            cache.put(req, networkRes.clone());
+            const clone = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
           }
           return networkRes;
-        }).catch(() => null);
-        return cached || fetchPromise;
-      })
+        })
+        .catch(() => caches.match(req))
     );
     return;
   }

@@ -345,15 +345,15 @@ body {
   left: 8px;
   right: 8px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   pointer-events: none;
   z-index: 2;
 }
 
-.thumb-overlay-top .theme-badge,
 .thumb-overlay-top .fav-btn {
   pointer-events: auto;
+  margin-left: auto;
 }
 
 .card-animal-tag {

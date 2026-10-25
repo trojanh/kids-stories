@@ -43,6 +43,7 @@
   <!-- Progressive Web App (PWA) Manifest & Icons -->
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icons/icon.svg" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="TalePickle" />
@@ -73,10 +74,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap" />
   </noscript>
 
-  <!-- Preload Critical Dataset & Stylesheet to prevent request chaining -->
-  <link rel="preload" href="data/stories.json" as="fetch" crossorigin />
-  <link rel="preload" href="style.css?v=2.1" as="style" />
-  <link rel="stylesheet" href="style.css?v=2.1" />
+  <!-- Preload Critical Stylesheet to prevent request chaining -->
+  <link rel="preload" href="style.css?v=2.2" as="style" />
+  <link rel="stylesheet" href="style.css?v=2.2" />
 
   <!-- Schema.org JSON-LD Structured Data for Search Engines -->
   <script type="application/ld+json">
@@ -150,8 +150,8 @@
   <!-- Client-side Scripts (Deferred to eliminate render-blocking) -->
   <script defer src="rough.js?v=2.0"></script>
   <script defer src="svg-art.js?v=2.0"></script>
-  <script defer src="tts.js?v=2.1"></script>
-  <script defer src="main.js?v=2.1"></script>
+  <script defer src="tts.js?v=2.2"></script>
+  <script defer src="main.js?v=2.2"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>

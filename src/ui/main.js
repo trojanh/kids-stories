@@ -16,14 +16,53 @@
   }
 
   const STORAGE_KEY_FAVS = 'kids_storybook_favorites';
+  const STORIES_PER_PAGE = 24;
 
   let stories = [];
+  let randomizedStories = [];
+  let currentPage = 1;
   let currentStory = null;
   let currentSentenceIndex = 0;
   let autoAdvance = true;
   let autoAdvanceTimeout = null;
   let isSpeaking = false;
   let favorites = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_FAVS) || '[]'));
+
+  // Utility: Fisher-Yates array shuffle for randomized discovery
+  function shuffleArray(arr) {
+    const copy = arr.slice();
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [copy[i], copy[j]] = [copy[j], copy[i]];
+    }
+    return copy;
+  }
+
+  // URL & Pagination helpers
+  function readPageFromUrl() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const p = parseInt(params.get('page'), 10);
+      return !isNaN(p) && p >= 1 ? p : 1;
+    } catch (e) {
+      return 1;
+    }
+  }
+
+  function getLibraryUrlWithPage(page) {
+    const base = getLibraryUrl();
+    return page > 1 ? `${base}?page=${page}` : base;
+  }
+
+  // Common footer component across all views
+  function renderFooter() {
+    return `
+      <footer class="site-footer">
+        <div class="footer-title">TalePickle</div>
+        <div class="footer-subtitle">Crafted with ❤️ for young readers and curious minds.</div>
+      </footer>
+    `;
+  }
 
   // Filtering state
   let searchQuery = '';
@@ -68,11 +107,12 @@
   }
 
   function navigateToLibrary(replace = false) {
-    const url = getLibraryUrl();
+    currentPage = readPageFromUrl();
+    const url = currentPage > 1 ? getLibraryUrlWithPage(currentPage) : getLibraryUrl();
     if (replace) {
-      history.replaceState({}, '', url);
+      history.replaceState({ page: currentPage }, '', url);
     } else {
-      history.pushState({}, '', url);
+      history.pushState({ page: currentPage }, '', url);
     }
     renderList();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -451,12 +491,10 @@
         `
             : paginatedStories
                 .map((s) => {
-                  const themeCls = 'theme-' + (s.theme || 'Animals').replace(/\s+/g, '');
                   const isFav = favorites.has(s.id);
                   const firstSentence = (s.text && s.text[0]) || '';
                   const totalSentences = (s.text && s.text.length) || 0;
                   const thumbSvg = SvgArt.generateThumbnailSvg(s);
-                  const isAnimalsTheme = !s.theme || s.theme === 'Animals';
 
                   return `
             <a class="story-card" href="${getStoryUrl(s.id)}" onclick="event.preventDefault(); window.StoryApp.goToStory('${encodeURIComponent(s.id)}')">
@@ -465,7 +503,6 @@
                 <div class="card-thumbnail-wrapper">
                   ${thumbSvg}
                   <div class="thumb-overlay-top">
-                    ${!isAnimalsTheme ? `<span class="theme-badge ${themeCls}">${getThemeEmoji(s.theme)} ${s.theme}</span>` : ''}
                     <button class="fav-btn" data-id="${s.id}" title="Save Favorite" onclick="window.StoryApp.toggleFav('${s.id}', event)">
                       ${isFav ? '❤️' : '🤍'}
                     </button>
