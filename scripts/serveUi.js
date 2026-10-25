@@ -22,6 +22,7 @@ function getMime(ext) {
     '.json': 'application/json',
     '.xml': 'application/xml',
     '.txt': 'text/plain',
+    '.webmanifest': 'application/manifest+json',
     '.mp3': 'audio/mpeg',
     '.wav': 'audio/wav',
     '.ogg': 'audio/ogg',

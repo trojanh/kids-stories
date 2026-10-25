@@ -10,7 +10,7 @@
     "build": "python3 scripts/build_docs.py",
     "generate:audio": "python3 scripts/generate_audio.py",
     "generate:svgs": "node scripts/generate_story_svgs.js",
-    "test": "python3 -m pytest src/data/test_stories.py -v"
+    "test": "python3 src/data/test_stories.py"
   },
   "keywords": [
     "storybook",

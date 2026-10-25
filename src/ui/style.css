@@ -958,10 +958,308 @@ body {
 /* Footer */
 .site-footer {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2.5rem 1rem;
   color: var(--text-muted);
+  border-top: 1px solid #e2e8f0;
+  margin-top: 2rem;
+}
+
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.footer-subtitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.seo-discovery-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin: 2.5rem auto 1rem;
+  border: 1px solid #e2e8f0;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.seo-discovery-card strong {
+  color: #334155;
+}
+
+/* Pagination Controls */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 2.5rem 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pagination-btn {
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 800;
+  padding: 0.45rem 0.85rem;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 38px;
+  text-align: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #e0e7ff;
+  border-color: #6366f1;
+  color: #4338ca;
+}
+
+.pagination-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  padding: 0.45rem 0.25rem;
+  color: #94a3b8;
+  font-weight: 700;
+}
+
+/* Audio Settings Drawer & Collapsible CTA */
+.audio-settings-drawer {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.audio-settings-drawer[hidden] {
+  display: none !important;
+}
+
+.settings-toggle-btn {
+  background: #f1f5f9;
+  color: #334155;
+  border: 1.5px solid #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.45rem 0.95rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.15s ease;
+}
+
+.settings-toggle-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+/* Hero Story Play Button */
+.hero-story-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 800;
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s ease;
+}
+
+.hero-story-play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
+}
+
+.hero-story-play-btn.speaking {
+  background: linear-gradient(135deg, #e11d48, #f43f5e);
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+}
+
+/* Character & Animal Styling */
+.story-character-pills {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.story-animal-pill {
+  background: #ede9fe;
+  color: #5b21b6;
+  border: 1px solid #c4b5fd;
+  padding: 0.22rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.story-char-chip {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.22rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* Moral Card at End of Reader */
+.reader-story-moral-card {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #fef3c7, #fffbeb);
+  border: 2px dashed #f59e0b;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.reader-moral-header {
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #b45309;
+  margin-bottom: 0.25rem;
+}
+
+.reader-moral-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #78350f;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* Comprehension Quiz */
+.quiz-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 2px solid #e0e7ff;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.08);
+  text-align: left;
+}
+
+.quiz-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #3730a3;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-question-card {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.quiz-question-card:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.quiz-question-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-option-btn {
+  font-family: inherit;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.65rem 1rem;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  background: #e0e7ff;
+  border-color: #818cf8;
+  color: #3730a3;
+}
+
+.quiz-option-btn.correct {
+  background: #dcfce7 !important;
+  border-color: #22c55e !important;
+  color: #15803d !important;
+}
+
+.quiz-option-btn.incorrect {
+  background: #fee2e2 !important;
+  border-color: #ef4444 !important;
+  color: #991b1b !important;
+}
+
+.quiz-feedback {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+}
+
+.quiz-feedback.success {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.quiz-feedback.retry {
+  background: #fef2f2;
+  color: #991b1b;
 }
 
 /* Responsive adjustments */
@@ -982,6 +1280,53 @@ body {
   .playback-buttons {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Sticky Illustration Stage on Mobile */
+  .reader-stage {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: #f8fafc;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  }
+  .story-svg-canvas {
+    max-height: 240px;
+  }
+
+  /* Mobile Filters: Horizontal Scrollable Row */
+  .filter-pills-row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.35rem;
+  }
+  .filter-pills-row::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-label {
+    flex-shrink: 0;
+  }
+  .chip {
+    flex-shrink: 0;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  /* Mobile Sentence Counter Row */
+  .narration-counter-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .narration-counter {
+    font-size: 0.8rem;
+  }
+  .click-hint {
+    font-size: 0.75rem;
   }
 }
 
