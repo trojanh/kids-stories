@@ -100,18 +100,7 @@
     return pathname.endsWith('/') ? pathname : pathname + '/';
   }
 
-  // Determine if running locally or via tunnel for maximum speed
-  function isLocalOrTunnel() {
-    const h = window.location.hostname;
-    return (
-      h === 'localhost' ||
-      h === '127.0.0.1' ||
-      h.endsWith('.local') ||
-      h.endsWith('.trycloudflare.com')
-    );
-  }
-
-  // Hugging Face Global Edge CDN default for static deployment (GitHub Pages)
+  // Hugging Face Global Edge CDN for multi-panel SVG illustrations and audio
   const DEFAULT_CDN = 'https://huggingface.co/datasets/trojanh/talepickle-assets/resolve/main';
 
   function getAssetUrl(relPath) {
@@ -119,18 +108,13 @@
     if (relPath.startsWith('http://') || relPath.startsWith('https://')) return relPath;
     const clean = relPath.replace(/^\/+/, '');
 
-    // 1. Explicit override via window.TALEPICKLE_CDN
+    // Explicit override via window.TALEPICKLE_CDN (set to null or '' to use local basePath)
     if (window.TALEPICKLE_CDN !== undefined) {
       const cdn = window.TALEPICKLE_CDN;
       return cdn ? `${cdn.replace(/\/+$/, '')}/${clean}` : `${getAppBasePath()}${clean}`;
     }
 
-    // 2. When running locally or through Cloudflare tunnel, serve straight from local server (<10ms)
-    if (isLocalOrTunnel()) {
-      return `${getAppBasePath()}${clean}`;
-    }
-
-    // 3. Remote static deployment (GitHub Pages) uses the free Global CDN
+    // Default: Pull images and media from Hugging Face Edge CDN (both locally and remote)
     return `${DEFAULT_CDN.replace(/\/+$/, '')}/${clean}`;
   }
 
