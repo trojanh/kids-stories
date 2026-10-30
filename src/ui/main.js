@@ -1284,37 +1284,15 @@
 
     // If stage image element already exists, update in-place without destroying DOM
     if (currentImg) {
-      // If already showing target URL, ensure visible and return
       if (currentImg.getAttribute('src') === targetUrl || currentImg.src === targetUrl) {
         currentImg.style.display = 'block';
         return;
       }
 
-      // If already preloaded and decoded in memory, swap instantaneously (0ms)
-      if (preloadedPanels.has(targetUrl)) {
-        currentImg.src = targetUrl;
-        currentImg.alt = `${escapeHtml(story.title)} - Panel ${panelNum}`;
-        currentImg.dataset.failStep = '0';
-        currentImg.style.display = 'block';
-        return;
-      }
-
-      // Pre-decode next image: keep previous image on screen until new image is ready
-      const preloader = new Image();
-      preloader.onload = () => {
-        if (currentStory && currentStory.id === story.id && currentSentenceIndex === sentenceIndex) {
-          currentImg.src = targetUrl;
-          currentImg.alt = `${escapeHtml(story.title)} - Panel ${panelNum}`;
-          currentImg.dataset.failStep = '0';
-          currentImg.style.display = 'block';
-        }
-      };
-      preloader.onerror = () => {
-        if (currentStory && currentStory.id === story.id && currentSentenceIndex === sentenceIndex) {
-          handleStageImgError(currentImg, story.id, panelNum);
-        }
-      };
-      preloader.src = targetUrl;
+      currentImg.src = targetUrl;
+      currentImg.alt = `${escapeHtml(story.title)} - Panel ${panelNum}`;
+      currentImg.dataset.failStep = '0';
+      currentImg.style.display = 'block';
       return;
     }
 
