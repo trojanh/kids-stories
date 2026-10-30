@@ -1,0 +1,100 @@
+name: CI & PR Quality Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-validate:
+    name: Code Syntax & Static Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate JavaScript Syntax
+        run: |
+          node -c src/ui/analytics.js
+          node -c src/ui/main.js
+          node -c src/ui/sw.js
+          node -c src/ui/tts.js
+          node -c src/ui/svg-art.js
+          node -c scripts/serveUi.js
+
+      - name: Validate JSON Formatting & Syntax
+        run: |
+          node -e '
+            const files = [
+              "package.json",
+              "src/data/stories.json",
+              "src/ui/manifest.webmanifest"
+            ];
+            for (const f of files) {
+              try {
+                JSON.parse(require("fs").readFileSync(f, "utf8"));
+                console.log(`✓ Valid JSON: ${f}`);
+              } catch (e) {
+                console.error(`✗ Invalid JSON in ${f}:`, e.message);
+                process.exit(1);
+              }
+            }
+          '
+
+  test-stories:
+    name: Story Schema & Integrity Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+
+      - name: Run Test Suite
+        run: pytest src/data/test_stories.py -v
+
+  build-validation:
+    name: Build & Asset Integrity Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Static Build Script
+        run: python scripts/build_docs.py
+
+      - name: Verify Critical Production Files
+        run: |
+          test -f src/ui/index.html || { echo "Missing index.html"; exit 1; }
+          test -f src/ui/analytics.js || { echo "Missing analytics.js"; exit 1; }
+          test -f src/ui/sw.js || { echo "Missing sw.js"; exit 1; }
+          test -f src/ui/sitemap.xml || { echo "Missing sitemap.xml"; exit 1; }
+          test -f src/ui/robots.txt || { echo "Missing robots.txt"; exit 1; }
+          test -f src/ui/CNAME || { echo "Missing CNAME"; exit 1; }
+          test -f src/ui/.nojekyll || { echo "Missing .nojekyll"; exit 1; }
+          echo "All production build assets verified successfully!"

@@ -27,6 +27,16 @@
   let autoAdvanceTimeout = null;
   let isSpeaking = false;
   let favorites = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY_FAVS) || '[]'));
+  let storyboardManifest = {};
+
+  async function loadStoryboardManifest() {
+    try {
+      const res = await fetch(`${getAppBasePath()}data/storyboard_manifest.json`);
+      if (res.ok) {
+        storyboardManifest = await res.json();
+      }
+    } catch (e) {}
+  }
 
   // Utility: Fisher-Yates array shuffle for randomized discovery
   function shuffleArray(arr) {
@@ -88,6 +98,40 @@
       return pathname.substring(0, pathname.length - 10);
     }
     return pathname.endsWith('/') ? pathname : pathname + '/';
+  }
+
+  // Determine if running locally or via tunnel for maximum speed
+  function isLocalOrTunnel() {
+    const h = window.location.hostname;
+    return (
+      h === 'localhost' ||
+      h === '127.0.0.1' ||
+      h.endsWith('.local') ||
+      h.endsWith('.trycloudflare.com')
+    );
+  }
+
+  // Hugging Face Global Edge CDN default for static deployment (GitHub Pages)
+  const DEFAULT_CDN = 'https://huggingface.co/datasets/trojanh/talepickle-assets/resolve/main';
+
+  function getAssetUrl(relPath) {
+    if (!relPath) return '';
+    if (relPath.startsWith('http://') || relPath.startsWith('https://')) return relPath;
+    const clean = relPath.replace(/^\/+/, '');
+
+    // 1. Explicit override via window.TALEPICKLE_CDN
+    if (window.TALEPICKLE_CDN !== undefined) {
+      const cdn = window.TALEPICKLE_CDN;
+      return cdn ? `${cdn.replace(/\/+$/, '')}/${clean}` : `${getAppBasePath()}${clean}`;
+    }
+
+    // 2. When running locally or through Cloudflare tunnel, serve straight from local server (<10ms)
+    if (isLocalOrTunnel()) {
+      return `${getAppBasePath()}${clean}`;
+    }
+
+    // 3. Remote static deployment (GitHub Pages) uses the free Global CDN
+    return `${DEFAULT_CDN.replace(/\/+$/, '')}/${clean}`;
   }
 
   function getStoryUrl(storyId) {
@@ -398,6 +442,10 @@
     }
     localStorage.setItem(STORAGE_KEY_FAVS, JSON.stringify(Array.from(favorites)));
 
+    if (window.AppAnalytics) {
+      window.AppAnalytics.trackFavorite(id, isNowFav);
+    }
+
     // In reader mode: update navbar heart button
     if (currentStory) {
       renderReaderHeaderFav();
@@ -527,6 +575,11 @@
     clearSpeakingWords();
     resetCatalogSEO();
 
+    if (window.AppAnalytics) {
+      const pageQuery = currentPage > 1 ? `?page=${currentPage}` : '';
+      window.AppAnalytics.trackPageView(getLibraryUrl() + pageQuery, document.title);
+    }
+
     const filtered = getFilteredStories();
     const totalPages = Math.ceil(filtered.length / STORIES_PER_PAGE);
     if (currentPage > totalPages && totalPages > 0) {
@@ -545,6 +598,8 @@
           </div>
         </a>
         <div class="header-actions">
+          <a href="story_gallery.html" class="btn-pill" style="background: #4F46E5; color: white; border: none; text-decoration: none; font-weight: 800;" title="Story-by-Story Visual Gallery">🖼️ Story Gallery</a>
+          <a href="mockups_hub.html" class="btn-pill" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; border: none; text-decoration: none; font-weight: 800;" title="Explore 9 Full-Page Kid UI Mockups">🎨 Mockups (9)</a>
           <button class="btn-pill" id="surpriseBtn">🎲 Surprise Me!</button>
           <button class="btn-pill ${showFavoritesOnly ? 'primary' : ''}" id="favFilterBtn">
             ${showFavoritesOnly ? '❤️ Favorites Only' : '🤍 Favorites (' + favorites.size + ')'}
@@ -750,14 +805,20 @@
                   const isFav = favorites.has(s.id);
                   const firstSentence = (s.text && s.text[0]) || '';
                   const totalSentences = (s.text && s.text.length) || 0;
-                  const thumbSvg = SvgArt.generateThumbnailSvg(s);
+                  const thumbHtml = `
+                    <img src="${getAssetUrl(`data/story_images/${encodeURIComponent(s.id)}.svg`)}"
+                         alt="${escapeHtml(s.title)}"
+                         class="card-thumbnail-svg"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='${getAssetUrl(`data/story_images/${encodeURIComponent(s.id)}.png`)}';" />
+                  `;
 
                   return `
             <a class="story-card" href="${getStoryUrl(s.id)}" onclick="event.preventDefault(); window.StoryApp.goToStory('${encodeURIComponent(s.id)}')">
               <div>
                 <!-- Image Thumbnail of the Animal -->
                 <div class="card-thumbnail-wrapper">
-                  ${thumbSvg}
+                  ${thumbHtml}
                   <div class="thumb-overlay-top">
                     <button class="fav-btn" data-id="${s.id}" title="Save Favorite" onclick="window.StoryApp.toggleFav('${s.id}', event)">
                       ${isFav ? '❤️' : '🤍'}
@@ -843,12 +904,25 @@
     return '🌟';
   }
 
+  let searchAnalyticsTimer = null;
+
   function attachListEvents() {
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
         currentPage = 1;
+
+        if (searchAnalyticsTimer) clearTimeout(searchAnalyticsTimer);
+        const q = searchQuery.trim();
+        if (q.length >= 2) {
+          searchAnalyticsTimer = setTimeout(() => {
+            if (window.AppAnalytics) {
+              window.AppAnalytics.trackSearch(q, getFilteredStories().length);
+            }
+          }, 800);
+        }
+
         renderList();
         // keep focus in input
         const newInp = document.getElementById('searchInput');
@@ -928,6 +1002,9 @@
         activeLength = 'All';
         showFavoritesOnly = false;
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackEvent('clear_filters');
+        }
         renderList();
       });
     }
@@ -938,6 +1015,9 @@
         activeTheme = btn.getAttribute('data-theme');
         activeAnimal = 'All';
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('theme', activeTheme);
+        }
         renderList();
       });
     });
@@ -948,6 +1028,9 @@
         const selected = btn.getAttribute('data-animal');
         activeAnimal = (activeAnimal.toLowerCase() === selected.toLowerCase() && selected !== 'All') ? 'All' : selected;
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('animal', activeAnimal);
+        }
         renderList();
       });
     });
@@ -958,6 +1041,9 @@
       moreAnimalsSelect.addEventListener('change', (e) => {
         activeAnimal = e.target.value || 'All';
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('animal', activeAnimal);
+        }
         renderList();
       });
     }
@@ -967,6 +1053,9 @@
       btn.addEventListener('click', () => {
         activeLength = btn.getAttribute('data-length');
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('length', activeLength);
+        }
         renderList();
       });
     });
@@ -991,6 +1080,9 @@
       surpriseBtn.addEventListener('click', () => {
         if (stories.length === 0) return;
         const rand = stories[Math.floor(Math.random() * stories.length)];
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackSurpriseMe(rand.id);
+        }
         navigateToStory(rand.id);
       });
     }
@@ -1118,6 +1210,154 @@
     return null;
   }
 
+  function handleStageImgError(img, sid, panelNum) {
+    if (!img) return;
+    const step = parseInt(img.dataset.failStep || '0', 10);
+    img.dataset.failStep = String(step + 1);
+
+    if (step === 0) {
+      // Step 1: Fallback to high-res raster panel PNG
+      img.src = getAssetUrl(`data/svgs/${encodeURIComponent(sid)}/panel_${panelNum}.png`);
+    } else if (step === 1) {
+      // Step 2: Fallback to story cover vector SVG
+      img.src = getAssetUrl(`data/story_images/${encodeURIComponent(sid)}.svg`);
+    } else if (step === 2) {
+      // Step 3: Fallback to story cover PNG
+      img.src = getAssetUrl(`data/story_images/${encodeURIComponent(sid)}.png`);
+    } else {
+      // Step 4: Stop retrying to prevent loops; keep visible without stick figures
+      img.onerror = null;
+    }
+  }
+
+  // Resolves the primary URL for a story panel (authentic vector panel or cover fallback)
+  function getPanelUrl(story, sentenceIndex) {
+    if (!story) return '';
+    const panelNum = sentenceIndex + 1;
+    const sid = story.id;
+    const hasPanel = (storyboardManifest[sid] &&
+                      storyboardManifest[sid].available_panels &&
+                      storyboardManifest[sid].available_panels.includes(panelNum)) ||
+                     (story.panels && story.panels[sentenceIndex]);
+    const rawPanelPath = (story.panels && story.panels[sentenceIndex]) || `data/svgs/${encodeURIComponent(sid)}/panel_${panelNum}.svg`;
+    return hasPanel ? getAssetUrl(rawPanelPath) : getAssetUrl(`data/story_images/${encodeURIComponent(sid)}.svg`);
+  }
+
+  // Preload upcoming & all story panel images into memory and GPU decode cache
+  const preloadedPanels = new Map();
+
+  function preloadStoryPanels(story, currentIndex) {
+    if (!story || !story.text) return;
+    const total = story.text.length;
+
+    // 1. Immediately preload immediate nearby panels with highest priority
+    const immediateIndices = [currentIndex, currentIndex + 1, currentIndex + 2, currentIndex + 3, currentIndex - 1].filter(
+      (idx) => idx >= 0 && idx < total
+    );
+
+    immediateIndices.forEach((idx) => {
+      const url = getPanelUrl(story, idx);
+      if (url && !preloadedPanels.has(url)) {
+        const img = new Image();
+        img.src = url;
+        if (img.decode) {
+          img.decode().catch(() => {});
+        }
+        preloadedPanels.set(url, img);
+      }
+    });
+
+    // 2. Preload all remaining panels of this story in idle background so reading is 100% instant
+    const preloadAll = () => {
+      for (let idx = 0; idx < total; idx++) {
+        const url = getPanelUrl(story, idx);
+        if (url && !preloadedPanels.has(url)) {
+          const img = new Image();
+          img.src = url;
+          if (img.decode) {
+            img.decode().catch(() => {});
+          }
+          preloadedPanels.set(url, img);
+        }
+      }
+    };
+
+    if (typeof requestIdleCallback !== 'undefined') {
+      requestIdleCallback(preloadAll, { timeout: 2000 });
+    } else {
+      setTimeout(preloadAll, 150);
+    }
+  }
+
+  // Smoothly transitions stage illustration without blank/empty collapse
+  function updateStageIllustration(story, sentenceIndex) {
+    if (!story) return;
+    const stage = document.querySelector('.reader-stage');
+    if (!stage) return;
+
+    const currentImg = document.getElementById('readerStageImg');
+    const panelNum = sentenceIndex + 1;
+    const targetUrl = getPanelUrl(story, sentenceIndex);
+
+    // If stage image element already exists, update in-place without destroying DOM
+    if (currentImg) {
+      // If already showing target URL, ensure visible and return
+      if (currentImg.getAttribute('src') === targetUrl || currentImg.src === targetUrl) {
+        currentImg.style.display = 'block';
+        return;
+      }
+
+      // If already preloaded and decoded in memory, swap instantaneously (0ms)
+      if (preloadedPanels.has(targetUrl)) {
+        currentImg.src = targetUrl;
+        currentImg.alt = `${escapeHtml(story.title)} - Panel ${panelNum}`;
+        currentImg.dataset.failStep = '0';
+        currentImg.style.display = 'block';
+        return;
+      }
+
+      // Pre-decode next image: keep previous image on screen until new image is ready
+      const preloader = new Image();
+      preloader.onload = () => {
+        if (currentStory && currentStory.id === story.id && currentSentenceIndex === sentenceIndex) {
+          currentImg.src = targetUrl;
+          currentImg.alt = `${escapeHtml(story.title)} - Panel ${panelNum}`;
+          currentImg.dataset.failStep = '0';
+          currentImg.style.display = 'block';
+        }
+      };
+      preloader.onerror = () => {
+        if (currentStory && currentStory.id === story.id && currentSentenceIndex === sentenceIndex) {
+          handleStageImgError(currentImg, story.id, panelNum);
+        }
+      };
+      preloader.src = targetUrl;
+      return;
+    }
+
+    // Initial render
+    stage.innerHTML = renderStageIllustrationHtml(story, sentenceIndex);
+  }
+
+  function renderStageIllustrationHtml(story, sentenceIndex) {
+    if (!story) return '';
+    const panelNum = sentenceIndex + 1;
+    const sid = story.id;
+    const primaryUrl = getPanelUrl(story, sentenceIndex);
+
+    return `
+      <div class="stage-image-container">
+        <img id="readerStageImg"
+             src="${primaryUrl}"
+             alt="${escapeHtml(story.title)} - Panel ${panelNum}"
+             class="story-svg-canvas authentic-storyboard-panel"
+             fetchpriority="high"
+             decoding="async"
+             onerror="window.StoryApp.handleStageImgError(this, '${escapeHtml(sid)}', ${panelNum})" />
+      </div>
+    `;
+  }
+
   const ID_ALIASES = {
     'the_ass_carrying_the_image': 'the_donkey_carrying_the_statue',
     'the_ass_and_his_driver': 'the_donkey_and_his_driver',
@@ -1176,6 +1416,11 @@
     TTS.stop();
     updateStorySEO(story);
 
+    if (window.AppAnalytics) {
+      window.AppAnalytics.trackPageView(getStoryUrl(story.id), document.title);
+      window.AppAnalytics.trackStoryView(story);
+    }
+
     // 1. Render DOM & SVG illustration immediately for optimal FCP / LCP
     renderReaderUI();
 
@@ -1208,7 +1453,7 @@
     const progressPercent = Math.round(((currentSentenceIndex + 1) / totalSentences) * 100);
 
     // SVG panel illustration
-    const panelSvg = SvgArt.generatePanelSvg(story, currentSentenceIndex);
+    const panelSvg = renderStageIllustrationHtml(story, currentSentenceIndex);
 
     // Voices for selection
     const rankedVoices = TTS.getRankedVoices();
@@ -1256,126 +1501,129 @@
             </div>
           </div>
 
-          <!-- Animated Comic Panel SVG -->
-          <div class="reader-stage">
-            ${panelSvg}
-          </div>
-
-          <!-- Progress Bar -->
-          <div class="progress-bar-container">
-            <div class="progress-bar-fill" id="progressBarFill" style="width: ${progressPercent}%;"></div>
-          </div>
-
-          <!-- Full Story Text Area with Sentence Highlighting -->
-          <div class="story-reader-text-container">
-            <div class="narration-counter-row">
-              <span class="narration-counter" id="sentenceCounter">
-                Sentence ${currentSentenceIndex + 1} of ${totalSentences}
-              </span>
-              <span class="click-hint">💡 Tap sentence to jump</span>
-            </div>
-            <div class="story-full-paragraphs" id="fullStoryParagraphs">
-              ${story.text
-                .map(
-                  (sentence, idx) => `
-                <span
-                  class="story-read-sentence ${idx === currentSentenceIndex ? 'active-reading' : ''}"
-                  id="storySent_${idx}"
-                  data-index="${idx}"
-                >${renderSentenceWithWords(sentence, idx)} </span>
-              `
-                )
-                .join('')}
-
-              <!-- Moral at the End of Story -->
-              <div class="reader-story-moral-card" id="readerStoryMoral">
-                <span style="font-size: 1.6rem;">🌟</span>
-                <div>
-                  <div class="reader-moral-header">Moral of the Story</div>
-                  <div class="reader-moral-text">"${escapeHtml(story.moral)}"</div>
-                </div>
+          <!-- Picture-Book Two-Page Spread Body -->
+          <div class="reader-book-body">
+            <!-- Left Page: Full Illustrated Stage (Edge-to-Edge Fill) -->
+            <div class="reader-stage-column">
+              <div class="reader-stage">
+                ${panelSvg}
               </div>
             </div>
-          </div>
 
-          <!-- Audio & Playback Controls -->
-          <div class="reader-controls-bar">
-            <!-- Primary Playback Buttons -->
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-              <button class="circle-btn" id="prevSentenceBtn" title="Previous Sentence" ${currentSentenceIndex === 0 ? 'disabled' : ''}>
-                ⏮️
-              </button>
-
-              <div class="playback-buttons">
-                <button class="circle-btn play-btn" id="playTtsBtn" title="Play / Pause Sentence">
-                  ${isSpeaking ? '⏸️' : '▶️'}
-                </button>
-                <button class="circle-btn" id="repeatSentenceBtn" title="Replay Sentence">
-                  🔄
-                </button>
+            <!-- Right Page: Progress, Text, and Controls -->
+            <div class="reader-text-column">
+              <!-- Progress Bar -->
+              <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: ${progressPercent}%;"></div>
               </div>
 
-              <button class="circle-btn" id="nextSentenceBtn" title="Next Sentence">
-                ⏭️
-              </button>
-
-              <button class="settings-toggle-btn" id="audioSettingsToggleBtn" type="button" title="Audio & Narration Settings">
-                ⚙️ Narration Settings ▾
-              </button>
-            </div>
-
-            <!-- Collapsible Secondary Settings Drawer -->
-            <div class="audio-settings-drawer" id="audioSettingsDrawer" hidden>
-              <div class="controls-row-top">
-                <!-- Speed Slider -->
-                <div class="speed-control-group">
-                  <span>⚡ Speed:</span>
-                  <input
-                    type="range"
-                    class="speed-slider"
-                    id="ttsSpeedSlider"
-                    min="0.5"
-                    max="1.8"
-                    step="0.1"
-                    value="${currentRate}"
-                  />
-                  <span class="speed-value-badge" id="speedDisplay">${currentRate.toFixed(1)}×</span>
+              <!-- Full Story Text Area with Sentence Highlighting -->
+              <div class="story-reader-text-container">
+                <div class="narration-counter-row">
+                  <span class="narration-counter" id="sentenceCounter">
+                    Sentence ${currentSentenceIndex + 1} of ${totalSentences}
+                  </span>
+                  <span class="click-hint">💡 Tap sentence to jump</span>
                 </div>
+                <div class="story-full-paragraphs" id="fullStoryParagraphs">
+                  ${story.text
+                    .map(
+                      (sentence, idx) => `
+                    <span
+                      class="story-read-sentence ${idx === currentSentenceIndex ? 'active-reading' : ''}"
+                      id="storySent_${idx}"
+                      data-index="${idx}"
+                    >${renderSentenceWithWords(sentence, idx)} </span>
+                  `
+                    )
+                    .join('')}
 
-                <!-- Voice Selector with quality badges and preview button -->
-                ${
-                  rankedVoices.length > 0
-                    ? `
-                  <div class="voice-select-group">
-                    <select id="voiceSelect" title="Select Voice Narration">
-                      ${rankedVoices
-                        .map(
-                          (v) => `
-                        <option value="${v.voiceURI}" ${bestVoice && v.voiceURI === bestVoice.voiceURI ? 'selected' : ''}>
-                          ${TTS.formatVoiceLabel(v)}
-                        </option>
-                      `
-                        )
-                        .join('')}
-                    </select>
-                    <button type="button" class="voice-preview-btn" id="previewVoiceBtn" title="Test this voice">
-                      🔊 Preview
+                  <!-- Moral at the End of Story -->
+                  <div class="reader-story-moral-card" id="readerStoryMoral">
+                    <span style="font-size: 1.6rem;">🌟</span>
+                    <div>
+                      <div class="reader-moral-header">Moral of the Story</div>
+                      <div class="reader-moral-text">"${escapeHtml(story.moral)}"</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Audio & Playback Controls -->
+              <div class="reader-controls-bar">
+                <!-- Primary Playback Buttons -->
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                  <button class="circle-btn" id="prevSentenceBtn" title="Previous Sentence" ${currentSentenceIndex === 0 ? 'disabled' : ''}>
+                    ⏮️
+                  </button>
+
+                  <div class="playback-buttons">
+                    <button class="circle-btn play-btn" id="playTtsBtn" title="Play / Pause Sentence">
+                      ${isSpeaking ? '⏸️' : '▶️'}
+                    </button>
+                    <button class="circle-btn" id="repeatSentenceBtn" title="Replay Sentence">
+                      🔄
                     </button>
                   </div>
-                `
-                    : ''
-                }
 
-                <!-- Auto-read toggle -->
-                <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
-                  <input type="checkbox" id="autoAdvanceToggle" ${autoAdvance ? 'checked' : ''} />
-                  <span>Auto-Advance</span>
-                </label>
+                  <button class="circle-btn" id="nextSentenceBtn" title="Next Sentence">
+                    ⏭️
+                  </button>
 
-                <!-- Art Style Toggle: Rough.js Sketch vs Clean Vector -->
-                <button id="artStyleToggleBtn" class="art-style-btn" title="Toggle Illustration Style (Rough.js vs Vector)" onclick="window.StoryApp.toggleArtStyle()">
-                  ${SvgArt.getRenderMode() === 'rough' ? '✏️ Style: Rough Sketch' : '✨ Style: Clean Vector'}
-                </button>
+                  <button class="settings-toggle-btn" id="audioSettingsToggleBtn" type="button" title="Audio & Narration Settings">
+                    ⚙️ Narration Settings ▾
+                  </button>
+                </div>
+
+                <!-- Collapsible Secondary Settings Drawer -->
+                <div class="audio-settings-drawer" id="audioSettingsDrawer" hidden>
+                  <div class="controls-row-top">
+                    <!-- Speed Slider -->
+                    <div class="speed-control-group">
+                      <span>⚡ Speed:</span>
+                      <input
+                        type="range"
+                        class="speed-slider"
+                        id="ttsSpeedSlider"
+                        min="0.5"
+                        max="1.8"
+                        step="0.1"
+                        value="${currentRate}"
+                      />
+                      <span class="speed-value-badge" id="speedDisplay">${currentRate.toFixed(1)}×</span>
+                    </div>
+
+                    <!-- Voice Selector with quality badges and preview button -->
+                    ${
+                      rankedVoices.length > 0
+                        ? `
+                      <div class="voice-select-group">
+                        <select id="voiceSelect" title="Select Voice Narration">
+                          ${rankedVoices
+                            .map(
+                              (v) => `
+                            <option value="${v.voiceURI}" ${bestVoice && v.voiceURI === bestVoice.voiceURI ? 'selected' : ''}>
+                              ${TTS.formatVoiceLabel(v)}
+                            </option>
+                          `
+                            )
+                            .join('')}
+                        </select>
+                        <button type="button" class="voice-preview-btn" id="previewVoiceBtn" title="Test this voice">
+                          🔊 Preview
+                        </button>
+                      </div>
+                    `
+                        : ''
+                    }
+
+                    <!-- Auto-read toggle -->
+                    <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
+                      <input type="checkbox" id="autoAdvanceToggle" ${autoAdvance ? 'checked' : ''} />
+                      <span>Auto-Advance</span>
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1386,6 +1634,7 @@
     `;
 
     attachReaderEvents();
+    preloadStoryPanels(story, currentSentenceIndex);
   }
 
   function updateSentenceHighlight(index, speaking) {
@@ -1419,11 +1668,9 @@
       counter.innerText = `Sentence ${index + 1} of ${currentStory.text.length}`;
     }
 
-    // Update SVG stage panel
-    const stage = document.querySelector('.reader-stage');
-    if (stage) {
-      stage.innerHTML = SvgArt.generatePanelSvg(currentStory, index);
-    }
+    // Update SVG stage panel with seamless preloading & no blank flicker
+    updateStageIllustration(currentStory, index);
+    preloadStoryPanels(currentStory, index);
 
     // Update prev / next button disabled states
     const prevBtn = document.getElementById('prevSentenceBtn');
@@ -1441,6 +1688,10 @@
 
     isSpeaking = true;
     updateSpeakingStateUI(true);
+
+    if (window.AppAnalytics && currentStory) {
+      window.AppAnalytics.trackAudioPlay(currentStory.id, currentSentenceIndex);
+    }
 
     TTS.speakStorySentence(currentStory.id, currentSentenceIndex, sentence, () => {
       isSpeaking = false;
@@ -1546,6 +1797,9 @@
           TTS.stop();
           isSpeaking = false;
           updateSpeakingStateUI(false);
+          if (window.AppAnalytics && currentStory) {
+            window.AppAnalytics.trackAudioPause(currentStory.id, currentSentenceIndex);
+          }
         } else {
           autoAdvance = true;
           const autoToggle = document.getElementById('autoAdvanceToggle');
@@ -1566,6 +1820,9 @@
           TTS.stop();
           isSpeaking = false;
           updateSpeakingStateUI(false);
+          if (window.AppAnalytics && currentStory) {
+            window.AppAnalytics.trackAudioPause(currentStory.id, currentSentenceIndex);
+          }
         } else {
           autoAdvance = true;
           const autoToggle = document.getElementById('autoAdvanceToggle');
@@ -1699,14 +1956,16 @@
     TTS.stop();
     clearSpeakingWords();
 
+    if (window.AppAnalytics && story) {
+      window.AppAnalytics.trackStoryComplete(story);
+      window.AppAnalytics.trackPageView(`${getStoryUrl(story.id)}/completed`, `Story Completed: ${story.title} | TalePickle`);
+    }
+
     // Trigger celebratory confetti
     triggerConfetti();
 
     // Read out the moral
     TTS.speakMoral(story.id, `In the end, the story reminds us: ${story.moral}`);
-
-    // Generate story thumbnail as the background illustration
-    const thumbSvg = SvgArt.generateThumbnailSvg(story);
 
     // Find next story in order
     const currentIndex = stories.findIndex((s) => s.id === story.id);
@@ -1729,7 +1988,11 @@
         <div class="completed-story-container">
           <!-- Background Animal Thumbnail Illustration -->
           <div class="completed-story-backdrop">
-            ${thumbSvg}
+            <img src="${getAssetUrl(`data/story_images/${encodeURIComponent(story.id)}.svg`)}"
+                 alt="${escapeHtml(story.title)}"
+                 class="card-thumbnail-svg"
+                 style="width: 100%; height: 100%; object-fit: cover;"
+                 onerror="this.onerror=null; this.src='${getAssetUrl(`data/story_images/${encodeURIComponent(story.id)}.png`)}';" />
           </div>
 
           <!-- Full Story & Moral Content Overlay -->
@@ -1843,6 +2106,9 @@
         } else {
           fullStorySpeaking = true;
           readFullBtn.innerHTML = '⏸️ Stop Narration';
+          if (window.AppAnalytics && story) {
+            window.AppAnalytics.trackFullAudioPlay(story.id);
+          }
           const fullText = story.text.join(' ') + ` In the end, the story reminds us: ${story.moral}`;
           TTS.speakFullStory(story.id, fullText, () => {
             fullStorySpeaking = false;
@@ -1946,37 +2212,33 @@
     renderList();
   }
 
-  function toggleArtStyle() {
-    const current = SvgArt.getRenderMode();
-    const next = current === 'rough' ? 'clean' : 'rough';
-    SvgArt.setRenderMode(next);
-
-    const btn = document.getElementById('artStyleToggleBtn');
-    if (btn) {
-      btn.innerText = next === 'rough' ? '✏️ Style: Rough Sketch' : '✨ Style: Clean Vector';
-    }
-
-    const stage = document.querySelector('.reader-stage');
-    if (stage && currentStory) {
-      stage.innerHTML = SvgArt.generatePanelSvg(currentStory, currentSentenceIndex);
+  function goToSentenceIndex(idx) {
+    if (!currentStory || idx < 0 || idx >= currentStory.text.length) return;
+    currentSentenceIndex = idx;
+    updateSentenceHighlight(idx, isSpeaking);
+    if (isSpeaking) {
+      speakCurrentSentence();
     }
   }
 
   // Global namespace for inline event hooks
   window.StoryApp = {
     toggleFav: toggleFavorite,
-    toggleArtStyle: toggleArtStyle,
     goToStory: navigateToStory,
     goToLibrary: navigateToLibrary,
+    goToSentence: goToSentenceIndex,
     getBasePath: getAppBasePath,
+    getAssetUrl: getAssetUrl,
+    setAssetCdn: (url) => { window.TALEPICKLE_CDN = url; },
     answerQuiz: handleQuizAnswer,
+    handleStageImgError: handleStageImgError,
   };
 
   window.addEventListener('popstate', router);
   window.addEventListener('hashchange', router);
 
   document.addEventListener('DOMContentLoaded', () => {
-    fetchStories().then(() => {
+    Promise.all([fetchStories(), loadStoryboardManifest()]).then(() => {
       // 1. Immediately render current route (FCP / LCP in < 800ms)
       router();
 

@@ -3,22 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TalePickle - Story Illustrations Gallery</title>
+  <title>TalePickle - Story Illustration & Storyboard Gallery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Nunito', sans-serif;
       background: #F8FAFC;
       color: #1E293B;
-      padding: 2.5rem 1.5rem;
+      padding: 2rem 1.5rem 5rem;
+      line-height: 1.5;
     }
+
+    /* Header & Navigation */
+    .top-nav {
+      max-width: 1400px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #FFFFFF;
+      color: #4F46E5;
+      border: 1px solid #E0E7FF;
+      padding: 0.5rem 1.1rem;
+      border-radius: 9999px;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 4px rgba(79, 70, 229, 0.06);
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: #EEF2FF;
+      transform: translateX(-2px);
+    }
+
     .header {
       text-align: center;
-      max-width: 900px;
-      margin: 0 auto 2.5rem;
+      max-width: 960px;
+      margin: 0 auto 2rem;
     }
     .badge {
       display: inline-block;
@@ -35,7 +67,7 @@
     }
     h1 {
       font-family: 'Fredoka', cursive;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: #0F172A;
       margin-bottom: 0.5rem;
     }
@@ -44,186 +76,1055 @@
       color: #64748B;
       line-height: 1.6;
     }
+
+    /* Stats Bar */
     .stats-bar {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1rem;
       margin-top: 1.5rem;
       flex-wrap: wrap;
     }
     .stat-pill {
       background: #FFFFFF;
       padding: 0.5rem 1.25rem;
-      border-radius: 12px;
+      border-radius: 14px;
       border: 1px solid #E2E8F0;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 0.95rem;
       color: #334155;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 2rem;
+    .stat-pill strong {
+      color: #4F46E5;
+    }
+
+    /* Filter & Search Bar */
+    .controls-wrapper {
       max-width: 1400px;
-      margin: 0 auto;
-    }
-    .story-card {
+      margin: 0 auto 2.5rem;
       background: #FFFFFF;
+      padding: 1.25rem 1.5rem;
       border-radius: 20px;
-      overflow: hidden;
       border: 1px solid #E2E8F0;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
+      gap: 1rem;
     }
-    .story-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
-    }
-    .card-media {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #F1F5F9;
+    .controls-top {
       display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-bottom: 1px solid #E2E8F0;
+      justify-content: space-between;
+    }
+    .search-input-box {
+      flex: 1;
+      min-width: 260px;
       position: relative;
     }
-    .card-media img {
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border-radius: 12px;
+      border: 1px solid #CBD5E1;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: #6366F1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.1rem;
+      color: #94A3B8;
+    }
+    .controls-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .story-select {
+      padding: 0.75rem 1.25rem;
+      border-radius: 12px;
+      border: 1px solid #CBD5E1;
+      background: #FFFFFF;
+      font-size: 0.95rem;
+      font-weight: 700;
+      font-family: inherit;
+      color: #334155;
+      cursor: pointer;
+      outline: none;
+    }
+    .btn-action {
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      padding: 0.75rem 1.1rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid transparent;
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover {
+      background: #E2E8F0;
+    }
+    .tab-btn.active {
+      background: #4F46E5;
+      color: #FFFFFF;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    }
+
+    /* Story Section Card (Collapsible) */
+    .gallery-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .story-section {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+      padding: 1.25rem 1.5rem;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .story-section:hover {
+      border-color: #CBD5E1;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.07);
+    }
+
+    /* Story Header Row (Clickable Accordion Bar) */
+    .story-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      cursor: pointer;
+      user-select: none;
+      padding: 0.25rem;
+      border-radius: 12px;
+      transition: background 0.15s ease;
+    }
+    .story-header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+      min-width: 280px;
+    }
+    .story-mini-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid #E2E8F0;
+      background: #F1F5F9;
+      flex-shrink: 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .story-title-group h2 {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.5rem;
+      color: #0F172A;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .story-meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .pill-multipanel {
+      background: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+    }
+    .pill-cover {
+      background: #F1F5F9;
+      color: #475569;
+      border: 1px solid #CBD5E1;
+    }
+    .pill-animal {
+      background: #EFF6FF;
+      color: #2563EB;
+      border: 1px solid #BFDBFE;
+    }
+    .pill-theme {
+      background: #FAF5FF;
+      color: #7E22CE;
+      border: 1px solid #E9D5FF;
+    }
+
+    .story-header-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .btn-toggle-collapse {
+      background: #F1F5F9;
+      color: #334155;
+      border: 1px solid #CBD5E1;
+      padding: 0.45rem 0.9rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-toggle-collapse:hover {
+      background: #E2E8F0;
+      color: #0F172A;
+    }
+    .chevron-icon {
+      display: inline-block;
+      transition: transform 0.25s ease;
+      font-size: 0.75rem;
+    }
+    .chevron-icon.open {
+      transform: rotate(180deg);
+    }
+    .btn-reader {
+      background: #4F46E5;
+      color: #FFFFFF;
+      padding: 0.45rem 0.9rem;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.15s ease;
+    }
+    .btn-reader:hover {
+      background: #4338CA;
+    }
+
+    /* Collapsible Body */
+    .story-collapsible-body {
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #F1F5F9;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .story-section.is-collapsed .story-collapsible-body {
+      display: none;
+    }
+
+    /* Moral Callout Banner */
+    .moral-banner {
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 14px;
+      padding: 0.75rem 1.1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #92400E;
+    }
+    .moral-banner strong {
+      color: #78350F;
+    }
+
+    /* Panels Grid for Multi-Panel Storyboards */
+    .panels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .panel-card {
+      background: #F8FAFC;
+      border-radius: 16px;
+      border: 1px solid #E2E8F0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .panel-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
+      border-color: #CBD5E1;
+    }
+    .panel-card-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #E2E8F0;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .panel-card-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.35s ease;
     }
-    .tag-badge {
+    .panel-card-media:hover img {
+      transform: scale(1.05);
+    }
+    .panel-badge {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(15, 23, 42, 0.75);
+      top: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.8);
       color: #FFFFFF;
-      padding: 0.25rem 0.75rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 8px;
       font-size: 0.75rem;
       font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
       backdrop-filter: blur(4px);
     }
-    .card-body {
-      padding: 1.5rem;
+    .panel-badge.solution {
+      background: #059669;
+    }
+    .panel-badge.moral {
+      background: #D97706;
+    }
+    .panel-card-body {
+      padding: 1rem;
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 0.75rem;
     }
-    .story-title {
-      font-family: 'Fredoka', cursive;
-      font-size: 1.35rem;
-      color: #0F172A;
-      margin-bottom: 0.5rem;
+    .panel-sentence {
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.45;
+      font-weight: 600;
     }
-    .story-desc {
-      font-size: 0.95rem;
-      color: #64748B;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
-    }
-    .card-footer {
+    .panel-card-footer {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      border-top: 1px solid #F1F5F9;
-      padding-top: 1rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #64748B;
-    }
-    .btn-link {
-      display: inline-flex;
       align-items: center;
+      padding-top: 0.5rem;
+      border-top: 1px solid #E2E8F0;
+      font-size: 0.75rem;
+      color: #64748B;
+      font-weight: 700;
+    }
+    .panel-links {
+      display: flex;
       gap: 0.35rem;
-      padding: 0.4rem 0.85rem;
-      background: #EFF6FF;
+    }
+    .panel-link {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
       color: #2563EB;
       text-decoration: none;
-      border-radius: 8px;
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       transition: background 0.15s ease;
     }
-    .btn-link:hover {
-      background: #DBEAFE;
+    .panel-link:hover {
+      background: #EFF6FF;
+    }
+
+    /* Single Cover Layout */
+    .single-story-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .single-story-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .single-cover-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #E2E8F0;
+      cursor: pointer;
+    }
+    .single-cover-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .single-cover-media:hover img {
+      transform: scale(1.04);
+    }
+    .single-story-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .sentences-preview {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .sentence-item {
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.45;
+    }
+    .sentence-num {
+      font-weight: 800;
+      color: #6366F1;
+      margin-right: 0.35rem;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-content {
+      background: #FFFFFF;
+      border-radius: 24px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      animation: modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: rgba(15, 23, 42, 0.6);
+      color: #FFFFFF;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.15s ease;
+    }
+    .lightbox-close:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+    .lightbox-media {
+      width: 100%;
+      background: #F1F5F9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-height: 58vh;
+      overflow: hidden;
+    }
+    .lightbox-media img {
+      max-width: 100%;
+      max-height: 58vh;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-info {
+      padding: 1.5rem;
+      background: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .lightbox-title {
+      font-family: 'Fredoka', cursive;
+      font-size: 1.4rem;
+      color: #0F172A;
+    }
+    .lightbox-sentence {
+      font-size: 1rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .lightbox-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid #E2E8F0;
     }
   </style>
 </head>
 <body>
 
+  <nav class="top-nav">
+    <a href="./" class="back-btn">← Back to TalePickle Reader</a>
+    <span style="font-weight: 800; font-size: 0.85rem; color: #64748B;">Aesop Fables Sequential Picture-Book Archive</span>
+  </nav>
+
   <header class="header">
-    <div class="badge">Local AI Story Illustrations</div>
-    <h1>Aesop Fables Story Illustrations</h1>
+    <div class="badge">Visual Storyboards & Illustrations</div>
+    <h1>Illustrated Story Gallery</h1>
     <p class="subtitle">
-      Warm watercolor & soft gouache picture-book illustrations generated 100% locally via Apple Silicon Metal GPU (Draw Things) and vectorized into scalable SVGs with vtracer.
+      Explore Aesop's Fables illustrated <strong>story by story</strong>. Click any story card to expand its complete sequential 7-panel visual narrative or collapse it for fast browsing.
     </p>
     <div class="stats-bar" id="statsBar">
-      <div class="stat-pill" id="totalCount">Loading stories...</div>
+      <div class="stat-pill" id="totalStoriesCount">Loading stories...</div>
+      <div class="stat-pill" id="totalMultipanelCount">Loading storyboards...</div>
+      <div class="stat-pill" id="totalPanelsCount">Loading panels...</div>
     </div>
   </header>
 
-  <main class="gallery" id="galleryContainer">
-    <!-- Populated by JS -->
+  <div class="controls-wrapper">
+    <div class="controls-top">
+      <div class="search-input-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search story title, animal, or moral keyword..." />
+      </div>
+      <div class="controls-actions">
+        <select id="storyJumpSelect" class="story-select">
+          <option value="">Jump to a Story...</option>
+        </select>
+        <button id="toggleAllBtn" class="btn-action" onclick="toggleExpandAll()">
+          <span id="toggleAllIcon">📂</span> <span id="toggleAllText">Expand All</span>
+        </button>
+      </div>
+    </div>
+    <div class="filter-tabs" id="filterTabs">
+      <button class="tab-btn active" data-filter="multipanel">⭐ Multi-Panel Storyboards Only</button>
+      <button class="tab-btn" data-filter="all">📚 All 160 Stories</button>
+      <button class="tab-btn" data-filter="Animals">🐾 Animals</button>
+      <button class="tab-btn" data-filter="Wisdom">💡 Wisdom</button>
+      <button class="tab-btn" data-filter="Friendship">🤝 Friendship</button>
+      <button class="tab-btn" data-filter="Kindness">❤️ Kindness</button>
+    </div>
+  </div>
+
+  <main class="gallery-container" id="galleryContainer">
+    <div style="text-align: center; padding: 4rem; color: #64748B;">
+      <p>Loading full story catalog and vector panels...</p>
+    </div>
   </main>
 
+  <!-- Lightbox Modal for Full Resolution SVG Inspection -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+      <div class="lightbox-media">
+        <img id="lightboxImg" src="" alt="Full Resolution Artwork" />
+      </div>
+      <div class="lightbox-info">
+        <h3 class="lightbox-title" id="lightboxTitle"></h3>
+        <p class="lightbox-sentence" id="lightboxSentence"></p>
+        <div class="lightbox-footer">
+          <span id="lightboxPanelNum" style="font-weight: 800; font-size: 0.85rem; color: #64748B;"></span>
+          <div style="display: flex; gap: 0.5rem;">
+            <a id="lightboxSvgLink" class="panel-link" href="#" target="_blank">Open Vector SVG ↗</a>
+            <a id="lightboxPngLink" class="panel-link" href="#" target="_blank" style="background:#F1F5F9; color:#475569;">Open PNG ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    async function loadGallery() {
+    const DEFAULT_CDN = 'https://huggingface.co/datasets/trojanh/talepickle-assets/resolve/main';
+
+    function getAssetUrl(relPath) {
+      if (!relPath) return '';
+      if (relPath.startsWith('http://') || relPath.startsWith('https://')) return relPath;
+      const clean = relPath.replace(/^\/+/, '');
+      const cdn = window.TALEPICKLE_CDN !== undefined ? window.TALEPICKLE_CDN : DEFAULT_CDN;
+      return cdn ? `${cdn.replace(/\/+$/, '')}/${clean}` : clean;
+    }
+
+    let allStories = [];
+    let storyboardManifest = {};
+    let heroManifest = {};
+    let currentFilter = 'multipanel';
+    let currentSearch = '';
+    // Track expanded stories: default to first 3 expanded so user gets immediate visual affordance
+    let expandedStoryIds = new Set();
+    let isAllExpanded = false;
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    async function loadData() {
       try {
-        const res = await fetch('data/story_images/manifest.json');
-        if (!res.ok) throw new Error('Failed to load manifest');
-        const manifest = await res.json();
+        const [storiesRes, storyboardsRes, heroRes] = await Promise.all([
+          fetch('data/stories.json').then(r => r.json()),
+          fetch('data/storyboard_manifest.json').then(r => r.json()).catch(() => ({})),
+          fetch('data/story_images/manifest.json').then(r => r.json()).catch(() => ([]))
+        ]);
 
-        const withSvg = manifest.filter(s => s.has_svg);
-        document.getElementById('totalCount').innerHTML = `📚 <strong>${withSvg.length}</strong> Stories Illustrated & Vectorized`;
+        allStories = Array.isArray(storiesRes) ? storiesRes : (storiesRes.stories || []);
+        storyboardManifest = storyboardsRes || {};
 
-        const container = document.getElementById('galleryContainer');
-        container.innerHTML = '';
+        heroManifest = {};
+        if (Array.isArray(heroRes)) {
+          heroRes.forEach(item => {
+            heroManifest[item.id] = item;
+          });
+        }
 
-        withSvg.forEach(story => {
-          const card = document.createElement('div');
-          card.className = 'story-card';
-          card.innerHTML = `
-            <div class="card-media">
-              <span class="tag-badge">Vector SVG</span>
-              <img src="data/story_images/${story.svg_file}" alt="${story.title}" loading="lazy" />
-            </div>
-            <div class="card-body">
-              <div>
-                <h2 class="story-title">${story.title}</h2>
-                <p class="story-desc">ID: <code>${story.id}</code> • Vector Size: ${story.svg_size_kb} KB</p>
-              </div>
-              <div class="card-footer">
-                <a class="btn-link" href="data/story_images/${story.svg_file}" target="_blank">Open SVG ↗</a>
-                ${story.has_image ? `<a class="btn-link" href="data/story_images/${story.png_file}" target="_blank" style="background:#F1F5F9; color:#475569;">Raster PNG ↗</a>` : ''}
-              </div>
-            </div>
-          `;
-          container.appendChild(card);
-        });
+        // Expand the first 2 stories by default for immediate preview
+        const firstMultiStories = allStories.filter(s => !!storyboardManifest[s.id]).slice(0, 2);
+        firstMultiStories.forEach(s => expandedStoryIds.add(s.id));
+
+        updateStats();
+        populateJumpSelect();
+        renderGallery();
 
       } catch (err) {
+        console.error('Failed to load gallery data:', err);
         document.getElementById('galleryContainer').innerHTML = `
-          <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #64748B;">
-            <p>Loading or generating illustrations...</p>
+          <div style="text-align: center; padding: 4rem; color: #DC2626;">
+            <h3>Error loading stories</h3>
+            <p style="margin-top: 0.5rem; color: #64748B;">${escapeHtml(err.message)}</p>
           </div>
         `;
       }
     }
 
-    loadGallery();
-    // Auto-refresh gallery every 15s as new stories are generated in background
-    setInterval(loadGallery, 15000);
+    function updateStats() {
+      const multiCount = Object.keys(storyboardManifest).length;
+      let totalPanels = 0;
+      Object.values(storyboardManifest).forEach(v => {
+        totalPanels += (v.available_panels || []).length;
+      });
+
+      document.getElementById('totalStoriesCount').innerHTML = `📚 <strong>${allStories.length}</strong> Stories in Catalog`;
+      document.getElementById('totalMultipanelCount').innerHTML = `✨ <strong>${multiCount}</strong> Multi-Panel Storyboards`;
+      document.getElementById('totalPanelsCount').innerHTML = `🎨 <strong>${totalPanels + allStories.length}</strong> Vector SVGs Generated`;
+    }
+
+    function populateJumpSelect() {
+      const select = document.getElementById('storyJumpSelect');
+      select.innerHTML = '<option value="">Jump to a Story...</option>';
+
+      allStories.forEach(s => {
+        const hasStoryboard = !!storyboardManifest[s.id];
+        const opt = document.createElement('option');
+        opt.value = s.id;
+        opt.textContent = `${hasStoryboard ? '✨ ' : ''}${s.title}`;
+        select.appendChild(opt);
+      });
+
+      select.onchange = (e) => {
+        const targetId = e.target.value;
+        if (!targetId) return;
+
+        // Auto-expand targeted story
+        expandedStoryIds.add(targetId);
+
+        const targetEl = document.getElementById(`storySection_${targetId}`);
+        if (targetEl) {
+          targetEl.classList.remove('is-collapsed');
+          updateSectionCollapseBtn(targetId, true);
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          // If filtered out, switch to 'all' and expand
+          currentFilter = 'all';
+          updateActiveTab();
+          renderGallery();
+          setTimeout(() => {
+            const el = document.getElementById(`storySection_${targetId}`);
+            if (el) {
+              el.classList.remove('is-collapsed');
+              updateSectionCollapseBtn(targetId, true);
+              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 100);
+        }
+      };
+    }
+
+    function updateActiveTab() {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === currentFilter);
+      });
+    }
+
+    function toggleStoryCollapse(storyId) {
+      const section = document.getElementById(`storySection_${storyId}`);
+      if (!section) return;
+
+      const isCurrentlyExpanded = expandedStoryIds.has(storyId);
+      if (isCurrentlyExpanded) {
+        expandedStoryIds.delete(storyId);
+        section.classList.add('is-collapsed');
+        updateSectionCollapseBtn(storyId, false);
+      } else {
+        expandedStoryIds.add(storyId);
+        section.classList.remove('is-collapsed');
+        updateSectionCollapseBtn(storyId, true);
+      }
+    }
+
+    function updateSectionCollapseBtn(storyId, isExpanded) {
+      const btn = document.getElementById(`collapseBtn_${storyId}`);
+      const chevron = document.getElementById(`chevron_${storyId}`);
+      const sb = storyboardManifest[storyId];
+      const count = sb ? sb.panel_count : 1;
+
+      if (btn) {
+        btn.innerHTML = isExpanded 
+          ? `▲ Collapse <span class="chevron-icon open">▼</span>` 
+          : `▼ View Storyboard (${count} Panels) <span class="chevron-icon">▼</span>`;
+      }
+      if (chevron) {
+        chevron.classList.toggle('open', isExpanded);
+      }
+    }
+
+    function toggleExpandAll() {
+      isAllExpanded = !isAllExpanded;
+      if (isAllExpanded) {
+        allStories.forEach(s => expandedStoryIds.add(s.id));
+        document.getElementById('toggleAllIcon').textContent = '📁';
+        document.getElementById('toggleAllText').textContent = 'Collapse All';
+      } else {
+        expandedStoryIds.clear();
+        document.getElementById('toggleAllIcon').textContent = '📂';
+        document.getElementById('toggleAllText').textContent = 'Expand All';
+      }
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const container = document.getElementById('galleryContainer');
+      const q = currentSearch.trim().toLowerCase();
+
+      // Filter stories
+      let filtered = allStories.filter(s => {
+        const hasStoryboard = !!storyboardManifest[s.id];
+
+        // Filter tab check
+        if (currentFilter === 'multipanel' && !hasStoryboard) return false;
+        if (currentFilter !== 'all' && currentFilter !== 'multipanel') {
+          if (s.theme !== currentFilter) return false;
+        }
+
+        // Search check
+        if (q) {
+          const titleMatch = (s.title || '').toLowerCase().includes(q);
+          const animalMatch = (s.animal || '').toLowerCase().includes(q);
+          const moralMatch = (s.moral || '').toLowerCase().includes(q);
+          const idMatch = (s.id || '').toLowerCase().includes(q);
+          if (!titleMatch && !animalMatch && !moralMatch && !idMatch) return false;
+        }
+
+        return true;
+      });
+
+      // If user typed a search query, auto-expand matched stories
+      if (q) {
+        filtered.forEach(s => expandedStoryIds.add(s.id));
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 4rem; background: #FFFFFF; border-radius: 20px; border: 1px solid #E2E8F0;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍🐾</div>
+            <h3 style="font-family: 'Fredoka', cursive; font-size: 1.5rem; color: #0F172A;">No stories found</h3>
+            <p style="color: #64748B; margin-top: 0.25rem;">Try adjusting your search terms or clearing the filter.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(story => {
+        const sb = storyboardManifest[story.id];
+        const isMulti = !!sb;
+        const totalSentences = (story.text && story.text.length) || 0;
+        const isExpanded = expandedStoryIds.has(story.id);
+
+        const thumbSrc = isMulti 
+          ? getAssetUrl(`data/svgs/${encodeURIComponent(story.id)}/panel_1.svg`) 
+          : getAssetUrl(`data/story_images/${encodeURIComponent(story.id)}.svg`);
+
+        const fallbackThumb = getAssetUrl(`data/story_images/${encodeURIComponent(story.id)}.png`);
+        const panelCount = isMulti ? sb.panel_count : 1;
+
+        return `
+          <section class="story-section ${isExpanded ? '' : 'is-collapsed'}" id="storySection_${story.id}">
+            <div class="story-header-row" onclick="toggleStoryCollapse('${story.id}')" title="Click to expand / collapse this story">
+              <div class="story-header-left">
+                <img src="${thumbSrc}" alt="${escapeHtml(story.title)}" class="story-mini-thumb" loading="lazy" onerror="this.onerror=null; this.src='${fallbackThumb}';" />
+                <div class="story-title-group">
+                  <h2>
+                    ${escapeHtml(story.title)}
+                    <span class="chevron-icon ${isExpanded ? 'open' : ''}" id="chevron_${story.id}">▼</span>
+                  </h2>
+                  <div class="story-meta-pills">
+                    ${isMulti ? `<span class="pill pill-multipanel">✨ ${sb.panel_count} Panels Storyboard</span>` : `<span class="pill pill-cover">🖼️ Cover Illustrated</span>`}
+                    <span class="pill pill-animal">🐾 ${escapeHtml(story.animal || 'Animal')}</span>
+                    <span class="pill pill-theme">${escapeHtml(story.theme || 'Fable')}</span>
+                    <span style="font-size: 0.75rem; font-weight: 700; color: #64748B;"><code>${escapeHtml(story.id)}</code></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="story-header-right">
+                <button class="btn-toggle-collapse" id="collapseBtn_${story.id}" onclick="event.stopPropagation(); toggleStoryCollapse('${story.id}')">
+                  ${isExpanded ? `▲ Collapse` : `▼ View Storyboard (${panelCount} Panels)`}
+                </button>
+                <a class="btn-reader" href="story/${encodeURIComponent(story.id)}" target="_blank" onclick="event.stopPropagation()">
+                  📖 Read ↗
+                </a>
+              </div>
+            </div>
+
+            <!-- Collapsible Body Containing Panels -->
+            <div class="story-collapsible-body">
+              ${story.moral ? `
+                <div class="moral-banner">
+                  <span style="font-size: 1.3rem;">🌟</span>
+                  <div>
+                    <strong>Moral of the Story:</strong> "${escapeHtml(story.moral)}"
+                  </div>
+                </div>
+              ` : ''}
+
+              ${isMulti ? renderMultiPanelGrid(story, sb) : renderSingleCoverLayout(story)}
+            </div>
+          </section>
+        `;
+      }).join('');
+    }
+
+    function renderMultiPanelGrid(story, sb) {
+      const panels = sb.available_panels || [];
+      const sentences = story.text || [];
+      const total = panels.length;
+
+      const panelCards = panels.map((pNum) => {
+        const sentenceIdx = pNum - 1;
+        const sentence = sentences[sentenceIdx] || `Panel ${pNum} of ${story.title}`;
+        const isSolution = pNum === total - 1;
+        const isMoral = pNum === total;
+
+        let badgeText = `Panel ${pNum}`;
+        let badgeClass = 'panel-badge';
+        if (pNum === 1) badgeText = 'Panel 1 • Cover';
+        else if (isSolution) {
+          badgeText = 'Panel ' + pNum + ' • 🔧 Solution Tableau';
+          badgeClass += ' solution';
+        } else if (isMoral) {
+          badgeText = 'Panel ' + pNum + ' • ⭐ Moral Resolution';
+          badgeClass += ' moral';
+        }
+
+        const svgPath = getAssetUrl(`data/svgs/${encodeURIComponent(story.id)}/panel_${pNum}.svg`);
+        const pngPath = getAssetUrl(`data/svgs/${encodeURIComponent(story.id)}/panel_${pNum}.png`);
+
+        return `
+          <div class="panel-card">
+            <div class="panel-card-media" onclick="openLightbox('${svgPath}', '${pngPath}', '${escapeHtml(story.title)}', '${pNum}', '${escapeHtml(sentence)}')">
+              <span class="${badgeClass}">${badgeText}</span>
+              <img src="${svgPath}" alt="${escapeHtml(story.title)} - Panel ${pNum}" loading="lazy" onerror="this.onerror=null; this.src='${pngPath}';" />
+            </div>
+            <div class="panel-card-body">
+              <p class="panel-sentence">"${escapeHtml(sentence)}"</p>
+              <div class="panel-card-footer">
+                <span>Vector SVG</span>
+                <div class="panel-links">
+                  <a class="panel-link" href="${svgPath}" target="_blank">SVG ↗</a>
+                  <a class="panel-link" href="${pngPath}" target="_blank" style="background:#F1F5F9; color:#475569;">PNG ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <div class="panels-grid">
+          ${panelCards}
+        </div>
+      `;
+    }
+
+    function renderSingleCoverLayout(story) {
+      const svgPath = `data/story_images/${encodeURIComponent(story.id)}.svg`;
+      const pngPath = `data/story_images/${encodeURIComponent(story.id)}.png`;
+      const sentences = story.text || [];
+
+      return `
+        <div class="single-story-layout">
+          <div class="single-cover-media" onclick="openLightbox('${svgPath}', '${pngPath}', '${escapeHtml(story.title)}', 'Cover', '${escapeHtml(sentences[0] || story.title)}')">
+            <span class="panel-badge">Cover Vector</span>
+            <img src="${svgPath}" alt="${escapeHtml(story.title)}" loading="lazy" onerror="this.onerror=null; this.src='${pngPath}';" />
+          </div>
+          <div class="single-story-info">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+              <h4 style="font-weight: 800; color: #334155; font-size: 1rem;">Story Narrative (${sentences.length} sentences):</h4>
+              <div class="panel-links">
+                <a class="panel-link" href="${svgPath}" target="_blank">Open Vector SVG ↗</a>
+                <a class="panel-link" href="${pngPath}" target="_blank" style="background:#F1F5F9; color:#475569;">Raster PNG ↗</a>
+              </div>
+            </div>
+            <div class="sentences-preview">
+              ${sentences.map((sent, i) => `
+                <div class="sentence-item">
+                  <span class="sentence-num">${i + 1}.</span> ${escapeHtml(sent)}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Lightbox Controls
+    function openLightbox(svgPath, pngPath, title, panelNum, sentence) {
+      document.getElementById('lightboxImg').src = svgPath;
+      document.getElementById('lightboxTitle').textContent = `${title} — Panel ${panelNum}`;
+      document.getElementById('lightboxSentence').textContent = `"${sentence}"`;
+      document.getElementById('lightboxPanelNum').textContent = `Panel ${panelNum}`;
+      document.getElementById('lightboxSvgLink').href = svgPath;
+      document.getElementById('lightboxPngLink').href = pngPath;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function closeLightbox(event) {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Event hooks for Search & Filter Tabs
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      renderGallery();
+    });
+
+    document.getElementById('filterTabs').addEventListener('click', (e) => {
+      const btn = e.target.closest('.tab-btn');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter;
+      updateActiveTab();
+      renderGallery();
+    });
+
+    // Initial load
+    loadData();
+
+    // Background auto-refresh for new storyboards without scroll jump
+    setInterval(async () => {
+      try {
+        const res = await fetch('data/storyboard_manifest.json');
+        if (res.ok) {
+          const fresh = await res.json();
+          const oldCount = Object.keys(storyboardManifest).length;
+          const newCount = Object.keys(fresh).length;
+          if (oldCount !== newCount) {
+            storyboardManifest = fresh;
+            updateStats();
+            populateJumpSelect();
+            renderGallery();
+          }
+        }
+      } catch (e) {}
+    }, 15000);
+  </script>
+  <script defer src="analytics.js?v=1.0"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.AppAnalytics) window.AppAnalytics.trackPageView(window.location.pathname, document.title);
+    });
   </script>
 </body>
 </html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalePickle - Full-Page Kid UI Mockups Suite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #F8FAFC;
+    }
+    h1, h2, h3, h4, button, .font-fun {
+      font-family: 'Fredoka', 'Nunito', sans-serif;
+    }
+    .clay-btn {
+      box-shadow: 0 6px 0 rgba(0,0,0,0.12), 0 10px 15px rgba(0,0,0,0.06);
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .clay-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.12), 0 4px 6px rgba(0,0,0,0.04);
+    }
+    
+    /* Responsive Device Frames */
+    .device-desktop { width: 100%; height: 750px; border-radius: 24px; border: 4px solid #CBD5E1; }
+    .device-tablet { width: 768px; height: 850px; border-radius: 36px; border: 12px solid #1E293B; margin: 0 auto; }
+    .device-mobile { width: 390px; height: 800px; border-radius: 44px; border: 12px solid #1E293B; margin: 0 auto; }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 p-4 sm:p-6 space-y-6">
+
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- Top Breadcrumb -->
+    <div class="flex items-center justify-between text-xs bg-white/90 backdrop-blur-md px-5 py-3 rounded-2xl border border-slate-200 shadow-sm flex-wrap gap-2">
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="font-bold text-indigo-600 hover:text-indigo-800 font-fun text-sm flex items-center gap-1.5">
+          <span>🥒 TalePickle Home</span>
+        </a>
+        <span class="text-slate-300">/</span>
+        <span class="text-slate-600 font-semibold">Full-Page Design Mockups Suite</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="redesigns.html" class="text-xs font-black text-purple-600 hover:underline font-fun">🎪 Redesigns Lab</a>
+      </div>
+    </div>
+
+    <!-- Hero Showcase Header -->
+    <header class="bg-gradient-to-r from-pink-500 via-purple-600 to-indigo-600 text-white p-6 sm:p-8 rounded-3xl shadow-xl flex flex-wrap items-center justify-between gap-6">
+      <div class="max-w-2xl space-y-2">
+        <div class="flex items-center gap-2">
+          <span class="bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider font-fun">High-Fidelity Mockups</span>
+          <span class="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">Full Creative Liberty</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-black tracking-tight font-fun">
+          TalePickle Full-Page Kid Mockups
+        </h1>
+        <p class="text-sm sm:text-base text-purple-100 font-medium">
+          Complete, standalone production prototypes loaded with tactile cause-and-effect toys, random animations, Web Audio synthesizers, and child-first metaphors.
+        </p>
+      </div>
+
+      <!-- Viewport Device Switcher -->
+      <div class="bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/20 flex gap-2">
+        <button onclick="setDevice('desktop')" id="btn-desktop" class="clay-btn bg-amber-400 text-amber-950 font-black text-xs px-3.5 py-2 rounded-xl font-fun">
+          🖥️ Desktop
+        </button>
+        <button onclick="setDevice('tablet')" id="btn-tablet" class="clay-btn bg-white/20 text-white font-black text-xs px-3.5 py-2 rounded-xl font-fun">
+          📱 Tablet
+        </button>
+        <button onclick="setDevice('mobile')" id="btn-mobile" class="clay-btn bg-white/20 text-white font-black text-xs px-3.5 py-2 rounded-xl font-fun">
+          📱 Phone
+        </button>
+      </div>
+    </header>
+
+    <!-- Interactive Live Preview Frame -->
+    <div class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+          <h2 id="active-mockup-title" class="font-black text-lg text-slate-800 font-fun">Active: The Gumball Toybox & Arcade Carnival</h2>
+        </div>
+        <a id="active-direct-url" href="mockup_gumball_arcade.html" target="_blank" class="text-xs font-black text-indigo-600 hover:underline font-fun flex items-center gap-1">
+          Open In New Tab ↗
+        </a>
+      </div>
+
+      <div class="w-full flex justify-center bg-slate-200/60 p-4 sm:p-6 rounded-3xl border border-slate-300">
+        <iframe id="mockup-frame" src="mockup_gumball_arcade.html" class="device-desktop shadow-2xl transition-all duration-300" title="Full-Page Mockup"></iframe>
+      </div>
+    </div>
+
+    <!-- Section: End-to-End Listing + Story Page Pairs -->
+    <div class="bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 p-1 rounded-3xl shadow-xl">
+      <div class="bg-white p-6 sm:p-8 rounded-[22px] space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <span class="bg-rose-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase font-fun">End-to-End Experiences</span>
+            <h3 class="text-2xl font-black text-slate-800 font-fun mt-1">Complete Listing + Story Reader Pairs</h3>
+            <p class="text-xs text-slate-500">Each of these features both the complete interactive Catalog/Listing AND the full Story Reader with word-by-word karaoke!</p>
+          </div>
+          <span class="text-3xl">📖🚂👓🔥</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Pair 1: Pop-Up Book Spread -->
+          <div onclick="loadMockup('mockup_pair_popup_book.html', '3D Pop-Up Storybook: Table of Contents & Comic Reader')" class="p-5 bg-amber-50 hover:bg-amber-100 rounded-3xl border-3 border-amber-300 cursor-pointer flex flex-col justify-between transition-all hover:scale-101 shadow-sm">
+            <div>
+              <div class="flex justify-between items-center">
+                <span class="text-4xl">📖✨</span>
+                <span class="bg-amber-300 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Two-Page Spread</span>
+              </div>
+              <h4 class="font-black text-base text-amber-950 font-fun mt-2">1. 3D Pop-Up Storybook Spread</h4>
+              <p class="text-xs text-slate-600 mt-1">
+                <strong>Listing:</strong> Two-page parchment Table of Contents, quill search, and hanging bookmark ribbons.<br>
+                <strong>Story:</strong> Living illustrated stage, sentence-by-sentence text, and live word-by-word karaoke!
+              </p>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="font-black text-amber-800 text-xs font-fun">Test Listing + Reader →</span>
+              <a href="mockup_pair_popup_book.html" target="_blank" onclick="event.stopPropagation()" class="clay-btn bg-amber-400 text-amber-950 font-black text-[11px] px-3 py-1 rounded-xl font-fun">Open Full ↗</a>
+            </div>
+          </div>
+
+          <!-- Pair 2: Train Station & Observation Car -->
+          <div onclick="loadMockup('mockup_pair_train_station.html', 'The Aesop Express: Station Platform & Observation Carriage')" class="p-5 bg-sky-50 hover:bg-sky-100 rounded-3xl border-3 border-sky-300 cursor-pointer flex flex-col justify-between transition-all hover:scale-101 shadow-sm">
+            <div>
+              <div class="flex justify-between items-center">
+                <span class="text-4xl">🚂💨</span>
+                <span class="bg-sky-300 text-sky-950 text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Train Journey</span>
+              </div>
+              <h4 class="font-black text-base text-sky-950 font-fun mt-2">2. The Aesop Express Train & Station</h4>
+              <p class="text-xs text-slate-600 mt-1">
+                <strong>Listing:</strong> Station platform with rolling themed carriages (Safari, Wisdom, Forest) & whistle pull.<br>
+                <strong>Story:</strong> Inside the observation car looking out moving panorama windows with ticket stamp moral!
+              </p>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="font-black text-sky-800 text-xs font-fun">Test Listing + Reader →</span>
+              <a href="mockup_pair_train_station.html" target="_blank" onclick="event.stopPropagation()" class="clay-btn bg-sky-400 text-sky-950 font-black text-[11px] px-3 py-1 rounded-xl font-fun">Open Full ↗</a>
+            </div>
+          </div>
+
+          <!-- Pair 3: Retro View-Master & Eyepieces -->
+          <div onclick="loadMockup('mockup_pair_viewmaster.html', 'Retro 3D View-Master: Circular Reel & Dual Lens Eyepieces')" class="p-5 bg-rose-50 hover:bg-rose-100 rounded-3xl border-3 border-rose-300 cursor-pointer flex flex-col justify-between transition-all hover:scale-101 shadow-sm">
+            <div>
+              <div class="flex justify-between items-center">
+                <span class="text-4xl">👓🎞️</span>
+                <span class="bg-rose-300 text-rose-950 text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Stereoscopic 3D</span>
+              </div>
+              <h4 class="font-black text-base text-rose-950 font-fun mt-2">3. Retro 3D View-Master & Reader</h4>
+              <p class="text-xs text-slate-600 mt-1">
+                <strong>Listing:</strong> Circular rotating film reel with mechanical orange lever that advances slides with optical clicks.<br>
+                <strong>Story:</strong> Dual binocular lenses (Left = 3D stage with comic badges; Right = word karaoke)!
+              </p>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="font-black text-rose-800 text-xs font-fun">Test Listing + Reader →</span>
+              <a href="mockup_pair_viewmaster.html" target="_blank" onclick="event.stopPropagation()" class="clay-btn bg-rose-400 text-white font-black text-[11px] px-3 py-1 rounded-xl font-fun">Open Full ↗</a>
+            </div>
+          </div>
+
+          <!-- Pair 4: Campfire Jars & Shadow Puppet Screen -->
+          <div onclick="loadMockup('mockup_pair_shadow_campfire.html', 'Enchanted Campfire: Firefly Jars & Shadow Puppet Theater')" class="p-5 bg-emerald-50 hover:bg-emerald-100 rounded-3xl border-3 border-emerald-300 cursor-pointer flex flex-col justify-between transition-all hover:scale-101 shadow-sm">
+            <div>
+              <div class="flex justify-between items-center">
+                <span class="text-4xl">🔥🎭</span>
+                <span class="bg-emerald-300 text-emerald-950 text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Shadow Theater</span>
+              </div>
+              <h4 class="font-black text-base text-emerald-950 font-fun mt-2">4. Campfire & Shadow Puppet Stage</h4>
+              <p class="text-xs text-slate-600 mt-1">
+                <strong>Listing:</strong> Moonlit woodland campfire with glowing firefly mason jars hanging from pine branches.<br>
+                <strong>Story:</strong> Backlit shadow puppet parchment projection with crackling campfire sounds & ember words!
+              </p>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <span class="font-black text-emerald-800 text-xs font-fun">Test Listing + Reader →</span>
+              <a href="mockup_pair_shadow_campfire.html" target="_blank" onclick="event.stopPropagation()" class="clay-btn bg-emerald-500 text-white font-black text-[11px] px-3 py-1 rounded-xl font-fun">Open Full ↗</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Mockup Selection Grid (8 Complete Full-Page Designs) -->
+    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-md space-y-6">
+      <div>
+        <h3 class="text-xl font-black text-slate-800 font-fun">Choose a Full-Page Mockup to Experience:</h3>
+        <p class="text-xs text-slate-500">Click any card below to instantly load it in the viewer or launch it full-screen.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Card 1: Gumball Machine -->
+        <div onclick="loadMockup('mockup_gumball_arcade.html', 'The Gumball Toybox & Arcade Carnival')" class="p-4 bg-rose-50 hover:bg-rose-100 rounded-2xl border-2 border-rose-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🍬🎰</span>
+            <h4 class="font-black text-sm text-rose-950 font-fun mt-1">1. Gumball Arcade</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Turn the crank to tumble story capsules with poppable ambient bubbles & googly eyes.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-rose-600 font-fun">Preview →</span>
+            <a href="mockup_gumball_arcade.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 2: 3D Pop-Up Atlas -->
+        <div onclick="loadMockup('mockup_popup_atlas.html', 'The 3D Pop-Up Adventure Archipelago')" class="p-4 bg-sky-50 hover:bg-sky-100 rounded-2xl border-2 border-sky-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🗺️📖</span>
+            <h4 class="font-black text-sm text-sky-950 font-fun mt-1">2. Pop-Up 3D Atlas</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Papercraft folding islands, tickle-able sun, rainbow rainclouds, and flying messenger bird.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-sky-600 font-fun">Preview →</span>
+            <a href="mockup_popup_atlas.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 3: Enchanted Treehouse -->
+        <div onclick="loadMockup('mockup_enchanted_treehouse.html', 'The Enchanted Treehouse of 1000 Tales')" class="p-4 bg-emerald-50 hover:bg-emerald-100 rounded-2xl border-2 border-emerald-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🌳✨</span>
+            <h4 class="font-black text-sm text-emerald-950 font-fun mt-1">3. Enchanted Treehouse</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Vertical climb from root burrows to celestial stars with glowing fireflies and gramophone.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-emerald-600 font-fun">Preview →</span>
+            <a href="mockup_enchanted_treehouse.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 4: Cosmic Cockpit -->
+        <div onclick="loadMockup('mockup_cosmic_cockpit.html', 'The Space Explorer\'s Constellation Cockpit')" class="p-4 bg-indigo-50 hover:bg-indigo-100 rounded-2xl border-2 border-indigo-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🚀🌌</span>
+            <h4 class="font-black text-sm text-indigo-950 font-fun mt-1">4. Cosmic Cockpit</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Starship windshield with animal constellations, warp speed lever, and zero-G magnetic stickers.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-indigo-600 font-fun">Preview →</span>
+            <a href="mockup_cosmic_cockpit.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 5: Scratch Craft -->
+        <div onclick="loadMockup('mockup_scratch_craft.html', 'The Scratch-and-Reveal Craft Table')" class="p-4 bg-amber-50 hover:bg-amber-100 rounded-2xl border-2 border-amber-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🎨✂️</span>
+            <h4 class="font-black text-sm text-amber-950 font-fun mt-1">5. Scratch Craft Desk</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Scratch silver mystery foil with cursor/touch to reveal hidden fable art with ragdoll table shake.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-amber-600 font-fun">Preview →</span>
+            <a href="mockup_scratch_craft.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 6: Submarine Porthole -->
+        <div onclick="loadMockup('mockup_submarine_porthole.html', 'The Deep-Sea Submarine & Sonar Abyss')" class="p-4 bg-cyan-50 hover:bg-cyan-100 rounded-2xl border-2 border-cyan-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🌊🤿</span>
+            <h4 class="font-black text-sm text-cyan-950 font-fun mt-1">6. Submarine Sonar</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Squeegee condensation off brass portholes, ping acoustic radar, and discover glowing jellyfish.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-cyan-600 font-fun">Preview →</span>
+            <a href="mockup_submarine_porthole.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 7: Hotel Dollhouse -->
+        <div onclick="loadMockup('mockup_hotel_dollhouse.html', 'Hotel Aesop: The Peep-Through Dollhouse')" class="p-4 bg-stone-100 hover:bg-stone-200 rounded-2xl border-2 border-stone-300 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🏠🚪</span>
+            <h4 class="font-black text-sm text-stone-900 font-fun mt-1">7. Hotel Dollhouse</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Cutaway rooms with live story scenes: sleeping lion, grape fox, crow lab, lights, and cuckoo clock.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-stone-700 font-fun">Preview →</span>
+            <a href="mockup_hotel_dollhouse.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 8: Fable Pinball -->
+        <div onclick="loadMockup('mockup_fable_pinball.html', 'Aesop\'s Fable-Ball Pinball Machine')" class="p-4 bg-purple-50 hover:bg-purple-100 rounded-2xl border-2 border-purple-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1">
+          <div>
+            <span class="text-3xl">🎰💥</span>
+            <h4 class="font-black text-sm text-purple-950 font-fun mt-1">8. Fable Pinball</h4>
+            <p class="text-[11px] text-slate-600 mt-1">Pull spring plunger, bounce off musical mushroom bumpers, trigger multiball frenzy, and drop targets.</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between text-xs">
+            <span class="font-black text-purple-600 font-fun">Preview →</span>
+            <a href="mockup_fable_pinball.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Full</a>
+          </div>
+        </div>
+
+        <!-- Card 9: Pet Sanctuary -->
+        <div onclick="loadMockup('mockup_pet_sanctuary.html', 'The Tamagotchi Living Pet Sanctuary')" class="p-4 bg-emerald-50 hover:bg-emerald-100 rounded-2xl border-2 border-emerald-200 cursor-pointer flex flex-col justify-between transition-transform hover:-translate-y-1 col-span-1 sm:col-span-2 lg:col-span-4">
+          <div class="flex items-center gap-4">
+            <span class="text-4xl">🐾🍎</span>
+            <div>
+              <h4 class="font-black text-sm text-emerald-950 font-fun mt-1">9. Tamagotchi Living Pet Sanctuary</h4>
+              <p class="text-[11px] text-slate-600 mt-0.5">150 roaming chibi fable animals in a sunny meadow. Toss apples, tickle bellies, and read stories to unlock golden crowns and silly accessories!</p>
+            </div>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-xs">
+            <span class="font-black text-emerald-600 font-fun">Preview →</span>
+            <a href="mockup_pet_sanctuary.html" target="_blank" onclick="event.stopPropagation()" class="text-[10px] text-slate-400 hover:text-slate-700">↗ Open Full Page</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function loadMockup(url, title) {
+      const frame = document.getElementById('mockup-frame');
+      const titleEl = document.getElementById('active-mockup-title');
+      const urlEl = document.getElementById('active-direct-url');
+
+      frame.src = url;
+      titleEl.textContent = `Active: ${title}`;
+      urlEl.href = url;
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+    }
+
+    function setDevice(device) {
+      const frame = document.getElementById('mockup-frame');
+      const bDesktop = document.getElementById('btn-desktop');
+      const bTablet = document.getElementById('btn-tablet');
+      const bMobile = document.getElementById('btn-mobile');
+
+      bDesktop.className = 'clay-btn bg-white/20 text-white font-black text-xs px-3.5 py-2 rounded-xl font-fun';
+      bTablet.className = 'clay-btn bg-white/20 text-white font-black text-xs px-3.5 py-2 rounded-xl font-fun';
+      bMobile.className = 'clay-btn bg-white/20 text-white font-black text-xs px-3.5 py-2 rounded-xl font-fun';
+
+      if (device === 'desktop') {
+        frame.className = 'device-desktop shadow-2xl transition-all duration-300';
+        bDesktop.className = 'clay-btn bg-amber-400 text-amber-950 font-black text-xs px-3.5 py-2 rounded-xl font-fun';
+      } else if (device === 'tablet') {
+        frame.className = 'device-tablet shadow-2xl transition-all duration-300';
+        bTablet.className = 'clay-btn bg-amber-400 text-amber-950 font-black text-xs px-3.5 py-2 rounded-xl font-fun';
+      } else if (device === 'mobile') {
+        frame.className = 'device-mobile shadow-2xl transition-all duration-300';
+        bMobile.className = 'clay-btn bg-amber-400 text-amber-950 font-black text-xs px-3.5 py-2 rounded-xl font-fun';
+      }
+    }
+  </script>
+  <script defer src="analytics.js?v=1.0"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.AppAnalytics) window.AppAnalytics.trackPageView(window.location.pathname, document.title);
+    });
+  </script>
+</body>
+</html>

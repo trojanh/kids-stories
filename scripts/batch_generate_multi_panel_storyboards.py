@@ -24,6 +24,9 @@ import argparse
 import subprocess
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
 STORIES_FILE = os.path.join(ROOT_DIR, 'src', 'data', 'stories.json')
 SVGS_DIR = os.path.join(ROOT_DIR, 'src', 'ui', 'data', 'svgs')
 HERO_IMAGES_DIR = os.path.join(ROOT_DIR, 'src', 'ui', 'data', 'story_images')
@@ -31,6 +34,7 @@ VECTORIZE_SCRIPT = os.path.join(ROOT_DIR, 'scripts', 'vectorize_story_panel.py')
 MODEL_NAME = "dreamshaper_xl_v2.1_turbo_q6p_q8p.ckpt"
 
 from scripts.generate_story_prompts import load_stories, generate_story_prompt_suite
+from scripts.update_storyboard_manifest import update_manifest
 
 UNIVERSAL_NEGATIVE_PROMPT = (
     "photorealistic, 3d render, CGI, glossy plastic finish, floating text, typography, subtitles, "
@@ -55,6 +59,18 @@ def generate_story_panels(story, steps=8, force=False):
     suite = generate_story_prompt_suite(story)
     total_panels = suite['total_panels']
 
+    # Fast skip check if all panels already exist
+    all_exist = True
+    for p in suite['panels']:
+        p_num = p['panel_number']
+        t_svg = os.path.join(out_dir, f"panel_{p_num}.svg")
+        if not os.path.exists(t_svg) or os.path.getsize(t_svg) < 10000:
+            all_exist = False
+            break
+    if all_exist and not force:
+        print(f"  ⏩ Storyboard for '{title}' ({story_id}) already complete ({total_panels} panels). Skipping.")
+        return True
+
     print(f"\n{'='*80}")
     print(f"📖 STORYBOARD GENERATION: {title} ({story_id}) — {total_panels} Panels")
     print(f"   Stage: {suite['master_stage']}")
@@ -75,7 +91,7 @@ def generate_story_panels(story, steps=8, force=False):
             shutil.copy2(hero_png, p1_png)
         if not os.path.exists(thumb_svg) or force:
             shutil.copy2(hero_svg, thumb_svg)
-        print(f"  ✓ Panel 1/7 [Cover]: Copied from existing hero vector ({round(os.path.getsize(p1_svg)/1024, 1)} KB)")
+        print(f"  ✓ Panel 1/{total_panels} [Cover]: Copied from existing hero vector ({round(os.path.getsize(p1_svg)/1024, 1)} KB)")
 
     story_start = time.time()
     generated_count = 0
@@ -104,6 +120,7 @@ def generate_story_panels(story, steps=8, force=False):
             "--local",
             "--model", MODEL_NAME,
             "--steps", str(steps),
+            "--disable-preview",
             "--prompt", prompt,
             "--negative-prompt", UNIVERSAL_NEGATIVE_PROMPT,
             "--output", target_png
@@ -128,12 +145,17 @@ def generate_story_panels(story, steps=8, force=False):
 
     total_time = round((time.time() - story_start) / 60, 1)
     print(f"\n✓ Completed storyboard for '{title}' in {total_time} mins ({generated_count} new panels generated)")
+    try:
+        update_manifest()
+    except Exception as e:
+        print(f"Manifest update warning: {e}")
     return True
 
 def main():
     parser = argparse.ArgumentParser(description="Generate complete multi-panel storyboards in batches")
     parser.add_argument("--story", type=str, default=None, help="Generate for a specific story ID")
-    parser.add_argument("--batch", type=str, default=None, choices=['core', 'seven_panel', 'all'], help="Batch selection")
+    parser.add_argument("--batch", type=str, default='remaining', choices=['core', 'seven_panel', 'short', 'remaining', 'all'], help="Batch selection (default: remaining)")
+    parser.add_argument("--sort", type=str, default='length', choices=['length', 'id', 'original'], help="Sort order (default: length)")
     parser.add_argument("--limit", type=int, default=None, help="Number of stories to process")
     parser.add_argument("--steps", type=int, default=8, help="Sampling steps (default: 8)")
     parser.add_argument("--force", action="store_true", help="Force regeneration of existing panels")
@@ -141,6 +163,19 @@ def main():
 
     all_stories = load_stories()
     story_map = {s['id']: s for s in all_stories}
+
+    # Load manifest to determine which stories are already fully completed
+    manifest_path = os.path.join(ROOT_DIR, 'src', 'ui', 'data', 'storyboard_manifest.json')
+    completed_ids = set()
+    if os.path.exists(manifest_path):
+        try:
+            with open(manifest_path, 'r', encoding='utf-8') as mf:
+                m = json.load(mf)
+                for sid, info in m.items():
+                    if info.get('is_complete'):
+                        completed_ids.add(sid)
+        except Exception:
+            pass
 
     if args.story:
         target = story_map.get(args.story)
@@ -152,13 +187,22 @@ def main():
         queue = [story_map[sid] for sid in CORE_STORIES if sid in story_map]
     elif args.batch == 'seven_panel':
         queue = [s for s in all_stories if len(s.get('text', [])) == 7]
-    elif args.limit:
-        queue = all_stories[:args.limit]
+    elif args.batch == 'short':
+        queue = [s for s in all_stories if len(s.get('text', [])) <= 6 and s['id'] not in completed_ids]
+    elif args.batch == 'remaining':
+        queue = [s for s in all_stories if s['id'] not in completed_ids]
     elif args.batch == 'all':
         queue = all_stories
     else:
-        # Default: Core batch of top fables
-        queue = [story_map[sid] for sid in CORE_STORIES if sid in story_map]
+        queue = [s for s in all_stories if s['id'] not in completed_ids]
+
+    if args.sort == 'length':
+        queue.sort(key=lambda s: len(s.get('text', [])))
+    elif args.sort == 'id':
+        queue.sort(key=lambda s: s['id'])
+
+    if args.limit:
+        queue = queue[:args.limit]
 
     print(f"================================================================================")
     print(f"🚀 TalePickle Multi-Panel Storyboard Engine")

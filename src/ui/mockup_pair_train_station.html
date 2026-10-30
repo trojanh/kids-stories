@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TalePickle - The Aesop Express Train & Station</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #0284C7;
+      background: radial-gradient(circle at 50% 30%, #38BDF8 0%, #0284C7 60%, #0369A1 100%);
+      user-select: none;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, button, .font-fun {
+      font-family: 'Fredoka', 'Nunito', sans-serif;
+    }
+    .clay-btn {
+      box-shadow: 0 6px 0 rgba(0,0,0,0.2), 0 10px 15px rgba(0,0,0,0.12);
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .clay-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.08);
+    }
+    
+    /* Train Car Styling */
+    .train-car {
+      box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+      border-radius: 24px;
+      border: 4px solid #1E293B;
+    }
+    .word-active {
+      background: #FACC15;
+      color: #713F12;
+      border-radius: 8px;
+      padding: 0 4px;
+      transform: scale(1.1);
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(250,204,21,0.5);
+    }
+    @keyframes train-chug {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .animate-chug { animation: train-chug 1.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen text-slate-800 p-3 sm:p-6 flex flex-col justify-between">
+
+  <div class="max-w-6xl mx-auto w-full space-y-4">
+
+    <!-- Top Train Header -->
+    <header class="bg-white/90 backdrop-blur-md px-5 py-3 rounded-3xl border-3 border-amber-400 shadow-xl flex items-center justify-between flex-wrap gap-3">
+      <div class="flex items-center gap-3">
+        <a href="mockups_hub.html" class="clay-btn bg-amber-100 hover:bg-amber-200 text-amber-900 text-xs font-black px-3.5 py-2 rounded-2xl flex items-center gap-1.5 font-fun">
+          <span>← Hub</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <span class="text-3xl animate-chug">🚂💨</span>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-black text-slate-900 font-fun leading-tight">The Aesop Express Station</h1>
+            <p class="text-[11px] text-slate-500 font-semibold">Board any train car to read illustrated fable journeys!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode Switch Pills & Whistle Cord -->
+      <div class="flex items-center gap-2">
+        <button onclick="pullWhistle()" class="clay-btn bg-amber-400 text-amber-950 font-black text-xs px-3.5 py-2 rounded-xl font-fun flex items-center gap-1 shadow-amber-400/30">
+          <span>🔔</span> Pull Whistle!
+        </button>
+        <button onclick="showStationListing()" id="btn-station" class="clay-btn bg-sky-600 text-white font-black text-xs px-4 py-2 rounded-xl font-fun">
+          🚉 Station
+        </button>
+        <button onclick="showObservationCar()" id="btn-car" class="clay-btn bg-sky-100 text-sky-900 font-black text-xs px-4 py-2 rounded-xl font-fun">
+          🚋 Inside Car
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="bg-amber-50/95 p-6 sm:p-8 rounded-3xl border-4 border-amber-300 shadow-2xl min-h-[560px] flex flex-col justify-between">
+      
+      <!-- ========================================== -->
+      <!-- VIEW 1: STATION & TRAIN CARRIAGE LISTING -->
+      <!-- ========================================== -->
+      <div id="view-station" class="space-y-6">
+        
+        <!-- Platform Sign & Theme Tracks -->
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-amber-200 pb-3">
+          <div>
+            <span class="bg-rose-500 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase font-fun">Track 1 • Departures</span>
+            <h2 class="text-2xl font-black text-slate-800 font-fun mt-1">Pick a Train Car of Fables</h2>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="filterTrain('All')" class="clay-btn bg-amber-300 text-amber-950 font-black text-xs px-3 py-1.5 rounded-xl font-fun">All Cars</button>
+            <button onclick="filterTrain('Animals')" class="clay-btn bg-rose-400 text-white font-black text-xs px-3 py-1.5 rounded-xl font-fun">🦁 Safari</button>
+            <button onclick="filterTrain('Life Lessons')" class="clay-btn bg-emerald-500 text-white font-black text-xs px-3 py-1.5 rounded-xl font-fun">💡 Wisdom</button>
+            <button onclick="filterTrain('Nature')" class="clay-btn bg-purple-500 text-white font-black text-xs px-3 py-1.5 rounded-xl font-fun">🌿 Forest</button>
+          </div>
+        </div>
+
+        <!-- Horizontal Train Track with Rolling Carriages -->
+        <div class="space-y-3">
+          <div class="text-xs font-black text-slate-500 font-fun uppercase">The Steam Train Line:</div>
+          <div id="train-track" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            
+            <!-- Car 1: Safari Carriage -->
+            <div onclick="boardStory('tiger_and_mice')" class="train-car bg-rose-100 hover:bg-rose-200 p-5 cursor-pointer flex flex-col justify-between space-y-3 transform hover:-translate-y-2 transition-all">
+              <div class="flex justify-between items-center">
+                <span class="bg-rose-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full font-fun">Car #1 • Animals</span>
+                <span class="text-2xl animate-chug">🐯</span>
+              </div>
+              <div>
+                <h3 class="text-base font-black text-slate-800 font-fun">The Tiger & Mice</h3>
+                <p class="text-xs text-slate-600 font-semibold mt-0.5">Mighty tiger freed by tiny mouse!</p>
+              </div>
+              <button class="clay-btn bg-rose-500 text-white font-black text-xs py-2 rounded-xl font-fun w-full">
+                Board Carriage 🎫
+              </button>
+            </div>
+
+            <!-- Car 2: Wisdom Engine -->
+            <div onclick="boardStory('crow_and_water_pot')" class="train-car bg-amber-100 hover:bg-amber-200 p-5 cursor-pointer flex flex-col justify-between space-y-3 transform hover:-translate-y-2 transition-all">
+              <div class="flex justify-between items-center">
+                <span class="bg-amber-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full font-fun">Car #2 • Wisdom</span>
+                <span class="text-2xl animate-chug">🦅</span>
+              </div>
+              <div>
+                <h3 class="text-base font-black text-slate-800 font-fun">Crow & Water Pot</h3>
+                <p class="text-xs text-slate-600 font-semibold mt-0.5">Clever bird uses pebbles to drink!</p>
+              </div>
+              <button class="clay-btn bg-amber-500 text-white font-black text-xs py-2 rounded-xl font-fun w-full">
+                Board Carriage 🎫
+              </button>
+            </div>
+
+            <!-- Car 3: Forest Caboose -->
+            <div onclick="boardStory('tortoise_and_hare')" class="train-car bg-emerald-100 hover:bg-emerald-200 p-5 cursor-pointer flex flex-col justify-between space-y-3 transform hover:-translate-y-2 transition-all">
+              <div class="flex justify-between items-center">
+                <span class="bg-emerald-600 text-white text-[10px] font-black px-2 py-0.5 rounded-full font-fun">Car #3 • Nature</span>
+                <span class="text-2xl animate-chug">🐢</span>
+              </div>
+              <div>
+                <h3 class="text-base font-black text-slate-800 font-fun">Tortoise & Hare</h3>
+                <p class="text-xs text-slate-600 font-semibold mt-0.5">Slow and steady wins the race!</p>
+              </div>
+              <button class="clay-btn bg-emerald-600 text-white font-black text-xs py-2 rounded-xl font-fun w-full">
+                Board Carriage 🎫
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Station Bench & Luggage Box -->
+        <div class="bg-white/80 p-4 rounded-2xl border-2 border-amber-300 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🧳</span>
+            <div>
+              <span class="font-black text-sm text-slate-800 font-fun">Stationmaster's Golden Ticket</span>
+              <p class="text-xs text-slate-500">Every fable you read stamps your golden train ticket!</p>
+            </div>
+          </div>
+          <button onclick="boardStory('tiger_and_mice')" class="clay-btn bg-amber-400 text-amber-950 font-black text-xs px-4 py-2 rounded-xl font-fun">
+            Hop Aboard Any 🚀
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: INSIDE OBSERVATION PASSENGER CAR (STORY READER) -->
+      <!-- ========================================== -->
+      <div id="view-observation" class="hidden space-y-5">
+        
+        <!-- Carriage Window with Scenic Panorama -->
+        <div class="bg-gradient-to-r from-sky-400 via-emerald-300 to-sky-300 rounded-3xl p-6 border-6 border-amber-800 shadow-inner min-h-[220px] flex items-center justify-between relative overflow-hidden">
+          
+          <button onclick="showStationListing()" class="absolute top-3 left-3 clay-btn bg-white text-slate-900 text-xs font-black px-3 py-1.5 rounded-xl font-fun z-10">
+            ← Exit to Station
+          </button>
+
+          <!-- Animated Parallax Moving Elements -->
+          <div class="flex items-center gap-6 mx-auto animate-chug z-10">
+            <span id="train-avatar-main" class="text-7xl">🐯</span>
+            <span id="train-avatar-friend" class="text-5xl">🐭</span>
+          </div>
+
+          <div class="absolute bottom-2 right-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-black text-slate-800 font-fun">
+            Speed: 1.0x Express
+          </div>
+        </div>
+
+        <!-- Story Ticket & Live Word Karaoke -->
+        <div class="bg-white p-6 rounded-3xl border-3 border-amber-300 shadow-lg space-y-4">
+          
+          <div class="flex items-center justify-between border-b-2 border-amber-100 pb-2">
+            <div>
+              <span id="train-story-theme" class="bg-rose-500 text-white text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Animals</span>
+              <h3 id="train-story-title" class="text-xl font-black text-slate-800 font-fun mt-1">The Tiger and the Mice</h3>
+            </div>
+            <span id="train-counter" class="text-xs font-black text-amber-800 font-fun">Sentence 1 of 5</span>
+          </div>
+
+          <!-- Sentence text -->
+          <div class="p-5 bg-amber-50 rounded-2xl border-2 border-amber-200 min-h-[140px] flex items-center">
+            <div id="train-sentence-box" class="text-base sm:text-lg font-extrabold text-slate-800 leading-relaxed space-x-1">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Moral Ticket Stamp -->
+          <div class="bg-gradient-to-r from-amber-400 to-yellow-300 p-3 rounded-2xl text-amber-950 font-black text-xs font-fun flex items-center gap-2">
+            <span class="text-xl">🎟️</span>
+            <span>Moral: <span id="train-moral" class="italic">Strength should always be balanced with kindness.</span></span>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center justify-between gap-3 pt-2">
+            <button onclick="prevTrainSentence()" class="clay-btn bg-amber-200 text-amber-950 font-black text-xs px-4 py-2.5 rounded-xl font-fun">
+              ⏮️ Prev
+            </button>
+            <button id="train-play-btn" onclick="toggleTrainSpeech()" class="clay-btn flex-1 bg-emerald-500 hover:bg-emerald-400 text-white font-black py-2.5 rounded-2xl text-sm font-fun flex items-center justify-center gap-2">
+              <span id="train-play-icon">▶️</span>
+              <span id="train-play-label">Read Aloud</span>
+            </button>
+            <button onclick="nextTrainSentence()" class="clay-btn bg-amber-200 text-amber-950 font-black text-xs px-4 py-2.5 rounded-xl font-fun">
+              Next ⏭️
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+    function playChug(freq = 280) {
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.21);
+      } catch (e) {}
+    }
+
+    const trainStories = {
+      tiger_and_mice: {
+        title: 'The Tiger and the Mice',
+        theme: 'Animals',
+        avatar: '🐯',
+        friend: '🐭',
+        moral: 'Strength should always be balanced with kindness.',
+        sentences: [
+          'In a shady mango grove, a big tiger was sleeping under a tree.',
+          'A tiny mouse whispered, "Please let me pass, I need to gather fallen seeds."',
+          'The kind tiger opened his warm eyes and gently let the little mouse go.',
+          'Later that day, the tiger got his heavy paw caught in a hunter\'s rope net.',
+          'The brave mouse quickly chewed the ropes, freeing the tiger, and they became forever friends.'
+        ]
+      },
+      crow_and_water_pot: {
+        title: 'The Crow and the Water Pot',
+        theme: 'Wisdom',
+        avatar: '🦅',
+        friend: '🏺',
+        moral: 'Little by little does the trick when solving big challenges.',
+        sentences: [
+          'On a bright sunny afternoon, a thirsty crow found an earthen pot in a courtyard.',
+          'He peeked inside to take a drink, but the cool water was too far down.',
+          'Thinking fast, the clever crow began picking up small pebbles from the ground.',
+          'He dropped them into the pot one by one with his sharp beak.',
+          'The water rose to the very top, and the happy crow drank until he was refreshed!'
+        ]
+      },
+      tortoise_and_hare: {
+        title: 'The Tortoise and the Hare',
+        theme: 'Nature',
+        avatar: '🐢',
+        friend: '🐇',
+        moral: 'Slow and steady wins the race!',
+        sentences: [
+          'The speedy hare always bragged about how fast he could dash through the meadow.',
+          'The calm tortoise smiled and challenged him to a great footrace.',
+          'The confident hare took a nap under a shady tree, thinking he had plenty of time.',
+          'Step by steady step, the hardworking tortoise kept moving forward without stopping.',
+          'When the hare woke up, the tortoise was already smiling across the finish line!'
+        ]
+      }
+    };
+
+    let activeKey = 'tiger_and_mice';
+    let currentIdx = 0;
+    let isSpeaking = false;
+
+    function showStationListing() {
+      playChug(350);
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      isSpeaking = false;
+      document.getElementById('view-station').classList.remove('hidden');
+      document.getElementById('view-observation').classList.add('hidden');
+      document.getElementById('btn-station').className = 'clay-btn bg-sky-600 text-white font-black text-xs px-4 py-2 rounded-xl font-fun';
+      document.getElementById('btn-car').className = 'clay-btn bg-sky-100 text-sky-900 font-black text-xs px-4 py-2 rounded-xl font-fun';
+    }
+
+    function showObservationCar() {
+      playChug(450);
+      document.getElementById('view-station').classList.add('hidden');
+      document.getElementById('view-observation').classList.remove('hidden');
+      document.getElementById('btn-station').className = 'clay-btn bg-sky-100 text-sky-900 font-black text-xs px-4 py-2 rounded-xl font-fun';
+      document.getElementById('btn-car').className = 'clay-btn bg-sky-600 text-white font-black text-xs px-4 py-2 rounded-xl font-fun';
+      loadSentence();
+    }
+
+    function boardStory(key) {
+      activeKey = key;
+      currentIdx = 0;
+      const s = trainStories[key];
+      document.getElementById('train-story-title').textContent = s.title;
+      document.getElementById('train-story-theme').textContent = s.theme;
+      document.getElementById('train-avatar-main').textContent = s.avatar;
+      document.getElementById('train-avatar-friend').textContent = s.friend;
+      document.getElementById('train-moral').textContent = s.moral;
+      showObservationCar();
+    }
+
+    function loadSentence() {
+      const s = trainStories[activeKey];
+      const sentence = s.sentences[currentIdx];
+      document.getElementById('train-counter').textContent = `Sentence ${currentIdx + 1} of ${s.sentences.length}`;
+
+      const box = document.getElementById('train-sentence-box');
+      const words = sentence.split(/\s+/);
+      box.innerHTML = words.map((w, idx) => `<span id="t-word-${idx}" class="transition-all cursor-pointer hover:text-amber-600" onclick="sayTrainWord('${w}', ${idx})">${w}</span>`).join(' ');
+    }
+
+    function sayTrainWord(w, idx) {
+      playChug(500);
+      highlightTrainWord(idx);
+      if ('speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(w);
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function highlightTrainWord(idx) {
+      document.querySelectorAll('#train-sentence-box span').forEach((el, i) => {
+        if (i === idx) el.className = 'word-active transition-all cursor-pointer';
+        else el.className = 'transition-all cursor-pointer hover:text-amber-600';
+      });
+    }
+
+    function toggleTrainSpeech() {
+      if (isSpeaking) {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('train-play-icon').textContent = '▶️';
+        document.getElementById('train-play-label').textContent = 'Read Aloud';
+      } else {
+        startTrainSpeech();
+      }
+    }
+
+    function startTrainSpeech() {
+      playChug(600);
+      const s = trainStories[activeKey];
+      const text = s.sentences[currentIdx];
+      if (!('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+
+      let wordIdx = 0;
+      u.onboundary = (e) => {
+        if (e.name === 'word') {
+          highlightTrainWord(wordIdx);
+          wordIdx++;
+        }
+      };
+
+      u.onend = () => {
+        isSpeaking = false;
+        document.getElementById('train-play-icon').textContent = '▶️';
+        document.getElementById('train-play-label').textContent = 'Read Aloud';
+        if (currentIdx < s.sentences.length - 1) {
+          setTimeout(() => { nextTrainSentence(); }, 800);
+        } else {
+          alert(`🚂 Arrival at Moral Station! "${s.title}" completed! You earned a train conductor badge!`);
+        }
+      };
+
+      isSpeaking = true;
+      document.getElementById('train-play-icon').textContent = '⏸️';
+      document.getElementById('train-play-label').textContent = 'Pause';
+      window.speechSynthesis.speak(u);
+    }
+
+    function nextTrainSentence() {
+      const s = trainStories[activeKey];
+      if (currentIdx < s.sentences.length - 1) {
+        currentIdx++;
+        loadSentence();
+        if (isSpeaking) startTrainSpeech();
+      }
+    }
+
+    function prevTrainSentence() {
+      if (currentIdx > 0) {
+        currentIdx--;
+        loadSentence();
+        if (isSpeaking) startTrainSpeech();
+      }
+    }
+
+    function pullWhistle() {
+      playChug(880);
+      setTimeout(() => playChug(700), 150);
+      alert('🚂 TOOT TOOT! The steam whistle blows across the meadow tracks!');
+    }
+
+    function filterTrain(cat) {
+      playChug(400);
+      alert(`Track switched to category: ${cat}`);
+    }
+  </script>
+</body>
+</html>

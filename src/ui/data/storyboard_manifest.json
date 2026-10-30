@@ -1,0 +1,4598 @@
+{
+  "a_raven_and_a_swan": {
+    "story_id": "a_raven_and_a_swan",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "belling_the_cat": {
+    "story_id": "belling_the_cat",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "crow_and_water_pot": {
+    "story_id": "crow_and_water_pot",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "fox_and_grapes": {
+    "story_id": "fox_and_grapes",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "hercules_and_the_farmer": {
+    "story_id": "hercules_and_the_farmer",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "jupiter_and_the_monkey": {
+    "story_id": "jupiter_and_the_monkey",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "mercury_and_the_woodcutter": {
+    "story_id": "mercury_and_the_woodcutter",
+    "panel_count": 26,
+    "expected_total": 26,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg",
+      "19": "panel_19.svg",
+      "20": "panel_20.svg",
+      "21": "panel_21.svg",
+      "22": "panel_22.svg",
+      "23": "panel_23.svg",
+      "24": "panel_24.svg",
+      "25": "panel_25.svg",
+      "26": "panel_26.svg"
+    }
+  },
+  "monkey_and_coconut": {
+    "story_id": "monkey_and_coconut",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_animals_and_the_plague": {
+    "story_id": "the_animals_and_the_plague",
+    "panel_count": 29,
+    "expected_total": 29,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg",
+      "19": "panel_19.svg",
+      "20": "panel_20.svg",
+      "21": "panel_21.svg",
+      "22": "panel_22.svg",
+      "23": "panel_23.svg",
+      "24": "panel_24.svg",
+      "25": "panel_25.svg",
+      "26": "panel_26.svg",
+      "27": "panel_27.svg",
+      "28": "panel_28.svg",
+      "29": "panel_29.svg"
+    }
+  },
+  "the_ant_and_the_dove": {
+    "story_id": "the_ant_and_the_dove",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_ants_and_the_grasshopper": {
+    "story_id": "the_ants_and_the_grasshopper",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_astrologer": {
+    "story_id": "the_astrologer",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_bat_and_the_weasels": {
+    "story_id": "the_bat_and_the_weasels",
+    "panel_count": 18,
+    "expected_total": 18,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg"
+    }
+  },
+  "the_bear_and_the_bees": {
+    "story_id": "the_bear_and_the_bees",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_beaver_and_the_rising_river": {
+    "story_id": "the_beaver_and_the_rising_river",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_bees_and_wasps_and_the_hornet": {
+    "story_id": "the_bees_and_wasps_and_the_hornet",
+    "panel_count": 17,
+    "expected_total": 17,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg"
+    }
+  },
+  "the_birds_the_beasts_and_the_bat": {
+    "story_id": "the_birds_the_beasts_and_the_bat",
+    "panel_count": 15,
+    "expected_total": 15,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg"
+    }
+  },
+  "the_boy_and_the_jar_of_nuts": {
+    "story_id": "the_boy_and_the_jar_of_nuts",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_boy_and_the_nettles": {
+    "story_id": "the_boy_and_the_nettles",
+    "panel_count": 2,
+    "expected_total": 2,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg"
+    }
+  },
+  "the_boys_and_the_frogs": {
+    "story_id": "the_boys_and_the_frogs",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_brave_little_hedgehog": {
+    "story_id": "the_brave_little_hedgehog",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_bull_and_the_goat": {
+    "story_id": "the_bull_and_the_goat",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_bundle_of_sticks": {
+    "story_id": "the_bundle_of_sticks",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_cat_and_the_birds": {
+    "story_id": "the_cat_and_the_birds",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_cat_and_the_fox": {
+    "story_id": "the_cat_and_the_fox",
+    "panel_count": 15,
+    "expected_total": 15,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg"
+    }
+  },
+  "the_cat_and_the_old_rat": {
+    "story_id": "the_cat_and_the_old_rat",
+    "panel_count": 15,
+    "expected_total": 15,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg"
+    }
+  },
+  "the_cat_the_rooster_and_the_young_mouse": {
+    "story_id": "the_cat_the_rooster_and_the_young_mouse",
+    "panel_count": 16,
+    "expected_total": 16,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg"
+    }
+  },
+  "the_clever_chameleon": {
+    "story_id": "the_clever_chameleon",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_crow_and_the_clay_pot": {
+    "story_id": "the_crow_and_the_clay_pot",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_cuckoo_and_the_elephant": {
+    "story_id": "the_cuckoo_and_the_elephant",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_deer_the_sheep_and_the_wolf": {
+    "story_id": "the_deer_the_sheep_and_the_wolf",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_dog_and_his_masters_dinner": {
+    "story_id": "the_dog_and_his_masters_dinner",
+    "panel_count": 11,
+    "expected_total": 11,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg"
+    }
+  },
+  "the_dog_and_his_reflection": {
+    "story_id": "the_dog_and_his_reflection",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_dog_and_the_oyster": {
+    "story_id": "the_dog_and_the_oyster",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_dog_in_the_manger": {
+    "story_id": "the_dog_in_the_manger",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_dog_the_rooster_and_the_fox": {
+    "story_id": "the_dog_the_rooster_and_the_fox",
+    "panel_count": 18,
+    "expected_total": 18,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg"
+    }
+  },
+  "the_dogs_and_the_fox": {
+    "story_id": "the_dogs_and_the_fox",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_dogs_and_the_hides": {
+    "story_id": "the_dogs_and_the_hides",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_donkey_and_his_driver": {
+    "story_id": "the_donkey_and_his_driver",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_donkey_and_his_shadow": {
+    "story_id": "the_donkey_and_his_shadow",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_donkey_and_the_grasshoppers": {
+    "story_id": "the_donkey_and_the_grasshoppers",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_donkey_and_the_lap_dog": {
+    "story_id": "the_donkey_and_the_lap_dog",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_donkey_and_the_load_of_salt": {
+    "story_id": "the_donkey_and_the_load_of_salt",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_donkey_carrying_the_statue": {
+    "story_id": "the_donkey_carrying_the_statue",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_donkey_in_the_lions_skin": {
+    "story_id": "the_donkey_in_the_lions_skin",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_donkey_the_fox_and_the_lion": {
+    "story_id": "the_donkey_the_fox_and_the_lion",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_eagle_and_the_beetle": {
+    "story_id": "the_eagle_and_the_beetle",
+    "panel_count": 11,
+    "expected_total": 11,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg"
+    }
+  },
+  "the_eagle_and_the_jackdaw": {
+    "story_id": "the_eagle_and_the_jackdaw",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_eagle_and_the_kite": {
+    "story_id": "the_eagle_and_the_kite",
+    "panel_count": 14,
+    "expected_total": 14,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg"
+    }
+  },
+  "the_farmer_and_his_sons": {
+    "story_id": "the_farmer_and_his_sons",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_farmer_and_the_cranes": {
+    "story_id": "the_farmer_and_the_cranes",
+    "panel_count": 17,
+    "expected_total": 17,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg"
+    }
+  },
+  "the_farmer_and_the_snake": {
+    "story_id": "the_farmer_and_the_snake",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_farmer_and_the_stork": {
+    "story_id": "the_farmer_and_the_stork",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_fighting_bulls_and_the_frog": {
+    "story_id": "the_fighting_bulls_and_the_frog",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_fighting_roosters_and_the_eagle": {
+    "story_id": "the_fighting_roosters_and_the_eagle",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_fisherman_and_the_little_fish": {
+    "story_id": "the_fisherman_and_the_little_fish",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_flies_and_the_honey": {
+    "story_id": "the_flies_and_the_honey",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_fly_and_the_bull": {
+    "story_id": "the_fly_and_the_bull",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_fox_and_the_crab": {
+    "story_id": "the_fox_and_the_crab",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_fox_and_the_crow": {
+    "story_id": "the_fox_and_the_crow",
+    "panel_count": 15,
+    "expected_total": 15,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg"
+    }
+  },
+  "the_fox_and_the_goat": {
+    "story_id": "the_fox_and_the_goat",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_fox_and_the_grapes": {
+    "story_id": "the_fox_and_the_grapes",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_fox_and_the_hedgehog": {
+    "story_id": "the_fox_and_the_hedgehog",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_fox_and_the_leopard": {
+    "story_id": "the_fox_and_the_leopard",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_fox_and_the_lion": {
+    "story_id": "the_fox_and_the_lion",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_fox_and_the_monkey": {
+    "story_id": "the_fox_and_the_monkey",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_fox_and_the_pheasants": {
+    "story_id": "the_fox_and_the_pheasants",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_fox_and_the_rooster": {
+    "story_id": "the_fox_and_the_rooster",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_fox_and_the_stork": {
+    "story_id": "the_fox_and_the_stork",
+    "panel_count": 11,
+    "expected_total": 11,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg"
+    }
+  },
+  "the_fox_without_a_tail": {
+    "story_id": "the_fox_without_a_tail",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_frog_and_the_mouse": {
+    "story_id": "the_frog_and_the_mouse",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_frogs_and_the_ox": {
+    "story_id": "the_frogs_and_the_ox",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_frogs_who_wished_for_a_king": {
+    "story_id": "the_frogs_who_wished_for_a_king",
+    "panel_count": 14,
+    "expected_total": 14,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg"
+    }
+  },
+  "the_goatherd_and_the_goat": {
+    "story_id": "the_goatherd_and_the_goat",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_goatherd_and_the_wild_goats": {
+    "story_id": "the_goatherd_and_the_wild_goats",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_goose_and_the_golden_egg": {
+    "story_id": "the_goose_and_the_golden_egg",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_hare_and_his_ears": {
+    "story_id": "the_hare_and_his_ears",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_hare_and_the_tortoise": {
+    "story_id": "the_hare_and_the_tortoise",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_hares_and_the_frogs": {
+    "story_id": "the_hares_and_the_frogs",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_heron": {
+    "story_id": "the_heron",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_kangaroos_cozy_pouch": {
+    "story_id": "the_kangaroos_cozy_pouch",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_lark_and_her_young_ones": {
+    "story_id": "the_lark_and_her_young_ones",
+    "panel_count": 16,
+    "expected_total": 16,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg"
+    }
+  },
+  "the_leap_at_rhodes": {
+    "story_id": "the_leap_at_rhodes",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_lion_and_the_donkey": {
+    "story_id": "the_lion_and_the_donkey",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_lion_and_the_gnat": {
+    "story_id": "the_lion_and_the_gnat",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_lion_and_the_mouse": {
+    "story_id": "the_lion_and_the_mouse",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_lion_and_the_silly_donkey": {
+    "story_id": "the_lion_and_the_silly_donkey",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_lion_the_bear_and_the_fox": {
+    "story_id": "the_lion_the_bear_and_the_fox",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_lion_the_donkey_and_the_fox": {
+    "story_id": "the_lion_the_donkey_and_the_fox",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_lions_share": {
+    "story_id": "the_lions_share",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_little_firefly": {
+    "story_id": "the_little_firefly",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_little_goat_and_the_wolf": {
+    "story_id": "the_little_goat_and_the_wolf",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_man_and_the_lion": {
+    "story_id": "the_man_and_the_lion",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_man_and_the_woodland_spirit": {
+    "story_id": "the_man_and_the_woodland_spirit",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_mice_and_the_weasels": {
+    "story_id": "the_mice_and_the_weasels",
+    "panel_count": 11,
+    "expected_total": 11,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg"
+    }
+  },
+  "the_milkmaid_and_her_pail": {
+    "story_id": "the_milkmaid_and_her_pail",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_miller_his_son_and_the_donkey": {
+    "story_id": "the_miller_his_son_and_the_donkey",
+    "panel_count": 22,
+    "expected_total": 22,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg",
+      "19": "panel_19.svg",
+      "20": "panel_20.svg",
+      "21": "panel_21.svg",
+      "22": "panel_22.svg"
+    }
+  },
+  "the_mischievous_dog": {
+    "story_id": "the_mischievous_dog",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_miser": {
+    "story_id": "the_miser",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_mole_and_his_mother": {
+    "story_id": "the_mole_and_his_mother",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_monkey_and_the_camel": {
+    "story_id": "the_monkey_and_the_camel",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_monkey_and_the_cat": {
+    "story_id": "the_monkey_and_the_cat",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_monkey_and_the_dolphin": {
+    "story_id": "the_monkey_and_the_dolphin",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_mother_and_the_wolf": {
+    "story_id": "the_mother_and_the_wolf",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_mouse_and_the_weasel": {
+    "story_id": "the_mouse_and_the_weasel",
+    "panel_count": 14,
+    "expected_total": 14,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg"
+    }
+  },
+  "the_mule": {
+    "story_id": "the_mule",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_north_wind_and_the_sun": {
+    "story_id": "the_north_wind_and_the_sun",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_oak_and_the_reeds": {
+    "story_id": "the_oak_and_the_reeds",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_old_lion": {
+    "story_id": "the_old_lion",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_old_lion_and_the_fox": {
+    "story_id": "the_old_lion_and_the_fox",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_owl_and_the_grasshopper": {
+    "story_id": "the_owl_and_the_grasshopper",
+    "panel_count": 19,
+    "expected_total": 19,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg",
+      "19": "panel_19.svg"
+    }
+  },
+  "the_oxen_and_the_wheels": {
+    "story_id": "the_oxen_and_the_wheels",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_peacock": {
+    "story_id": "the_peacock",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_peacock_and_the_crane": {
+    "story_id": "the_peacock_and_the_crane",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_pelican_and_the_rapids": {
+    "story_id": "the_pelican_and_the_rapids",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_plane_tree": {
+    "story_id": "the_plane_tree",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_porcupine_and_the_snakes": {
+    "story_id": "the_porcupine_and_the_snakes",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_quack_toad": {
+    "story_id": "the_quack_toad",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_rabbit_the_weasel_and_the_cat": {
+    "story_id": "the_rabbit_the_weasel_and_the_cat",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_rat_and_the_elephant": {
+    "story_id": "the_rat_and_the_elephant",
+    "panel_count": 16,
+    "expected_total": 16,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg"
+    }
+  },
+  "the_rooster_and_the_fox": {
+    "story_id": "the_rooster_and_the_fox",
+    "panel_count": 18,
+    "expected_total": 18,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg"
+    }
+  },
+  "the_rooster_and_the_jewel": {
+    "story_id": "the_rooster_and_the_jewel",
+    "panel_count": 3,
+    "expected_total": 3,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg"
+    }
+  },
+  "the_rose_and_the_butterfly": {
+    "story_id": "the_rose_and_the_butterfly",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_sheep_and_the_pig": {
+    "story_id": "the_sheep_and_the_pig",
+    "panel_count": 11,
+    "expected_total": 11,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg"
+    }
+  },
+  "the_shepherd_and_the_lion": {
+    "story_id": "the_shepherd_and_the_lion",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_shepherd_boy_and_the_wolf": {
+    "story_id": "the_shepherd_boy_and_the_wolf",
+    "panel_count": 15,
+    "expected_total": 15,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg"
+    }
+  },
+  "the_sick_stag": {
+    "story_id": "the_sick_stag",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_snake_and_the_eagle": {
+    "story_id": "the_snake_and_the_eagle",
+    "panel_count": 13,
+    "expected_total": 13,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg"
+    }
+  },
+  "the_stag_and_his_reflection": {
+    "story_id": "the_stag_and_his_reflection",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_swallow_and_the_crow": {
+    "story_id": "the_swallow_and_the_crow",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_tortoise_and_the_ducks": {
+    "story_id": "the_tortoise_and_the_ducks",
+    "panel_count": 16,
+    "expected_total": 16,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg"
+    }
+  },
+  "the_tortoise_and_the_shield_shell": {
+    "story_id": "the_tortoise_and_the_shield_shell",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_town_mouse_and_the_country_mouse": {
+    "story_id": "the_town_mouse_and_the_country_mouse",
+    "panel_count": 14,
+    "expected_total": 14,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg"
+    }
+  },
+  "the_travelers_and_the_purse": {
+    "story_id": "the_travelers_and_the_purse",
+    "panel_count": 11,
+    "expected_total": 11,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg"
+    }
+  },
+  "the_travelers_and_the_sea": {
+    "story_id": "the_travelers_and_the_sea",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_two_goats": {
+    "story_id": "the_two_goats",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_two_pots": {
+    "story_id": "the_two_pots",
+    "panel_count": 10,
+    "expected_total": 10,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg"
+    }
+  },
+  "the_vain_jackdaw_and_his_borrowed_feathers": {
+    "story_id": "the_vain_jackdaw_and_his_borrowed_feathers",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_wild_boar_and_the_fox": {
+    "story_id": "the_wild_boar_and_the_fox",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_wolf_and_his_shadow": {
+    "story_id": "the_wolf_and_his_shadow",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_wolf_and_the_crane": {
+    "story_id": "the_wolf_and_the_crane",
+    "panel_count": 14,
+    "expected_total": 14,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg"
+    }
+  },
+  "the_wolf_and_the_donkey": {
+    "story_id": "the_wolf_and_the_donkey",
+    "panel_count": 12,
+    "expected_total": 12,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg"
+    }
+  },
+  "the_wolf_and_the_goat": {
+    "story_id": "the_wolf_and_the_goat",
+    "panel_count": 6,
+    "expected_total": 6,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg"
+    }
+  },
+  "the_wolf_and_the_house_dog": {
+    "story_id": "the_wolf_and_the_house_dog",
+    "panel_count": 21,
+    "expected_total": 21,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg",
+      "19": "panel_19.svg",
+      "20": "panel_20.svg",
+      "21": "panel_21.svg"
+    }
+  },
+  "the_wolf_and_the_lamb": {
+    "story_id": "the_wolf_and_the_lamb",
+    "panel_count": 16,
+    "expected_total": 16,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg"
+    }
+  },
+  "the_wolf_and_the_lean_dog": {
+    "story_id": "the_wolf_and_the_lean_dog",
+    "panel_count": 15,
+    "expected_total": 15,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg"
+    }
+  },
+  "the_wolf_and_the_lion": {
+    "story_id": "the_wolf_and_the_lion",
+    "panel_count": 4,
+    "expected_total": 4,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg"
+    }
+  },
+  "the_wolf_and_the_little_goat": {
+    "story_id": "the_wolf_and_the_little_goat",
+    "panel_count": 19,
+    "expected_total": 19,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg",
+      "10": "panel_10.svg",
+      "11": "panel_11.svg",
+      "12": "panel_12.svg",
+      "13": "panel_13.svg",
+      "14": "panel_14.svg",
+      "15": "panel_15.svg",
+      "16": "panel_16.svg",
+      "17": "panel_17.svg",
+      "18": "panel_18.svg",
+      "19": "panel_19.svg"
+    }
+  },
+  "the_wolf_and_the_sheep": {
+    "story_id": "the_wolf_and_the_sheep",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_wolf_and_the_shepherd_102": {
+    "story_id": "the_wolf_and_the_shepherd_102",
+    "panel_count": 2,
+    "expected_total": 2,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg"
+    }
+  },
+  "the_wolf_and_the_shepherd_75": {
+    "story_id": "the_wolf_and_the_shepherd_75",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "the_wolf_in_sheeps_clothing": {
+    "story_id": "the_wolf_in_sheeps_clothing",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_wolf_the_kid_and_the_goat": {
+    "story_id": "the_wolf_the_kid_and_the_goat",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  },
+  "the_wolves_and_the_sheep": {
+    "story_id": "the_wolves_and_the_sheep",
+    "panel_count": 8,
+    "expected_total": 8,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg"
+    }
+  },
+  "the_young_crab_and_his_mother": {
+    "story_id": "the_young_crab_and_his_mother",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "the_young_man_and_the_swallow": {
+    "story_id": "the_young_man_and_the_swallow",
+    "panel_count": 5,
+    "expected_total": 5,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg"
+    }
+  },
+  "three_bullocks_and_a_lion": {
+    "story_id": "three_bullocks_and_a_lion",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "tiger_and_mice": {
+    "story_id": "tiger_and_mice",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "tortoise_and_hare": {
+    "story_id": "tortoise_and_hare",
+    "panel_count": 7,
+    "expected_total": 7,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg"
+    }
+  },
+  "two_travelers_and_a_bear": {
+    "story_id": "two_travelers_and_a_bear",
+    "panel_count": 9,
+    "expected_total": 9,
+    "is_complete": true,
+    "available_panels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "panels": {
+      "1": "panel_1.svg",
+      "2": "panel_2.svg",
+      "3": "panel_3.svg",
+      "4": "panel_4.svg",
+      "5": "panel_5.svg",
+      "6": "panel_6.svg",
+      "7": "panel_7.svg",
+      "8": "panel_8.svg",
+      "9": "panel_9.svg"
+    }
+  }
+}

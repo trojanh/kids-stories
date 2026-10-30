@@ -6,3 +6,9 @@ __pycache__/
 *.tmp
 *.tmp.mp3
 scratch/
+
+# Media CDN assets (hosted on Hugging Face Datasets: trojanh/talepickle-assets)
+story_images
+svgs
+src/ui/data/story_images/
+src/ui/data/svgs/

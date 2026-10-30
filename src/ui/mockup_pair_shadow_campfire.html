@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TalePickle - Enchanted Campfire & Shadow Puppets</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #022C22;
+      background: radial-gradient(circle at 50% 30%, #064E3B 0%, #022C22 70%, #021C16 100%);
+      user-select: none;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, button, .font-fun {
+      font-family: 'Fredoka', 'Nunito', sans-serif;
+    }
+    .clay-btn {
+      box-shadow: 0 6px 0 rgba(0,0,0,0.4), 0 10px 18px rgba(0,0,0,0.25);
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .clay-btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.15);
+    }
+    
+    /* Parchment Shadow Screen */
+    .shadow-screen {
+      background: #FEF3C7;
+      border: 8px solid #78350F;
+      box-shadow: inset 0 0 50px rgba(180,83,9,0.5), 0 20px 50px rgba(0,0,0,0.7);
+      border-radius: 32px;
+    }
+    .silhouette-puppet {
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.7));
+    }
+    .word-active {
+      background: #F59E0B;
+      color: #451A03;
+      border-radius: 8px;
+      padding: 0 4px;
+      transform: scale(1.1);
+      display: inline-block;
+      box-shadow: 0 2px 10px rgba(245,158,11,0.6);
+    }
+    @keyframes campfire-flicker {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(245,158,11,0.7)); }
+      50% { transform: scale(1.08) rotate(1deg); filter: drop-shadow(0 0 35px rgba(239,68,68,0.9)); }
+    }
+    .fire-flicker { animation: campfire-flicker 1.8s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100 p-3 sm:p-6 flex flex-col justify-between">
+
+  <div class="max-w-5xl mx-auto w-full space-y-4">
+
+    <!-- Top Campfire Header -->
+    <header class="bg-emerald-950/90 backdrop-blur-md px-5 py-3 rounded-3xl border-3 border-amber-500 shadow-2xl flex items-center justify-between flex-wrap gap-3">
+      <div class="flex items-center gap-3">
+        <a href="mockups_hub.html" class="clay-btn bg-emerald-800 hover:bg-emerald-700 text-amber-300 text-xs font-black px-3.5 py-2 rounded-2xl flex items-center gap-1.5 font-fun">
+          <span>← Hub</span>
+        </a>
+        <div class="flex items-center gap-2">
+          <span class="text-3xl fire-flicker">🔥⛺</span>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-black text-amber-400 font-fun leading-tight">Enchanted Campfire Theater</h1>
+            <p class="text-[11px] text-emerald-300 font-semibold">Gather around the embers for living shadow puppet fables!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="flex items-center gap-2">
+        <button onclick="showCampfireListing()" id="btn-fire" class="clay-btn bg-amber-500 text-slate-950 font-black text-xs px-4 py-2 rounded-xl font-fun">
+          ⛺ Campfire Tales
+        </button>
+        <button onclick="showShadowTheater()" id="btn-theater" class="clay-btn bg-emerald-900 text-amber-200 font-black text-xs px-4 py-2 rounded-xl font-fun">
+          🎭 Shadow Screen
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Campfire & Theater Stage -->
+    <main class="bg-emerald-950/70 p-6 sm:p-8 rounded-3xl border-4 border-amber-600 shadow-2xl min-h-[560px] flex flex-col justify-between">
+      
+      <!-- ========================================== -->
+      <!-- VIEW 1: MOONLIT CAMPFIRE & FIREFLY JARS (LISTING) -->
+      <!-- ========================================== -->
+      <div id="view-campfire" class="space-y-6">
+        
+        <div class="flex flex-wrap items-center justify-between border-b-2 border-emerald-800 pb-3 text-amber-200">
+          <div>
+            <span class="bg-amber-500 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase font-fun">Nighttime Story Gathering</span>
+            <h2 class="text-2xl font-black font-fun mt-1">Select a Firefly Jar</h2>
+          </div>
+          <span class="text-xs text-emerald-300 font-bold">Tap a glowing jar to release the shadow fable!</span>
+        </div>
+
+        <!-- The Crackling Campfire & Mason Jars -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-auto">
+          
+          <!-- Jar 1: The Lion & Mouse -->
+          <div onclick="selectFireflyJar('tiger_and_mice')" class="cursor-pointer bg-emerald-900/80 border-3 border-amber-400 rounded-3xl p-5 flex flex-col items-center text-center shadow-xl hover:scale-105 transition-all">
+            <div class="text-5xl animate-bounce mb-2">🫙✨</div>
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Tiger & Mice Jar</span>
+            <h3 class="font-black text-sm text-white font-fun mt-2">The Tiger & Mice</h3>
+            <p class="text-xs text-emerald-300 mt-1">Tiny seeds and mighty paw friends!</p>
+          </div>
+
+          <!-- Central Crackling Fire -->
+          <div class="flex flex-col items-center justify-center p-4">
+            <span class="text-7xl fire-flicker">🔥</span>
+            <span class="text-sm font-black text-amber-300 font-fun mt-2">Crackling Embers</span>
+            <span class="text-[11px] text-emerald-400 font-semibold">Warm Bedtime Stories</span>
+          </div>
+
+          <!-- Jar 2: Crow & Water Pot -->
+          <div onclick="selectFireflyJar('crow_and_water_pot')" class="cursor-pointer bg-emerald-900/80 border-3 border-amber-400 rounded-3xl p-5 flex flex-col items-center text-center shadow-xl hover:scale-105 transition-all">
+            <div class="text-5xl animate-bounce mb-2" style="animation-delay: 0.8s;">🫙✨</div>
+            <span class="bg-amber-400 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full font-fun">Crow & Pebble Jar</span>
+            <h3 class="font-black text-sm text-white font-fun mt-2">Crow & Pitcher</h3>
+            <p class="text-xs text-emerald-300 mt-1">Clever bird raises the water!</p>
+          </div>
+
+        </div>
+
+        <!-- Bottom Campfire HUD -->
+        <div class="bg-emerald-900/90 p-4 rounded-2xl border border-amber-400 text-amber-100 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span id="campfire-active-icon" class="text-3xl">🐯</span>
+            <div>
+              <h4 id="campfire-active-title" class="font-black text-sm font-fun text-white">The Tiger and the Mice</h4>
+              <p id="campfire-active-moral" class="text-xs text-amber-200 font-semibold italic">"Strength should always be balanced with kindness."</p>
+            </div>
+          </div>
+          <button onclick="showShadowTheater()" class="clay-btn bg-amber-400 text-amber-950 font-black text-xs px-4 py-2 rounded-xl font-fun">
+            Open Puppet Stage 🎭
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: PARCHMENT SHADOW PUPPET THEATER (READER) -->
+      <!-- ========================================== -->
+      <div id="view-theater" class="hidden space-y-6">
+        
+        <div class="flex items-center justify-between text-amber-200">
+          <button onclick="showCampfireListing()" class="clay-btn bg-emerald-800 text-amber-300 text-xs font-black px-3.5 py-1.5 rounded-xl font-fun">
+            ← Back to Campfire
+          </button>
+          <span id="puppet-counter" class="text-xs font-black bg-emerald-900 px-3 py-1 rounded-full font-fun text-amber-300">Puppet Scene 1 of 5</span>
+        </div>
+
+        <!-- Backlit Shadow Screen -->
+        <div class="shadow-screen p-6 sm:p-8 min-h-[260px] flex flex-col justify-between text-amber-950 relative overflow-hidden">
+          
+          <div class="flex justify-between items-center text-xs font-black opacity-80 uppercase font-fun">
+            <span>🎭 Shadow Puppet Projection</span>
+            <span id="puppet-theme-tag">Animals</span>
+          </div>
+
+          <!-- Silhouetted Characters on Stage -->
+          <div class="flex items-center justify-center gap-8 my-auto silhouette-puppet">
+            <span id="puppet-main" class="text-8xl drop-shadow-2xl">🐯</span>
+            <span id="puppet-friend" class="text-6xl drop-shadow-2xl">🐭</span>
+          </div>
+
+          <div class="text-center text-xs font-bold italic opacity-90">
+            💡 Moral: <span id="puppet-moral">Strength balanced with kindness.</span>
+          </div>
+        </div>
+
+        <!-- Word Karaoke Subtitle Bar -->
+        <div class="bg-emerald-900/95 p-5 rounded-3xl border-2 border-amber-400 space-y-4">
+          <div id="puppet-sentence-box" class="text-base sm:text-lg font-extrabold text-amber-100 leading-relaxed space-x-1">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Playback Controls -->
+          <div class="flex items-center justify-between gap-3 pt-2">
+            <button onclick="prevPuppetScene()" class="clay-btn bg-emerald-800 text-amber-200 font-black text-xs px-4 py-2 rounded-xl font-fun">
+              ⏮️ Prev Scene
+            </button>
+            <button id="puppet-play-btn" onclick="togglePuppetSpeech()" class="clay-btn flex-1 bg-amber-400 hover:bg-amber-300 text-amber-950 font-black py-2.5 rounded-2xl text-sm font-fun flex items-center justify-center gap-2">
+              <span id="puppet-play-icon">▶️</span>
+              <span id="puppet-play-label">Read Aloud</span>
+            </button>
+            <button onclick="nextPuppetScene()" class="clay-btn bg-emerald-800 text-amber-200 font-black text-xs px-4 py-2 rounded-xl font-fun">
+              Next Scene ⏭️
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    let audioCtx = null;
+    function initAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+    function playSpark() {
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(500 + Math.random() * 300, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.11);
+      } catch (e) {}
+    }
+
+    const fireStories = {
+      tiger_and_mice: {
+        title: 'The Tiger and the Mice',
+        theme: 'Animals',
+        avatar: '🐯',
+        friend: '🐭',
+        moral: 'Strength should always be balanced with kindness.',
+        sentences: [
+          'In a shady mango grove, a big tiger was sleeping under a tree.',
+          'A tiny mouse whispered, "Please let me pass, I need to gather fallen seeds."',
+          'The kind tiger opened his warm eyes and gently let the little mouse go.',
+          'Later that day, the tiger got his heavy paw caught in a hunter\'s rope net.',
+          'The brave mouse quickly chewed the ropes, freeing the tiger, and they became forever friends.'
+        ]
+      },
+      crow_and_water_pot: {
+        title: 'The Crow and the Water Pot',
+        theme: 'Wisdom',
+        avatar: '🦅',
+        friend: '🏺',
+        moral: 'Little by little does the trick when solving big challenges.',
+        sentences: [
+          'On a bright sunny afternoon, a thirsty crow found an earthen pot in a courtyard.',
+          'He peeked inside to take a drink, but the cool water was too far down.',
+          'Thinking fast, the clever crow began picking up small pebbles from the ground.',
+          'He dropped them into the pot one by one with his sharp beak.',
+          'The water rose to the very top, and the happy crow drank until he was refreshed!'
+        ]
+      }
+    };
+
+    let activeKey = 'tiger_and_mice';
+    let sceneIdx = 0;
+    let isSpeaking = false;
+
+    function selectFireflyJar(key) {
+      playSpark();
+      activeKey = key;
+      sceneIdx = 0;
+      const s = fireStories[key];
+      document.getElementById('campfire-active-icon').textContent = s.avatar;
+      document.getElementById('campfire-active-title').textContent = s.title;
+      document.getElementById('campfire-active-moral').textContent = `"${s.moral}"`;
+
+      document.getElementById('puppet-main').textContent = s.avatar;
+      document.getElementById('puppet-friend').textContent = s.friend;
+      document.getElementById('puppet-moral').textContent = s.moral;
+      document.getElementById('puppet-theme-tag').textContent = s.theme;
+    }
+
+    function showCampfireListing() {
+      playSpark();
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
+      isSpeaking = false;
+      document.getElementById('view-campfire').classList.remove('hidden');
+      document.getElementById('view-theater').classList.add('hidden');
+      document.getElementById('btn-fire').className = 'clay-btn bg-amber-500 text-slate-950 font-black text-xs px-4 py-2 rounded-xl font-fun';
+      document.getElementById('btn-theater').className = 'clay-btn bg-emerald-900 text-amber-200 font-black text-xs px-4 py-2 rounded-xl font-fun';
+    }
+
+    function showShadowTheater() {
+      playSpark();
+      document.getElementById('view-campfire').classList.add('hidden');
+      document.getElementById('view-theater').classList.remove('hidden');
+      document.getElementById('btn-fire').className = 'clay-btn bg-emerald-900 text-amber-200 font-black text-xs px-4 py-2 rounded-xl font-fun';
+      document.getElementById('btn-theater').className = 'clay-btn bg-amber-500 text-slate-950 font-black text-xs px-4 py-2 rounded-xl font-fun';
+      loadPuppetScene();
+    }
+
+    function loadPuppetScene() {
+      const s = fireStories[activeKey];
+      const sentence = s.sentences[sceneIdx];
+      document.getElementById('puppet-counter').textContent = `Puppet Scene ${sceneIdx + 1} of ${s.sentences.length}`;
+
+      const box = document.getElementById('puppet-sentence-box');
+      const words = sentence.split(/\s+/);
+      box.innerHTML = words.map((w, idx) => `<span id="p-word-${idx}" class="transition-all cursor-pointer hover:text-amber-400" onclick="sayPuppetWord('${w}', ${idx})">${w}</span>`).join(' ');
+    }
+
+    function sayPuppetWord(w, idx) {
+      playSpark();
+      highlightPuppetWord(idx);
+      if ('speechSynthesis' in window) {
+        const u = new SpeechSynthesisUtterance(w);
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function highlightPuppetWord(idx) {
+      document.querySelectorAll('#puppet-sentence-box span').forEach((el, i) => {
+        if (i === idx) el.className = 'word-active transition-all cursor-pointer';
+        else el.className = 'transition-all cursor-pointer hover:text-amber-400';
+      });
+    }
+
+    function togglePuppetSpeech() {
+      if (isSpeaking) {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        isSpeaking = false;
+        document.getElementById('puppet-play-icon').textContent = '▶️';
+        document.getElementById('puppet-play-label').textContent = 'Read Aloud';
+      } else {
+        startPuppetSpeech();
+      }
+    }
+
+    function startPuppetSpeech() {
+      playSpark();
+      const s = fireStories[activeKey];
+      const text = s.sentences[sceneIdx];
+      if (!('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+
+      let wordIdx = 0;
+      u.onboundary = (e) => {
+        if (e.name === 'word') {
+          highlightPuppetWord(wordIdx);
+          wordIdx++;
+        }
+      };
+
+      u.onend = () => {
+        isSpeaking = false;
+        document.getElementById('puppet-play-icon').textContent = '▶️';
+        document.getElementById('puppet-play-label').textContent = 'Read Aloud';
+        if (sceneIdx < s.sentences.length - 1) {
+          setTimeout(() => { nextPuppetScene(); }, 800);
+        } else {
+          alert(`🌟 Bedtime Shadow Play finished! "${s.title}" was performed wonderfully! Golden constellation badge earned!`);
+        }
+      };
+
+      isSpeaking = true;
+      document.getElementById('puppet-play-icon').textContent = '⏸️';
+      document.getElementById('puppet-play-label').textContent = 'Pause';
+      window.speechSynthesis.speak(u);
+    }
+
+    function nextPuppetScene() {
+      const s = fireStories[activeKey];
+      if (sceneIdx < s.sentences.length - 1) {
+        sceneIdx++;
+        loadPuppetScene();
+        if (isSpeaking) startPuppetSpeech();
+      }
+    }
+
+    function prevPuppetScene() {
+      if (sceneIdx > 0) {
+        sceneIdx--;
+        loadPuppetScene();
+        if (isSpeaking) startPuppetSpeech();
+      }
+    }
+  </script>
+</body>
+</html>

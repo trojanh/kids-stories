@@ -75,8 +75,8 @@
   </noscript>
 
   <!-- Preload Critical Stylesheet to prevent request chaining -->
-  <link rel="preload" href="style.css?v=2.2" as="style" />
-  <link rel="stylesheet" href="style.css?v=2.2" />
+  <link rel="preload" href="style.css?v=3.0" as="style" />
+  <link rel="stylesheet" href="style.css?v=3.0" />
 
   <!-- Schema.org JSON-LD Structured Data for Search Engines -->
   <script type="application/ld+json">
@@ -148,10 +148,13 @@
   </noscript>
 
   <!-- Client-side Scripts (Deferred to eliminate render-blocking) -->
-  <script defer src="rough.js?v=2.0"></script>
-  <script defer src="svg-art.js?v=2.0"></script>
-  <script defer src="tts.js?v=2.2"></script>
-  <script defer src="main.js?v=2.2"></script>
+  <script>
+    // TalePickle Google Analytics 4 Measurement ID
+    window.TALE_PICKLE_GA_ID = 'G-RDRVWHPM6K';
+  </script>
+  <script defer src="analytics.js?v=1.0"></script>
+  <script defer src="tts.js?v=2.3"></script>
+  <script defer src="main.js?v=3.0"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>

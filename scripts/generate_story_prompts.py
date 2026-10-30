@@ -138,6 +138,38 @@ def analyze_story_scenes(story):
             "rules": rules
         }
         return master_stage
+    else:
+        # Fallback master stage for fables not in the bespoke 5-core manual list
+        full_text = " ".join(sentences).lower()
+        if any(w in full_text for w in ['river', 'stream', 'pond', 'water', 'lake', 'sea', 'fish', 'crab', 'pelican', 'beaver']):
+            setting_name = "Tranquil Riverbank"
+            env_desc = "Gently flowing freshwater stream lined with rounded river stones, green reeds, wildflowers, and weeping willows under soft afternoon light."
+        elif any(w in full_text for w in ['farm', 'barn', 'shed', 'shepherd', 'flock', 'sheep', 'donkey', 'ass', 'ox', 'bull', 'statue', 'farmer', 'stork']):
+            setting_name = "Traditional Pastoral Farmyard"
+            env_desc = "Rustic wooden split-rail fences, golden hay bales, sunlit cobblestone path, and rolling green pastures with ancient shade trees."
+        elif any(w in full_text for w in ['wood', 'forest', 'grove', 'tree', 'boar', 'hedgehog', 'bear', 'firefly', 'chameleon', 'ant', 'grasshopper', 'wolf', 'lion']):
+            setting_name = "Ancient Woodland Clearing"
+            env_desc = "Mossy old-growth oak trunks, lush clover, soft dappled sunbeams filtering through leafy green branches, and colorful woodland flowers."
+        else:
+            setting_name = "Sunny Rolling Meadow"
+            env_desc = "Vibrant green rolling hills dotted with buttercups, clover patches, and distant gentle mountains under a clear blue sky."
+
+        scene_map = {}
+        for i in range(total_panels):
+            scene_map[i] = {
+                "scene": setting_name,
+                "is_stage": True,
+                "prop_state": ""
+            }
+
+        return {
+            "setting_name": setting_name,
+            "environment": env_desc,
+            "fixed_prop": "",
+            "master_anchor_panel": 1,
+            "scene_map": scene_map,
+            "rules": {}
+        }
 
 def generate_grid_prompt(story):
     """

@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TalePickle - Kid-First Redesign Playground (Part 1)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #fdfbf7;
+      --foreground: #1e293b;
+      --card: #ffffff;
+      --muted-foreground: #64748b;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+    }
+    h1, h2, h3, h4, button, .font-fun {
+      font-family: 'Fredoka', 'Nunito', sans-serif;
+    }
+    @keyframes float-slow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(3deg); }
+    }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
+    }
+    @keyframes squash-pop {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.25, 0.75); }
+      60% { transform: scale(0.85, 1.15); }
+      100% { transform: scale(1); }
+    }
+    @keyframes hop {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-18px) scale(0.9, 1.1); }
+    }
+    @keyframes peekaboo {
+      0% { transform: translateY(100%); }
+      20% { transform: translateY(0); }
+      80% { transform: translateY(0); }
+      100% { transform: translateY(100%); }
+    }
+    .animate-float { animation: float-slow 4s ease-in-out infinite; }
+    .animate-wiggle { animation: wiggle 1s ease-in-out infinite; }
+    .squash-active:active { animation: squash-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    
+    /* Chunky Claymorphic shadow & borders */
+    .clay-btn {
+      box-shadow: 0 8px 0 rgba(0,0,0,0.15), 0 15px 20px rgba(0,0,0,0.1);
+      transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .clay-btn:active {
+      transform: translateY(6px);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.1);
+    }
+    .clay-card {
+      box-shadow: inset 0 3px 6px rgba(255,255,255,0.7), 0 12px 24px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.04);
+      border-radius: 28px;
+    }
+    
+    /* Poppable Bubble */
+    .poppable-bubble {
+      position: absolute;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), rgba(255,255,255,0.2) 60%, rgba(56,189,248,0.4));
+      border: 2px solid rgba(255,255,255,0.7);
+      box-shadow: inset -4px -4px 10px rgba(14,165,233,0.3), 0 4px 12px rgba(0,0,0,0.08);
+      cursor: pointer;
+      user-select: none;
+      animation: float-up linear infinite;
+    }
+    @keyframes float-up {
+      0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+      10% { opacity: 0.9; }
+      90% { opacity: 0.9; }
+      100% { transform: translateY(-100px) translateX(30px); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-[#FDFBF7] text-slate-800 min-h-screen p-4 sm:p-6 font-sans select-none overflow-x-hidden">
+
+  <!-- Floating Bubble Layer for Ambient Play -->
+  <div id="bubble-layer" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
+
+  <!-- Ambient Peek-a-boo Critter -->
+  <div id="peek-critter" class="fixed bottom-0 right-12 z-20 pointer-events-auto cursor-pointer transition-transform duration-500 translate-y-full" onclick="triggerPeekaboo(true)">
+    <div class="relative bg-amber-400 p-3 rounded-t-3xl border-4 border-b-0 border-amber-600 shadow-xl flex flex-col items-center">
+      <span class="text-4xl animate-wiggle">🦊</span>
+      <span class="text-xs font-black text-amber-950 mt-1 bg-white/80 px-2 py-0.5 rounded-full font-fun">Peek!</span>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto space-y-6">
+
+    <!-- Top Navigation Bar to Switch Hubs -->
+    <div class="flex items-center justify-between text-xs bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-slate-200 shadow-sm">
+      <a href="index.html" class="font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1.5">
+        <span>← Back to Live TalePickle</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="redesigns.html" class="font-black text-purple-600 hover:underline">🎪 Master Portal</a>
+        <span class="text-slate-300">•</span>
+        <a href="kids_radical_redesigns_v2.html" class="font-black text-pink-600 hover:underline">Explore Concepts 5–9 →</a>
+      </div>
+    </div>
+
+    <!-- Top Playground Header -->
+    <header class="bg-white p-5 rounded-3xl border-4 border-amber-400/50 shadow-lg flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="relative w-14 h-14 bg-emerald-400 rounded-2xl flex items-center justify-center text-3xl shadow-inner border-2 border-emerald-500 animate-float">
+          🥒
+          <!-- Interactive Googly Eyes -->
+          <div class="absolute -top-2 flex gap-1 googly-pair">
+            <div class="w-4 h-4 bg-white rounded-full border border-slate-700 flex items-center justify-center relative overflow-hidden shadow-xs">
+              <div class="pupil w-2 h-2 bg-slate-900 rounded-full transition-transform duration-75"></div>
+            </div>
+            <div class="w-4 h-4 bg-white rounded-full border border-slate-700 flex items-center justify-center relative overflow-hidden shadow-xs">
+              <div class="pupil w-2 h-2 bg-slate-900 rounded-full transition-transform duration-75"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-2xl font-black tracking-tight text-indigo-950">TalePickle Redesign Playground (Set 1)</h1>
+            <span class="bg-pink-500 text-white text-xs font-black px-2.5 py-0.5 rounded-full animate-pulse uppercase tracking-wider">Live Preview</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-500">Explore 4 non-traditional, tactile, animated UI concepts made specially for kids</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- Sound FX Toggle Button -->
+        <button id="sfx-toggle" onclick="toggleAudio()" class="clay-btn bg-amber-400 hover:bg-amber-300 text-amber-950 text-xs sm:text-sm font-black px-4 py-2.5 rounded-2xl flex items-center gap-2">
+          <span id="sfx-icon">🔊</span>
+          <span id="sfx-label">Toy Sounds: ON</span>
+        </button>
+        <!-- Random Surprise Event Button -->
+        <button onclick="triggerRandomMagic()" class="clay-btn bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs sm:text-sm font-black px-4 py-2.5 rounded-2xl flex items-center gap-2">
+          <span>✨</span>
+          <span>Spill Magic!</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Concept Navigation Tabs -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <button onclick="switchConcept('toybox')" id="tab-toybox" class="concept-tab clay-btn bg-pink-500 text-white p-3.5 rounded-2xl text-left border-3 border-pink-400 flex flex-col justify-between h-24">
+        <span class="text-2xl">🍬🎰</span>
+        <div>
+          <div class="font-black text-sm">1. Toybox Gumball</div>
+          <div class="text-[11px] opacity-90">Arcade & Claymorphism</div>
+        </div>
+      </button>
+
+      <button onclick="switchConcept('popup')" id="tab-popup" class="concept-tab clay-btn bg-white hover:bg-emerald-50 text-slate-800 p-3.5 rounded-2xl text-left border-3 border-transparent flex flex-col justify-between h-24">
+        <span class="text-2xl">🗺️📖</span>
+        <div>
+          <div class="font-black text-sm">2. 3D Pop-Up Atlas</div>
+          <div class="text-[11px] text-slate-500">Living Island Diorama</div>
+        </div>
+      </button>
+
+      <button onclick="switchConcept('treehouse')" id="tab-treehouse" class="concept-tab clay-btn bg-white hover:bg-amber-50 text-slate-800 p-3.5 rounded-2xl text-left border-3 border-transparent flex flex-col justify-between h-24">
+        <span class="text-2xl">🌳✨</span>
+        <div>
+          <div class="font-black text-sm">3. Enchanted Tree</div>
+          <div class="text-[11px] text-slate-500">Vertical Endless Climb</div>
+        </div>
+      </button>
+
+      <button onclick="switchConcept('karaoke')" id="tab-karaoke" class="concept-tab clay-btn bg-white hover:bg-purple-50 text-slate-800 p-3.5 rounded-2xl text-left border-3 border-transparent flex flex-col justify-between h-24">
+        <span class="text-2xl">🐰🎵</span>
+        <div>
+          <div class="font-black text-sm">4. Hopping Karaoke</div>
+          <div class="text-[11px] text-slate-500">Animated Voice Companion</div>
+        </div>
+      </button>
+    </div>
+
+    <!-- MAIN DISPLAY CANVAS -->
+
+    <!-- CONCEPT 1: TOYBOX GUMBALL ARCADE -->
+    <div id="view-toybox" class="concept-view space-y-5">
+      <div class="clay-card bg-gradient-to-b from-rose-100 via-pink-50 to-amber-100 p-6 sm:p-8 border-4 border-pink-300 relative overflow-hidden">
+        
+        <!-- Decorative Cloud & Sun -->
+        <div class="absolute -top-6 -right-6 text-7xl opacity-20 pointer-events-none animate-float">🍭</div>
+
+        <div class="max-w-2xl">
+          <span class="bg-pink-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Concept 1 • Tactile Toybox</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-pink-950 mt-2">The Gumball Tale Vending Machine</h2>
+          <p class="text-sm text-pink-900/80 mt-1">
+            Replace boring search filters and grids with an irresistible, tactile toy machine! Kids pull spring-loaded levers, crank knobs, and watch animated capsules drop down chutes.
+          </p>
+        </div>
+
+        <!-- Interactive Gumball Machine Simulation -->
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          
+          <!-- Machine Body -->
+          <div class="md:col-span-6 bg-white p-5 rounded-3xl border-4 border-pink-400 shadow-xl flex flex-col items-center relative">
+            
+            <!-- Glass Globe with Jiggling Story Balls -->
+            <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-sky-300 bg-sky-100/60 relative overflow-hidden shadow-inner flex items-center justify-center p-4">
+              <!-- Gumballs inside -->
+              <div id="globe-balls" class="relative w-full h-full flex flex-wrap items-center justify-center gap-2 p-3">
+                <span class="text-3xl animate-float cursor-pointer" onclick="playBoing(440)" title="The Lion & Mouse">🦁</span>
+                <span class="text-3xl animate-wiggle cursor-pointer" onclick="playBoing(520)" title="The Crow & Pitcher">🦅</span>
+                <span class="text-3xl animate-float cursor-pointer" style="animation-delay: 0.5s;" onclick="playBoing(580)" title="Tortoise & Hare">🐢</span>
+                <span class="text-3xl animate-wiggle cursor-pointer" style="animation-delay: 0.8s;" onclick="playBoing(660)" title="The Fox & Grapes">🦊</span>
+                <span class="text-3xl animate-float cursor-pointer" style="animation-delay: 1.2s;" onclick="playBoing(740)" title="The Golden Goose">🪿</span>
+                <span class="text-3xl animate-wiggle cursor-pointer" style="animation-delay: 1.5s;" onclick="playBoing(820)" title="The Wise Owl">🦉</span>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-transparent pointer-events-none rounded-full"></div>
+            </div>
+
+            <!-- Crank & Dispense Chute -->
+            <div class="w-full mt-4 flex items-center justify-around bg-pink-100 p-3 rounded-2xl border-2 border-pink-300">
+              <div class="text-center">
+                <div class="text-[11px] font-black uppercase text-pink-800 mb-1">Crank Lever</div>
+                <button id="crank-btn" onclick="crankGumball()" class="clay-btn bg-amber-400 hover:bg-amber-300 active:rotate-45 text-2xl w-14 h-14 rounded-full border-3 border-amber-600 flex items-center justify-center transition-transform">
+                  ⚙️
+                </button>
+              </div>
+
+              <div class="text-center">
+                <div class="text-[11px] font-black uppercase text-pink-800 mb-1">Chute Exit</div>
+                <div id="chute-exit" class="w-16 h-12 bg-slate-900 rounded-xl border-3 border-slate-700 flex items-center justify-center text-2xl shadow-inner cursor-pointer" onclick="openDispensedStory()">
+                  <span id="chute-capsule" class="hidden animate-bounce">🎁</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hint -->
+            <p class="text-[11px] font-bold text-pink-700 mt-2 animate-pulse">👆 Click the Crank or Pull the Lever to dispense a tale!</p>
+          </div>
+
+          <!-- Dispensed Story Preview Card (Tactile Toy Style) -->
+          <div class="md:col-span-6 space-y-3">
+            <div id="toy-story-card" class="bg-white p-5 rounded-3xl border-4 border-amber-400 shadow-xl transition-all">
+              <div class="flex items-center justify-between">
+                <span class="bg-emerald-400 text-emerald-950 font-black text-xs px-3 py-1 rounded-full">🐾 Animal Hero</span>
+                <span class="text-xl">⭐ 4.9</span>
+              </div>
+              
+              <div class="flex items-center gap-4 mt-3">
+                <div id="toy-story-avatar" class="w-16 h-16 bg-amber-100 rounded-2xl border-2 border-amber-300 flex items-center justify-center text-4xl shadow-md animate-wiggle">
+                  🦁
+                </div>
+                <div>
+                  <h3 id="toy-story-title" class="text-lg font-black text-slate-800">The Lion and the Little Mouse</h3>
+                  <p id="toy-story-sub" class="text-xs text-slate-500">Theme: Friendship & Kindness</p>
+                </div>
+              </div>
+
+              <div class="mt-4 p-3 bg-amber-50 rounded-2xl border border-amber-200 text-xs text-slate-700 italic">
+                "Even the tiniest friend can show the greatest courage."
+              </div>
+
+              <div class="mt-4 flex gap-2">
+                <button onclick="playBoing(550)" class="clay-btn flex-1 bg-emerald-500 hover:bg-emerald-400 text-white font-black py-2.5 rounded-2xl text-sm flex items-center justify-center gap-2">
+                  <span>▶️ Read & Listen</span>
+                </button>
+                <button onclick="playPopSound()" class="clay-btn bg-pink-100 hover:bg-pink-200 text-pink-700 px-4 rounded-2xl text-lg font-black">
+                  ❤️
+                </button>
+              </div>
+            </div>
+
+            <!-- Squishy Category Buttons -->
+            <div class="bg-white/80 p-3 rounded-2xl border-2 border-pink-200">
+              <div class="text-[11px] font-black uppercase text-slate-500 mb-2">Squishy Category Dispensers:</div>
+              <div class="flex flex-wrap gap-2">
+                <button onclick="filterToybox('🦁 Animals')" class="clay-btn bg-yellow-300 text-yellow-900 text-xs font-black px-3 py-1.5 rounded-xl">🦁 Animals</button>
+                <button onclick="filterToybox('💡 Lessons')" class="clay-btn bg-sky-300 text-sky-900 text-xs font-black px-3 py-1.5 rounded-xl">💡 Wisdom</button>
+                <button onclick="filterToybox('🌿 Nature')" class="clay-btn bg-emerald-300 text-emerald-900 text-xs font-black px-3 py-1.5 rounded-xl">🌿 Nature</button>
+                <button onclick="filterToybox('⚡ Myths')" class="clay-btn bg-purple-300 text-purple-900 text-xs font-black px-3 py-1.5 rounded-xl">⚡ Myths</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONCEPT 2: 3D POP-UP ADVENTURE MAP -->
+    <div id="view-popup" class="concept-view hidden space-y-5">
+      <div class="clay-card bg-gradient-to-b from-sky-100 via-emerald-50 to-amber-100 p-6 sm:p-8 border-4 border-emerald-300 relative overflow-hidden">
+        
+        <div class="max-w-2xl">
+          <span class="bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Concept 2 • Fantasy Diorama</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-emerald-950 mt-2">The Pop-Up Treasure Archipelago</h2>
+          <p class="text-sm text-emerald-900/80 mt-1">
+            Instead of cards, children navigate an animated papercraft world map! Biomes correspond to themes (Jungle Island, Mount Olympus, Meadow Village). Tapping an island unfolds paper tents with hidden tales.
+          </p>
+        </div>
+
+        <!-- Interactive Map Diorama -->
+        <div class="mt-6 relative h-80 bg-gradient-to-b from-sky-300 via-sky-200 to-emerald-200 rounded-3xl border-4 border-sky-400 overflow-hidden shadow-2xl p-4 flex flex-col justify-between">
+          
+          <!-- Weather Elements (Clickable!) -->
+          <div class="flex justify-between items-start pointer-events-auto">
+            <!-- Sun with sunglasses -->
+            <div onclick="tickleSun()" class="cursor-pointer group flex items-center gap-2 bg-white/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-amber-300 shadow-md">
+              <span id="sun-emoji" class="text-3xl animate-spin" style="animation-duration: 20s;">☀️</span>
+              <span class="text-xs font-black text-amber-900">Tickle the Sun!</span>
+            </div>
+
+            <!-- Rain Cloud -->
+            <div onclick="showerRainbow()" class="cursor-pointer bg-white/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-sky-300 shadow-md flex items-center gap-2">
+              <span class="text-2xl animate-float">☁️</span>
+              <span class="text-xs font-black text-sky-900">Squeeze Cloud</span>
+            </div>
+          </div>
+
+          <!-- Island Nodes across the Map -->
+          <div class="relative w-full h-40 flex items-center justify-around z-10">
+            <!-- Island 1: Jungle Fables -->
+            <div onclick="selectIsland('Jungle Kingdom', '🦁', '42 Tales')" class="group cursor-pointer flex flex-col items-center transform hover:scale-110 transition-transform">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-400 rounded-3xl border-4 border-emerald-600 shadow-xl flex items-center justify-center text-3xl sm:text-4xl relative">
+                🌴
+                <span class="absolute -top-2 -right-2 text-xl animate-wiggle">🐒</span>
+              </div>
+              <span class="mt-2 bg-emerald-800 text-emerald-100 text-[11px] font-black px-2 py-0.5 rounded-full shadow">Jungle Isle</span>
+            </div>
+
+            <!-- Island 2: Village Wisdom -->
+            <div onclick="selectIsland('Village of Wisdom', '🌾', '38 Tales')" class="group cursor-pointer flex flex-col items-center transform hover:scale-110 transition-transform">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 bg-amber-400 rounded-3xl border-4 border-amber-600 shadow-xl flex items-center justify-center text-3xl sm:text-4xl relative">
+                🏡
+                <span class="absolute -top-2 -right-2 text-xl animate-wiggle">🦉</span>
+              </div>
+              <span class="mt-2 bg-amber-900 text-amber-100 text-[11px] font-black px-2 py-0.5 rounded-full shadow">Village Hollow</span>
+            </div>
+
+            <!-- Island 3: Mount Olympus -->
+            <div onclick="selectIsland('Mythic Peaks', '⚡', '25 Tales')" class="group cursor-pointer flex flex-col items-center transform hover:scale-110 transition-transform">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 bg-purple-400 rounded-3xl border-4 border-purple-600 shadow-xl flex items-center justify-center text-3xl sm:text-4xl relative">
+                ⛰️
+                <span class="absolute -top-2 -right-2 text-xl animate-bounce">⚡</span>
+              </div>
+              <span class="mt-2 bg-purple-900 text-purple-100 text-[11px] font-black px-2 py-0.5 rounded-full shadow">Cloud Peak</span>
+            </div>
+          </div>
+
+          <!-- Bottom Explorer Spyglass HUD -->
+          <div class="bg-white/90 backdrop-blur-md p-3 rounded-2xl border-2 border-emerald-300 flex items-center justify-between z-10">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🧭</span>
+              <div>
+                <div id="island-hud-title" class="text-xs font-black text-slate-800">Selected: Jungle Isle</div>
+                <div id="island-hud-sub" class="text-[10px] text-slate-500">Tap an island above to explore its secret fables!</div>
+              </div>
+            </div>
+            <button onclick="playBoing(600)" class="clay-btn bg-emerald-500 text-white font-black text-xs px-3 py-1.5 rounded-xl">
+              Unfold Island 🗺️
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONCEPT 3: ENCHANTED TREE OF 1000 TALES -->
+    <div id="view-treehouse" class="concept-view hidden space-y-5">
+      <div class="clay-card bg-gradient-to-b from-indigo-900 via-emerald-900 to-amber-950 p-6 sm:p-8 border-4 border-emerald-500 relative overflow-hidden text-white">
+        
+        <div class="max-w-2xl">
+          <span class="bg-emerald-500 text-slate-900 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Concept 3 • Vertical Exploratory Climb</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-emerald-200 mt-2">The Enchanted Treehouse Ascent</h2>
+          <p class="text-sm text-emerald-100/80 mt-1">
+            Kids love climbing and exploring secret levels! Stories are hung like glowing lanterns and fruit on a vertical tree. Scroll upwards from underground burrow roots into starry branches.
+          </p>
+        </div>
+
+        <!-- Vertical Tree Climbing Simulator -->
+        <div class="mt-6 bg-slate-900/60 rounded-3xl border-3 border-emerald-500/50 p-4 relative overflow-hidden">
+          
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-xs font-bold text-emerald-300">🌿 Branch Elevation Level:</span>
+            <div class="flex gap-2">
+              <button onclick="setTreeLevel('stars')" class="clay-btn bg-purple-500 text-white text-xs font-black px-2.5 py-1 rounded-xl">⭐ Stars</button>
+              <button onclick="setTreeLevel('canopy')" class="clay-btn bg-emerald-500 text-white text-xs font-black px-2.5 py-1 rounded-xl">🌳 Canopy</button>
+              <button onclick="setTreeLevel('roots')" class="clay-btn bg-amber-700 text-white text-xs font-black px-2.5 py-1 rounded-xl">🦔 Roots</button>
+            </div>
+          </div>
+
+          <div id="tree-canvas" class="relative h-64 rounded-2xl bg-gradient-to-t from-amber-950 via-emerald-950 to-indigo-950 border-2 border-emerald-400/30 p-4 flex flex-col justify-around transition-colors duration-700">
+            
+            <!-- Fireflies -->
+            <div class="absolute inset-0 pointer-events-none">
+              <span class="absolute top-8 left-12 text-sm animate-float">✨</span>
+              <span class="absolute top-20 right-20 text-sm animate-float" style="animation-delay: 1s;">✨</span>
+              <span class="absolute bottom-12 left-1/3 text-sm animate-float" style="animation-delay: 1.5s;">✨</span>
+            </div>
+
+            <!-- Tree Hollow / Lantern Story Pod -->
+            <div id="tree-pod" class="bg-emerald-900/70 backdrop-blur-md p-4 rounded-2xl border-2 border-amber-300/60 max-w-md mx-auto flex items-center gap-4 shadow-xl">
+              <div class="w-14 h-14 bg-amber-400/20 rounded-2xl border border-amber-300 flex items-center justify-center text-3xl animate-wiggle">
+                🏮
+              </div>
+              <div class="flex-1">
+                <span class="text-[10px] uppercase tracking-wider text-amber-300 font-black">Canopy Branch Tale #12</span>
+                <h4 class="font-black text-sm text-white">The Crow and the Clay Pitcher</h4>
+                <p class="text-xs text-emerald-200">A thirsty bird uses pebbles to raise the water level!</p>
+              </div>
+              <button onclick="playBoing(700)" class="clay-btn bg-amber-400 text-amber-950 font-black text-xs px-3 py-2 rounded-xl">
+                Enter Nook 📖
+              </button>
+            </div>
+
+            <!-- Critter scampering on branch -->
+            <div class="flex items-center justify-between text-xs font-bold text-emerald-300 px-4">
+              <span class="flex items-center gap-1 cursor-pointer" onclick="shakeBranch()">
+                <span>🐿️</span>
+                <span class="hover:underline">Tap to shake acorns!</span>
+              </span>
+              <span class="text-amber-200">🔥 12 Cozy Bedtime Tales</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONCEPT 4: ANIMATED HOPPING KARAOKE COMPANION -->
+    <div id="view-karaoke" class="concept-view hidden space-y-5">
+      <div class="clay-card bg-gradient-to-b from-purple-100 via-indigo-50 to-pink-100 p-6 sm:p-8 border-4 border-purple-400 relative overflow-hidden">
+        
+        <div class="max-w-2xl">
+          <span class="bg-purple-600 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">Concept 4 • Dynamic Audio Companion</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-purple-950 mt-2">The Hopping Mascot Story Companion</h2>
+          <p class="text-sm text-purple-900/80 mt-1">
+            Instead of boring static text highlights, a playful little bunny (or frog) literally hops from word to word! Kids can also tap any word to hear funny cartoon sound effects.
+          </p>
+        </div>
+
+        <!-- Live Interactive Karaoke Simulation -->
+        <div class="mt-6 bg-white p-6 rounded-3xl border-4 border-purple-300 shadow-xl space-y-5">
+          
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-2xl">🐰</span>
+              <span class="font-black text-xs text-purple-900 uppercase tracking-wider">Live Karaoke Reader Engine</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="karaoke-play-btn" onclick="startKaraokeDemo()" class="clay-btn bg-emerald-500 hover:bg-emerald-400 text-white font-black text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+                <span>▶️ Start Hopping Narration</span>
+              </button>
+              <button onclick="resetKaraokeDemo()" class="clay-btn bg-slate-200 text-slate-700 text-xs font-black px-3 py-2 rounded-xl">
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Sentence Container with Hopping Mascot Anchor -->
+          <div class="relative bg-purple-50 p-6 rounded-2xl border-2 border-purple-200 min-h-32 flex flex-wrap items-center gap-x-2 gap-y-3 text-lg sm:text-xl font-extrabold text-slate-800">
+            
+            <!-- Hopping Mascot Avatar that moves above the active word -->
+            <div id="hopping-mascot" class="absolute -top-7 left-6 text-2xl transition-all duration-300 ease-out transform -translate-x-1/2 pointer-events-none animate-bounce">
+              🐰
+            </div>
+
+            <!-- Words -->
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-0" onclick="hopToWord(0)">Once</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-1" onclick="hopToWord(1)">upon</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-2" onclick="hopToWord(2)">a</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-3" onclick="hopToWord(3)">time,</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-4" onclick="hopToWord(4)">a</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-5" onclick="hopToWord(5)">clever</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-6" onclick="hopToWord(6)">little</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-7" onclick="hopToWord(7)">mouse</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-8" onclick="hopToWord(8)">saved</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-9" onclick="hopToWord(9)">the</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-10" onclick="hopToWord(10)">mighty</span>
+            <span class="karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200" id="kw-11" onclick="hopToWord(11)">lion!</span>
+          </div>
+
+          <!-- Bottom Reader Controls (Kid Toy Style) -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-black text-slate-500">🐌 Crawl</span>
+              <input type="range" min="0.6" max="1.6" step="0.2" value="1.0" class="accent-purple-600 cursor-pointer" id="karaoke-speed">
+              <span class="text-xs font-black text-slate-500">⚡ Cheetah</span>
+            </div>
+            <div class="text-xs font-bold text-purple-700">
+              💡 Kids can tap any word to make the bunny hop there instantly!
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Random Animations & Easter Eggs Feature Matrix -->
+    <div class="bg-white p-6 rounded-3xl border-2 border-indigo-200 shadow-md">
+      <h3 class="text-lg font-black text-indigo-950 mb-3 flex items-center gap-2">
+        <span>🎨</span>
+        <span>Kids Random Animations & Delighters Feature Suite</span>
+      </h3>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+        <div class="p-3.5 bg-pink-50 rounded-2xl border border-pink-200 flex flex-col justify-between">
+          <div>
+            <div class="font-black text-pink-900 flex items-center gap-1.5 mb-1">
+              <span>👀</span> Googly-Eye Mouse Tracking
+            </div>
+            <p class="text-pink-950/70">Characters, buttons, and logos have pupils that smoothly track the cursor or finger.</p>
+          </div>
+          <button onclick="triggerGooglyJiggle()" class="mt-2 text-[10px] font-black text-pink-600 hover:underline text-left">Test Eye Wiggle →</button>
+        </div>
+
+        <div class="p-3.5 bg-sky-50 rounded-2xl border border-sky-200 flex flex-col justify-between">
+          <div>
+            <div class="font-black text-sky-900 flex items-center gap-1.5 mb-1">
+              <span>🫧</span> Ambient Poppable Bubbles
+            </div>
+            <p class="text-sky-950/70">Translucent soap bubbles float up at random times; kids can tap them to hear a satisfying pop!</p>
+          </div>
+          <button onclick="spawnExtraBubbles(6)" class="mt-2 text-[10px] font-black text-sky-600 hover:underline text-left">Spawn 6 Bubbles →</button>
+        </div>
+
+        <div class="p-3.5 bg-amber-50 rounded-2xl border border-amber-200 flex flex-col justify-between">
+          <div>
+            <div class="font-black text-amber-900 flex items-center gap-1.5 mb-1">
+              <span>🦊</span> Peek-a-boo Animals
+            </div>
+            <p class="text-amber-950/70">Random animals peek out from screen corners every 15–30s to wink, wave, and duck back.</p>
+          </div>
+          <button onclick="triggerPeekaboo(false)" class="mt-2 text-[10px] font-black text-amber-700 hover:underline text-left">Trigger Fox Peek →</button>
+        </div>
+
+        <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200 flex flex-col justify-between">
+          <div>
+            <div class="font-black text-emerald-900 flex items-center gap-1.5 mb-1">
+              <span>🎹</span> Web Audio Toy Synthesizer
+            </div>
+            <p class="text-emerald-950/70">Zero external sound files needed! Generates real-time cartoon boings, xylophone chimes, and pops.</p>
+          </div>
+          <button onclick="playArpeggio()" class="mt-2 text-[10px] font-black text-emerald-700 hover:underline text-left">Play Toy Chime →</button>
+        </div>
+
+        <div class="p-3.5 bg-purple-50 rounded-2xl border border-purple-200 flex flex-col justify-between">
+          <div>
+            <div class="font-black text-purple-900 flex items-center gap-1.5 mb-1">
+              <span>🪅</span> Moral Celebration Pinata
+            </div>
+            <p class="text-purple-950/70">At the end of a fable, a swinging pinata appears that kids tap 3 times to burst out golden stars!</p>
+          </div>
+          <button onclick="triggerConfettiBurst()" class="mt-2 text-[10px] font-black text-purple-700 hover:underline text-left">Burst Pinata Confetti →</button>
+        </div>
+
+        <div class="p-3.5 bg-rose-50 rounded-2xl border border-rose-200 flex flex-col justify-between">
+          <div>
+            <div class="font-black text-rose-900 flex items-center gap-1.5 mb-1">
+              <span>🧲</span> Zero-G Sticker Canvas
+            </div>
+            <p class="text-rose-950/70">Kids earn animal stickers as rewards and can stick, drag, and flick them anywhere on the screen.</p>
+          </div>
+          <button onclick="dropSticker()" class="mt-2 text-[10px] font-black text-rose-700 hover:underline text-left">Drop Mystery Sticker →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT FOR DYNAMIC INTERACTIVITY, AUDIO SYNTH, AND ANIMATIONS -->
+  <script>
+    // 1. Procedural Web Audio API sound generator (Zero external assets required)
+    let audioCtx = null;
+    let soundEnabled = true;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function toggleAudio() {
+      soundEnabled = !soundEnabled;
+      document.getElementById('sfx-icon').textContent = soundEnabled ? '🔊' : '🔇';
+      document.getElementById('sfx-label').textContent = soundEnabled ? 'Toy Sounds: ON' : 'Toy Sounds: OFF';
+      if (soundEnabled) playBoing(500);
+    }
+
+    function playBoing(freq = 440) {
+      if (!soundEnabled) return;
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(freq * 1.8, audioCtx.currentTime + 0.15);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.9, audioCtx.currentTime + 0.35);
+
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.36);
+      } catch (e) {}
+    }
+
+    function playPopSound() {
+      if (!soundEnabled) return;
+      initAudio();
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.08);
+
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.09);
+      } catch (e) {}
+    }
+
+    function playArpeggio() {
+      if (!soundEnabled) return;
+      [523.25, 659.25, 783.99, 1046.50].forEach((note, idx) => {
+        setTimeout(() => playBoing(note), idx * 80);
+      });
+    }
+
+    // 2. Googly Eyes Tracking Mouse / Touch
+    document.addEventListener('mousemove', (e) => {
+      const pupils = document.querySelectorAll('.pupil');
+      pupils.forEach(pupil => {
+        const rect = pupil.parentElement.getBoundingClientRect();
+        const eyeX = rect.left + rect.width / 2;
+        const eyeY = rect.top + rect.height / 2;
+        const angle = Math.atan2(e.clientY - eyeY, e.clientX - eyeX);
+        const dist = Math.min(3.5, Math.hypot(e.clientX - eyeX, e.clientY - eyeY) / 20);
+        const offsetX = Math.cos(angle) * dist;
+        const offsetY = Math.sin(angle) * dist;
+        pupil.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+      });
+    });
+
+    function triggerGooglyJiggle() {
+      playBoing(600);
+      const pupils = document.querySelectorAll('.pupil');
+      pupils.forEach((pupil, i) => {
+        pupil.style.transition = 'transform 0.1s ease-in-out';
+        pupil.style.transform = i % 2 === 0 ? 'translate(-3px, -3px)' : 'translate(3px, 3px)';
+        setTimeout(() => {
+          pupil.style.transform = i % 2 === 0 ? 'translate(3px, 3px)' : 'translate(-3px, -3px)';
+        }, 150);
+        setTimeout(() => {
+          pupil.style.transform = 'translate(0px, 0px)';
+        }, 300);
+      });
+    }
+
+    // 3. Poppable Floating Bubbles Ambient System
+    const bubbleLayer = document.getElementById('bubble-layer');
+    function createBubble() {
+      if (!bubbleLayer) return;
+      const b = document.createElement('div');
+      b.className = 'poppable-bubble pointer-events-auto';
+      const size = Math.floor(Math.random() * 32) + 28;
+      const left = Math.random() * 90 + 5;
+      const duration = Math.random() * 7 + 8;
+      
+      b.style.width = `${size}px`;
+      b.style.height = `${size}px`;
+      b.style.left = `${left}%`;
+      b.style.animationDuration = `${duration}s`;
+
+      b.addEventListener('click', (e) => {
+        e.stopPropagation();
+        popBubbleElement(b);
+      });
+
+      bubbleLayer.appendChild(b);
+      setTimeout(() => { if (b.parentNode) b.remove(); }, duration * 1000);
+    }
+
+    function popBubbleElement(elem) {
+      playPopSound();
+      elem.style.transition = 'all 0.12s ease-out';
+      elem.style.transform = 'scale(1.5)';
+      elem.style.opacity = '0';
+      setTimeout(() => { if (elem.parentNode) elem.remove(); }, 120);
+    }
+
+    function spawnExtraBubbles(count = 5) {
+      playBoing(500);
+      for (let i = 0; i < count; i++) {
+        setTimeout(createBubble, i * 150);
+      }
+    }
+
+    // Ambient bubble timer
+    setInterval(() => {
+      if (document.querySelectorAll('.poppable-bubble').length < 8) {
+        createBubble();
+      }
+    }, 2800);
+
+    // 4. Concept Tab Switcher
+    function switchConcept(conceptId) {
+      playBoing(480);
+      document.querySelectorAll('.concept-view').forEach(v => v.classList.add('hidden'));
+      document.querySelectorAll('.concept-tab').forEach(t => {
+        t.className = 'concept-tab clay-btn bg-white text-slate-800 p-3.5 rounded-2xl text-left border-3 border-transparent flex flex-col justify-between h-24';
+      });
+
+      const targetView = document.getElementById(`view-${conceptId}`);
+      if (targetView) targetView.classList.remove('hidden');
+
+      const activeTab = document.getElementById(`tab-${conceptId}`);
+      if (activeTab) {
+        if (conceptId === 'toybox') activeTab.className = 'concept-tab clay-btn bg-pink-500 text-white p-3.5 rounded-2xl text-left border-3 border-pink-400 flex flex-col justify-between h-24';
+        if (conceptId === 'popup') activeTab.className = 'concept-tab clay-btn bg-emerald-600 text-white p-3.5 rounded-2xl text-left border-3 border-emerald-400 flex flex-col justify-between h-24';
+        if (conceptId === 'treehouse') activeTab.className = 'concept-tab clay-btn bg-amber-600 text-white p-3.5 rounded-2xl text-left border-3 border-amber-400 flex flex-col justify-between h-24';
+        if (conceptId === 'karaoke') activeTab.className = 'concept-tab clay-btn bg-purple-600 text-white p-3.5 rounded-2xl text-left border-3 border-purple-400 flex flex-col justify-between h-24';
+      }
+    }
+
+    // 5. Gumball Machine Simulation
+    const sampleTales = [
+      { animal: '🦁', title: 'The Lion and the Little Mouse', sub: 'Friendship & Mercy', moral: 'No act of kindness, no matter how small, is ever wasted.' },
+      { animal: '🦅', title: 'The Crow and the Clay Pitcher', sub: 'Clever Thinking', moral: 'Little by little does the trick when solving big riddles.' },
+      { animal: '🐢', title: 'The Tortoise and the Speedy Hare', sub: 'Patience & Focus', moral: 'Slow and steady wins the race!' },
+      { animal: '🦊', title: 'The Fox and the Sweet Grapes', sub: 'Honesty with Yourself', moral: 'It is easy to dislike what you cannot get.' },
+      { animal: '🪿', title: 'The Goose that Laid Golden Eggs', sub: 'Gratitude & Greed', moral: 'Greed often destroys the good things we already possess.' },
+      { animal: '🐜', title: 'The Ant and the Singing Grasshopper', sub: 'Preparation', moral: 'Work hard today so you can enjoy tomorrow in warmth.' }
+    ];
+
+    let currentTaleIdx = 0;
+    function crankGumball() {
+      playBoing(300);
+      const btn = document.getElementById('crank-btn');
+      btn.style.transform = 'rotate(180deg)';
+      setTimeout(() => { btn.style.transform = 'rotate(0deg)'; }, 350);
+
+      // Jiggle gumballs
+      const balls = document.getElementById('globe-balls');
+      balls.classList.add('animate-wiggle');
+      setTimeout(() => balls.classList.remove('animate-wiggle'), 600);
+
+      // Dispense capsule
+      const cap = document.getElementById('chute-capsule');
+      cap.classList.remove('hidden');
+      playBoing(720);
+
+      currentTaleIdx = (currentTaleIdx + 1) % sampleTales.length;
+      setTimeout(() => {
+        openDispensedStory();
+      }, 700);
+    }
+
+    function openDispensedStory() {
+      playArpeggio();
+      const cap = document.getElementById('chute-capsule');
+      cap.classList.add('hidden');
+
+      const tale = sampleTales[currentTaleIdx];
+      document.getElementById('toy-story-avatar').textContent = tale.animal;
+      document.getElementById('toy-story-title').textContent = tale.title;
+      document.getElementById('toy-story-sub').textContent = `Theme: ${tale.sub}`;
+
+      const card = document.getElementById('toy-story-card');
+      card.classList.add('scale-105');
+      setTimeout(() => card.classList.remove('scale-105'), 250);
+    }
+
+    function filterToybox(cat) {
+      playBoing(620);
+      crankGumball();
+    }
+
+    // 6. Map Interactive Callbacks
+    function tickleSun() {
+      playBoing(880);
+      const sun = document.getElementById('sun-emoji');
+      sun.textContent = '😎';
+      setTimeout(() => { sun.textContent = '☀️'; }, 1500);
+    }
+
+    function showerRainbow() {
+      playArpeggio();
+      spawnExtraBubbles(8);
+    }
+
+    function selectIsland(name, icon, count) {
+      playBoing(540);
+      document.getElementById('island-hud-title').textContent = `Selected: ${icon} ${name}`;
+      document.getElementById('island-hud-sub').textContent = `${count} ready to read and explore!`;
+    }
+
+    // 7. Treehouse Level Callbacks
+    function setTreeLevel(lvl) {
+      playBoing(500);
+      const canvas = document.getElementById('tree-canvas');
+      if (lvl === 'stars') {
+        canvas.className = 'relative h-64 rounded-2xl bg-gradient-to-t from-indigo-950 via-purple-950 to-slate-950 border-2 border-purple-400/50 p-4 flex flex-col justify-around transition-colors duration-700';
+      } else if (lvl === 'canopy') {
+        canvas.className = 'relative h-64 rounded-2xl bg-gradient-to-t from-emerald-950 via-teal-950 to-indigo-950 border-2 border-emerald-400/50 p-4 flex flex-col justify-around transition-colors duration-700';
+      } else {
+        canvas.className = 'relative h-64 rounded-2xl bg-gradient-to-t from-amber-950 via-stone-900 to-emerald-950 border-2 border-amber-500/50 p-4 flex flex-col justify-around transition-colors duration-700';
+      }
+    }
+
+    function shakeBranch() {
+      playBoing(360);
+      spawnExtraBubbles(3);
+    }
+
+    // 8. Karaoke Mascot Hop Engine
+    let karaokeTimer = null;
+    let activeWordIndex = 0;
+    const totalWords = 12;
+
+    function hopToWord(idx) {
+      activeWordIndex = idx;
+      playBoing(440 + idx * 35);
+      
+      const words = document.querySelectorAll('.karaoke-word');
+      words.forEach((w, i) => {
+        if (i === idx) {
+          w.className = 'karaoke-word px-2 py-1 rounded-xl bg-purple-500 text-white font-black shadow-lg scale-110';
+          const mascot = document.getElementById('hopping-mascot');
+          if (mascot) {
+            mascot.style.left = `${w.offsetLeft + w.offsetWidth / 2}px`;
+            mascot.style.top = `${w.offsetTop - 34}px`;
+          }
+        } else {
+          w.className = 'karaoke-word px-2 py-1 rounded-xl transition-all cursor-pointer hover:bg-purple-200 text-slate-800';
+        }
+      });
+    }
+
+    function startKaraokeDemo() {
+      if (karaokeTimer) clearInterval(karaokeTimer);
+      playArpeggio();
+      activeWordIndex = 0;
+      hopToWord(0);
+
+      const speedVal = parseFloat(document.getElementById('karaoke-speed').value || '1.0');
+      const intervalMs = Math.round(450 / speedVal);
+
+      karaokeTimer = setInterval(() => {
+        activeWordIndex++;
+        if (activeWordIndex >= totalWords) {
+          clearInterval(karaokeTimer);
+          karaokeTimer = null;
+          triggerConfettiBurst();
+          return;
+        }
+        hopToWord(activeWordIndex);
+      }, intervalMs);
+    }
+
+    function resetKaraokeDemo() {
+      if (karaokeTimer) clearInterval(karaokeTimer);
+      activeWordIndex = 0;
+      hopToWord(0);
+    }
+
+    // 9. Peek-a-boo System
+    function triggerPeekaboo(userClicked = false) {
+      if (userClicked) playBoing(900);
+      const critter = document.getElementById('peek-critter');
+      critter.style.transform = 'translateY(0%)';
+      setTimeout(() => {
+        critter.style.transform = 'translateY(100%)';
+      }, 3500);
+    }
+
+    // Random peek-a-boo every 25 seconds
+    setInterval(() => {
+      triggerPeekaboo(false);
+    }, 25000);
+
+    // 10. Pinata / Confetti Burst
+    function triggerConfettiBurst() {
+      playArpeggio();
+      for (let i = 0; i < 25; i++) {
+        setTimeout(spawnConfettiParticle, i * 20);
+      }
+    }
+
+    function spawnConfettiParticle() {
+      const p = document.createElement('div');
+      const emojis = ['⭐', '🎉', '✨', '🍭', '💎', '🌟', '🎈'];
+      p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      p.style.position = 'fixed';
+      p.style.left = `${Math.random() * 80 + 10}%`;
+      p.style.top = `${Math.random() * 40 + 20}%`;
+      p.style.fontSize = `${Math.random() * 16 + 18}px`;
+      p.style.pointerEvents = 'none';
+      p.style.zIndex = '999';
+      p.style.transition = 'all 1s cubic-bezier(0.25, 1, 0.5, 1)';
+      document.body.appendChild(p);
+
+      setTimeout(() => {
+        p.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 120 + 80}px) rotate(${Math.random() * 360}deg)`;
+        p.style.opacity = '0';
+      }, 20);
+
+      setTimeout(() => { p.remove(); }, 1100);
+    }
+
+    function dropSticker() {
+      playBoing(750);
+      const stickers = ['🦁', '🦊', '🦉', '🐢', '🦔', '👑', '🚀', '🌈'];
+      const st = stickers[Math.floor(Math.random() * stickers.length)];
+      
+      const s = document.createElement('div');
+      s.textContent = st;
+      s.className = 'fixed text-4xl p-2 bg-white/90 rounded-2xl shadow-2xl border-2 border-amber-300 cursor-grab z-30 select-none animate-bounce';
+      s.style.left = `${Math.random() * 60 + 20}%`;
+      s.style.top = `${Math.random() * 50 + 20}%`;
+      document.body.appendChild(s);
+      setTimeout(() => s.classList.remove('animate-bounce'), 1000);
+    }
+
+    function triggerRandomMagic() {
+      playArpeggio();
+      spawnExtraBubbles(5);
+      triggerConfettiBurst();
+      triggerGooglyJiggle();
+      triggerPeekaboo();
+    }
+
+    // Initialize initial active word
+    setTimeout(() => { hopToWord(0); }, 300);
+  </script>
+</body>
+</html>
