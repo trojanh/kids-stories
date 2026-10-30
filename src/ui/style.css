@@ -605,6 +605,7 @@ body {
   width: 100%;
   height: 100%;
   display: block;
+  object-fit: cover;
   transition: transform 0.35s ease;
 }
 
@@ -726,12 +727,13 @@ body {
 }
 
 /* ==========================================================
-   STORY READER VIEW
+   STORY READER VIEW: Two-Page Picture Book Spread
    ========================================================== */
 
 .reader-wrapper {
-  max-width: 850px;
+  max-width: 1140px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .reader-navbar {
@@ -744,17 +746,18 @@ body {
 .reader-card {
   background: #ffffff;
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(15, 23, 42, 0.05);
   overflow: hidden;
   border: 2px solid #e2e8f0;
 }
 
 .reader-header {
-  padding: 1.5rem 1.75rem 1rem;
+  padding: 1.25rem 1.75rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 2px solid #f1f5f9;
+  background: #ffffff;
 }
 
 .reader-title-area h2 {
@@ -764,22 +767,80 @@ body {
   margin-bottom: 0.35rem;
 }
 
-/* Stage & Animated Visual SVG */
+/* Two-Page Picture Book Body (Desktop / Laptop / Tablet) */
+.reader-book-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: stretch;
+  background: #ffffff;
+}
+
+/* Left Page: Stage Column (Image Fills the Page) */
+.reader-stage-column {
+  background: #f8fafc;
+  border-right: 2px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.75rem;
+}
+
 .reader-stage {
   position: relative;
   width: 100%;
-  background: #f1f5f9;
+  max-width: 540px;
+  aspect-ratio: 1 / 1;
+  background: #ffffff;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.06);
+  border: 2px solid #e2e8f0;
+}
+
+.stage-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
 }
 
 .story-svg-canvas {
   width: 100%;
-  max-height: 420px;
+  height: 100%;
   display: block;
+}
+
+.authentic-storyboard-panel {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Right Page: Text & Interactive Audio Controls */
+.reader-text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+}
+
+.story-reader-text-container {
+  padding: 1.75rem 2rem;
+  background: #ffffff;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 440px;
+  scroll-behavior: smooth;
 }
 
 /* SVG Keyframe Animations */
@@ -1536,6 +1597,30 @@ body {
 }
 
 /* Responsive adjustments */
+@media (max-width: 960px) {
+  .reader-wrapper {
+    max-width: 720px;
+  }
+  .reader-book-body {
+    grid-template-columns: 1fr;
+  }
+  .reader-stage-column {
+    border-right: none;
+    border-bottom: 2px solid #f1f5f9;
+    padding: 1.25rem 1rem;
+  }
+  .reader-stage {
+    max-width: 500px;
+  }
+  .story-reader-text-container {
+    max-height: none;
+    padding: 1.5rem;
+  }
+  .reader-text-column {
+    min-height: auto;
+  }
+}
+
 @media (max-width: 768px) {
   .hero-card {
     flex-direction: column;
@@ -1555,19 +1640,29 @@ body {
     justify-content: center;
   }
 
-  /* Sticky Illustration Stage on Mobile */
-  .reader-card {
-    overflow: visible;
+  /* Responsive Story Reader on Tablet & Mobile */
+  .reader-book-body {
+    grid-template-columns: 1fr;
+  }
+  .reader-stage-column {
+    border-right: none;
+    border-bottom: 2px solid #f1f5f9;
+    padding: 1rem 0.75rem;
   }
   .reader-stage {
     position: sticky;
     top: 0;
     z-index: 30;
-    background: #f8fafc;
+    max-width: 460px;
+    background: #ffffff;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
   }
-  .story-svg-canvas {
-    max-height: 240px;
+  .story-reader-text-container {
+    max-height: none;
+    padding: 1.25rem 1.5rem;
+  }
+  .reader-text-column {
+    min-height: auto;
   }
 
   /* Mobile Filters: Horizontal Scrollable Row */

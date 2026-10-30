@@ -1,5 +1,6 @@
 {
   "version": "2.0",
+  "cdn_base_url": "https://huggingface.co/datasets/trojanh/talepickle-assets/resolve/main",
   "default_voice": "en-US-AnaNeural",
   "stories": {
     "tiger_and_mice": {

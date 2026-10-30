@@ -3,21 +3,20 @@
  * Provides offline reading, instant app launch, and background asset caching.
  */
 
-const CACHE_NAME = 'talepickle-v2.3';
+const CACHE_NAME = 'talepickle-v3.1';
 
 const PRECACHE_ASSETS = [
   './',
   'index.html',
-  'style.css?v=2.2',
+  'style.css?v=3.0',
   'analytics.js?v=1.0',
-  'main.js?v=2.3',
-  'tts.js?v=2.2',
-  'svg-art.js?v=2.0',
-  'rough.js?v=2.0',
+  'main.js?v=3.1',
+  'tts.js?v=2.3',
   'manifest.webmanifest',
   'icons/icon.svg',
   'data/stories.json',
   'data/audio_manifest.json',
+  'data/storyboard_manifest.json',
 ];
 
 self.addEventListener('install', (event) => {
@@ -86,28 +85,37 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 3. Static Assets (JS, CSS, SVGs, Fonts, Icons): Cache First with Network Fallback
+  // 3. Static Assets (JS, CSS, SVGs, PNGs, Fonts, Icons, CDN media): Cache First with Network Fallback
   event.respondWith(
     caches.match(req).then((cachedRes) => {
       if (cachedRes) return cachedRes;
 
-      return fetch(req).then((networkRes) => {
-        // Cache valid same-origin assets or Google Fonts
-        if (
-          networkRes &&
-          networkRes.status === 200 &&
-          (url.origin === self.location.origin || url.hostname.includes('fonts.'))
-        ) {
-          const resClone = networkRes.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(req, resClone);
-          });
-        }
-        return networkRes;
-      }).catch((err) => {
-        // Return nothing for optional assets if offline
-        return null;
-      });
+      return fetch(req)
+        .then((networkRes) => {
+          // Cache valid same-origin assets, CDN assets, or Google Fonts
+          const isCacheableAsset =
+            url.origin === self.location.origin ||
+            url.hostname.includes('huggingface.co') ||
+            url.hostname.includes('hf.co') ||
+            url.hostname.includes('cloudfront.net') ||
+            url.hostname.includes('fonts.');
+
+          if (
+            networkRes &&
+            (networkRes.status === 200 || networkRes.status === 0) &&
+            isCacheableAsset
+          ) {
+            const resClone = networkRes.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(req, resClone);
+            });
+          }
+          return networkRes;
+        })
+        .catch((err) => {
+          // Return nothing for optional assets if offline
+          return null;
+        });
     })
   );
 });
