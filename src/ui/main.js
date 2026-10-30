@@ -582,6 +582,9 @@
           </div>
         </a>
         <div class="header-actions">
+          <button class="btn-pill playlist-header-btn" id="playlistHeaderBtn" onclick="window.PlaylistManager.toggleDrawer()" title="View Bedtime Story Playlist">
+            🎵 Playlist <span class="playlist-pill-count" style="display: ${window.PlaylistManager && window.PlaylistManager.getState().count > 0 ? 'inline-block' : 'none'};">${window.PlaylistManager ? window.PlaylistManager.getState().count : 0}</span>
+          </button>
           <a href="story_gallery.html" class="btn-pill" style="background: #4F46E5; color: white; border: none; text-decoration: none; font-weight: 800;" title="Story-by-Story Visual Gallery">🖼️ Story Gallery</a>
           <button class="btn-pill" id="surpriseBtn">🎲 Surprise Me!</button>
           <button class="btn-pill ${showFavoritesOnly ? 'primary' : ''}" id="favFilterBtn">
@@ -803,6 +806,12 @@
                 <div class="card-thumbnail-wrapper">
                   ${thumbHtml}
                   <div class="thumb-overlay-top">
+                    <button class="card-playlist-btn ${window.PlaylistManager && window.PlaylistManager.has(s.id) ? 'in-playlist' : ''}"
+                            data-id="${s.id}"
+                            title="${window.PlaylistManager && window.PlaylistManager.has(s.id) ? 'In Playlist (#' + window.PlaylistManager.getPosition(s.id) + ') - Click to remove' : 'Add to Bedtime Playlist'}"
+                            onclick="event.preventDefault(); event.stopPropagation(); window.PlaylistManager.toggle('${s.id}')">
+                      ${window.PlaylistManager && window.PlaylistManager.has(s.id) ? `🎵 #${window.PlaylistManager.getPosition(s.id)}` : `➕ Playlist`}
+                    </button>
                     <button class="fav-btn" data-id="${s.id}" title="Save Favorite" onclick="window.StoryApp.toggleFav('${s.id}', event)">
                       ${isFav ? '❤️' : '🤍'}
                     </button>
