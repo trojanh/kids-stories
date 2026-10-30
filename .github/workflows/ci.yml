@@ -31,7 +31,6 @@ jobs:
           node -c src/ui/main.js
           node -c src/ui/sw.js
           node -c src/ui/tts.js
-          node -c src/ui/svg-art.js
           node -c scripts/serveUi.js
 
       - name: Validate JSON Formatting & Syntax
