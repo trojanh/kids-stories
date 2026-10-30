@@ -619,14 +619,18 @@ body {
   left: 8px;
   right: 8px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   pointer-events: none;
   z-index: 2;
 }
 
-.thumb-overlay-top .fav-btn {
+.thumb-overlay-top .fav-btn,
+.thumb-overlay-top .card-playlist-btn {
   pointer-events: auto;
+}
+
+.thumb-overlay-top .fav-btn {
   margin-left: auto;
 }
 
@@ -1786,6 +1790,9 @@ body {
 
 /* Story Card Action: + Playlist Pill */
 .card-playlist-btn {
+  pointer-events: auto;
+  position: relative;
+  z-index: 3;
   background: rgba(15, 23, 42, 0.72);
   color: #ffffff;
   backdrop-filter: blur(6px);

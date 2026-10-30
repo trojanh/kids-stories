@@ -105,7 +105,11 @@
       return idx >= 0 ? idx + 1 : 0;
     }
 
-    add(storyId, silent = false) {
+    add(storyId, silent = false, event = null) {
+      if (event) {
+        if (typeof event.preventDefault === 'function') event.preventDefault();
+        if (typeof event.stopPropagation === 'function') event.stopPropagation();
+      }
       if (!storyId || this.has(storyId)) return;
       this.items.push(storyId);
       this.notifyChange();
@@ -115,7 +119,11 @@
       }
     }
 
-    remove(storyId, silent = false) {
+    remove(storyId, silent = false, event = null) {
+      if (event) {
+        if (typeof event.preventDefault === 'function') event.preventDefault();
+        if (typeof event.stopPropagation === 'function') event.stopPropagation();
+      }
       const idx = this.items.indexOf(storyId);
       if (idx === -1) return;
       this.items.splice(idx, 1);
@@ -129,11 +137,16 @@
       }
     }
 
-    toggle(storyId) {
+    toggle(storyId, event = null) {
+      if (event) {
+        if (typeof event.preventDefault === 'function') event.preventDefault();
+        if (typeof event.stopPropagation === 'function') event.stopPropagation();
+        if (typeof event.stopImmediatePropagation === 'function') event.stopImmediatePropagation();
+      }
       if (this.has(storyId)) {
-        this.remove(storyId);
+        this.remove(storyId, false, event);
       } else {
-        this.add(storyId);
+        this.add(storyId, false, event);
       }
     }
 
@@ -347,7 +360,10 @@
 
     renderMoralAutoplayCountdown(nextStory, countdownSeconds = 4) {
       this.cancelCountdown();
-      const moralContainer = document.querySelector('.completed-story-content');
+      const moralContainer =
+        document.querySelector('.completed-story-content') ||
+        document.querySelector('.completed-story-container') ||
+        document.getElementById('app');
       if (!moralContainer) return;
 
       const card = document.createElement('div');
@@ -359,7 +375,7 @@
           <span class="playlist-countdown-step">Story ${this.currentIndex + 2} of ${this.items.length}</span>
         </div>
         <div class="playlist-countdown-body">
-          <div class="playlist-countdown-title">Up Next: <strong>${escapeHtml(nextStory.title)}</strong></div>
+          <div class="playlist-countdown-title">Up Next: <strong>${escapeHtml(nextStory ? nextStory.title : '')}</strong></div>
           <div class="playlist-countdown-bar">
             <div class="playlist-countdown-fill" id="playlistCountdownFill"></div>
           </div>
@@ -370,7 +386,7 @@
         </div>
       `;
 
-      // Insert right before celebration actions
+      // Insert right before celebration actions if present
       const actions = moralContainer.querySelector('.celebration-actions');
       if (actions) {
         moralContainer.insertBefore(card, actions);
@@ -428,7 +444,10 @@
 
     showPlaylistCompleteCelebration() {
       this.cancelCountdown();
-      const moralContainer = document.querySelector('.completed-story-content');
+      const moralContainer =
+        document.querySelector('.completed-story-content') ||
+        document.querySelector('.completed-story-container') ||
+        document.getElementById('app');
       if (!moralContainer) return;
 
       const card = document.createElement('div');
@@ -446,7 +465,13 @@
           <button class="btn-pill" onclick="window.StoryApp.goToLibrary()">Browse Stories 📚</button>
         </div>
       `;
-      moralContainer.appendChild(card);
+
+      const actions = moralContainer.querySelector('.celebration-actions');
+      if (actions) {
+        moralContainer.insertBefore(card, actions);
+      } else {
+        moralContainer.appendChild(card);
+      }
     }
 
     // ==========================================================
@@ -539,6 +564,23 @@
           btn.setAttribute('title', `Add to Story Playlist`);
         }
       });
+
+      const readerBtn = document.getElementById('readerPlaylistToggleBtn');
+      if (readerBtn && global.StoryApp && global.StoryApp.getCurrentStory) {
+        const cur = global.StoryApp.getCurrentStory();
+        if (cur) {
+          const pos = this.getPosition(cur.id);
+          if (pos > 0) {
+            readerBtn.classList.add('primary');
+            readerBtn.innerHTML = `🎵 In Playlist (#${pos})`;
+            readerBtn.title = `In Playlist (#${pos}) - Click to remove`;
+          } else {
+            readerBtn.classList.remove('primary');
+            readerBtn.innerHTML = `➕ Add to Playlist`;
+            readerBtn.title = `Add to Bedtime Story Playlist`;
+          }
+        }
+      }
     }
 
     openDrawer() {

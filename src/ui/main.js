@@ -823,13 +823,13 @@
                 <div class="card-thumbnail-wrapper">
                   ${thumbHtml}
                   <div class="thumb-overlay-top">
-                    <button class="card-playlist-btn ${window.PlaylistManager && window.PlaylistManager.has(s.id) ? 'in-playlist' : ''}"
+                    <button type="button" class="card-playlist-btn ${window.PlaylistManager && window.PlaylistManager.has(s.id) ? 'in-playlist' : ''}"
                             data-id="${s.id}"
                             title="${window.PlaylistManager && window.PlaylistManager.has(s.id) ? 'In Playlist (#' + window.PlaylistManager.getPosition(s.id) + ') - Click to remove' : 'Add to Bedtime Playlist'}"
-                            onclick="event.preventDefault(); event.stopPropagation(); window.PlaylistManager.toggle('${s.id}')">
+                            onclick="event.preventDefault(); event.stopPropagation(); window.PlaylistManager.toggle('${s.id}', event)">
                       ${window.PlaylistManager && window.PlaylistManager.has(s.id) ? `🎵 #${window.PlaylistManager.getPosition(s.id)}` : `➕ Playlist`}
                     </button>
-                    <button class="fav-btn" data-id="${s.id}" title="Save Favorite" onclick="window.StoryApp.toggleFav('${s.id}', event)">
+                    <button type="button" class="fav-btn" data-id="${s.id}" title="Save Favorite" onclick="window.StoryApp.toggleFav('${s.id}', event)">
                       ${isFav ? '❤️' : '🤍'}
                     </button>
                   </div>
@@ -1473,15 +1473,41 @@
       <div class="reader-wrapper">
         <div class="reader-navbar">
           <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Library</a>
-          <div style="display: flex; gap: 0.5rem; align-items: center;">
-            <button class="btn-pill" id="readerFavBtn" onclick="window.StoryApp.toggleFav('${story.id}', event)">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn-pill" id="readerFavBtn" onclick="window.StoryApp.toggleFav('${story.id}', event)" title="Save to Favorites">
               ${isFav ? '❤️' : '🤍'}
+            </button>
+            <button class="btn-pill ${window.PlaylistManager && window.PlaylistManager.has(story.id) ? 'primary' : ''}" id="readerPlaylistToggleBtn" onclick="window.PlaylistManager.toggle('${story.id}', event)" title="Add or remove from bedtime playlist">
+              ${window.PlaylistManager && window.PlaylistManager.has(story.id) ? `🎵 In Playlist (#${window.PlaylistManager.getPosition(story.id)})` : `➕ Add to Playlist`}
+            </button>
+            <button class="btn-pill playlist-header-btn ${window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive() ? 'playing-active' : ''}" onclick="window.PlaylistManager.toggleDrawer()" title="View Bedtime Story Playlist">
+              🎵 Playlist <span class="playlist-pill-count" style="display: ${window.PlaylistManager && window.PlaylistManager.getState().count > 0 ? 'inline-block' : 'none'};">${window.PlaylistManager ? window.PlaylistManager.getState().count : 0}</span>
             </button>
             <span class="theme-badge theme-${(story.theme || 'Animals').replace(/\s+/g, '')}">
               ${getThemeEmoji(story.theme)} ${story.theme || 'Animals'}
             </span>
           </div>
         </div>
+
+        ${window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive() ? (() => {
+          const info = window.PlaylistManager.getCurrentItemInfo();
+          if (!info) return '';
+          return `
+          <div class="playlist-reader-bar">
+            <div class="playlist-reader-info">
+              <span class="playlist-pulse-badge">🌙 Playing Bedtime Playlist</span>
+              <span>Story <strong>${info.currentIndex + 1}</strong> of <strong>${info.total}</strong></span>
+              ${info.nextStory ? `<span class="playlist-up-next">• Up next: <em>${escapeHtml(info.nextStory.title)}</em></span>` : ''}
+            </div>
+            <div class="playlist-reader-actions">
+              <button class="btn-pill-sm" onclick="window.PlaylistManager.playPrev()" title="Previous Story in Playlist" ${info.currentIndex === 0 ? 'disabled' : ''}>⏮️ Prev</button>
+              <button class="btn-pill-sm" onclick="window.PlaylistManager.playNext()" title="Next Story in Playlist">Next ⏭️</button>
+              <button class="btn-pill-sm" onclick="window.PlaylistManager.openDrawer()" title="View Playlist Queue">📋 Queue</button>
+              <button class="btn-pill-sm text-danger" onclick="window.PlaylistManager.stopPlaylistMode()" title="Exit Playlist Mode">✕ Exit</button>
+            </div>
+          </div>
+          `;
+        })() : ''}
 
         <div class="reader-card">
           <!-- Story Header -->
@@ -1970,12 +1996,6 @@
       window.AppAnalytics.trackPageView(`${getStoryUrl(story.id)}/completed`, `Story Completed: ${story.title} | TalePickle`);
     }
 
-    // Trigger celebratory confetti
-    triggerConfetti();
-
-    // Read out the moral
-    TTS.speakMoral(story.id, `In the end, the story reminds us: ${story.moral}`);
-
     // Find next story in order
     const currentIndex = stories.findIndex((s) => s.id === story.id);
     const nextStory = currentIndex >= 0 && currentIndex < stories.length - 1 ? stories[currentIndex + 1] : stories[0];
@@ -1985,7 +2005,10 @@
       <div class="reader-wrapper">
         <div class="reader-navbar">
           <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Library</a>
-          <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn-pill playlist-header-btn ${window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive() ? 'playing-active' : ''}" onclick="window.PlaylistManager.toggleDrawer()" title="View Bedtime Story Playlist">
+              🎵 Playlist <span class="playlist-pill-count" style="display: ${window.PlaylistManager && window.PlaylistManager.getState().count > 0 ? 'inline-block' : 'none'};">${window.PlaylistManager ? window.PlaylistManager.getState().count : 0}</span>
+            </button>
             <span class="theme-badge theme-${(story.theme || 'Animals').replace(/\s+/g, '')}">
               ${getThemeEmoji(story.theme)} ${story.theme || 'Animals'}
             </span>
@@ -2095,6 +2118,26 @@
         ${renderFooter()}
       </div>
     `;
+
+    // Trigger celebratory confetti
+    triggerConfetti();
+
+    // Read out the moral with autoplay sequencing hook
+    TTS.speakMoral(story.id, `In the end, the story reminds us: ${story.moral}`, () => {
+      if (window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive()) {
+        window.PlaylistManager.handleStoryCompleted();
+      }
+    });
+
+    if (window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive()) {
+      // Safety fallback: if speech ends immediately or is bypassed
+      setTimeout(() => {
+        const existing = document.getElementById('playlistCountdownCard');
+        if (!existing && window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive()) {
+          window.PlaylistManager.handleStoryCompleted();
+        }
+      }, 5500);
+    }
 
     const replayBtn = document.getElementById('replayStoryBtn');
     if (replayBtn) {
@@ -2232,6 +2275,19 @@
 
   // Global namespace for inline event hooks
   window.StoryApp = {
+    getStories: () => stories,
+    getCurrentStory: () => currentStory,
+    setAutoAdvance: (val) => {
+      autoAdvance = Boolean(val);
+      const toggle = document.getElementById('autoAdvanceToggle');
+      if (toggle) toggle.checked = autoAdvance;
+    },
+    startNarration: () => {
+      autoAdvance = true;
+      const toggle = document.getElementById('autoAdvanceToggle');
+      if (toggle) toggle.checked = true;
+      speakCurrentSentence();
+    },
     toggleFav: toggleFavorite,
     goToStory: navigateToStory,
     goToLibrary: navigateToLibrary,
@@ -2241,6 +2297,8 @@
     setAssetCdn: (url) => { window.TALEPICKLE_CDN = url; },
     answerQuiz: handleQuizAnswer,
     handleStageImgError: handleStageImgError,
+    nextSentence: nextSentence,
+    renderMoral: renderMoralScreen,
   };
 
   window.addEventListener('popstate', router);
