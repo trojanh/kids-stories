@@ -3,13 +3,14 @@
  * Provides offline reading, instant app launch, and background asset caching.
  */
 
-const CACHE_NAME = 'talepickle-v2.2';
+const CACHE_NAME = 'talepickle-v2.3';
 
 const PRECACHE_ASSETS = [
   './',
   'index.html',
   'style.css?v=2.2',
-  'main.js?v=2.2',
+  'analytics.js?v=1.0',
+  'main.js?v=2.3',
   'tts.js?v=2.2',
   'svg-art.js?v=2.0',
   'rough.js?v=2.0',
@@ -51,6 +52,11 @@ self.addEventListener('fetch', (event) => {
 
   // Only handle GET requests and http/https schemes
   if (req.method !== 'GET' || !url.protocol.startsWith('http')) {
+    return;
+  }
+
+  // Bypass service worker for Google Analytics & Tag Manager
+  if (url.hostname.includes('google-analytics.com') || url.hostname.includes('googletagmanager.com')) {
     return;
   }
 

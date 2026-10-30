@@ -398,6 +398,10 @@
     }
     localStorage.setItem(STORAGE_KEY_FAVS, JSON.stringify(Array.from(favorites)));
 
+    if (window.AppAnalytics) {
+      window.AppAnalytics.trackFavorite(id, isNowFav);
+    }
+
     // In reader mode: update navbar heart button
     if (currentStory) {
       renderReaderHeaderFav();
@@ -526,6 +530,11 @@
     TTS.stop();
     clearSpeakingWords();
     resetCatalogSEO();
+
+    if (window.AppAnalytics) {
+      const pageQuery = currentPage > 1 ? `?page=${currentPage}` : '';
+      window.AppAnalytics.trackPageView(getLibraryUrl() + pageQuery, document.title);
+    }
 
     const filtered = getFilteredStories();
     const totalPages = Math.ceil(filtered.length / STORIES_PER_PAGE);
@@ -843,12 +852,25 @@
     return '🌟';
   }
 
+  let searchAnalyticsTimer = null;
+
   function attachListEvents() {
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
         currentPage = 1;
+
+        if (searchAnalyticsTimer) clearTimeout(searchAnalyticsTimer);
+        const q = searchQuery.trim();
+        if (q.length >= 2) {
+          searchAnalyticsTimer = setTimeout(() => {
+            if (window.AppAnalytics) {
+              window.AppAnalytics.trackSearch(q, getFilteredStories().length);
+            }
+          }, 800);
+        }
+
         renderList();
         // keep focus in input
         const newInp = document.getElementById('searchInput');
@@ -928,6 +950,9 @@
         activeLength = 'All';
         showFavoritesOnly = false;
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackEvent('clear_filters');
+        }
         renderList();
       });
     }
@@ -938,6 +963,9 @@
         activeTheme = btn.getAttribute('data-theme');
         activeAnimal = 'All';
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('theme', activeTheme);
+        }
         renderList();
       });
     });
@@ -948,6 +976,9 @@
         const selected = btn.getAttribute('data-animal');
         activeAnimal = (activeAnimal.toLowerCase() === selected.toLowerCase() && selected !== 'All') ? 'All' : selected;
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('animal', activeAnimal);
+        }
         renderList();
       });
     });
@@ -958,6 +989,9 @@
       moreAnimalsSelect.addEventListener('change', (e) => {
         activeAnimal = e.target.value || 'All';
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('animal', activeAnimal);
+        }
         renderList();
       });
     }
@@ -967,6 +1001,9 @@
       btn.addEventListener('click', () => {
         activeLength = btn.getAttribute('data-length');
         currentPage = 1;
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackFilter('length', activeLength);
+        }
         renderList();
       });
     });
@@ -991,6 +1028,9 @@
       surpriseBtn.addEventListener('click', () => {
         if (stories.length === 0) return;
         const rand = stories[Math.floor(Math.random() * stories.length)];
+        if (window.AppAnalytics) {
+          window.AppAnalytics.trackSurpriseMe(rand.id);
+        }
         navigateToStory(rand.id);
       });
     }
@@ -1175,6 +1215,11 @@
     isSpeaking = false;
     TTS.stop();
     updateStorySEO(story);
+
+    if (window.AppAnalytics) {
+      window.AppAnalytics.trackPageView(getStoryUrl(story.id), document.title);
+      window.AppAnalytics.trackStoryView(story);
+    }
 
     // 1. Render DOM & SVG illustration immediately for optimal FCP / LCP
     renderReaderUI();
@@ -1442,6 +1487,10 @@
     isSpeaking = true;
     updateSpeakingStateUI(true);
 
+    if (window.AppAnalytics && currentStory) {
+      window.AppAnalytics.trackAudioPlay(currentStory.id, currentSentenceIndex);
+    }
+
     TTS.speakStorySentence(currentStory.id, currentSentenceIndex, sentence, () => {
       isSpeaking = false;
       updateSpeakingStateUI(false);
@@ -1546,6 +1595,9 @@
           TTS.stop();
           isSpeaking = false;
           updateSpeakingStateUI(false);
+          if (window.AppAnalytics && currentStory) {
+            window.AppAnalytics.trackAudioPause(currentStory.id, currentSentenceIndex);
+          }
         } else {
           autoAdvance = true;
           const autoToggle = document.getElementById('autoAdvanceToggle');
@@ -1566,6 +1618,9 @@
           TTS.stop();
           isSpeaking = false;
           updateSpeakingStateUI(false);
+          if (window.AppAnalytics && currentStory) {
+            window.AppAnalytics.trackAudioPause(currentStory.id, currentSentenceIndex);
+          }
         } else {
           autoAdvance = true;
           const autoToggle = document.getElementById('autoAdvanceToggle');
@@ -1698,6 +1753,11 @@
     const story = currentStory;
     TTS.stop();
     clearSpeakingWords();
+
+    if (window.AppAnalytics && story) {
+      window.AppAnalytics.trackStoryComplete(story);
+      window.AppAnalytics.trackPageView(`${getStoryUrl(story.id)}/completed`, `Story Completed: ${story.title} | TalePickle`);
+    }
 
     // Trigger celebratory confetti
     triggerConfetti();
@@ -1843,6 +1903,9 @@
         } else {
           fullStorySpeaking = true;
           readFullBtn.innerHTML = '⏸️ Stop Narration';
+          if (window.AppAnalytics && story) {
+            window.AppAnalytics.trackFullAudioPlay(story.id);
+          }
           const fullText = story.text.join(' ') + ` In the end, the story reminds us: ${story.moral}`;
           TTS.speakFullStory(story.id, fullText, () => {
             fullStorySpeaking = false;
