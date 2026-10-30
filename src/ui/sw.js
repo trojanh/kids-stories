@@ -10,6 +10,7 @@ const PRECACHE_ASSETS = [
   'index.html',
   'style.css?v=3.0',
   'analytics.js?v=1.0',
+  'playlist.js?v=1.0',
   'main.js?v=3.0',
   'tts.js?v=2.3',
   'manifest.webmanifest',
