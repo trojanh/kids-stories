@@ -197,7 +197,7 @@
       if (!allStories || allStories.length === 0) return;
       // Pick 4 gentle, highly rated animal fables
       const candidates = [
-        'the_tortoise_and_the_hare',
+        'the_hare_and_the_tortoise',
         'the_lion_and_the_mouse',
         'the_ant_and_the_dove',
         'the_little_firefly',
@@ -291,7 +291,14 @@
 
     playNext() {
       this.cancelCountdown();
-      if (!this.isPlaylistMode || this.items.length === 0) return;
+      if (!this.isPlaylistMode || this.items.length === 0) {
+        if (this.items.length > 0 && this.currentIndex >= 0 && this.currentIndex + 1 < this.items.length) {
+          this.currentIndex++;
+          this.navigateToStoryInPlaylistMode(this.items[this.currentIndex]);
+          return;
+        }
+        return;
+      }
 
       const nextIndex = this.currentIndex + 1;
       if (nextIndex < this.items.length) {
@@ -302,16 +309,33 @@
         this.navigateToStoryInPlaylistMode(this.items[0]);
       } else {
         this.isPlaylistMode = false;
+        if (global.StoryApp && global.StoryApp.renderMoral) {
+          global.StoryApp.renderMoral();
+        }
         this.showPlaylistCompleteCelebration();
       }
     }
 
     playPrev() {
       this.cancelCountdown();
-      if (!this.isPlaylistMode || this.items.length === 0) return;
+      if (!this.isPlaylistMode || this.items.length === 0) {
+        if (this.items.length > 0 && this.currentIndex > 0) {
+          this.currentIndex--;
+          this.navigateToStoryInPlaylistMode(this.items[this.currentIndex]);
+          return;
+        }
+        return;
+      }
       if (this.currentIndex > 0) {
         this.currentIndex--;
         this.navigateToStoryInPlaylistMode(this.items[this.currentIndex]);
+      } else if (this.isLooping) {
+        this.currentIndex = this.items.length - 1;
+        this.navigateToStoryInPlaylistMode(this.items[this.currentIndex]);
+      } else {
+        // Already at first story: restart it from sentence 0
+        this.navigateToStoryInPlaylistMode(this.items[0]);
+        this.showToast('⏮️ Restarting first story in queue');
       }
     }
 

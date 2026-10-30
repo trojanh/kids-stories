@@ -166,6 +166,48 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function getAdjacentStories() {
+    if (!currentStory || stories.length === 0) return { prev: null, next: null };
+
+    // Mode 1: In Playlist mode with items, use playlist order
+    if (window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive() && window.PlaylistManager.getState().count > 0) {
+      const pm = window.PlaylistManager;
+      const state = pm.getState();
+      const prevStory = state.currentIndex > 0 ? pm.getStory(state.items[state.currentIndex - 1]) : (state.isLooping ? pm.getStory(state.items[state.items.length - 1]) : null);
+      const nextStory = state.currentIndex + 1 < state.items.length ? pm.getStory(state.items[state.currentIndex + 1]) : (state.isLooping ? pm.getStory(state.items[0]) : null);
+      return { prev: prevStory, next: nextStory };
+    }
+
+    // Mode 2: In library/catalog mode, navigate across catalog stories
+    const idx = stories.findIndex((s) => s.id === currentStory.id);
+    if (idx === -1) return { prev: null, next: null };
+    const prevStory = idx > 0 ? stories[idx - 1] : stories[stories.length - 1];
+    const nextStory = idx < stories.length - 1 ? stories[idx + 1] : stories[0];
+    return { prev: prevStory, next: nextStory };
+  }
+
+  function goToNextStory() {
+    if (window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive()) {
+      window.PlaylistManager.playNext();
+      return;
+    }
+    const { next } = getAdjacentStories();
+    if (next) {
+      navigateToStory(next.id);
+    }
+  }
+
+  function goToPrevStory() {
+    if (window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive()) {
+      window.PlaylistManager.playPrev();
+      return;
+    }
+    const { prev } = getAdjacentStories();
+    if (prev) {
+      navigateToStory(prev.id);
+    }
+  }
+
   const VALID_ANIMALS = new Set([
     'ant', 'bat', 'bear', 'beaver', 'bee', 'beetle', 'boar', 'bull', 'butterfly',
     'camel', 'cat', 'chameleon', 'cock', 'cow', 'crab', 'crane', 'crow', 'cuckoo', 'deer',
@@ -1425,6 +1467,11 @@
     TTS.stop();
     updateStorySEO(story);
 
+    // Keep playlist current index in sync if this story is in playlist
+    if (window.PlaylistManager && window.PlaylistManager.has(story.id)) {
+      window.PlaylistManager.currentIndex = window.PlaylistManager.items.indexOf(story.id);
+    }
+
     if (window.AppAnalytics) {
       window.AppAnalytics.trackPageView(getStoryUrl(story.id), document.title);
       window.AppAnalytics.trackStoryView(story);
@@ -1464,6 +1511,10 @@
     // SVG panel illustration
     const panelSvg = renderStageIllustrationHtml(story, currentSentenceIndex);
 
+    const adjacent = getAdjacentStories();
+    const prevStory = adjacent.prev;
+    const nextStory = adjacent.next;
+
     // Voices for selection
     const rankedVoices = TTS.getRankedVoices();
     const bestVoice = TTS.getBestDefaultVoice();
@@ -1474,6 +1525,12 @@
         <div class="reader-navbar">
           <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Library</a>
           <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn-pill" id="navPrevStoryBtn" onclick="window.StoryApp.goToPrevStory()" title="Go to Previous Story${prevStory ? ': ' + escapeHtml(prevStory.title) : ''}">
+              ⏮️ Prev Story
+            </button>
+            <button class="btn-pill" id="navNextStoryBtn" onclick="window.StoryApp.goToNextStory()" title="Go to Next Story${nextStory ? ': ' + escapeHtml(nextStory.title) : ''}">
+              Next Story ⏭️
+            </button>
             <button class="btn-pill" id="readerFavBtn" onclick="window.StoryApp.toggleFav('${story.id}', event)" title="Save to Favorites">
               ${isFav ? '❤️' : '🤍'}
             </button>
@@ -1500,7 +1557,7 @@
               ${info.nextStory ? `<span class="playlist-up-next">• Up next: <em>${escapeHtml(info.nextStory.title)}</em></span>` : ''}
             </div>
             <div class="playlist-reader-actions">
-              <button class="btn-pill-sm" onclick="window.PlaylistManager.playPrev()" title="Previous Story in Playlist" ${info.currentIndex === 0 ? 'disabled' : ''}>⏮️ Prev</button>
+              <button class="btn-pill-sm" onclick="window.PlaylistManager.playPrev()" title="Previous Story in Playlist">⏮️ Prev</button>
               <button class="btn-pill-sm" onclick="window.PlaylistManager.playNext()" title="Next Story in Playlist">Next ⏭️</button>
               <button class="btn-pill-sm" onclick="window.PlaylistManager.openDrawer()" title="View Playlist Queue">📋 Queue</button>
               <button class="btn-pill-sm text-danger" onclick="window.PlaylistManager.stopPlaylistMode()" title="Exit Playlist Mode">✕ Exit</button>
@@ -1588,7 +1645,7 @@
               <div class="reader-controls-bar">
                 <!-- Primary Playback Buttons -->
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-                  <button class="circle-btn" id="prevSentenceBtn" title="Previous Sentence" ${currentSentenceIndex === 0 ? 'disabled' : ''}>
+                  <button class="circle-btn" id="prevSentenceBtn" title="${currentSentenceIndex === 0 ? 'Previous Story (⏮️)' : 'Previous Sentence (⏮️)'}">
                     ⏮️
                   </button>
 
@@ -1601,7 +1658,7 @@
                     </button>
                   </div>
 
-                  <button class="circle-btn" id="nextSentenceBtn" title="Next Sentence">
+                  <button class="circle-btn" id="nextSentenceBtn" title="${currentSentenceIndex === totalSentences - 1 ? 'Finish Story (⏭️)' : 'Next Sentence (⏭️)'}">
                     ⏭️
                   </button>
 
@@ -1707,9 +1764,16 @@
     updateStageIllustration(currentStory, index);
     preloadStoryPanels(currentStory, index);
 
-    // Update prev / next button disabled states
+    // Update prev / next button states and tooltips
     const prevBtn = document.getElementById('prevSentenceBtn');
-    if (prevBtn) prevBtn.disabled = index === 0;
+    if (prevBtn) {
+      prevBtn.disabled = false;
+      prevBtn.title = index === 0 ? 'Previous Story (⏮️)' : 'Previous Sentence (⏮️)';
+    }
+    const nextBtn = document.getElementById('nextSentenceBtn');
+    if (nextBtn) {
+      nextBtn.title = index === currentStory.text.length - 1 ? 'Finish Story (⏭️)' : 'Next Sentence (⏭️)';
+    }
   }
 
   function speakCurrentSentence() {
@@ -1794,6 +1858,9 @@
       currentSentenceIndex--;
       updateSentenceHighlight(currentSentenceIndex, false);
       speakCurrentSentence();
+    } else {
+      // At beginning of story: Navigate to previous story!
+      goToPrevStory();
     }
   }
 
@@ -1996,9 +2063,11 @@
       window.AppAnalytics.trackPageView(`${getStoryUrl(story.id)}/completed`, `Story Completed: ${story.title} | TalePickle`);
     }
 
-    // Find next story in order
+    // Find adjacent stories
     const currentIndex = stories.findIndex((s) => s.id === story.id);
-    const nextStory = currentIndex >= 0 && currentIndex < stories.length - 1 ? stories[currentIndex + 1] : stories[0];
+    const adjacent = getAdjacentStories();
+    const prevStory = adjacent.prev || (currentIndex > 0 ? stories[currentIndex - 1] : stories[stories.length - 1]);
+    const nextStory = adjacent.next || (currentIndex >= 0 && currentIndex < stories.length - 1 ? stories[currentIndex + 1] : stories[0]);
 
     appContainer.innerHTML = `
       <canvas id="confettiCanvas"></canvas>
@@ -2006,6 +2075,12 @@
         <div class="reader-navbar">
           <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">← Library</a>
           <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn-pill" id="moralNavPrevBtn" onclick="window.StoryApp.goToPrevStory()" title="Go to Previous Story: ${escapeHtml(prevStory.title)}">
+              ⏮️ Prev Story
+            </button>
+            <button class="btn-pill" id="moralNavNextBtn" onclick="window.StoryApp.goToNextStory()" title="Go to Next Story: ${escapeHtml(nextStory.title)}">
+              Next Story ⏭️
+            </button>
             <button class="btn-pill playlist-header-btn ${window.PlaylistManager && window.PlaylistManager.isPlaylistModeActive() ? 'playing-active' : ''}" onclick="window.PlaylistManager.toggleDrawer()" title="View Bedtime Story Playlist">
               🎵 Playlist <span class="playlist-pill-count" style="display: ${window.PlaylistManager && window.PlaylistManager.getState().count > 0 ? 'inline-block' : 'none'};">${window.PlaylistManager ? window.PlaylistManager.getState().count : 0}</span>
             </button>
@@ -2105,8 +2180,11 @@
               <button class="btn-pill" id="replayStoryBtn">
                 🔄 Read Panel-by-Panel Again
               </button>
-              <a class="btn-pill primary" href="${getStoryUrl(nextStory.id)}" onclick="event.preventDefault(); window.StoryApp.goToStory('${encodeURIComponent(nextStory.id)}')">
-                Next Story: ${nextStory.title} ➡️
+              <a class="btn-pill" id="moralPrevStoryBtn" href="${getStoryUrl(prevStory.id)}" onclick="event.preventDefault(); window.StoryApp.goToPrevStory()">
+                ⏮️ Prev: ${escapeHtml(prevStory.title)}
+              </a>
+              <a class="btn-pill primary" href="${getStoryUrl(nextStory.id)}" onclick="event.preventDefault(); window.StoryApp.goToNextStory()">
+                Next: ${escapeHtml(nextStory.title)} ⏭️
               </a>
               <a class="btn-pill" href="${getLibraryUrl()}" onclick="event.preventDefault(); window.StoryApp.goToLibrary()">
                 📚 Back to Library
@@ -2277,6 +2355,9 @@
   window.StoryApp = {
     getStories: () => stories,
     getCurrentStory: () => currentStory,
+    getAdjacentStories: getAdjacentStories,
+    goToNextStory: goToNextStory,
+    goToPrevStory: goToPrevStory,
     setAutoAdvance: (val) => {
       autoAdvance = Boolean(val);
       const toggle = document.getElementById('autoAdvanceToggle');
@@ -2298,11 +2379,32 @@
     answerQuiz: handleQuizAnswer,
     handleStageImgError: handleStageImgError,
     nextSentence: nextSentence,
+    prevSentence: prevSentence,
     renderMoral: renderMoralScreen,
   };
 
   window.addEventListener('popstate', router);
   window.addEventListener('hashchange', router);
+
+  window.addEventListener('keydown', (e) => {
+    // Ignore if user is typing in an input element
+    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) {
+      return;
+    }
+    if (currentStory) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSentence();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextSentence();
+      } else if (e.key === ' ' || e.code === 'Space') {
+        e.preventDefault();
+        const playBtn = document.getElementById('playTtsBtn');
+        if (playBtn) playBtn.click();
+      }
+    }
+  });
 
   document.addEventListener('DOMContentLoaded', () => {
     Promise.all([fetchStories(), loadStoryboardManifest()]).then(() => {
