@@ -599,7 +599,6 @@
         </a>
         <div class="header-actions">
           <a href="story_gallery.html" class="btn-pill" style="background: #4F46E5; color: white; border: none; text-decoration: none; font-weight: 800;" title="Story-by-Story Visual Gallery">🖼️ Story Gallery</a>
-          <a href="mockups_hub.html" class="btn-pill" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); color: white; border: none; text-decoration: none; font-weight: 800;" title="Explore 9 Full-Page Kid UI Mockups">🎨 Mockups (9)</a>
           <button class="btn-pill" id="surpriseBtn">🎲 Surprise Me!</button>
           <button class="btn-pill ${showFavoritesOnly ? 'primary' : ''}" id="favFilterBtn">
             ${showFavoritesOnly ? '❤️ Favorites Only' : '🤍 Favorites (' + favorites.size + ')'}
